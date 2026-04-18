@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
-import data from "../data/about.json";
-import SectionHeading from "./SectionHeading.astro";
+import data from "../../data/about.json";
+import SectionHeading from "../common/section-heading.astro";
 
 interface Social {
   name: string;
@@ -35,7 +35,7 @@ const profileData: ProfileData = data;
           onerror="this.onerror=null;this.src='/placeholder.jpeg';"
         />
       </div>
-    
+
       <div>
         <h1 class="text-5xl my-4">
           {profileData.name}

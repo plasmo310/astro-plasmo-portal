@@ -1,7 +1,8 @@
 {
   "name": "Plasmo",
   "photoUrl": "character/plasmo_icon_border_bg.png",
-  "introHtml": "Game Developer / Technical Artist",
+  "job": "Game Developer / Technical Artist",
+  "introHtml": "ゲーム会社で働いているTAです。",
   "socials": [
     {
       "name": "GitHub",

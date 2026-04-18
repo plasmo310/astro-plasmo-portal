@@ -2,12 +2,17 @@
   "name": "Plasmo",
   "photoUrl": "character/plasmo_icon_border_bg.png",
   "job": "Game Developer / Technical Artist",
-  "introHtml": "ゲーム会社で働いているTAです。",
+  "introHtml": "ゲーム会社のTAとして、ツール開発やパイプライン構築など行っています。</br>創作が生き甲斐でプライベートでもいろいろ作っています。</br>休日は基本ネコと戯れています。",
   "socials": [
     {
       "name": "GitHub",
       "url": "https://github.com/plasmo310",
       "icon": "mdi:github"
+    },
+    {
+      "name": "X",
+      "url": "https://x.com/plasmo310",
+      "icon": "mdi:twitter"
     },
     {
       "name": "Email",

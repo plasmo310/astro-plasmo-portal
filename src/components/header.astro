@@ -1,0 +1,183 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { label: "Home", href: "#home" },
+  { label: "Works", href: "#works" },
+  { label: "Skills", href: "#skills" },
+  { label: "Blogs", href: "#blosgs" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<div class="flex justify-center w-full">
+  <nav
+    id="header"
+    class="fixed top-6 left-1/2 -translate-x-1/2 z-20 w-[80%] border-[1.2px] border-transparent transition-all duration-500 ease-in-out"
+  >
+    <div
+      class="container mx-auto flex justify-center items-center p-3 reveal-content"
+    >
+      <ul class="flex space-x-6 justify-center gap-12">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-gray-400 transition-colors relative group"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .reveal-content {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  @keyframes revealIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  nav {
+    background-color: transparent;
+    border-color: transparent;
+    backdrop-filter: blur(0px);
+    transition:
+      background-color 0.4s ease,
+      backdrop-filter 0.4s ease,
+      border-radius 0.4s ease,
+      border-color 0.4s ease,
+      width 0.4s ease;
+  }
+
+  nav.scrolling {
+    background-color: color-mix(
+      in srgb,
+      var(--color-background),
+      transparent 75%
+    );
+    border-color: #ffffff20;
+    border-radius: 9999px;
+    backdrop-filter: blur(10px);
+  }
+
+  nav a {
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease,
+      font-weight 0.3s ease;
+  }
+
+  nav a.active {
+    color: white !important;
+    font-weight: 700;
+    transform: scale(1.1);
+  }
+
+  nav a.active span {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+
+  nav li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a:not(.active):hover {
+    color: var(--color-accent) !important;
+  }
+
+  nav a:not(.active):hover span {
+    transform: scale(0.95);
+    text-shadow: 0 0 15px var(--color-accent-60);
+  }
+</style>
+
+<script>
+  const nav = document.getElementById("main-nav");
+  const maxScroll = 1000;
+  let rafId: number | null = null;
+
+  function updateNav() {
+    // スクロール検知時
+    if (window.scrollY > 0) {
+      nav?.classList.add("scrolling");
+
+      const scrollProgress = Math.min(window.scrollY / maxScroll, 1);
+      const easeProgress = 1 - Math.pow(1 - scrollProgress, 4);
+
+      const minWidth = 620;
+      const maxWidth = window.innerWidth * 0.8;
+      const currentWidth = maxWidth - (maxWidth - minWidth) * easeProgress;
+
+      nav?.style.setProperty("width", `${currentWidth}px`);
+    } else {
+      nav?.classList.remove("scrolling");
+    }
+
+    rafId = null;
+  }
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateNav);
+      }
+    },
+    { passive: true },
+  );
+
+  // 項目クリック時:
+  // 対象セクションへ移動する
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = e.currentTarget as HTMLAnchorElement;
+      const targetId = target.getAttribute("href")?.substring(1) || "";
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+
+  // 各セクションの表示状態監視:
+  // 対応するナビリンクをアクティブにする
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav a[href^='#']");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => link.classList.remove("active"));
+            const id = entry.target.getAttribute("id");
+            document
+              .querySelector(`nav a[href="#${id}"]`)
+              ?.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  });
+</script>

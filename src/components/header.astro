@@ -17,10 +17,10 @@ const navItems: NavItem[] = [
 <div class="flex justify-center w-full">
   <nav
     id="header"
-    class="fixed top-6 left-1/2 -translate-x-1/2 z-20 w-[80%] border-[1.2px] border-transparent transition-all duration-500 ease-in-out"
+    class="fixed top-0 left-0 z-20 w-full border-b border-transparent bg-background transition-all duration-500 ease-in-out"
   >
     <div
-      class="container mx-auto flex justify-center items-center p-3 reveal-content"
+      class="container mx-auto flex justify-center items-center py-4 px-6 reveal-content"
     >
       <ul class="flex space-x-6 justify-center gap-12">
         {
@@ -56,26 +56,8 @@ const navItems: NavItem[] = [
   }
 
   nav {
-    background-color: transparent;
     border-color: transparent;
     backdrop-filter: blur(0px);
-    transition:
-      background-color 0.4s ease,
-      backdrop-filter 0.4s ease,
-      border-radius 0.4s ease,
-      border-color 0.4s ease,
-      width 0.4s ease;
-  }
-
-  nav.scrolling {
-    background-color: color-mix(
-      in srgb,
-      var(--color-background),
-      transparent 75%
-    );
-    border-color: #ffffff20;
-    border-radius: 9999px;
-    backdrop-filter: blur(10px);
   }
 
   nav a {
@@ -112,27 +94,15 @@ const navItems: NavItem[] = [
 </style>
 
 <script>
-  const nav = document.getElementById("main-nav");
-  const maxScroll = 1000;
+  const nav = document.getElementById("header");
   let rafId: number | null = null;
 
   function updateNav() {
-    // スクロール検知時
     if (window.scrollY > 0) {
       nav?.classList.add("scrolling");
-
-      const scrollProgress = Math.min(window.scrollY / maxScroll, 1);
-      const easeProgress = 1 - Math.pow(1 - scrollProgress, 4);
-
-      const minWidth = 620;
-      const maxWidth = window.innerWidth * 0.8;
-      const currentWidth = maxWidth - (maxWidth - minWidth) * easeProgress;
-
-      nav?.style.setProperty("width", `${currentWidth}px`);
     } else {
       nav?.classList.remove("scrolling");
     }
-
     rafId = null;
   }
 

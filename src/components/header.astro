@@ -20,15 +20,59 @@ const navItems: NavItem[] = [
     class="fixed top-0 left-0 z-20 w-full border-b border-transparent bg-background transition-all duration-500 ease-in-out"
   >
     <div
-      class="container mx-auto flex justify-center items-center py-4 px-6 reveal-content"
+      class="container mx-auto flex justify-start md:justify-center items-center py-4 px-6 reveal-content"
     >
-      <ul class="flex space-x-6 justify-center gap-12">
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex space-x-6 justify-center gap-12">
         {
           navItems.map((item) => (
             <li>
               <a
                 href={item.href}
                 class="text-gray-400 transition-colors relative group"
+                target={item.newTab ? "_blank" : undefined}
+                rel={item.newTab ? "noopener noreferrer" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Hamburger button (mobile only) -->
+      <button
+        id="hamburger"
+        class="md:hidden text-gray-400 hover:text-white relative w-6 h-6"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+      >
+        <!-- 閉じた状態: ☰ -->
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute inset-0">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <!-- 開いた状態: × -->
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute inset-0">
+          <line x1="4" y1="4" x2="20" y2="20" />
+          <line x1="20" y1="4" x2="4" y2="20" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="md:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out border-t border-transparent"
+    >
+      <ul class="flex flex-col items-center py-4 gap-5">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="mobile-nav-link text-gray-400 transition-colors"
                 target={item.newTab ? "_blank" : undefined}
                 rel={item.newTab ? "noopener noreferrer" : undefined}
               >
@@ -91,10 +135,28 @@ const navItems: NavItem[] = [
     transform: scale(0.95);
     text-shadow: 0 0 15px var(--color-accent-60);
   }
+
+  #mobile-menu.open {
+    max-height: 300px;
+  }
+
+  #icon-open,
+  #icon-close {
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  #icon-open { opacity: 1; transform: scale(1); }
+  #icon-close { opacity: 0; transform: scale(0.5); }
+
+  #hamburger.open #icon-open { opacity: 0; transform: scale(0.5); }
+  #hamburger.open #icon-close { opacity: 1; transform: scale(1); }
+
 </style>
 
 <script>
   const nav = document.getElementById("header");
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
   let rafId: number | null = null;
 
   function updateNav() {
@@ -116,8 +178,22 @@ const navItems: NavItem[] = [
     { passive: true },
   );
 
-  // 項目クリック時:
-  // 対象セクションへ移動する
+  function setMenuOpen(open: boolean) {
+    mobileMenu?.classList.toggle("open", open);
+    hamburger?.classList.toggle("open", open);
+    hamburger?.setAttribute("aria-expanded", String(open));
+  }
+
+  hamburger?.addEventListener("click", () => {
+    const isOpen = !mobileMenu?.classList.contains("open");
+    setMenuOpen(isOpen);
+  });
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  // 項目クリック時: 対象セクションへ移動する
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
@@ -130,8 +206,7 @@ const navItems: NavItem[] = [
     });
   });
 
-  // 各セクションの表示状態監視:
-  // 対応するナビリンクをアクティブにする
+  // 各セクションの表示状態監視: 対応するナビリンクをアクティブにする
   document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll("nav a[href^='#']");

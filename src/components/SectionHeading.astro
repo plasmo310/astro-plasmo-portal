@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div>
+  <h2
+    class="text-3xl md:text-4xl font-heading font-bold text-white mb-20 flex items-center gap-4"
+  >
+    <span class="lightning-icon mr-4"></span>{title}
+  </h2>
+</div>

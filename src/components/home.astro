@@ -1,71 +1,9 @@
 ---
-import { Icon } from "astro-icon/components";
-import data from "../data/home.json";
-
-interface Social {
-  name: string;
-  url: string;
-  icon: string;
-}
-
-interface ProfileData {
-  name: string;
-  photoUrl: string;
-  job: string;
-  introHtml: string;
-  socials: Social[];
-}
-
-const profileData: ProfileData = data;
 ---
 
 <section
   id="home"
-  class="flex flex-col items-center justify-center pt-10 pb-10 min-h-[80vh] text-center"
+  class="flex items-center justify-center min-h-screen text-center"
 >
-  <div>
-    <div class="rounded-full overflow-hidden">
-      <img
-        src={profileData.photoUrl}
-        alt={profileData.name}
-        onerror="this.onerror=null;this.src='/placeholder.jpeg';"
-      />
-    </div>
-    <div></div>
-  </div>
-
-  <div>
-    <h1 class="text-5xl mt-4">
-      {profileData.name}
-    </h1>
-    <div class="m-4">{profileData.job}</div>
-    <div class="m-4" set:html={profileData.introHtml} />
-  </div>
-
-  <div class="flex gap-6 mt-4 reveal-content">
-    {
-      profileData.socials.map((social) => (
-        <a href={social.url} target="_blank">
-          <Icon name={social.icon} />
-
-          <span>{social.name}</span>
-        </a>
-      ))
-    }
-  </div>
+  <h1 class="text-6xl font-bold">Plasmo Labs</h1>
 </section>
-
-<style>
-  .reveal-content {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  }
-
-  @keyframes revealIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>

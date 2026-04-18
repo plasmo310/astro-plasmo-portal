@@ -2,13 +2,14 @@
 interface NavItem {
   label: string;
   href: string;
+  newTab?: boolean;
 }
 
 const navItems: NavItem[] = [
   { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
   { label: "Works", href: "#works" },
-  { label: "Skills", href: "#skills" },
-  { label: "Blogs", href: "#blosgs" },
+  { label: "Blog", href: "https://elekibear.com", newTab: true },
   { label: "Contact", href: "#contact" },
 ];
 ---
@@ -28,6 +29,8 @@ const navItems: NavItem[] = [
               <a
                 href={item.href}
                 class="text-gray-400 transition-colors relative group"
+                target={item.newTab ? "_blank" : undefined}
+                rel={item.newTab ? "noopener noreferrer" : undefined}
               >
                 {item.label}
               </a>

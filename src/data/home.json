@@ -1,0 +1,17 @@
+{
+  "name": "Plasmo",
+  "photoUrl": "favicon.svg",
+  "introHtml": "Game Developer / Technical Artist",
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/plasmo310",
+      "icon": "mdi:github"
+    },
+    {
+      "name": "Email",
+      "url": "mailto:plasmo310@gmail.com",
+      "icon": "mdi:email"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+import data from "../data/home.json";
+
+interface Social {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+interface ProfileData {
+  name: string;
+  photoUrl: string;
+  introHtml: string;
+  socials: Social[];
+}
+
+const profileData: ProfileData = data;
+---
+
+<section id="home">
+  <div>
+    <div>
+      <img
+        src={profileData.photoUrl}
+        alt={profileData.name}
+        onerror="this.onerror=null;this.src='/placeholder.jpeg';"
+      />
+    </div>
+    <div></div>
+  </div>
+
+  <div>
+    <p>Hello, I'm</p>
+  </div>
+
+  <div>
+    <h1>
+      {profileData.name}
+    </h1>
+    <br />
+    <p set:html={profileData.introHtml} />
+  </div>
+
+  <div>
+    {
+      profileData.socials.map((social) => (
+        <a href={social.url} target="_blank">
+          <Icon name={social.icon} />
+
+          <span>{social.name}</span>
+        </a>
+      ))
+    }
+  </div>
+</section>

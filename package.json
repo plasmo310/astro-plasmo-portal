@@ -12,6 +12,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.7"
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/skill-icons": "^1.2.4",
+    "@iconify-json/vscode-icons": "^1.2.45",
+    "astro": "^6.1.7",
+    "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "prettier": "3.8.3",
+    "prettier-plugin-astro": "0.14.1"
   }
 }

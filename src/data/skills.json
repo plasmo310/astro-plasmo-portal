@@ -1,0 +1,205 @@
+{
+  "career": [
+    {
+      "company": "ゲーム会社 (正社員)",
+      "role": "テクニカルアーティスト",
+      "period": "2024/6 - 現在",
+      "type": "Full time job",
+      "description": "テクニカルアーティストに転向。パイプライン周りや各種ツール開発等を担当。",
+      "skills": ["Houdini", "Maya", "Python", "C++", "Unreal Engine"]
+    },
+    {
+      "company": "ゲーム会社 (正社員)",
+      "role": "クライアントエンジニア",
+      "period": "2021/5 - 2024/5",
+      "type": "Full time job",
+      "description": "モバイルゲーム開発を中心にクライアントエンジニアとして従事。",
+      "skills": ["Unity", "C#", "TypeScript", "Ruby on Rails", "Jenkins"]
+    },
+    {
+      "company": "SIer (正社員)",
+      "role": "システムエンジニア",
+      "period": "2016/4 - 2021/3",
+      "type": "Full time job",
+      "description": "業務システム開発をメインに従事。",
+      "skills": ["Java", "Python", "SQL", "JavaScript", "HTML/CSS"]
+    }
+  ],
+  "skill": [
+    {
+      "section": "DCC / Tech Art",
+      "categories": [
+        {
+          "category": "DCC",
+          "skills": [
+            { "name": "Houdini", "level": 3, "icon": "simple-icons:houdini" },
+            { "name": "Maya", "level": 2, "icon": "simple-icons:autodeskmaya" },
+            {
+              "name": "Blender",
+              "level": 1,
+              "icon": "skill-icons:blender-dark"
+            }
+          ]
+        },
+        {
+          "category": "Tech Art",
+          "skills": [
+            { "name": "Procedural", "level": 3, "icon": "mdi:vector-polygon" },
+            { "name": "Pipeline", "level": 3, "icon": "mdi:pipe" },
+            { "name": "Shader", "level": 2, "icon": "mdi:palette-outline" }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Tool / Pipeline",
+      "categories": [
+        {
+          "category": "Desktop Tool",
+          "skills": [
+            {
+              "name": "PySide / Qt",
+              "level": 3,
+              "icon": "skill-icons:qt-dark"
+            },
+            { "name": "Electron", "level": 2, "icon": "skill-icons:electron" },
+            { "name": "Tauri", "level": 1, "icon": "skill-icons:tauri-dark" },
+            { "name": "WPF", "level": 1, "icon": "skill-icons:dotnet" }
+          ]
+        },
+        {
+          "category": "Game Tool",
+          "skills": [
+            {
+              "name": "Houdini Engine / HDA",
+              "level": 3,
+              "icon": "simple-icons:houdini"
+            },
+            {
+              "name": "Unity Editor",
+              "level": 3,
+              "icon": "skill-icons:unity-dark"
+            },
+            {
+              "name": "Unreal Python",
+              "level": 3,
+              "icon": "skill-icons:unrealengine"
+            },
+            {
+              "name": "Unreal Plugin (C++)",
+              "level": 2,
+              "icon": "skill-icons:unrealengine"
+            }
+          ]
+        },
+        {
+          "category": "CI / Script",
+          "skills": [
+            {
+              "name": "Shell / bat",
+              "level": 3,
+              "icon": "skill-icons:bash-dark"
+            },
+            {
+              "name": "Jenkins",
+              "level": 2,
+              "icon": "skill-icons:jenkins-dark"
+            },
+            {
+              "name": "Azure",
+              "level": 2,
+              "icon": "skill-icons:azure-dark"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Game Dev",
+      "categories": [
+        {
+          "category": "Engine",
+          "skills": [
+            { "name": "Unity", "level": 3, "icon": "skill-icons:unity-dark" },
+            {
+              "name": "Unreal Engine",
+              "level": 2,
+              "icon": "skill-icons:unrealengine"
+            },
+            {
+              "name": "C++ (DirectX / OpenGL)",
+              "level": 2,
+              "icon": "skill-icons:cpp"
+            }
+          ]
+        },
+        {
+          "category": "Develop",
+          "skills": [
+            { "name": "UI", "level": 3, "icon": "mdi:layers-outline" },
+            {
+              "name": "Architecture",
+              "level": 3,
+              "icon": "mdi:sitemap-outline"
+            },
+            {
+              "name": "Game Logic",
+              "level": 2,
+              "icon": "mdi:controller-classic-outline"
+            },
+            { "name": "Graphic", "level": 2, "icon": "mdi:image-outline" },
+            { "name": "Game AI", "level": 2, "icon": "mdi:robot-outline" },
+            { "name": "Sound", "level": 2, "icon": "mdi:music-note-outline" }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Web",
+      "categories": [
+        {
+          "category": "Frontend",
+          "skills": [
+            {
+              "name": "Next.js / React",
+              "level": 2,
+              "icon": "skill-icons:nextjs-dark"
+            },
+            { "name": "Astro", "level": 2, "icon": "skill-icons:astro" },
+            {
+              "name": "p5.js",
+              "level": 2,
+              "icon": "skill-icons:p5js"
+            },
+            {
+              "name": "Three.js",
+              "level": 1,
+              "icon": "skill-icons:threejs-dark"
+            }
+          ]
+        },
+        {
+          "category": "Backend",
+          "skills": [
+            { "name": "Go", "level": 2, "icon": "skill-icons:golang" },
+            {
+              "name": "Ruby on Rails",
+              "level": 2,
+              "icon": "skill-icons:rails"
+            },
+            {
+              "name": "Wordpress",
+              "level": 2,
+              "icon": "skill-icons:wordpress"
+            },
+            {
+              "name": "Laravel",
+              "level": 1,
+              "icon": "skill-icons:laravel-dark"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

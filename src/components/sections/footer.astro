@@ -5,11 +5,10 @@
 <footer
   class="relative flex flex-col items-center justify-center h-16 bg-dark-gray"
 >
-  <a
-    href="#home"
+  <button
     id="scroll-top"
     aria-label="Back to top"
-    class="absolute -top-10 flex items-center justify-center w-32 h-20 rounded-t-full bg-dark-gray"
+    class="absolute -top-10 flex items-center justify-center w-32 h-20 rounded-t-full bg-dark-gray cursor-pointer"
   >
     <span class="absolute top-0">
       <svg
@@ -22,7 +21,7 @@
         <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
       </svg>
     </span>
-  </a>
+  </button>
   <div class="w-full px-8">
     <p class="text-sm text-gray-400">© 2026 Plasmo</p>
   </div>
@@ -40,3 +39,9 @@
     transform: translateY(-3px);
   }
 </style>
+
+<script>
+  document.getElementById("scroll-top")?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>

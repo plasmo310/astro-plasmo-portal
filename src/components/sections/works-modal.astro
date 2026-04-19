@@ -11,13 +11,15 @@ interface Props {
   modalId: string;
   category: string;
   title: string;
+  period: string;
   descHtml: string;
   images: string[];
   tech: string[];
   links: WorkLink[];
 }
 
-const { modalId, category, title, descHtml, images, tech, links } = Astro.props;
+const { modalId, category, title, period, descHtml, images, tech, links } =
+  Astro.props;
 const isSlider = images.length > 1;
 ---
 
@@ -62,6 +64,9 @@ const isSlider = images.length > 1;
         <h3 class="text-2xl font-heading font-bold text-white mt-1">
           {title}
         </h3>
+        <p class="text-white/40 text-xs font-body mt-1 tracking-wide">
+          {period}
+        </p>
       </div>
 
       {

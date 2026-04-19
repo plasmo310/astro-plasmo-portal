@@ -1,6 +1,6 @@
 {
-  "pickupDescHtml": "プライベートで作った制作物になります。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
-  "allDescHtml": "プライベートで作った全制作物になります。</br>ゲーム・3DCG・ツール・Web・サウンドと幅広く創作を行っています。",
+  "pickupDescHtml": "仕事以外で作った個人制作物になります。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
+  "allDescHtml": "仕事以外で作った個人制作物になります。</br>ゲーム・3DCG・ツール・Web・サウンドと幅広く創作を行っています。",
   "sections": [
     {
       "section": "Game",
@@ -9,6 +9,7 @@
           "pickup": true,
           "category": "Mobile App",
           "title": "怪盗チョコレート",
+          "period": "2023/02",
           "overview": "バレンタイン向けに制作した3Dアクションゲームです。開発効率を意識して2週間ほどリリースまで行いました。",
           "descHtml": "バレンタイン向けに制作した3Dアクションゲームです。</br>実作業1週間程度(出勤込み)で開発する必要があったため、友人にドット絵・サウンド制作を担当してもらいつつ、2週間程度でリリースまで行いました。",
           "images": [
@@ -44,6 +45,7 @@
           "pickup": true,
           "category": "Mobile App",
           "title": "ゆるいオセロ",
+          "period": "2022/10",
           "overview": "ゆるいキャラクター達と楽しむ3Dオセロゲームです。ゲームAIの基礎を体系的に学びながら開発しました。",
           "descHtml": "ゆるいキャラクター達と楽しむ3Dオセロゲームです。</br>ゲームAIの基礎を体系的に学びながら開発しました。</br>MiniMax法、モンテカルロ法、ML-Agentsによる強化学習を組み合わせたAIを実装しています。",
           "images": [
@@ -79,6 +81,7 @@
           "pickup": false,
           "category": "Mobile App",
           "title": "エレキシューティング3D",
+          "period": "2022/04",
           "overview": "カニを撃破する3Dシューティングゲームです。Unityの素の実装を学ぶため、外部ライブラリを極力使わず実装しています。",
           "descHtml": "カニを撃破する3Dシューティングゲームです。</br>学習目的でC++でゲームを作った後、Unityに移植しました。</br>素の実装を学ぶため、外部ライブラリを極力使わず実装しています。(※DOTWeenを除く)",
           "images": [
@@ -114,6 +117,7 @@
           "pickup": false,
           "category": "Mobile App",
           "title": "もぐら叩きAR",
+          "period": "2020/10",
           "overview": "ARで遊ぶことのできるもぐら叩きゲームです。検知した床の範囲にもぐら(たまにハリネズミ)が出現します。",
           "descHtml": "ARで遊ぶことのできるもぐら叩きゲームです。</br>検知した床の範囲にもぐら(たまにハリネズミ)が出現します。",
           "images": [
@@ -139,6 +143,7 @@
           "pickup": false,
           "category": "Mobile App",
           "title": "マグネタワー",
+          "period": "2020/08",
           "overview": "ひたすら磁石を積み上げるミニゲームです。GooglePlayGame・ローカライズ対応など行っています。",
           "descHtml": "ひたすら磁石を積み上げるミニゲームです。</br>実際の磁石の挙動を観察しながら実装しました。</br>ローカライズ対応・GooglePlayGameによるランキング管理など行っています。",
           "images": [
@@ -164,6 +169,7 @@
           "pickup": false,
           "category": "Mobile App",
           "title": "ゴーゴーゴロヤン",
+          "period": "2020/07",
           "overview": "ゴロヤンというキャラクターが主人公の2Dアクションゲームです。ストーリー・ED有り、全5エピソードです。",
           "descHtml": "ゴロヤンというキャラクターが主人公の2Dアクションゲームです。</br>個人で初めてリリースしたアプリになります。</br>ストーリー・ED有り、全5エピソードで、タイムアタックモードもあります。",
           "images": [
@@ -194,6 +200,7 @@
           "pickup": true,
           "category": "Desktop Game",
           "title": "CatRunner",
+          "period": "2024/05",
           "overview": "UnrealEngineの学習目的で、C++メインで制作したミニゲームです。ゲーム制作に必要な最低限の要素を盛り込んでいます。",
           "descHtml": "UnrealEngineの学習目的で、C++メインで制作したミニゲームです。</br>ゲーム制作に必要な最低限の要素を盛り込んでいるため、別のゲームエンジンを使用していたエンジニアが初めてUnrealEngineを触る際に役立つ内容となっています。",
           "images": [
@@ -224,6 +231,7 @@
           "pickup": true,
           "category": "Houdini",
           "title": "漫画風描画HDA",
+          "period": "2026/04",
           "overview": "Copernicusでシーン情報から漫画風描画・吹き出し作成を行うHDAです。",
           "descHtml": "Copernicusでシーン情報から漫画風描画を行うHDAを作成しました。</br>カラー・法線情報からトゥーン描画した後、しきい値によってトーンを割り当てています。</br>その他、吹き出し作成を行うHDAも作成しました。",
           "images": [
@@ -249,6 +257,7 @@
           "pickup": true,
           "category": "Houdini",
           "title": "Mardini2025制作物",
+          "period": "2025/03",
           "overview": "SideFX主催のコンテスト「Mardini2025」の製作物です。31日分の投稿を行いました。",
           "descHtml": "SideFX主催のコンテスト「Mardini2025」の制作物です。</br>Houdiniを触り始めて歴が浅かったため、各機能を覚えながら31日間の投稿を完走しました。</br>またDAY23にて、デイリー2位にて選んでいただけました。",
           "images": [
@@ -274,6 +283,7 @@
           "pickup": true,
           "category": "Desktop Tool",
           "title": "画像リサイズ・保存ツール",
+          "period": "2023/12",
           "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。",
           "descHtml": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。</br>見ただけで使い方が分かるようなシンプルなUIを意識しています。</br>使用したことのなかったElectron、Vue.jsを使用して開発しました。",
           "images": [
@@ -298,6 +308,7 @@
           "pickup": true,
           "category": "Unity Tool",
           "title": "スライドショー制作ツール",
+          "period": "2024/10",
           "overview": "UnityのTimelineを活用した、スライドショー制作ツールです。",
           "descHtml": "UnityのTimelineを活用した、スライドショー制作ツールです。</br>プロポーズ用の動画制作に、500枚近くの画像を使用する必要があったため開発しました。</br>Excelデータをベースにすることで効率化し、2週間程度で仕上げることができました。",
           "images": [
@@ -327,6 +338,7 @@
           "pickup": true,
           "category": "Blog",
           "title": "都会のエレキベア",
+          "period": "2020/01 - 現在",
           "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
           "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
           "images": ["img/works/web_blog_elekibear.png"],
@@ -348,6 +360,7 @@
           "pickup": true,
           "category": "Portfolio",
           "title": "Plasmo Portal",
+          "period": "2026/04 - 現在",
           "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
           "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
           "images": ["img/works/web_blog_elekibear.png"],
@@ -358,6 +371,7 @@
           "pickup": true,
           "category": "Server",
           "title": "GoランキングAPI",
+          "period": "2024/04",
           "overview": "Goで実装した汎用ランキングAPIです。",
           "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
           "images": [
@@ -386,6 +400,7 @@
           "pickup": true,
           "category": "DTM Plugins",
           "title": "渡邉ディストーション",
+          "period": "2024/03",
           "overview": "各種DAWソフトで使用できるディストーションのVST/AUプラグインです。",
           "descHtml": "各種DAWソフトで使用できるディストーションのVST/AUプラグインです。</br>波形操作を行い、2種類の歪みが出せるようにしています。</br>JUCEを使用して作成しました。",
           "images": [
@@ -409,7 +424,8 @@
         {
           "pickup": true,
           "category": "Architecture",
-          "title": "サウンドミドルウェア組込",
+          "title": "サウンドミドルウェア連携",
+          "period": "2024/03",
           "overview": "Unityにてサウンドミドルウェア(CRI/Wwise)に依存しない設計による実装及びサンプルを作成しました。",
           "descHtml": "Unityにてサウンドミドルウェア(CRI/Wwise)に依存しない設計による実装を行いました。</br>その他、拍に応じたオブジェクト操作や、インタラクティブミュージックのサンプルも用意しています。",
           "images": [

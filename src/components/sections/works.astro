@@ -24,16 +24,25 @@ interface WorkSection {
   works: Work[];
 }
 
-const sectionList = worksData as WorkSection[];
+interface WorksData {
+  descHtml: string;
+  sections: WorkSection[];
+}
+
+const { descHtml, sections } = worksData as unknown as WorksData;
 ---
 
 <section id="works" class="px-6 py-16">
   <div class="container mx-auto">
-    <SectionHeading title="Works" />
+    <SectionHeading title="Featured Works" />
+    <p
+      class="text-gray-400 font-body text-sm mb-12 -mt-4"
+      set:html={descHtml}
+    />
 
     <div class="space-y-20">
       {
-        sectionList.map((workSection) => (
+        sections.map((workSection) => (
           <div>
             <h3 class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3">
               {workSection.section}

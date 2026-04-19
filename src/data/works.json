@@ -2,63 +2,104 @@
   "descHtml": "プライベートで作った制作物になります。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
   "sections": [
     {
-      "section": "Web",
+      "section": "Game",
       "works": [
         {
-          "category": "Blog",
-          "title": "都会のエレキベア",
-          "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
-          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
-          "images": ["img/works/web_blog_elekibear.png"],
-          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
-          "links": [
-            {
-              "icon": "mdi:web",
-              "tooltip": "Webサイト",
-              "href": "https://elekibear.com"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
-            }
-          ]
-        },
-        {
-          "category": "Portfolio",
-          "title": "Plasmo Portal",
-          "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
-          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
-          "images": ["img/works/web_blog_elekibear.png"],
-          "tech": ["Astro", "Three.js", "Tailwind CSS"],
-          "links": []
-        },
-        {
-          "category": "Server",
-          "title": "GoランキングAPI",
-          "overview": "Goで実装した汎用ランキングAPIです。",
-          "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
+          "category": "Mobile App",
+          "title": "怪盗チョコレート",
+          "overview": "バレンタイン向けに制作した3Dアクションゲームです。開発効率を意識して2週間ほどリリースまで行いました。",
+          "descHtml": "バレンタイン向けに制作した3Dアクションゲームです。</br>実作業1週間程度(出勤込み)で開発する必要があったため、友人にドット絵・サウンド制作を担当してもらいつつ、2週間程度でリリースまで行いました。",
           "images": [
-            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
+            "https://content.elekibear.com/wp-content/uploads/2023/02/title_20230214_2.png",
+            "https://content.elekibear.com/wp-content/uploads/2023/02/ScreenShot-2023-02-12-10.14.29.png",
+            "https://content.elekibear.com/wp-content/uploads/2023/02/06_comic_line.gif"
           ],
-          "tech": ["Go", "Docker", "VPS"],
+          "tech": ["Unity", "VContainer", "Shader"],
           "links": [
             {
               "icon": "mdi:note-outline",
               "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
+              "href": "https://elekibear.com/post/20230214_01"
             },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
+              "href": "https://github.com/masarito617/unity-chocolate-thief-scripts"
+            },
+                        {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.chocolate"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E6%80%AA%E7%9B%97%E3%83%81%E3%83%A7%E3%82%B3%E3%83%AC%E3%83%BC%E3%83%88-3d%E3%83%81%E3%83%A7%E3%82%B3%E9%9B%86%E3%82%81%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3/id1669439500"
+            }
+          ]
+        },
+        {
+          "category": "Mobile App",
+          "title": "ゆるいオセロ",
+          "overview": "ゆるいキャラクター達と楽しむ3Dオセロゲームです。ゲームAIの基礎を体系的に学びながら開発しました。",
+          "descHtml": "ゆるいキャラクター達と楽しむ3Dオセロゲームです。</br>ゲームAIの基礎を体系的に学びながら開発しました。</br>MiniMax法、モンテカルロ法、ML-Agentsによる強化学習を組み合わせたAIを実装しています。",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2022/10/61bc9abe9483d4691d3009ccb2666f5b.png",
+            "https://user-images.githubusercontent.com/77447256/194733487-3d9bd8d7-4c14-4932-88d6-9aca4230c905.png",
+            "https://content.elekibear.com/wp-content/uploads/2022/10/03_title_anim.gif"
+          ],
+          "tech": ["Unity", "VContainer", "ML-Agents"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20221014_01"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-reversi-game-scripts"
+            },
+                        {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.reversi"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E3%82%86%E3%82%8B%E3%81%84%E3%82%AA%E3%82%BB%E3%83%AD/id6443742920"
+            }
+          ]
+        },
+        {
+          "category": "Desktop Game",
+          "title": "CatRunner",
+          "overview": "UnrealEngineの学習目的で、C++メインで制作したミニゲームです。ゲーム制作に必要な最低限の要素を盛り込んでいます。",
+          "descHtml": "UnrealEngineの学習目的で、C++メインで制作したミニゲームです。</br>ゲーム制作に必要な最低限の要素を盛り込んでいるため、別のゲームエンジンを使用していたエンジニアが初めてUnrealEngineを触る際に役立つ内容となっています。",
+          "images": [
+            "https://content.elekibear.com/content/20240519_01_ue5_cpp_run_game_title.png",
+            "https://github.com/plasmo310/ue5-cat-runner/blob/main/ReadMeContents/01_game_ready.png?raw=true",
+            "https://github.com/plasmo310/ue5-cat-runner/raw/main/ReadMeContents/02_game_levelup.png?raw=true"
+          ],
+          "tech": ["UnrealEngine", "C++"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240519_01_ue5_cpp_basic"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/ue5-cat-runner"
             }
           ]
         }
       ]
     },
     {
-      "section": "DCC",
+      "section": "3DCG",
       "works": [
         {
           "category": "Houdini",
@@ -156,39 +197,56 @@
       ]
     },
     {
-      "section": "Game",
+      "section": "Web",
       "works": [
         {
-          "category": "Mobile App",
-          "title": "怪盗チョコレート",
-          "overview": "バレンタイン向けに制作した3Dアクションゲームです。開発効率を意識して2週間ほどリリースまで行いました。",
-          "descHtml": "バレンタイン向けに制作した3Dアクションゲームです。</br>実作業1週間程度(出勤込み)で開発する必要があったため、友人にドット絵・サウンド制作を担当してもらいつつ、2週間程度でリリースまで行いました。",
-          "images": [
-            "https://content.elekibear.com/wp-content/uploads/2023/02/title_20230214_2.png",
-            "https://content.elekibear.com/wp-content/uploads/2023/02/ScreenShot-2023-02-12-10.14.29.png",
-            "https://content.elekibear.com/wp-content/uploads/2023/02/06_comic_line.gif"
-          ],
-          "tech": ["Unity", "VContainer", "Shader"],
+          "category": "Blog",
+          "title": "都会のエレキベア",
+          "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
+          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
+          "images": ["img/works/web_blog_elekibear.png"],
+          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
           "links": [
             {
-              "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20230214_01"
+              "icon": "mdi:web",
+              "tooltip": "Webサイト",
+              "href": "https://elekibear.com"
             },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",
-              "href": "https://github.com/masarito617/unity-chocolate-thief-scripts"
-            },
-                        {
-              "icon": "mdi:google-play",
-              "tooltip": "GooglePlay",
-              "href": "https://play.google.com/store/apps/details?id=com.molegoro.chocolate"
+              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
+            }
+          ]
+        },
+        {
+          "category": "Portfolio",
+          "title": "Plasmo Portal",
+          "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
+          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
+          "images": ["img/works/web_blog_elekibear.png"],
+          "tech": ["Astro", "Three.js", "Tailwind CSS"],
+          "links": []
+        },
+        {
+          "category": "Server",
+          "title": "GoランキングAPI",
+          "overview": "Goで実装した汎用ランキングAPIです。",
+          "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
+          "images": [
+            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
+          ],
+          "tech": ["Go", "Docker", "VPS"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
             },
             {
-              "icon": "fa-brands:app-store",
-              "tooltip": "AppStore",
-              "href": "https://apps.apple.com/jp/app/%E6%80%AA%E7%9B%97%E3%83%81%E3%83%A7%E3%82%B3%E3%83%AC%E3%83%BC%E3%83%88-3d%E3%83%81%E3%83%A7%E3%82%B3%E9%9B%86%E3%82%81%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3/id1669439500"
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
             }
           ]
         }
@@ -217,6 +275,30 @@
               "icon": "mdi:github",
               "tooltip": "GitHub",
               "href": "https://github.com/plasmo310/juce-plugin-distortion"
+            }
+          ]
+        },
+        {
+          "category": "Architecture",
+          "title": "サウンドミドルウェア組込",
+          "overview": "Unityにてサウンドミドルウェア(CRI/Wwise)に依存しない設計による実装及びサンプルを作成しました。",
+          "descHtml": "Unityにてサウンドミドルウェア(CRI/Wwise)に依存しない設計による実装を行いました。</br>その他、拍に応じたオブジェクト操作や、インタラクティブミュージックのサンプルも用意しています。",
+          "images": [
+            "https://content.elekibear.com/content/20240327_01_unity-multi_audio_title.png",
+            "https://content.elekibear.com/content/20240327_01_unity-multi_audio_03.png",
+            "https://content.elekibear.com/content/20240327_01_unity-multi_audio_05.png"
+          ],
+          "tech": ["JUCE", "C++"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240327_01_unity_multi_audio"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-multi-audio-sample"
             }
           ]
         }

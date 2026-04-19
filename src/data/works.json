@@ -280,7 +280,7 @@
           "title": "Mardini2025制作物",
           "period": "2025/03",
           "overview": "SideFX主催のコンテスト「Mardini2025」の製作物です。31日分の投稿を行いました。",
-          "descHtml": "SideFX主催のコンテスト「Mardini2025」の制作物です。</br>Houdiniを触り始めて歴が浅かったため、各機能を覚えながら31日間の投稿を完走しました。</br>またDAY23にて、デイリー2位にて選んでいただけました。",
+          "descHtml": "SideFX主催のコンテスト「Mardini2025」の制作物です。</br>Houdiniを触り始めて歴が浅かったため、各機能を覚えながら31日間の投稿を完走しました。</br>また、DAY23にてデイリー2位にて選んでいただけました。",
           "images": [
             "https://content.elekibear.com/content/20251124_01_title.png",
             "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png",
@@ -294,6 +294,162 @@
               "href": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
             }
           ]
+        },
+        {
+          "pickup": true,
+          "category": "Houdini",
+          "title": "観覧車生成HDA",
+          "period": "2025/01",
+          "overview": "観覧車モデルの生成を行うHDAです。プロシージャルに形状や色を変更できます。",
+          "descHtml": "観覧車モデルの生成を行うHDAです。</br>VEXを使ってエッジからモデル生成しています。</br>プロシージャルに形状や色を変更できます。",
+          "images": [
+            "https://content.elekibear.com/content/20240103_02_title.png",
+            "https://content.elekibear.com/content/20240103_02_04.png",
+            "https://content.elekibear.com/content/20240103_02_03.png"
+          ],
+          "tech": ["SOP"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20250103_02_houdini_sop"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/houdini-ferris-wheel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Graphics",
+      "works": [
+        {
+          "pickup": true,
+          "category": "Three.js",
+          "title": "トゥーンシェーダー",
+          "period": "2026/02",
+          "overview": "Three.jsで実装したトゥーンシェーダーです。アウトラインは背面法で描画しています。",
+          "descHtml": "Three.jsで実装したトゥーンシェーダーです。</br>アウトラインは背面法で描画しています。</br>ハードエッジモデルにも対応。",
+          "images": [
+            "https://content.elekibear.com/content/20260215_02_title.png",
+            "https://content.elekibear.com/content/20260215_02_04.png"
+          ],
+          "tech": ["Three.js", "GLSL"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20260215_02_three_toon_outline"
+            },
+            {
+              "icon": "mdi:web",
+              "tooltip": "CodePen",
+              "href": "https://codepen.io/masarito617/pen/jErRdLe"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/three-toon-outline-material"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Python",
+          "title": "波動関数崩壊アルゴリズム",
+          "period": "2025/06",
+          "overview": "波動関数崩壊アルゴリズムの実装サンプルです。入力画像のパターンを自動抽出して自動生成することができます。",
+          "descHtml": "波動関数崩壊アルゴリズムの実装サンプルです。</br>入力画像のパターンを自動抽出して自動生成することができます。",
+          "images": [
+            "https://content.elekibear.com/content/20250623_01_title.png"
+          ],
+          "tech": ["Python", "Wave Function Collapse"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20250622_01_wave_function_collapse"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/python-wfc-generater"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Shadertoy",
+          "title": "Pink Panther Cell Division",
+          "period": "2024/06",
+          "overview": "ジュリア集合を使用したアート作品です。Shadertoyにて作成しました。",
+          "descHtml": "ジュリア集合を使用したアート作品です。</br>パラメータをアニメーションさせることでユニークな形状を作っています。</br>Shadertoyにて作成しました。",
+          "images": [
+            "https://content.elekibear.com/content/20251102_01_10.png",
+            "https://content.elekibear.com/content/20251102_01_11.png"
+          ],
+          "tech": ["GLSL", "Fractal"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20251102_01_math_complex"
+            },
+            {
+              "icon": "mdi:web",
+              "tooltip": "Shadertoy",
+              "href": "https://www.shadertoy.com/view/43V3RG"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Unity",
+          "title": "Boidsシミュレーション",
+          "period": "2024/05",
+          "overview": "Boidsによる魚群シミュレーションのサンプルです。ComputeShaderで計算を行なっています。",
+          "descHtml": "Boidsによる魚群シミュレーションのサンプルです。</br>2D・3D両方のサンプルを用意しています。</br>ComputeShaderで計算を行なっています。",
+          "images": [
+            "https://content.elekibear.com/content/20240528_01_unity_boids_title.png",
+            "https://content.elekibear.com/content/20240528_01_unity_boids_02.png",
+            "https://content.elekibear.com/content/20240528_01_unity_boids_06.png"
+          ],
+          "tech": ["ComputeShader"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240528_01_unity_boids"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-boids-simulation/"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Unity",
+          "title": "3D流体シミュレーション(SPH)",
+          "period": "2023/05",
+          "overview": "ComputeShaderを使用したSPHによる流体シミュレーションサンプルです。描画はレイマーチングを使用しています。",
+          "descHtml": "ComputeShaderを使用したSPHによる流体シミュレーションサンプルです。</br>2D・3Dシミュレーションの両方を用意しています。</br>描画はレイマーチングを使用しています。",
+          "images": [
+            "https://user-images.githubusercontent.com/84005269/228707947-a96af208-db26-4aef-bb4d-4d995de936c8.png",
+            "https://user-images.githubusercontent.com/84005269/228707486-1885eabb-cac2-4e13-88e4-06065d80b6ce.png"
+          ],
+          "tech": ["HLSL", "ComputeShader", "RayMarching"],
+          "links": [
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-fluid-sample"
+            }
+          ]
         }
       ]
     },
@@ -302,10 +458,60 @@
       "works": [
         {
           "pickup": true,
+          "category": "IDE Tool",
+          "title": "画像リサイズ・保存ツール (改)",
+          "period": "2025/11",
+          "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。VSCodeの拡張機能として動作します。",
+          "descHtml": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。</br>Markdownファイルに直接ドラッグ&ドロップして動作するよう、VSCodeの拡張機能として制作しました。",
+          "images": [
+            "https://content.elekibear.com/content/20251122_01_01_title.png",
+            "https://content.elekibear.com/content/20251122_01_01.gif"
+          ],
+          "tech": ["TypeScript", "VSCode Extension"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20251122_01_vscode_image_resizer"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/vscode-image-resizer"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Desktop Tool",
+          "title": "CSV編集ツール",
+          "period": "2023/12",
+          "overview": "ブログ執筆用に作成した、CSVデータの編集を行うツールです。デスクトップアプリとして動作します。",
+          "descHtml": "ブログ執筆用に作成した、CSVデータの編集を行うツールです。</br>ブログで使用するデータに特化した表示形式となっています。",
+          "images": [
+            "https://content.elekibear.com/content/20231231_category_browser_title.png",
+            "https://content.elekibear.com/content/20240101_01_next_elekibear_gif_04.gif"
+          ],
+          "tech": ["Electron", "Vue.js", "TypeScript"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20231231_02_category_browser"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/masarito617/electron-category-browser"
+            }
+          ]
+        },
+        {
+          "pickup": true,
           "category": "Desktop Tool",
           "title": "画像リサイズ・保存ツール",
           "period": "2023/12",
-          "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。",
+          "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。デスクトップアプリとして動作します。",
           "descHtml": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。</br>見ただけで使い方が分かるようなシンプルなUIを意識しています。</br>使用したことのなかったElectron、Vue.jsを使用して開発しました。",
           "images": [
             "https://content.elekibear.com/content/20231231_image_resize_title.png",
@@ -369,6 +575,11 @@
               "icon": "mdi:web",
               "tooltip": "Webサイト",
               "href": "https://elekibear.com"
+            },
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
             },
             {
               "icon": "mdi:github",

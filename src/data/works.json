@@ -8,7 +8,17 @@
         "description": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。ゆるい雰囲気で解説することで、技術的ハードルを下げています。",
         "images": ["img/works/web_blog_elekibear.png"],
         "tech": ["Next.js", "React", "TypeScript"],
-        "link": "https://elekibear.com"
+        "link": {
+          "tooltip": "Blog",
+          "href": "https://elekibear.com"
+        },
+        "sublinks": [
+          {
+            "icon": "mdi:github",
+            "tooltip": "GitHub",
+            "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
+          }
+        ]
       }
     ]
   },
@@ -24,7 +34,11 @@
           "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png"
         ],
         "tech": ["SOP", "DOP", "KineFX", "DOP", "LOP"],
-        "link": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
+        "link": {
+          "tooltip": "Blog Post",
+          "href": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
+        },
+        "sublinks": []
       },
       {
         "category": "Houdini",
@@ -36,7 +50,17 @@
           "https://content.elekibear.com/content/20260413_01_29.png"
         ],
         "tech": ["COP"],
-        "link": "https://elekibear.com/post/20260413_01_houdini_comic_render"
+        "link": {
+          "tooltip": "Blog Post",
+          "href": "https://elekibear.com/post/20260413_01_houdini_comic_render"
+        },
+        "sublinks": [
+          {
+            "icon": "mdi:github",
+            "tooltip": "GitHub",
+            "href": "https://github.com/plasmo310/houdini-comic-render"
+          }
+        ]
       }
     ]
   }

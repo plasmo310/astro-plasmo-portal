@@ -1,10 +1,12 @@
 {
-  "descHtml": "プライベートで作った制作物になります。</br>幅広く様々な創作・学習を行っています。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
+  "pickupDescHtml": "プライベートで作った制作物になります。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
+  "allDescHtml": "プライベートで作った全制作物になります。</br>ゲーム・3DCG・ツール・Web・サウンドと幅広く創作を行っています。",
   "sections": [
     {
       "section": "Game",
       "works": [
         {
+          "pickup": true,
           "category": "Mobile App",
           "title": "怪盗チョコレート",
           "overview": "バレンタイン向けに制作した3Dアクションゲームです。開発効率を意識して2週間ほどリリースまで行いました。",
@@ -39,6 +41,7 @@
           ]
         },
         {
+          "pickup": true,
           "category": "Mobile App",
           "title": "ゆるいオセロ",
           "overview": "ゆるいキャラクター達と楽しむ3Dオセロゲームです。ゲームAIの基礎を体系的に学びながら開発しました。",
@@ -73,6 +76,7 @@
           ]
         },
         {
+          "pickup": false,
           "category": "Mobile App",
           "title": "エレキシューティング3D",
           "overview": "カニを撃破する3Dシューティングゲームです。Unityの素の実装を学ぶため、外部ライブラリを極力使わず実装しています。",
@@ -107,6 +111,7 @@
           ]
         },
         {
+          "pickup": false,
           "category": "Mobile App",
           "title": "もぐら叩きAR",
           "overview": "ARで遊ぶことのできるもぐら叩きゲームです。検知した床の範囲にもぐら(たまにハリネズミ)が出現します。",
@@ -131,6 +136,7 @@
           ]
         },
         {
+          "pickup": false,
           "category": "Mobile App",
           "title": "マグネタワー",
           "overview": "ひたすら磁石を積み上げるミニゲームです。GooglePlayGame・ローカライズ対応など行っています。",
@@ -155,6 +161,7 @@
           ]
         },
         {
+          "pickup": false,
           "category": "Mobile App",
           "title": "ゴーゴーゴロヤン",
           "overview": "ゴロヤンというキャラクターが主人公の2Dアクションゲームです。ストーリー・ED有り、全5エピソードです。",
@@ -184,6 +191,7 @@
           ]
         },
         {
+          "pickup": true,
           "category": "Desktop Game",
           "title": "CatRunner",
           "overview": "UnrealEngineの学習目的で、C++メインで制作したミニゲームです。ゲーム制作に必要な最低限の要素を盛り込んでいます。",
@@ -213,6 +221,7 @@
       "section": "3DCG",
       "works": [
         {
+          "pickup": true,
           "category": "Houdini",
           "title": "漫画風描画HDA",
           "overview": "Copernicusでシーン情報から漫画風描画・吹き出し作成を行うHDAです。",
@@ -237,6 +246,7 @@
           ]
         },
         {
+          "pickup": true,
           "category": "Houdini",
           "title": "Mardini2025制作物",
           "overview": "SideFX主催のコンテスト「Mardini2025」の製作物です。31日分の投稿を行いました。",
@@ -261,6 +271,7 @@
       "section": "Tool",
       "works": [
         {
+          "pickup": true,
           "category": "Desktop Tool",
           "title": "画像リサイズ・保存ツール",
           "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。",
@@ -284,6 +295,7 @@
           ]
         },
         {
+          "pickup": true,
           "category": "Unity Tool",
           "title": "スライドショー制作ツール",
           "overview": "UnityのTimelineを活用した、スライドショー制作ツールです。",
@@ -312,6 +324,7 @@
       "section": "Web",
       "works": [
         {
+          "pickup": true,
           "category": "Blog",
           "title": "都会のエレキベア",
           "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
@@ -332,6 +345,7 @@
           ]
         },
         {
+          "pickup": true,
           "category": "Portfolio",
           "title": "Plasmo Portal",
           "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
@@ -341,6 +355,7 @@
           "links": []
         },
         {
+          "pickup": true,
           "category": "Server",
           "title": "GoランキングAPI",
           "overview": "Goで実装した汎用ランキングAPIです。",
@@ -368,6 +383,7 @@
       "section": "Sound",
       "works": [
         {
+          "pickup": true,
           "category": "DTM Plugins",
           "title": "渡邉ディストーション",
           "overview": "各種DAWソフトで使用できるディストーションのVST/AUプラグインです。",
@@ -391,6 +407,7 @@
           ]
         },
         {
+          "pickup": true,
           "category": "Architecture",
           "title": "サウンドミドルウェア組込",
           "overview": "Unityにてサウンドミドルウェア(CRI/Wwise)に依存しない設計による実装及びサンプルを作成しました。",

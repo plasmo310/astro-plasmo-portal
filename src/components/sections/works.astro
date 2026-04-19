@@ -4,6 +4,10 @@ import SectionHeading from "../common/section-heading.astro";
 import WorksModal from "./works-modal.astro";
 import worksData from "../../data/works.json";
 
+interface Props {
+  pickupOnly?: boolean;
+}
+
 interface WorkLink {
   icon: string;
   tooltip: string;
@@ -11,6 +15,7 @@ interface WorkLink {
 }
 
 interface Work {
+  pickup?: boolean;
   category: string;
   title: string;
   overview: string;
@@ -26,20 +31,50 @@ interface WorkSection {
 }
 
 interface WorksData {
-  descHtml: string;
+  pickupDescHtml: string;
+  allDescHtml: string;
   sections: WorkSection[];
 }
 
-const { descHtml, sections } = worksData as unknown as WorksData;
+const { pickupOnly = true } = Astro.props;
+const {
+  pickupDescHtml,
+  allDescHtml,
+  sections: rawSections,
+} = worksData as unknown as WorksData;
+const title = pickupOnly ? "Pickup Works" : "All Works";
+const currentDescHtml = pickupOnly ? pickupDescHtml : allDescHtml;
+const sections = pickupOnly
+  ? rawSections
+      .map((s) => ({ ...s, works: s.works.filter((w) => w.pickup) }))
+      .filter((s) => s.works.length > 0)
+  : rawSections;
 ---
 
 <section id="works" class="px-6 py-16">
   <div class="container mx-auto">
-    <SectionHeading title="Pickup Works" />
+    <SectionHeading title={title} />
     <p
       class="text-gray-400 font-body text-sm mb-12 -mt-4"
-      set:html={descHtml}
+      set:html={currentDescHtml}
     />
+
+    {
+      pickupOnly && (
+        <div class="mt-16 flex justify-end">
+          <a
+            href="/works"
+            class="group inline-flex items-center gap-3 text-xl text-white hover:text-accent transition-colors duration-300 font-body tracking-wider font-semibold"
+          >
+            All Works
+            <Icon
+              name="mdi:arrow-right"
+              class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
+        </div>
+      )
+    }
 
     <div class="space-y-20">
       {
@@ -122,6 +157,23 @@ const { descHtml, sections } = worksData as unknown as WorksData;
         ))
       }
     </div>
+
+    {
+      pickupOnly && (
+        <div class="mt-16 flex justify-end">
+          <a
+            href="/works"
+            class="group inline-flex items-center gap-3 text-xl text-white hover:text-accent transition-colors duration-300 font-body tracking-wider font-semibold"
+          >
+            All Works
+            <Icon
+              name="mdi:arrow-right"
+              class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
+        </div>
+      )
+    }
   </div>
 </section>
 
@@ -242,5 +294,4 @@ const { descHtml, sections } = worksData as unknown as WorksData;
   .work-card:hover .work-card-img {
     transform: scale(1.02);
   }
-
 </style>

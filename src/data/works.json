@@ -256,6 +256,27 @@
         {
           "pickup": true,
           "category": "Houdini",
+          "title": "Mardini2026制作物",
+          "period": "2026/03",
+          "overview": "SideFX主催のコンテスト「Mardini2026」の製作物です。週2-3日ペースでの投稿を行いました。",
+          "descHtml": "SideFX主催のコンテスト「Mardini2026」の制作物です。</br>週2-3日ペースで、新しいことを試しつつ挑戦しました。",
+          "images": [
+            "https://content.elekibear.com/content/20260403_01_title.png",
+            "https://content.elekibear.com/content/mardini2026/09_Gooey.png",
+            "https://content.elekibear.com/content/mardini2026/27_Talk.png"
+          ],
+          "tech": ["SOP", "DOP", "KineFX", "DOP", "LOP"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20260403_01_houdini_mardini_2026"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Houdini",
           "title": "Mardini2025制作物",
           "period": "2025/03",
           "overview": "SideFX主催のコンテスト「Mardini2025」の製作物です。31日分の投稿を行いました。",

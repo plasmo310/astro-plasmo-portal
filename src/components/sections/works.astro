@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import SectionHeading from "../common/section-heading.astro";
+import WorksModal from "./works-modal.astro";
 import worksData from "../../data/works.json";
 
 interface WorkLink {
@@ -12,11 +13,11 @@ interface WorkLink {
 interface Work {
   category: string;
   title: string;
-  description: string;
+  overview: string;
+  descHtml: string;
   images: string[];
   tech: string[];
-  link: { tooltip: string; href: string };
-  sublinks: WorkLink[];
+  links: WorkLink[];
 }
 
 interface WorkSection {
@@ -34,7 +35,7 @@ const { descHtml, sections } = worksData as unknown as WorksData;
 
 <section id="works" class="px-6 py-16">
   <div class="container mx-auto">
-    <SectionHeading title="Featured Works" />
+    <SectionHeading title="Works Pickup" />
     <p
       class="text-gray-400 font-body text-sm mb-12 -mt-4"
       set:html={descHtml}
@@ -42,23 +43,20 @@ const { descHtml, sections } = worksData as unknown as WorksData;
 
     <div class="space-y-20">
       {
-        sections.map((workSection) => (
+        sections.map((workSection, si) => (
           <div>
             <h3 class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3">
               {workSection.section}
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {workSection.works.map((work) => {
+              {workSection.works.map((work, wi) => {
                 const isSlider = work.images.length > 1;
+                const modalId = `work-modal-${si}-${wi}`;
                 return (
-                  <div class="work-card relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-accent/40 transition-[border-color] duration-500 flex flex-col select-none cursor-pointer">
-                    <a
-                      href={work.link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="absolute inset-0 z-10"
-                      aria-label={work.title}
-                    />
+                  <div
+                    class="work-card cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-accent/40 transition-[border-color] duration-500 flex flex-col select-none"
+                    data-modal-id={modalId}
+                  >
                     <div class="aspect-video overflow-hidden relative bg-[#1a1a1a] shrink-0">
                       <div class="work-card-overlay absolute inset-0 transition-colors duration-500 z-10 pointer-events-none" />
                       <div
@@ -75,39 +73,37 @@ const { descHtml, sections } = worksData as unknown as WorksData;
                       </div>
                     </div>
 
-                    <div class="p-6 flex flex-col flex-1">
-                      <div class="flex justify-between items-start mb-4">
-                        <div>
-                          <span class="text-accent text-[10px] uppercase tracking-widest font-bold">
-                            {work.category}
-                          </span>
-                          <h4 class="text-xl font-heading font-bold text-white mt-1">
-                            {work.title}
-                          </h4>
+                    <div class="p-6 flex flex-col flex-1 relative">
+                      {work.links.length > 0 && (
+                        <div class="absolute top-6 right-6 flex gap-2 z-20">
+                          {work.links.map((link) => (
+                            <div class="relative group/tip">
+                              <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-white/65 hover:text-accent transition-colors block"
+                              >
+                                <Icon name={link.icon} class="w-6 h-6" />
+                              </a>
+                              <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-black/80 text-white text-[10px] whitespace-nowrap opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200">
+                                {link.tooltip}
+                              </span>
+                            </div>
+                          ))}
                         </div>
-                        {work.sublinks.length > 0 && (
-                          <div class="flex gap-2 shrink-0 ml-2 relative z-20">
-                            {work.sublinks.map((sublink) => (
-                              <div class="relative group/tip">
-                                <a
-                                  href={sublink.href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  class="text-white/65 hover:text-accent transition-colors block"
-                                >
-                                  <Icon name={sublink.icon} class="w-6 h-6" />
-                                </a>
-                                <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-black/80 text-white text-[10px] whitespace-nowrap opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200">
-                                  {sublink.tooltip}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                      )}
+                      <div class="mb-4">
+                        <span class="text-accent text-[10px] uppercase tracking-widest font-bold">
+                          {work.category}
+                        </span>
+                        <h4 class="text-xl font-heading font-bold text-white mt-1">
+                          {work.title}
+                        </h4>
                       </div>
 
                       <p class="text-gray-400 text-sm font-body line-clamp-3 flex-1">
-                        {work.description}
+                        {work.overview}
                       </p>
 
                       <div class="flex flex-wrap gap-2 pt-8 mt-auto">
@@ -128,6 +124,22 @@ const { descHtml, sections } = worksData as unknown as WorksData;
     </div>
   </div>
 </section>
+
+{
+  sections.map((workSection, si) =>
+    workSection.works.map((work, wi) => (
+      <WorksModal
+        modalId={`work-modal-${si}-${wi}`}
+        category={work.category}
+        title={work.title}
+        descHtml={work.descHtml}
+        images={work.images}
+        tech={work.tech}
+        links={work.links}
+      />
+    )),
+  )
+}
 
 <script>
   // 画像のスライド(切り替え)処理
@@ -173,13 +185,32 @@ const { descHtml, sections } = worksData as unknown as WorksData;
     cards.forEach((card) => observer.observe(card));
   }
 
+  // カードクリックでモーダルを開く
+  function initCardClick() {
+    const cards = document.querySelectorAll(".work-card");
+    cards.forEach((card) => {
+      card.addEventListener("click", (e) => {
+        if ((e.target as HTMLElement).closest("a")) return;
+        const modalId = (card as HTMLElement).dataset.modalId;
+        if (!modalId) return;
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+      });
+    });
+  }
+
   window.addEventListener("load", () => {
     initSliders();
     initReveal();
+    initCardClick();
   });
   document.addEventListener("astro:after-swap", () => {
     initSliders();
     initReveal();
+    initCardClick();
   });
 </script>
 
@@ -211,4 +242,5 @@ const { descHtml, sections } = worksData as unknown as WorksData;
   .work-card:hover .work-card-img {
     transform: scale(1.02);
   }
+
 </style>

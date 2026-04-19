@@ -1,19 +1,22 @@
 {
-  "descHtml": "プライベートで作った制作物になります。</br>各カテゴリ毎にピックアップして記載しています。",
+  "descHtml": "プライベートで作った制作物になります。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
   "sections": [
     {
       "section": "Web",
       "works": [
         {
           "category": "Blog",
-          "title": "都会のエレキベア - 技術ブログ",
-          "description": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。ゆるい雰囲気で解説することで、技術的ハードルを下げています。",
+          "title": "都会のエレキベア",
+          "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
+          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
           "images": ["img/works/web_blog_elekibear.png"],
           "tech": ["Next.js", "React", "TypeScript", "Emotion"],
-          "link": {
-            "href": "https://elekibear.com"
-          },
-          "sublinks": [
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Webサイト",
+              "href": "https://elekibear.com"
+            },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",
@@ -24,26 +27,27 @@
         {
           "category": "Portfolio",
           "title": "Plasmo Portal",
-          "description": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
+          "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
+          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
           "images": ["img/works/web_blog_elekibear.png"],
           "tech": ["Astro", "Three.js", "Tailwind CSS"],
-          "link": {
-            "href": ""
-          },
-          "sublinks": []
+          "links": []
         },
         {
           "category": "Server",
           "title": "GoランキングAPI",
-          "description": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
+          "overview": "Goで実装した汎用ランキングAPIです。",
+          "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
           "images": [
             "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
           ],
           "tech": ["Go", "Docker", "VPS"],
-          "link": {
-            "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
-          },
-          "sublinks": [
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
+            },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",
@@ -59,17 +63,20 @@
         {
           "category": "Houdini",
           "title": "漫画風描画HDA",
-          "description": "Copernicusでシーン情報から漫画風描画を行うHDA・吹き出し作成を行うHDAを作成しました。",
+          "overview": "Copernicusでシーン情報から漫画風描画・吹き出し作成を行うHDAです。",
+          "descHtml": "Copernicusでシーン情報から漫画風描画を行うHDA・吹き出し作成を行うHDAを作成しました。",
           "images": [
             "https://content.elekibear.com/content/20260413_01_title.png",
             "https://content.elekibear.com/content/20260413_01_06.png",
             "https://content.elekibear.com/content/20260413_01_29.png"
           ],
           "tech": ["COP"],
-          "link": {
-            "href": "https://elekibear.com/post/20260413_01_houdini_comic_render"
-          },
-          "sublinks": [
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20260413_01_houdini_comic_render"
+            },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",
@@ -79,18 +86,21 @@
         },
         {
           "category": "Houdini",
-          "title": "Mardini2025",
-          "description": "SideFX主催のコンテストに参加し、31日間の投稿を完走しました。DAY23にて、デイリー2位にて選んでもらえました。",
+          "title": "Mardini2025制作物",
+          "overview": "SideFX主催のコンテスト「Mardini2025」の製作物です。31日分の投稿を行いました。",
+          "descHtml": "SideFX主催のコンテスト「Mardini2025」の制作物です。</br>Houdiniの各機能を覚えながら、31日間の投稿を完走しました。</br>またDAY23にて、デイリー2位にて選んでいただけました。",
           "images": [
             "https://content.elekibear.com/content/20251124_01_title.png",
             "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png"
           ],
           "tech": ["SOP", "DOP", "KineFX", "DOP", "LOP"],
-          "link": {
-            "tooltip": "Blog Post",
-            "href": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
-          },
-          "sublinks": []
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
+            }
+          ]
         }
       ]
     },
@@ -100,16 +110,19 @@
         {
           "category": "Desktop Tool",
           "title": "画像リサイズ・保存ツール",
-          "description": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。見ただけで分かるようなシンプルなUIを意識しています。",
+          "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。",
+          "descHtml": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。</br>見ただけで使い方が分かるようなシンプルなUIを意識しています。</br>使用したことのなかったElectron、Vue.jsを使用して開発しました。",
           "images": [
             "https://content.elekibear.com/content/20231231_image_resize_title.png",
             "https://content.elekibear.com/content/20240101_01_next_elekibear_gif_05.gif"
           ],
           "tech": ["Electron", "Vue.js", "TypeScript"],
-          "link": {
-            "href": "https://elekibear.com/post/20231231_02_image_resizer"
-          },
-          "sublinks": [
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20231231_02_image_resizer"
+            },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",
@@ -119,17 +132,20 @@
         },
         {
           "category": "Unity Tool",
-          "title": "スライドショー制作効率化ツール",
-          "description": "UnityのTimelineを活用した、スライドショー制作ツールです。Excelデータをベースにし、500枚近くの画像を使用した動画を2週間程度で仕上げることができました。",
+          "title": "スライドショー制作ツール",
+          "overview": "UnityのTimelineを活用した、スライドショー制作ツールです。",
+          "descHtml": "UnityのTimelineを活用した、スライドショー制作ツールです。</br>プロポーズ用の動画制作に、500枚近くの画像を使用する必要があったため開発しました。</br>Excelデータをベースにすることで効率化し、2週間程度で仕上げることができました。",
           "images": [
             "https://content.elekibear.com/content/20241031_01_unity_movie_maker_title.png",
             "https://content.elekibear.com/content/20241031_01_unity_movie_maker.gif"
           ],
           "tech": ["Unity", "Timeline"],
-          "link": {
-            "href": "https://elekibear.com/post/20241031_01_unity_movie_maker"
-          },
-          "sublinks": [
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20241031_01_unity_movie_maker"
+            },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",
@@ -145,21 +161,34 @@
         {
           "category": "Mobile App",
           "title": "怪盗チョコレート",
-          "description": "バレンタイン向けに制作した3Dアクションゲームです。友人にドット絵・サウンド制作を担当してもらい、2週間で制作からリリースまで行いました。",
+          "overview": "バレンタイン向けに制作した3Dアクションゲームです。開発効率を意識して2週間ほどリリースまで行いました。",
+          "descHtml": "バレンタイン向けに制作した3Dアクションゲームです。</br>実作業1週間程度(出勤込み)で開発する必要があったため、友人にドット絵・サウンド制作を担当してもらいつつ、2週間程度でリリースまで行いました。",
           "images": [
             "https://content.elekibear.com/wp-content/uploads/2023/02/title_20230214_2.png",
             "https://content.elekibear.com/wp-content/uploads/2023/02/ScreenShot-2023-02-12-10.14.29.png",
             "https://content.elekibear.com/wp-content/uploads/2023/02/06_comic_line.gif"
           ],
           "tech": ["Unity", "VContainer", "Shader"],
-          "link": {
-            "href": "https://elekibear.com/post/20230214_01"
-          },
-          "sublinks": [
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20230214_01"
+            },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",
               "href": "https://github.com/masarito617/unity-chocolate-thief-scripts"
+            },
+                        {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.chocolate"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E6%80%AA%E7%9B%97%E3%83%81%E3%83%A7%E3%82%B3%E3%83%AC%E3%83%BC%E3%83%88-3d%E3%83%81%E3%83%A7%E3%82%B3%E9%9B%86%E3%82%81%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3/id1669439500"
             }
           ]
         }
@@ -170,17 +199,20 @@
       "works": [
         {
           "category": "DTM Plugins",
-          "title": "渡邉ディストーション - DTMプラグイン",
-          "description": "各種DAWソフトで使用できるディストーションのVST/AUプラグインです。JUCEを使用して作成しました。",
+          "title": "渡邉ディストーション",
+          "overview": "各種DAWソフトで使用できるディストーションのVST/AUプラグインです。",
+          "descHtml": "各種DAWソフトで使用できるディストーションのVST/AUプラグインです。</br>波形操作を行い、2種類の歪みが出せるようにしています。</br>JUCEを使用して作成しました。",
           "images": [
             "https://content.elekibear.com/content/20240322_01_juce_distortion_title.png",
             "https://content.elekibear.com/content/20240322_01_juce_distortion_01.png"
           ],
           "tech": ["JUCE", "C++"],
-          "link": {
-            "href": "https://elekibear.com/post/20240322_01_juce_distortion"
-          },
-          "sublinks": [
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240322_01_juce_distortion"
+            },
             {
               "icon": "mdi:github",
               "tooltip": "GitHub",

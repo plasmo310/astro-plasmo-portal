@@ -1,0 +1,154 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface WorkLink {
+  icon: string;
+  tooltip: string;
+  href: string;
+}
+
+interface Props {
+  modalId: string;
+  category: string;
+  title: string;
+  descHtml: string;
+  images: string[];
+  tech: string[];
+  links: WorkLink[];
+}
+
+const { modalId, category, title, descHtml, images, tech, links } =
+  Astro.props;
+const isSlider = images.length > 1;
+---
+
+<div
+  id={modalId}
+  class="work-modal-overlay fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+>
+  <div class="relative w-full max-w-2xl bg-[#0f0f0f] border border-white/10 rounded-2xl overflow-hidden max-h-[90vh] flex flex-col shadow-2xl">
+
+    <button
+      class="work-modal-close absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/60 hover:text-white transition-colors"
+      aria-label="Close"
+    >
+      <Icon name="mdi:close" class="w-5 h-5" />
+    </button>
+
+    <div class="aspect-video bg-[#1a1a1a] relative shrink-0 overflow-hidden">
+      <div class={`w-full h-full relative ${isSlider ? "modal-image-slider" : ""}`}>
+        {
+          images.map((img, index) => (
+            <img
+              src={img}
+              alt={`${title} screenshot ${index + 1}`}
+              draggable="false"
+              class={`absolute inset-0 w-full h-full object-cover modal-img ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="p-6 overflow-y-auto flex flex-col gap-5">
+
+      <div>
+        <span class="text-accent text-[10px] uppercase tracking-widest font-bold">
+          {category}
+        </span>
+        <h3 class="text-2xl font-heading font-bold text-white mt-1">
+          {title}
+        </h3>
+      </div>
+
+      {
+        links.length > 0 && (
+          <div class="flex flex-wrap gap-3">
+            {links.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-accent/40 hover:text-accent text-white/60 text-sm transition-colors"
+              >
+                <Icon name={link.icon} class="w-4 h-4 shrink-0" />
+                <span>{link.tooltip}</span>
+              </a>
+            ))}
+          </div>
+        )
+      }
+
+      <p class="text-gray-400 text-sm font-body leading-relaxed" set:html={descHtml} />
+
+      <div class="flex flex-wrap gap-2 pb-1">
+        {
+          tech.map((t) => (
+            <span class="px-2 py-1 bg-white/5 rounded-md text-[10px] text-white/60 border border-white/5">
+              {t}
+            </span>
+          ))
+        }
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function initModals() {
+    // モーダル画像スライダー
+    document.querySelectorAll(".modal-image-slider").forEach((slider) => {
+      const images = slider.querySelectorAll("img");
+      if (images.length <= 1) return;
+      let idx = 0;
+      setInterval(() => {
+        images[idx].classList.remove("opacity-100", "z-0");
+        images[idx].classList.add("opacity-0", "z-[-1]");
+        idx = (idx + 1) % images.length;
+        images[idx].classList.remove("opacity-0", "z-[-1]");
+        images[idx].classList.add("opacity-100", "z-0");
+      }, 3500);
+    });
+
+    // オーバーレイクリックで閉じる
+    document.querySelectorAll(".work-modal-overlay").forEach((overlay) => {
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeModal(overlay as HTMLElement);
+      });
+    });
+
+    // 閉じるボタン
+    document.querySelectorAll(".work-modal-close").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const overlay = btn.closest(".work-modal-overlay") as HTMLElement;
+        if (overlay) closeModal(overlay);
+      });
+    });
+
+    // Escapeキーで閉じる
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        const open = document.querySelector(
+          ".work-modal-overlay.flex",
+        ) as HTMLElement;
+        if (open) closeModal(open);
+      }
+    });
+  }
+
+  function closeModal(overlay: HTMLElement) {
+    overlay.classList.remove("flex");
+    overlay.classList.add("hidden");
+    document.body.style.overflow = "";
+  }
+
+  window.addEventListener("load", initModals);
+  document.addEventListener("astro:after-swap", initModals);
+</script>
+
+<style is:global>
+  .modal-img {
+    transition: opacity 1s ease;
+  }
+</style>

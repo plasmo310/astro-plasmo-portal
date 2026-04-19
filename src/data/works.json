@@ -1,5 +1,5 @@
 {
-  "descHtml": "プライベートで作った制作物になります。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
+  "descHtml": "プライベートで作った制作物になります。</br>幅広く様々な創作・学習を行っています。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
   "sections": [
     {
       "section": "Game",
@@ -14,7 +14,7 @@
             "https://content.elekibear.com/wp-content/uploads/2023/02/ScreenShot-2023-02-12-10.14.29.png",
             "https://content.elekibear.com/wp-content/uploads/2023/02/06_comic_line.gif"
           ],
-          "tech": ["Unity", "VContainer", "Shader"],
+          "tech": ["Unity", "VContainer", "UniTask", "Shader"],
           "links": [
             {
               "icon": "mdi:note-outline",
@@ -26,7 +26,7 @@
               "tooltip": "GitHub",
               "href": "https://github.com/masarito617/unity-chocolate-thief-scripts"
             },
-                        {
+            {
               "icon": "mdi:google-play",
               "tooltip": "GooglePlay",
               "href": "https://play.google.com/store/apps/details?id=com.molegoro.chocolate"
@@ -48,7 +48,7 @@
             "https://user-images.githubusercontent.com/77447256/194733487-3d9bd8d7-4c14-4932-88d6-9aca4230c905.png",
             "https://content.elekibear.com/wp-content/uploads/2022/10/03_title_anim.gif"
           ],
-          "tech": ["Unity", "VContainer", "ML-Agents"],
+          "tech": ["Unity", "VContainer", "UniTask", "ML-Agents"],
           "links": [
             {
               "icon": "mdi:note-outline",
@@ -60,7 +60,7 @@
               "tooltip": "GitHub",
               "href": "https://github.com/plasmo310/unity-reversi-game-scripts"
             },
-                        {
+            {
               "icon": "mdi:google-play",
               "tooltip": "GooglePlay",
               "href": "https://play.google.com/store/apps/details?id=com.molegoro.reversi"
@@ -69,6 +69,117 @@
               "icon": "fa-brands:app-store",
               "tooltip": "AppStore",
               "href": "https://apps.apple.com/jp/app/%E3%82%86%E3%82%8B%E3%81%84%E3%82%AA%E3%82%BB%E3%83%AD/id6443742920"
+            }
+          ]
+        },
+        {
+          "category": "Mobile App",
+          "title": "エレキシューティング3D",
+          "overview": "カニを撃破する3Dシューティングゲームです。Unityの素の実装を学ぶため、外部ライブラリを極力使わず実装しています。",
+          "descHtml": "カニを撃破する3Dシューティングゲームです。</br>学習目的でC++でゲームを作った後、Unityに移植しました。</br>素の実装を学ぶため、外部ライブラリを極力使わず実装しています。(※DOTWeenを除く)",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2022/04/3b6e44bb000625f7fa06667d9fb6ba25.png",
+            "https://content.elekibear.com/wp-content/uploads/2022/04/screenshot-2022-04-10-17.39.12.png",
+            "https://content.elekibear.com/wp-content/uploads/2022/04/01_eleki_shooting_2.gif"
+          ],
+          "tech": ["Unity"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20220410_01"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-shooting-game-3d-sample"
+            },
+            {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.shooting3d"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E3%82%A8%E3%83%AC%E3%82%AD%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B03d-%E3%82%AB%E3%83%8B%E3%82%92%E7%84%A1%E9%99%90%E3%81%AB%E5%80%92%E3%81%99%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/id1617101732?uo=4"
+            }
+          ]
+        },
+        {
+          "category": "Mobile App",
+          "title": "もぐら叩きAR",
+          "overview": "ARで遊ぶことのできるもぐら叩きゲームです。検知した床の範囲にもぐら(たまにハリネズミ)が出現します。",
+          "descHtml": "ARで遊ぶことのできるもぐら叩きゲームです。</br>検知した床の範囲にもぐら(たまにハリネズミ)が出現します。",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2020/10/77d0d6a051d6497df8380beb1c9e20b3.png",
+            "https://is3-ssl.mzstatic.com/image/thumb/Purple114/v4/37/cf/f7/37cff7d2-772a-ff86-4498-b2475e15ea42/source/512x512bb.jpg",
+            "https://content.elekibear.com/wp-content/uploads/2020/10/iphone5inchi_store3_ja.png"
+          ],
+          "tech": ["Unity", "ARFoundataion"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20201004_01"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%25E3%2582%2582%25E3%2581%2590%25E3%2582%2589%25E5%258F%25A9%25E3%2581%258Dar/id1533282982?uo=4"
+            }
+          ]
+        },
+        {
+          "category": "Mobile App",
+          "title": "マグネタワー",
+          "overview": "ひたすら磁石を積み上げるミニゲームです。GooglePlayGame・ローカライズ対応など行っています。",
+          "descHtml": "ひたすら磁石を積み上げるミニゲームです。</br>実際の磁石の挙動を観察しながら実装しました。</br>ローカライズ対応・GooglePlayGameによるランキング管理など行っています。",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/molegoro/store/app-icon-magne-tower.png",
+            "https://content.elekibear.com/wp-content/uploads/2020/08/iphone5inchi_store3_ja-1.png",
+            "https://content.elekibear.com/wp-content/uploads/2020/08/ac633fc2e29f6703ebe12959a40646c3.gif"
+          ],
+          "tech": ["Unity"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20200808_01"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E3%83%9E%E3%82%B0%E3%83%8D%E3%82%BF%E3%83%AF%E3%83%BC-3d%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%82%BF%E3%83%AF%E3%83%BC%E3%82%B2%E3%83%BC%E3%83%A0/id1527374740"
+            }
+          ]
+        },
+        {
+          "category": "Mobile App",
+          "title": "ゴーゴーゴロヤン",
+          "overview": "ゴロヤンというキャラクターが主人公の2Dアクションゲームです。ストーリー・ED有り、全5エピソードです。",
+          "descHtml": "ゴロヤンというキャラクターが主人公の2Dアクションゲームです。</br>個人で初めてリリースしたアプリになります。</br>ストーリー・ED有り、全5エピソードで、タイムアタックモードもあります。",
+          "images": [
+            "https://is5-ssl.mzstatic.com/image/thumb/Purple114/v4/9c/b2/bc/9cb2bc60-f316-487e-1286-5a15bd69ddc6/source/512x512bb.jpg",
+            "https://content.elekibear.com/wp-content/uploads/2020/01/534eba34a2a6e517cc161b917f2615b7.png",
+            "https://content.elekibear.com/wp-content/uploads/2020/07/630751e1a92b325e77e059545485960f.gif"
+          ],
+          "tech": ["Unity", "Fungus", "NCMB"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20200712_01"
+            },
+            {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.GoGoGoloyan"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%25E3%2582%25B4%25E3%2583%25BC%25E3%2582%25B4%25E3%2583%25BC%25E3%2582%25B4%25E3%2583%25AD%25E3%2583%25A4%25E3%2583%25B3/id1523138918?uo=4"
             }
           ]
         },
@@ -105,7 +216,7 @@
           "category": "Houdini",
           "title": "漫画風描画HDA",
           "overview": "Copernicusでシーン情報から漫画風描画・吹き出し作成を行うHDAです。",
-          "descHtml": "Copernicusでシーン情報から漫画風描画を行うHDA・吹き出し作成を行うHDAを作成しました。",
+          "descHtml": "Copernicusでシーン情報から漫画風描画を行うHDAを作成しました。</br>カラー・法線情報からトゥーン描画した後、しきい値によってトーンを割り当てています。</br>その他、吹き出し作成を行うHDAも作成しました。",
           "images": [
             "https://content.elekibear.com/content/20260413_01_title.png",
             "https://content.elekibear.com/content/20260413_01_06.png",
@@ -129,10 +240,11 @@
           "category": "Houdini",
           "title": "Mardini2025制作物",
           "overview": "SideFX主催のコンテスト「Mardini2025」の製作物です。31日分の投稿を行いました。",
-          "descHtml": "SideFX主催のコンテスト「Mardini2025」の制作物です。</br>Houdiniの各機能を覚えながら、31日間の投稿を完走しました。</br>またDAY23にて、デイリー2位にて選んでいただけました。",
+          "descHtml": "SideFX主催のコンテスト「Mardini2025」の制作物です。</br>Houdiniを触り始めて歴が浅かったため、各機能を覚えながら31日間の投稿を完走しました。</br>またDAY23にて、デイリー2位にて選んでいただけました。",
           "images": [
             "https://content.elekibear.com/content/20251124_01_title.png",
-            "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png"
+            "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png",
+            "https://content.elekibear.com/content/mardini2025/22_dop_explode.png"
           ],
           "tech": ["SOP", "DOP", "KineFX", "DOP", "LOP"],
           "links": [
@@ -288,7 +400,7 @@
             "https://content.elekibear.com/content/20240327_01_unity-multi_audio_03.png",
             "https://content.elekibear.com/content/20240327_01_unity-multi_audio_05.png"
           ],
-          "tech": ["JUCE", "C++"],
+          "tech": ["Unity", "CRI ADX", "Wwise"],
           "links": [
             {
               "icon": "mdi:note-outline",

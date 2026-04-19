@@ -1,0 +1,43 @@
+[
+  {
+    "section": "Web",
+    "works": [
+      {
+        "category": "Blog",
+        "title": "都会のエレキベア",
+        "description": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。ゆるい雰囲気で解説することで、技術的ハードルを下げています。",
+        "images": ["img/works/web_blog_elekibear.png"],
+        "tech": ["Next.js", "React", "TypeScript"],
+        "link": "https://elekibear.com"
+      }
+    ]
+  },
+  {
+    "section": "DCC・Tools",
+    "works": [
+      {
+        "category": "Houdini",
+        "title": "Mardini2025",
+        "description": "SideFX主催のコンテストに参加し、31日間の投稿を完走しました。DAY23にて、デイリー2位にて選んでもらえました。",
+        "images": [
+          "https://content.elekibear.com/content/20251124_01_title.png",
+          "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png"
+        ],
+        "tech": ["SOP", "DOP", "KineFX", "DOP", "LOP"],
+        "link": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
+      },
+      {
+        "category": "Houdini",
+        "title": "漫画風描画HDA",
+        "description": "Copernicusでシーン情報から漫画風描画を行うHDAを作成しました。",
+        "images": [
+          "https://content.elekibear.com/content/20260413_01_title.png",
+          "https://content.elekibear.com/content/20260413_01_17.png",
+          "https://content.elekibear.com/content/20260413_01_29.png"
+        ],
+        "tech": ["COP"],
+        "link": "https://elekibear.com/post/20260413_01_houdini_comic_render"
+      }
+    ]
+  }
+]

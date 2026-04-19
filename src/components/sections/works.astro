@@ -1,13 +1,182 @@
 ---
+import { Icon } from "astro-icon/components";
 import SectionHeading from "../common/section-heading.astro";
+import worksData from "../../data/works.json";
+
+interface Work {
+  category: string;
+  title: string;
+  description: string;
+  images: string[];
+  tech: string[];
+  link: string;
+}
+
+interface WorkSection {
+  section: string;
+  works: Work[];
+}
+
+const sectionList = worksData as WorkSection[];
 ---
 
-<section
-  id="works"
-  class="flex items-start justify-center text-center px-6 py-16"
->
+<section id="works" class="px-6 py-16">
   <div class="container mx-auto">
     <SectionHeading title="Works" />
-    <p class="text-gray-400">Coming soon.</p>
+
+    <div class="space-y-20">
+      {
+        sectionList.map((workSection) => (
+          <div>
+            <h3 class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3">
+              {workSection.section}
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {workSection.works.map((work) => {
+                const isSlider = work.images.length > 1;
+                return (
+                  <div class="work-card relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-accent/40 transition-[border-color] duration-500 flex flex-col select-none">
+                    <div class="aspect-video overflow-hidden relative bg-[#1a1a1a] shrink-0">
+                      <div class="work-card-overlay absolute inset-0 transition-colors duration-500 z-10 pointer-events-none" />
+                      <div
+                        class={`w-full h-full relative ${isSlider ? "image-slider" : ""}`}
+                      >
+                        {work.images.map((img, index) => (
+                          <img
+                            src={img}
+                            alt={`${work.title} screenshot ${index + 1}`}
+                            draggable="false"
+                            class={`work-card-img absolute inset-0 w-full h-full object-cover ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div class="p-6 flex flex-col flex-1">
+                      <div class="flex justify-between items-start mb-4">
+                        <div>
+                          <span class="text-accent text-[10px] uppercase tracking-widest font-bold">
+                            {work.category}
+                          </span>
+                          <h4 class="text-xl font-heading font-bold text-white mt-1">
+                            {work.title}
+                          </h4>
+                        </div>
+                        {work.link && (
+                          <a
+                            href={work.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-white/40 hover:text-accent transition-colors shrink-0 ml-2"
+                          >
+                            <Icon name="mdi:open-in-new" class="w-6 h-6" />
+                          </a>
+                        )}
+                      </div>
+
+                      <p class="text-gray-400 text-sm font-body line-clamp-3 flex-1">
+                        {work.description}
+                      </p>
+
+                      <div class="flex flex-wrap gap-2 pt-8 mt-auto">
+                        {work.tech.map((t) => (
+                          <span class="px-2 py-1 bg-white/5 rounded-md text-[10px] text-white/60 border border-white/5">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
+
+<script>
+  // 画像のスライド(切り替え)処理
+  function initSliders() {
+    const sliders = document.querySelectorAll(".image-slider");
+    sliders.forEach((slider) => {
+      const images = slider.querySelectorAll("img");
+      if (images.length <= 1) return;
+
+      let currentIndex = 0;
+      setInterval(() => {
+        images[currentIndex].classList.remove("opacity-100", "z-0");
+        images[currentIndex].classList.add("opacity-0", "z-[-1]");
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.remove("opacity-0", "z-[-1]");
+        images[currentIndex].classList.add("opacity-100", "z-0");
+      }, 3500);
+    });
+  }
+
+  // 画面内に入ったらカードを表示する
+  function initReveal() {
+    const cards = document.querySelectorAll(".work-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const card = entry.target as HTMLElement;
+            const index = Array.from(cards).indexOf(card);
+            setTimeout(
+              () => {
+                card.classList.add("reveal");
+              },
+              (index % 3) * 150,
+            );
+            observer.unobserve(card);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10px 0px" },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  }
+
+  window.addEventListener("load", () => {
+    initSliders();
+    initReveal();
+  });
+  document.addEventListener("astro:after-swap", () => {
+    initSliders();
+    initReveal();
+  });
+</script>
+
+<style is:global>
+  .work-card {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(40px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0.8s,
+      border-color 0.5s;
+    will-change: transform, opacity;
+  }
+
+  .work-card.reveal {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+
+  .work-card-img {
+    transition:
+      opacity 1s ease,
+      transform 0.4s ease;
+  }
+
+  .work-card:hover .work-card-img {
+    transform: scale(1.02);
+  }
+</style>

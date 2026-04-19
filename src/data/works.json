@@ -1,5 +1,5 @@
 {
-  "descHtml": "プライベートで作った制作物になります。</br>各カテゴリ毎にピックアップして記載して載せています。",
+  "descHtml": "プライベートで作った制作物になります。</br>各カテゴリ毎にピックアップして記載しています。",
   "sections": [
     {
       "section": "Web",
@@ -22,6 +22,17 @@
           ]
         },
         {
+          "category": "Portfolio",
+          "title": "Plasmo Portal",
+          "description": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
+          "images": ["img/works/web_blog_elekibear.png"],
+          "tech": ["Astro", "Three.js", "Tailwind CSS"],
+          "link": {
+            "href": ""
+          },
+          "sublinks": []
+        },
+        {
           "category": "Server",
           "title": "GoランキングAPI",
           "description": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
@@ -39,17 +50,6 @@
               "href": "https://github.com/plasmo310/unity-go-ranking-sample"
             }
           ]
-        },
-        {
-          "category": "Portfolio",
-          "title": "Plasmo Portal",
-          "description": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
-          "images": ["img/works/web_blog_elekibear.png"],
-          "tech": ["Astro", "Three.js", "Tailwind CSS"],
-          "link": {
-            "href": ""
-          },
-          "sublinks": []
         }
       ]
     },
@@ -144,8 +144,8 @@
       "works": [
         {
           "category": "Mobile App",
-          "title": "怪盗チョコレート - 3Dアクションゲーム",
-          "description": "バレンタイン向けに制作したモバイルゲームです。友人にドット絵・サウンド制作を担当してもらい、2週間で制作からリリースまで行いました。",
+          "title": "怪盗チョコレート",
+          "description": "バレンタイン向けに制作した3Dアクションゲームです。友人にドット絵・サウンド制作を担当してもらい、2週間で制作からリリースまで行いました。",
           "images": [
             "https://content.elekibear.com/wp-content/uploads/2023/02/title_20230214_2.png",
             "https://content.elekibear.com/wp-content/uploads/2023/02/ScreenShot-2023-02-12-10.14.29.png",
@@ -169,9 +169,9 @@
       "section": "Sound",
       "works": [
         {
-          "category": "Mobile App",
+          "category": "DTM Plugins",
           "title": "渡邉ディストーション - DTMプラグイン",
-          "description": "バレンタイン向けに制作したモバイルゲームです。友人にドット絵・サウンド制作を担当してもらい、2週間で制作からリリースまで行いました。",
+          "description": "各種DAWソフトで使用できるディストーションのVST/AUプラグインです。JUCEを使用して作成しました。",
           "images": [
             "https://content.elekibear.com/content/20240322_01_juce_distortion_title.png",
             "https://content.elekibear.com/content/20240322_01_juce_distortion_01.png"

@@ -1,0 +1,20 @@
+{
+  "descHtml": "各種連絡先になります。</br>気になること・ご相談事などありましたら、お気軽にご連絡ください。",
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/plasmo310",
+      "icon": "mdi:github"
+    },
+    {
+      "name": "X",
+      "url": "https://x.com/plasmo310",
+      "icon": "mdi:twitter"
+    },
+    {
+      "name": "Email",
+      "url": "mailto:plasmo310@gmail.com",
+      "icon": "mdi:email"
+    }
+  ]
+}

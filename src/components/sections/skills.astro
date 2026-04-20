@@ -40,138 +40,198 @@ const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
     <SectionHeading title="Skills" />
 
     {/* Career */}
-    <h3 class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left">
+    <h3
+      class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left"
+    >
       Career
     </h3>
 
     <div class="relative max-w-4xl mx-auto mb-20">
       {/* Vertical Line */}
-      <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 bottom-0 w-0.5 bg-gradient-to-b from-accent via-white/10 to-transparent"></div>
+      <div
+        class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 bottom-0 w-0.5 bg-gradient-to-b from-accent via-white/10 to-transparent"
+      >
+      </div>
 
       {/* Mobile Layout */}
       <div class="md:hidden space-y-8">
-        {careerData.map((item, index) => (
-          <div class="relative pl-10 text-left">
-            <div class="scroll-stat absolute left-2 top-1 z-10">
-              <div class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}></div>
-            </div>
-            <div class="scroll-stat bg-white/5 border border-white/10 p-4 rounded-2xl hover:border-accent/30 transition-all">
-              <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
-              <h4 class="text-lg font-heading font-bold text-white mt-1">{item.role}</h4>
-              <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-              <p class="text-gray-500 text-sm leading-relaxed mb-3">{item.description}</p>
-              <div class="flex flex-wrap gap-2">
-                {item.skills.map(skill => (
-                  <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300">{skill}</span>
-                ))}
+        {
+          careerData.map((item, index) => (
+            <div class="relative pl-10 text-left">
+              <div class="scroll-stat absolute left-2 top-1 z-10">
+                <div
+                  class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+                />
+              </div>
+              <div class="scroll-stat bg-white/5 border border-white/10 p-4 rounded-2xl hover:border-accent/30 transition-all">
+                <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                  {item.period}
+                </span>
+                <h4 class="text-lg font-heading font-bold text-white mt-1">
+                  {item.role}
+                </h4>
+                <p class="text-gray-400 text-sm mb-3">{item.company}</p>
+                <p class="text-gray-500 text-sm leading-relaxed mb-3">
+                  {item.description}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {item.skills.map((skill) => (
+                    <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
 
       {/* Desktop Layout (alternating) */}
       <div class="hidden md:block space-y-6">
-        {careerData.map((item, index) => (
-          <div class="relative grid grid-cols-2 gap-0">
-            <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-2 z-10">
-              <div class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}></div>
-            </div>
+        {
+          careerData.map((item, index) => (
+            <div class="relative grid grid-cols-2 gap-0">
+              <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-2 z-10">
+                <div
+                  class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+                />
+              </div>
 
-            <div class="pr-10">
-              {index % 2 === 0 ? (
-                <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-right hover:border-accent/30 transition-all group">
-                  <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
-                  <h4 class="text-lg font-heading font-bold text-white mt-1">{item.role}</h4>
-                  <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                  <p class="text-gray-500 text-sm leading-relaxed mb-3">{item.description}</p>
-                  <div class="flex flex-wrap gap-2 justify-end">
-                    {item.skills.map(skill => (
-                      <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">{skill}</span>
-                    ))}
+              <div class="pr-10">
+                {index % 2 === 0 ? (
+                  <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-right hover:border-accent/30 transition-all group">
+                    <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                      {item.period}
+                    </span>
+                    <h4 class="text-lg font-heading font-bold text-white mt-1">
+                      {item.role}
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-3">{item.company}</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">
+                      {item.description}
+                    </p>
+                    <div class="flex flex-wrap gap-2 justify-end">
+                      {item.skills.map((skill) => (
+                        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ) : <div class="h-full" />}
-            </div>
+                ) : (
+                  <div class="h-full" />
+                )}
+              </div>
 
-            <div class="pl-10">
-              {index % 2 !== 0 ? (
-                <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-left hover:border-accent/30 transition-all group">
-                  <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
-                  <h4 class="text-lg font-heading font-bold text-white mt-1">{item.role}</h4>
-                  <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                  <p class="text-gray-500 text-sm leading-relaxed mb-3">{item.description}</p>
-                  <div class="flex flex-wrap gap-2">
-                    {item.skills.map(skill => (
-                      <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">{skill}</span>
-                    ))}
+              <div class="pl-10">
+                {index % 2 !== 0 ? (
+                  <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-left hover:border-accent/30 transition-all group">
+                    <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                      {item.period}
+                    </span>
+                    <h4 class="text-lg font-heading font-bold text-white mt-1">
+                      {item.role}
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-3">{item.company}</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">
+                      {item.description}
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                      {item.skills.map((skill) => (
+                        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ) : <div class="h-full" />}
+                ) : (
+                  <div class="h-full" />
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
 
     {/* Tech Stack */}
-    <h3 class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left">
+    <h3
+      class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left"
+    >
       Tech Stack
     </h3>
 
     <div class="flex justify-end mb-8">
-      <div class="flex flex-wrap gap-4 p-3 rounded-xl bg-white/5 border border-white/10">
-        {[
-          { label: "Expert", level: 3 },
-          { label: "Intermediate", level: 2 },
-          { label: "Beginner", level: 1 },
-        ].map((item, index) => (
-          <div class={`flex items-center gap-2 ${index > 0 ? "border-l border-white/10 pl-4" : ""}`}>
-            <div class="flex gap-0.5">
-              {[1, 2, 3].map((star) => (
-                <Icon
-                  name="mdi:star"
-                  class={`w-3 h-3 ${star <= item.level ? "text-accent" : "text-gray-600"}`}
-                />
-              ))}
+      <div
+        class="flex flex-wrap gap-4 p-3 rounded-xl bg-white/5 border border-white/10"
+      >
+        {
+          [
+            { label: "Expert", level: 3 },
+            { label: "Intermediate", level: 2 },
+            { label: "Beginner", level: 1 },
+          ].map((item, index) => (
+            <div
+              class={`flex items-center gap-2 ${index > 0 ? "border-l border-white/10 pl-4" : ""}`}
+            >
+              <div class="flex gap-0.5">
+                {[1, 2, 3].map((star) => (
+                  <Icon
+                    name="mdi:star"
+                    class={`w-3 h-3 ${star <= item.level ? "text-accent" : "text-gray-600"}`}
+                  />
+                ))}
+              </div>
+              <span class="text-[10px] uppercase tracking-wider text-white/60">
+                {item.label}
+              </span>
             </div>
-            <span class="text-[10px] uppercase tracking-wider text-white/60">{item.label}</span>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
 
-    <div class="space-y-12 text-left">
-      {skillSections.map((section) => (
-        <div>
-          <h3 class="text-base font-heading font-semibold text-white/50 mb-6 tracking-widest uppercase">
-            {section.section}
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {section.categories.map((cat) => (
-              <div class="skill-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-accent/20 transition-all duration-300">
-                <h4 class="text-gray-400 text-[11px] uppercase tracking-[0.4em] mb-4">{cat.category}</h4>
-                <div class="flex flex-col gap-3">
-                  {cat.skills.map((skill) => (
-                    <div class="group flex items-center gap-3">
-                      <Icon name={skill.icon} class="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                      <span class="font-body text-white/90 text-sm font-medium flex-1">{skill.name}</span>
-                      <div class="flex gap-0.5 shrink-0">
-                        {[1, 2, 3].map((star) => (
-                          <Icon
-                            name="mdi:star"
-                            class={`w-3 h-3 ${star <= skill.level ? "text-accent" : "text-gray-600"}`}
-                          />
-                        ))}
+    <div class="space-y-12 text-left max-w-6xl mx-auto">
+      {
+        skillSections.map((section) => (
+          <div>
+            <h3 class="text-base font-heading font-semibold text-white/50 mb-6 tracking-widest uppercase">
+              {section.section}
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {section.categories.map((cat) => (
+                <div class="skill-card bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-accent/20 transition-all duration-300">
+                  <h4 class="text-gray-400 text-[11px] uppercase tracking-[0.4em] mb-4">
+                    {cat.category}
+                  </h4>
+                  <div class="flex flex-col gap-3">
+                    {cat.skills.map((skill) => (
+                      <div class="group flex items-center gap-3">
+                        <Icon
+                          name={skill.icon}
+                          class="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <span class="font-body text-white/90 text-sm font-medium flex-1">
+                          {skill.name}
+                        </span>
+                        <div class="flex gap-0.5 shrink-0">
+                          {[1, 2, 3].map((star) => (
+                            <Icon
+                              name="mdi:star"
+                              class={`w-3 h-3 ${star <= skill.level ? "text-accent" : "text-gray-600"}`}
+                            />
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
@@ -207,13 +267,20 @@ const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Array.from(scrollStats).indexOf(entry.target as HTMLElement);
-            setTimeout(() => { entry.target.classList.add("reveal"); }, (index % 3) * 150);
+            const index = Array.from(scrollStats).indexOf(
+              entry.target as HTMLElement,
+            );
+            setTimeout(
+              () => {
+                entry.target.classList.add("reveal");
+              },
+              (index % 3) * 150,
+            );
             observer1.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -10px 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -10px 0px" },
     );
     scrollStats.forEach((card) => observer1.observe(card));
 
@@ -222,13 +289,20 @@ const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Array.from(skillCards).indexOf(entry.target as HTMLElement);
-            setTimeout(() => { entry.target.classList.add("reveal"); }, (index % 6) * 50);
+            const index = Array.from(skillCards).indexOf(
+              entry.target as HTMLElement,
+            );
+            setTimeout(
+              () => {
+                entry.target.classList.add("reveal");
+              },
+              (index % 6) * 50,
+            );
             observer2.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
     );
     skillCards.forEach((card) => observer2.observe(card));
   }

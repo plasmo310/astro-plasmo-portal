@@ -84,7 +84,7 @@ const sections = pickupOnly
             <h3 class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3">
               {workSection.section}
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {workSection.works.map((work, wi) => {
                 const isSlider = work.images.length > 1;
                 const modalId = `work-modal-${si}-${wi}`;

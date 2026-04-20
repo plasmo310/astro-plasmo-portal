@@ -68,31 +68,6 @@
           ]
         },
         {
-          "category": "Game Tool",
-          "skills": [
-            {
-              "name": "Houdini Engine / HDA",
-              "level": 3,
-              "icon": "simple-icons:houdini"
-            },
-            {
-              "name": "Unity Editor",
-              "level": 3,
-              "icon": "skill-icons:unity-dark"
-            },
-            {
-              "name": "Unreal Python",
-              "level": 3,
-              "icon": "skill-icons:unrealengine"
-            },
-            {
-              "name": "Unreal Plugin (C++)",
-              "level": 2,
-              "icon": "skill-icons:unrealengine"
-            }
-          ]
-        },
-        {
           "category": "CI / Script",
           "skills": [
             {
@@ -134,22 +109,28 @@
           ]
         },
         {
-          "category": "Develop",
+          "category": "Game Tool",
           "skills": [
-            { "name": "UI", "level": 3, "icon": "mdi:layers-outline" },
             {
-              "name": "Architecture",
+              "name": "Houdini Engine / HDA",
               "level": 3,
-              "icon": "mdi:sitemap-outline"
+              "icon": "simple-icons:houdini"
             },
             {
-              "name": "Game Logic",
-              "level": 2,
-              "icon": "mdi:controller-classic-outline"
+              "name": "Unreal Python",
+              "level": 3,
+              "icon": "skill-icons:unrealengine"
             },
-            { "name": "Graphic", "level": 2, "icon": "mdi:image-outline" },
-            { "name": "Game AI", "level": 2, "icon": "mdi:robot-outline" },
-            { "name": "Sound", "level": 2, "icon": "mdi:music-note-outline" }
+            {
+              "name": "Unreal Plugin (C++)",
+              "level": 2,
+              "icon": "skill-icons:unrealengine"
+            },
+            {
+              "name": "Unity Editor",
+              "level": 2,
+              "icon": "skill-icons:unity-dark"
+            }
           ]
         }
       ]

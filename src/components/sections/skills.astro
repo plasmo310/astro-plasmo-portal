@@ -3,15 +3,6 @@ import { Icon } from "astro-icon/components";
 import SectionHeading from "../common/section-heading.astro";
 import data from "../../data/skills.json";
 
-interface CareerItem {
-  company: string;
-  role: string;
-  period: string;
-  type: string;
-  description: string;
-  skills: string[];
-}
-
 interface SkillItem {
   name: string;
   level: number;
@@ -28,7 +19,6 @@ interface SkillSection {
   categories: SkillCategory[];
 }
 
-const careerData: CareerItem[] = data.career;
 const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
 ---
 
@@ -39,164 +29,11 @@ const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
   <div class="container mx-auto">
     <SectionHeading title="Skills" />
 
-    {/* Career */}
-    <h3
-      class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left"
-    >
-      Career
-    </h3>
-
-    <div class="relative max-w-4xl mx-auto mb-20">
-      {/* Vertical Line */}
-      <div
-        class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 bottom-0 w-0.5 bg-gradient-to-b from-accent via-white/10 to-transparent"
-      >
-      </div>
-
-      {/* Mobile Layout */}
-      <div class="md:hidden space-y-8">
-        {
-          careerData.map((item, index) => (
-            <div class="relative pl-10 text-left">
-              <div class="scroll-stat absolute left-2 top-1 z-10">
-                <div
-                  class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
-                />
-              </div>
-              <div class="scroll-stat bg-white/5 border border-white/10 p-4 rounded-2xl hover:border-accent/30 transition-all">
-                <span class="text-accent font-mono text-xs tracking-widest uppercase">
-                  {item.period}
-                </span>
-                <h4 class="text-lg font-heading font-bold text-white mt-1">
-                  {item.role}
-                </h4>
-                <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                <p class="text-gray-500 text-sm leading-relaxed mb-3">
-                  {item.description}
-                </p>
-                <div class="flex flex-wrap gap-2">
-                  {item.skills.map((skill) => (
-                    <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-      {/* Desktop Layout (alternating) */}
-      <div class="hidden md:block space-y-6">
-        {
-          careerData.map((item, index) => (
-            <div class="relative grid grid-cols-2 gap-0">
-              <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-2 z-10">
-                <div
-                  class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
-                />
-              </div>
-
-              <div class="pr-10">
-                {index % 2 === 0 ? (
-                  <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-right hover:border-accent/30 transition-all group">
-                    <span class="text-accent font-mono text-xs tracking-widest uppercase">
-                      {item.period}
-                    </span>
-                    <h4 class="text-lg font-heading font-bold text-white mt-1">
-                      {item.role}
-                    </h4>
-                    <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-3">
-                      {item.description}
-                    </p>
-                    <div class="flex flex-wrap gap-2 justify-end">
-                      {item.skills.map((skill) => (
-                        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <div class="h-full" />
-                )}
-              </div>
-
-              <div class="pl-10">
-                {index % 2 !== 0 ? (
-                  <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-left hover:border-accent/30 transition-all group">
-                    <span class="text-accent font-mono text-xs tracking-widest uppercase">
-                      {item.period}
-                    </span>
-                    <h4 class="text-lg font-heading font-bold text-white mt-1">
-                      {item.role}
-                    </h4>
-                    <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-3">
-                      {item.description}
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      {item.skills.map((skill) => (
-                        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <div class="h-full" />
-                )}
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    {/* Tech Stack */}
-    <h3
-      class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left"
-    >
-      Tech Stack
-    </h3>
-
-    <div class="flex justify-end mb-8">
-      <div
-        class="flex flex-wrap gap-4 p-3 rounded-xl bg-white/5 border border-white/10"
-      >
-        {
-          [
-            { label: "Expert", level: 3 },
-            { label: "Intermediate", level: 2 },
-            { label: "Beginner", level: 1 },
-          ].map((item, index) => (
-            <div
-              class={`flex items-center gap-2 ${index > 0 ? "border-l border-white/10 pl-4" : ""}`}
-            >
-              <div class="flex gap-0.5">
-                {[1, 2, 3].map((star) => (
-                  <Icon
-                    name="mdi:star"
-                    class={`w-3 h-3 ${star <= item.level ? "text-accent" : "text-gray-600"}`}
-                  />
-                ))}
-              </div>
-              <span class="text-[10px] uppercase tracking-wider text-white/60">
-                {item.label}
-              </span>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
     <div class="space-y-12 text-left max-w-6xl mx-auto">
       {
         skillSections.map((section) => (
           <div>
-            <h3 class="text-base font-heading font-semibold text-white/50 mb-6 tracking-widest uppercase">
+            <h3 class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3">
               {section.section}
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -262,7 +99,7 @@ const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
 
 <script>
   function revealCards() {
-    const scrollStats = document.querySelectorAll(".scroll-stat");
+    const scrollStats = document.querySelectorAll("#skills .scroll-stat");
     const observer1 = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

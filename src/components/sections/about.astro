@@ -33,13 +33,15 @@ const careerData: CareerItem[] = skillsData.career;
 
 <section
   id="about"
-  class="flex items-start justify-center text-center px-6 py-16 bg-background-sub"
+  class="flex items-start justify-center text-center px-4 sm:px-6 py-12 sm:py-16 bg-background-sub"
 >
-  <div class="container mx-auto">
+  <div class="container mx-auto max-w-4xl">
     <SectionHeading title="About Me" />
 
     <div class="flex-col items-center justify-center">
-      <div class="rounded-full overflow-hidden w-100 mx-auto">
+      <div
+        class="rounded-full overflow-hidden w-40 sm:w-56 md:w-72 lg:w-80 mx-auto"
+      >
         <img
           src={profileData.photoUrl}
           alt={profileData.name}
@@ -48,11 +50,16 @@ const careerData: CareerItem[] = skillsData.career;
       </div>
 
       <div>
-        <h1 class="text-5xl my-4">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl my-4">
           {profileData.name}
         </h1>
-        <div class="m-4 text-gray-400 text-xl my-4">{profileData.job}</div>
-        <div class="m-4 text-gray-400" my-8 set:html={profileData.introHtml} />
+        <div class="m-4 text-gray-400 text-base sm:text-xl my-4">
+          {profileData.job}
+        </div>
+        <div
+          class="m-4 text-gray-400 text-sm sm:text-base leading-relaxed my-8"
+          set:html={profileData.introHtml}
+        />
       </div>
 
       <div class="flex justify-center gap-6 my-8 reveal-content">
@@ -77,74 +84,115 @@ const careerData: CareerItem[] = skillsData.career;
     </div>
 
     {/* Career */}
-    <h3 class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left mt-16">
+    <h3
+      class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left mt-16"
+    >
       Career
     </h3>
 
     <div class="relative max-w-4xl mx-auto">
-      <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 bottom-0 w-0.5 bg-gradient-to-b from-accent via-white/10 to-transparent"></div>
+      <div
+        class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-2 bottom-0 w-0.5 bg-gradient-to-b from-accent via-white/10 to-transparent"
+      >
+      </div>
 
       {/* Mobile Layout */}
       <div class="md:hidden space-y-8">
-        {careerData.map((item, index) => (
-          <div class="relative pl-10 text-left">
-            <div class="scroll-stat absolute left-2 top-1 z-10">
-              <div class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`} />
-            </div>
-            <div class="scroll-stat bg-white/5 border border-white/10 p-4 rounded-2xl hover:border-accent/30 transition-all">
-              <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
-              <h4 class="text-lg font-heading font-bold text-white mt-1">{item.role}</h4>
-              <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-              <p class="text-gray-500 text-sm leading-relaxed mb-3">{item.description}</p>
-              <div class="flex flex-wrap gap-2">
-                {item.skills.map((skill) => (
-                  <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300">{skill}</span>
-                ))}
+        {
+          careerData.map((item, index) => (
+            <div class="relative pl-10 text-left">
+              <div class="scroll-stat absolute left-2 top-1 z-10">
+                <div
+                  class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+                />
+              </div>
+              <div class="scroll-stat bg-white/5 border border-white/10 p-4 rounded-2xl hover:border-accent/30 transition-all">
+                <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                  {item.period}
+                </span>
+                <h4 class="text-lg font-heading font-bold text-white mt-1">
+                  {item.role}
+                </h4>
+                <p class="text-gray-400 text-sm mb-3">{item.company}</p>
+                <p class="text-gray-500 text-sm leading-relaxed mb-3">
+                  {item.description}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {item.skills.map((skill) => (
+                    <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
 
       {/* Desktop Layout (alternating) */}
       <div class="hidden md:block space-y-6">
-        {careerData.map((item, index) => (
-          <div class="relative grid grid-cols-2 gap-0">
-            <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-2 z-10">
-              <div class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`} />
-            </div>
-            <div class="pr-10">
-              {index % 2 === 0 ? (
-                <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-right hover:border-accent/30 transition-all group">
-                  <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
-                  <h4 class="text-lg font-heading font-bold text-white mt-1">{item.role}</h4>
-                  <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                  <p class="text-gray-500 text-sm leading-relaxed mb-3">{item.description}</p>
-                  <div class="flex flex-wrap gap-2 justify-end">
-                    {item.skills.map((skill) => (
-                      <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">{skill}</span>
-                    ))}
+        {
+          careerData.map((item, index) => (
+            <div class="relative grid grid-cols-2 gap-0">
+              <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-2 z-10">
+                <div
+                  class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+                />
+              </div>
+              <div class="pr-10">
+                {index % 2 === 0 ? (
+                  <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-right hover:border-accent/30 transition-all group">
+                    <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                      {item.period}
+                    </span>
+                    <h4 class="text-lg font-heading font-bold text-white mt-1">
+                      {item.role}
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-3">{item.company}</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">
+                      {item.description}
+                    </p>
+                    <div class="flex flex-wrap gap-2 justify-end">
+                      {item.skills.map((skill) => (
+                        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ) : <div class="h-full" />}
-            </div>
-            <div class="pl-10">
-              {index % 2 !== 0 ? (
-                <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-left hover:border-accent/30 transition-all group">
-                  <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
-                  <h4 class="text-lg font-heading font-bold text-white mt-1">{item.role}</h4>
-                  <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                  <p class="text-gray-500 text-sm leading-relaxed mb-3">{item.description}</p>
-                  <div class="flex flex-wrap gap-2">
-                    {item.skills.map((skill) => (
-                      <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">{skill}</span>
-                    ))}
+                ) : (
+                  <div class="h-full" />
+                )}
+              </div>
+              <div class="pl-10">
+                {index % 2 !== 0 ? (
+                  <div class="scroll-stat bg-white/5 border border-white/10 p-5 rounded-2xl text-left hover:border-accent/30 transition-all group">
+                    <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                      {item.period}
+                    </span>
+                    <h4 class="text-lg font-heading font-bold text-white mt-1">
+                      {item.role}
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-3">{item.company}</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-3">
+                      {item.description}
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                      {item.skills.map((skill) => (
+                        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ) : <div class="h-full" />}
+                ) : (
+                  <div class="h-full" />
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </div>
@@ -183,13 +231,20 @@ const careerData: CareerItem[] = skillsData.career;
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Array.from(items).indexOf(entry.target as HTMLElement);
-            setTimeout(() => { entry.target.classList.add("reveal"); }, (index % 3) * 150);
+            const index = Array.from(items).indexOf(
+              entry.target as HTMLElement,
+            );
+            setTimeout(
+              () => {
+                entry.target.classList.add("reveal");
+              },
+              (index % 3) * 150,
+            );
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -10px 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -10px 0px" },
     );
     items.forEach((el) => observer.observe(el));
   }

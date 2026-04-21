@@ -6,15 +6,18 @@ import localData from "../../data/home.json";
   id="home"
   class="flex items-center justify-center min-h-screen text-center"
 >
-  <div class="w-full px-8">
+  <div class="w-full px-4 sm:px-8 max-w-4xl mx-auto">
     <h1
-      class="text-6xl font-bold grid grid-cols-[1fr_auto_1fr] items-center w-full"
+      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold grid grid-cols-[1fr_auto_1fr] items-center w-full"
     >
       <span class="text-right">Plasmo</span>
-      <span class="lightning-icon mx-6"></span>
+      <span class="lightning-icon mx-2 sm:mx-4 md:mx-6"></span>
       <span class="text-left">Portal！</span>
     </h1>
-    <div class="mt-12 mb-8 text-gray-400" set:html={localData.introHtml} />
+    <div
+      class="mt-8 md:mt-12 mb-8 text-gray-400 text-sm sm:text-base leading-relaxed"
+      set:html={localData.introHtml}
+    />
 
     <a
       href="#about"

@@ -296,7 +296,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Houdini",
           "title": "観覧車生成HDA",
           "period": "2025/01",
@@ -318,6 +318,179 @@
               "icon": "mdi:github",
               "tooltip": "GitHub",
               "href": "https://github.com/plasmo310/houdini-ferris-wheel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Tool",
+      "works": [
+        {
+          "pickup": true,
+          "category": "IDE Tool",
+          "title": "画像リサイズ・保存ツール (改)",
+          "period": "2025/11",
+          "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。VSCodeの拡張機能として動作します。",
+          "descHtml": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。</br>Markdownファイルに直接ドラッグ&ドロップして動作するよう、VSCodeの拡張機能として制作しました。",
+          "images": [
+            "https://content.elekibear.com/content/20251122_01_01_title.png",
+            "https://content.elekibear.com/content/20251122_01_01.gif"
+          ],
+          "tech": ["TypeScript", "VSCode Extension"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20251122_01_vscode_image_resizer"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/vscode-image-resizer"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Desktop Tool",
+          "title": "CSV編集ツール",
+          "period": "2023/12",
+          "overview": "ブログ執筆用に作成した、CSVデータの編集を行うツールです。デスクトップアプリとして動作します。",
+          "descHtml": "ブログ執筆用に作成した、CSVデータの編集を行うツールです。</br>ブログで使用するデータに特化した表示形式となっています。",
+          "images": [
+            "https://content.elekibear.com/content/20231231_category_browser_title.png",
+            "https://content.elekibear.com/content/20240101_01_next_elekibear_gif_04.gif"
+          ],
+          "tech": ["Electron", "Vue.js", "TypeScript"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20231231_02_category_browser"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/masarito617/electron-category-browser"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Desktop Tool",
+          "title": "画像リサイズ・保存ツール",
+          "period": "2023/12",
+          "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。デスクトップアプリとして動作します。",
+          "descHtml": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。</br>見ただけで使い方が分かるようなシンプルなUIを意識しています。</br>使用したことのなかったElectron、Vue.jsを使用して開発しました。",
+          "images": [
+            "https://content.elekibear.com/content/20231231_image_resize_title.png",
+            "https://content.elekibear.com/content/20240101_01_next_elekibear_gif_05.gif"
+          ],
+          "tech": ["Electron", "Vue.js", "TypeScript"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20231231_02_image_resizer"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/electron-image-resizer"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Unity Tool",
+          "title": "スライドショー制作ツール",
+          "period": "2024/10",
+          "overview": "UnityのTimelineを活用した、スライドショー制作ツールです。",
+          "descHtml": "UnityのTimelineを活用した、スライドショー制作ツールです。</br>プロポーズ用の動画制作に、500枚近くの画像を使用する必要があったため開発しました。</br>Excelデータをベースにすることで効率化し、2週間程度で仕上げることができました。",
+          "images": [
+            "https://content.elekibear.com/content/20241031_01_unity_movie_maker_title.png",
+            "https://content.elekibear.com/content/20241031_01_unity_movie_maker.gif"
+          ],
+          "tech": ["Unity", "Timeline"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20241031_01_unity_movie_maker"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-photo-movie-maker"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "section": "Web",
+      "works": [
+        {
+          "pickup": true,
+          "category": "Blog",
+          "title": "都会のエレキベア",
+          "period": "2020/01 - 現在",
+          "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
+          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
+          "images": ["img/works/web_blog_elekibear.png"],
+          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Webサイト",
+              "href": "https://elekibear.com"
+            },
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Portfolio",
+          "title": "Plasmo Portal",
+          "period": "2026/04 - 現在",
+          "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
+          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
+          "images": ["img/works/web_portfolio_plasmo.png"],
+          "tech": ["Astro", "Three.js", "Tailwind CSS"],
+          "links": []
+        },
+        {
+          "pickup": true,
+          "category": "Server",
+          "title": "GoランキングAPI",
+          "period": "2024/04",
+          "overview": "Goで実装した汎用ランキングAPIです。",
+          "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
+          "images": [
+            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
+          ],
+          "tech": ["Go", "Docker", "VPS"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
             }
           ]
         }
@@ -448,178 +621,6 @@
               "icon": "mdi:github",
               "tooltip": "GitHub",
               "href": "https://github.com/plasmo310/unity-fluid-sample"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "section": "Tool",
-      "works": [
-        {
-          "pickup": true,
-          "category": "IDE Tool",
-          "title": "画像リサイズ・保存ツール (改)",
-          "period": "2025/11",
-          "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。VSCodeの拡張機能として動作します。",
-          "descHtml": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。</br>Markdownファイルに直接ドラッグ&ドロップして動作するよう、VSCodeの拡張機能として制作しました。",
-          "images": [
-            "https://content.elekibear.com/content/20251122_01_01_title.png",
-            "https://content.elekibear.com/content/20251122_01_01.gif"
-          ],
-          "tech": ["TypeScript", "VSCode Extension"],
-          "links": [
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20251122_01_vscode_image_resizer"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/vscode-image-resizer"
-            }
-          ]
-        },
-        {
-          "pickup": true,
-          "category": "Desktop Tool",
-          "title": "CSV編集ツール",
-          "period": "2023/12",
-          "overview": "ブログ執筆用に作成した、CSVデータの編集を行うツールです。デスクトップアプリとして動作します。",
-          "descHtml": "ブログ執筆用に作成した、CSVデータの編集を行うツールです。</br>ブログで使用するデータに特化した表示形式となっています。",
-          "images": [
-            "https://content.elekibear.com/content/20231231_category_browser_title.png",
-            "https://content.elekibear.com/content/20240101_01_next_elekibear_gif_04.gif"
-          ],
-          "tech": ["Electron", "Vue.js", "TypeScript"],
-          "links": [
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20231231_02_category_browser"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/masarito617/electron-category-browser"
-            }
-          ]
-        },
-        {
-          "pickup": true,
-          "category": "Desktop Tool",
-          "title": "画像リサイズ・保存ツール",
-          "period": "2023/12",
-          "overview": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。デスクトップアプリとして動作します。",
-          "descHtml": "ブログ執筆用に作成した、画像のリサイズ・保存を行うツールです。</br>見ただけで使い方が分かるようなシンプルなUIを意識しています。</br>使用したことのなかったElectron、Vue.jsを使用して開発しました。",
-          "images": [
-            "https://content.elekibear.com/content/20231231_image_resize_title.png",
-            "https://content.elekibear.com/content/20240101_01_next_elekibear_gif_05.gif"
-          ],
-          "tech": ["Electron", "Vue.js", "TypeScript"],
-          "links": [
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20231231_02_image_resizer"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/electron-image-resizer"
-            }
-          ]
-        },
-        {
-          "pickup": true,
-          "category": "Unity Tool",
-          "title": "スライドショー制作ツール",
-          "period": "2024/10",
-          "overview": "UnityのTimelineを活用した、スライドショー制作ツールです。",
-          "descHtml": "UnityのTimelineを活用した、スライドショー制作ツールです。</br>プロポーズ用の動画制作に、500枚近くの画像を使用する必要があったため開発しました。</br>Excelデータをベースにすることで効率化し、2週間程度で仕上げることができました。",
-          "images": [
-            "https://content.elekibear.com/content/20241031_01_unity_movie_maker_title.png",
-            "https://content.elekibear.com/content/20241031_01_unity_movie_maker.gif"
-          ],
-          "tech": ["Unity", "Timeline"],
-          "links": [
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20241031_01_unity_movie_maker"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/unity-photo-movie-maker"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "section": "Web",
-      "works": [
-        {
-          "pickup": true,
-          "category": "Blog",
-          "title": "都会のエレキベア",
-          "period": "2020/01 - 現在",
-          "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
-          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
-          "images": ["img/works/web_blog_elekibear.png"],
-          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
-          "links": [
-            {
-              "icon": "mdi:web",
-              "tooltip": "Webサイト",
-              "href": "https://elekibear.com"
-            },
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
-            }
-          ]
-        },
-        {
-          "pickup": true,
-          "category": "Portfolio",
-          "title": "Plasmo Portal",
-          "period": "2026/04 - 現在",
-          "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
-          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
-          "images": ["img/works/web_blog_elekibear.png"],
-          "tech": ["Astro", "Three.js", "Tailwind CSS"],
-          "links": []
-        },
-        {
-          "pickup": true,
-          "category": "Server",
-          "title": "GoランキングAPI",
-          "period": "2024/04",
-          "overview": "Goで実装した汎用ランキングAPIです。",
-          "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
-          "images": [
-            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
-          ],
-          "tech": ["Go", "Docker", "VPS"],
-          "links": [
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
             }
           ]
         }

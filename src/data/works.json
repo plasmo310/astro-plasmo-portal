@@ -425,6 +425,56 @@
               "href": "https://github.com/plasmo310/unity-photo-movie-maker"
             }
           ]
+        },
+        {
+          "pickup": false,
+          "category": "Mobile App",
+          "title": "英単語学習アプリ",
+          "period": "2022/12",
+          "overview": "設定データから4択形式で英単語問題を出すアプリです。",
+          "descHtml": "設定データから4択形式で英単語問題を出すアプリです。</br>データはGoolgeスプレッドシートで設定できるので、再ビルドの必要はありません。",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2022/12/title_20221210_01.png",
+            "https://content.elekibear.com/wp-content/uploads/2022/12/ScreenShot-2022-12-10-23.03.59-1.png"
+          ],
+          "tech": ["Flutter", "Dart"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20221210_01"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/flutter-english-study-app-sample"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Web Tool",
+          "title": "間取り図寸法算出くん",
+          "period": "2020/09",
+          "overview": "間取り図の画像から大まかな寸法を算出するツールです。",
+          "descHtml": "間取り図の画像から大まかな寸法を算出するツールです。</br>自身が寸法を測り忘れた経験から作成しましたが、それなりの需要はあるようです。",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2020/09/77d0d6a051d6497df8380beb1c9e20b3-6.png",
+            "https://content.elekibear.com/wp-content/uploads/2020/09/screenshot-2020-09-26-12.03.07.png"
+          ],
+          "tech": ["JavaScript"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20200926_01"
+            },
+            {
+              "icon": "mdi:web",
+              "tooltip": "ツール",
+              "href": "https://elekibear.com/tool/madoriconvtool"
+            }
+          ]
         }
       ]
     },

@@ -223,29 +223,62 @@ const sections = pickupOnly
     });
   }
 
-  // 画面内に入ったらカードを表示する
+  // 画面内に入ったらカードを表示する（4枚ごとにバッチで画像読み込み後に表示）
   function initReveal() {
-    const cards = document.querySelectorAll(".work-card");
+    const BATCH_SIZE = 4;
+    const batches: HTMLElement[][] = [];
+
+    // セクションのgridごとにバッチを作成（インデックスをセクション内でリセット）
+    document.querySelectorAll("#works .grid").forEach((grid) => {
+      const cards = Array.from(
+        grid.querySelectorAll(".work-card"),
+      ) as HTMLElement[];
+      for (let i = 0; i < cards.length; i += BATCH_SIZE) {
+        batches.push(cards.slice(i, i + BATCH_SIZE));
+      }
+    });
+
+    function preloadBatch(batch: HTMLElement[]): Promise<void> {
+      const imgSrcs = batch.flatMap((card) =>
+        Array.from(card.querySelectorAll("img")).map((img) => img.src),
+      );
+      return Promise.all(
+        imgSrcs.map(
+          (src) =>
+            new Promise<void>((resolve) => {
+              const img = new Image();
+              img.onload = img.onerror = () => resolve();
+              img.src = src;
+            }),
+        ),
+      ).then(() => undefined);
+    }
+
+    function revealBatch(batch: HTMLElement[]) {
+      batch.forEach((card, i) => {
+        setTimeout(() => card.classList.add("reveal"), i * 150);
+      });
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const card = entry.target as HTMLElement;
-            const index = Array.from(cards).indexOf(card);
-            setTimeout(
-              () => {
-                card.classList.add("reveal");
-              },
-              (index % 3) * 150,
-            );
-            observer.unobserve(card);
+            const anchor = entry.target as HTMLElement;
+            const batchIndex = parseInt(anchor.dataset.batchIndex ?? "0");
+            const batch = batches[batchIndex];
+            observer.unobserve(anchor);
+            preloadBatch(batch).then(() => revealBatch(batch));
           }
         });
       },
       { threshold: 0.15, rootMargin: "0px 0px -10px 0px" },
     );
 
-    cards.forEach((card) => observer.observe(card));
+    batches.forEach((batch, i) => {
+      batch[0].dataset.batchIndex = String(i);
+      observer.observe(batch[0]);
+    });
   }
 
   // カードクリックでモーダルを開く

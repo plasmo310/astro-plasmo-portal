@@ -256,19 +256,45 @@ const sections = pickupOnly
       }
     });
 
+    // ビューポート手前で画像の先読みだけ行う（表示はしない）
+    function preloadBatch(batch: HTMLElement[]) {
+      batch.forEach((card) => {
+        card.querySelectorAll("img").forEach((img) => {
+          const preloader = new Image();
+          preloader.src = img.src;
+        });
+      });
+    }
+
     function revealBatch(batch: HTMLElement[]) {
       batch.forEach((card, i) => {
         setTimeout(() => card.classList.add("reveal"), i * 150);
       });
     }
 
-    const observer = new IntersectionObserver(
+    // 400px手前で先読み開始
+    const preloadObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const anchor = entry.target as HTMLElement;
             const batchIndex = parseInt(anchor.dataset.batchIndex ?? "0");
-            observer.unobserve(anchor);
+            preloadObserver.unobserve(anchor);
+            preloadBatch(batches[batchIndex]);
+          }
+        });
+      },
+      { threshold: 0, rootMargin: "0px 0px 400px 0px" },
+    );
+
+    // ビューポートに入ったらカードを表示
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const anchor = entry.target as HTMLElement;
+            const batchIndex = parseInt(anchor.dataset.batchIndex ?? "0");
+            revealObserver.unobserve(anchor);
             revealBatch(batches[batchIndex]);
           }
         });
@@ -278,7 +304,8 @@ const sections = pickupOnly
 
     batches.forEach((batch, i) => {
       batch[0].dataset.batchIndex = String(i);
-      observer.observe(batch[0]);
+      preloadObserver.observe(batch[0]);
+      revealObserver.observe(batch[0]);
     });
   }
 

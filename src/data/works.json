@@ -499,7 +499,7 @@
             },
             {
               "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
+              "tooltip": "開発記事",
               "href": "https://elekibear.com/post/20240101_01_next_elekibear"
             },
             {
@@ -515,10 +515,16 @@
           "title": "Plasmo Portal",
           "period": "2026/04 - 現在",
           "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
-          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。Astro、Three.jsを使用してシンプルな形で制作しました。",
+          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。</br>Astro、Three.jsを使用してシンプルな構成で制作しました。",
           "images": ["img/works/web_portfolio_plasmo.png"],
           "tech": ["Astro", "Three.js", "Tailwind CSS"],
-          "links": []
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Webサイト",
+              "href": "https://plasmoportal.com"
+            }
+          ]
         },
         {
           "pickup": true,

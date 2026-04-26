@@ -16,7 +16,7 @@ export default defineConfig({
   image: {
     domains: [
       "content.elekibear.com",
-      "github.com",
+      "raw.githubusercontent.com",
       "user-images.githubusercontent.com",
       "play.google.com",
       "apps.apple.com",

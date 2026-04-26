@@ -4,21 +4,21 @@
       "company": "ゲーム会社",
       "role": "テクニカルアーティスト",
       "period": "2024/6 - 現在",
-      "description": "テクニカルアーティストに転向し、家庭用ゲームのパイプライン周りや各種ツール開発等を担当。",
+      "description": "家庭用ゲームのツール開発・パイプライン構築等を担当。",
       "skills": ["Houdini", "Maya", "Python", "C++", "Unreal Engine"]
     },
     {
       "company": "ゲーム会社",
       "role": "クライアントエンジニア",
       "period": "2021/5 - 2024/5",
-      "description": "クライアントエンジニアとしてモバイルゲーム・家庭用ゲームの機能開発全般を担当。",
+      "description": "モバイル/家庭用ゲームの機能開発全般を担当。",
       "skills": ["Unity", "C#", "TypeScript", "Ruby on Rails", "Jenkins"]
     },
     {
-      "company": "SIer 正社員",
+      "company": "ITサービス会社",
       "role": "システムエンジニア",
       "period": "2016/4 - 2021/3",
-      "description": "システムエンジニアとして業務システム開発全般を担当。",
+      "description": "メーカー・官公庁向けの業務システム開発全般を担当。",
       "skills": ["Java", "Python", "SQL", "JavaScript", "HTML/CSS"]
     }
   ],

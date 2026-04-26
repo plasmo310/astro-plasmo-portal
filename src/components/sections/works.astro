@@ -113,6 +113,8 @@ const sections = pickupOnly
                             <img
                               src={src}
                               alt={`${work.title} screenshot ${index + 1}`}
+                              loading="lazy"
+                              decoding="async"
                               draggable="false"
                               class={cls}
                             />
@@ -122,6 +124,8 @@ const sections = pickupOnly
                               alt={`${work.title} screenshot ${index + 1}`}
                               width={640}
                               height={360}
+                              loading="lazy"
+                              decoding="async"
                               draggable="false"
                               class={cls}
                             />
@@ -238,12 +242,11 @@ const sections = pickupOnly
     });
   }
 
-  // 画面内に入ったらカードを表示する（4枚ごとにバッチで画像読み込み後に表示）
+  // 画面内に入ったらカードを表示する（4枚ごとにバッチ表示）
   function initReveal() {
     const BATCH_SIZE = 4;
     const batches: HTMLElement[][] = [];
 
-    // セクションのgridごとにバッチを作成（インデックスをセクション内でリセット）
     document.querySelectorAll("#works .grid").forEach((grid) => {
       const cards = Array.from(
         grid.querySelectorAll(".work-card"),
@@ -252,22 +255,6 @@ const sections = pickupOnly
         batches.push(cards.slice(i, i + BATCH_SIZE));
       }
     });
-
-    function preloadBatch(batch: HTMLElement[]): Promise<void> {
-      const imgSrcs = batch.flatMap((card) =>
-        Array.from(card.querySelectorAll("img")).map((img) => img.src),
-      );
-      return Promise.all(
-        imgSrcs.map(
-          (src) =>
-            new Promise<void>((resolve) => {
-              const img = new Image();
-              img.onload = img.onerror = () => resolve();
-              img.src = src;
-            }),
-        ),
-      ).then(() => undefined);
-    }
 
     function revealBatch(batch: HTMLElement[]) {
       batch.forEach((card, i) => {
@@ -281,9 +268,8 @@ const sections = pickupOnly
           if (entry.isIntersecting) {
             const anchor = entry.target as HTMLElement;
             const batchIndex = parseInt(anchor.dataset.batchIndex ?? "0");
-            const batch = batches[batchIndex];
             observer.unobserve(anchor);
-            preloadBatch(batch).then(() => revealBatch(batch));
+            revealBatch(batches[batchIndex]);
           }
         });
       },
@@ -313,7 +299,7 @@ const sections = pickupOnly
     });
   }
 
-  window.addEventListener("load", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     initSliders();
     initReveal();
     initCardClick();

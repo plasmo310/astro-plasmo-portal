@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import SectionHeading from "../common/section-heading.astro";
 import WorksModal from "./works-modal.astro";
@@ -104,14 +105,28 @@ const sections = pickupOnly
                       <div
                         class={`w-full h-full relative ${isSlider ? "image-slider" : ""}`}
                       >
-                        {work.images.map((img, index) => (
-                          <img
-                            src={img}
-                            alt={`${work.title} screenshot ${index + 1}`}
-                            draggable="false"
-                            class={`work-card-img absolute inset-0 w-full h-full object-cover ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
-                          />
-                        ))}
+                        {work.images.map((img, index) => {
+                          const src = img.startsWith("http") ? img : `/${img}`;
+                          const isGif = src.toLowerCase().endsWith(".gif");
+                          const cls = `work-card-img absolute inset-0 w-full h-full object-cover ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`;
+                          return isGif ? (
+                            <img
+                              src={src}
+                              alt={`${work.title} screenshot ${index + 1}`}
+                              draggable="false"
+                              class={cls}
+                            />
+                          ) : (
+                            <Image
+                              src={src}
+                              alt={`${work.title} screenshot ${index + 1}`}
+                              width={640}
+                              height={360}
+                              draggable="false"
+                              class={cls}
+                            />
+                          );
+                        })}
                       </div>
                     </div>
 

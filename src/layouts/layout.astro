@@ -98,6 +98,19 @@ const isHome = Astro.url.pathname === "/";
     return el.getBoundingClientRect().top + window.scrollY;
   }
 
+  function getHeaderHeight(): number {
+    return document.getElementById("header")?.offsetHeight ?? 0;
+  }
+
+  function scrollToStop(el: HTMLElement) {
+    const top = Math.max(0, pageTop(el) - getHeaderHeight());
+    window.scrollTo({ top, behavior: "smooth" });
+  }
+
+  function currentStopTop(): number {
+    return window.scrollY + getHeaderHeight();
+  }
+
   function getStops(): HTMLElement[] {
     const sections = SECTION_IDS.map((id) =>
       document.getElementById(id),
@@ -136,16 +149,18 @@ const isHome = Astro.url.pathname === "/";
 
   document.getElementById("section-prev-btn")?.addEventListener("click", () => {
     const stops = getStops();
+    const currentTop = currentStopTop();
     const prev = [...stops]
       .reverse()
-      .find((el) => pageTop(el) < window.scrollY - 10);
-    prev?.scrollIntoView({ behavior: "smooth" });
+      .find((el) => pageTop(el) < currentTop - 10);
+    if (prev) scrollToStop(prev);
   });
 
   document.getElementById("section-next-btn")?.addEventListener("click", () => {
     const stops = getStops();
-    const next = stops.find((el) => pageTop(el) > window.scrollY + 10);
-    next?.scrollIntoView({ behavior: "smooth" });
+    const currentTop = currentStopTop();
+    const next = stops.find((el) => pageTop(el) > currentTop + 10);
+    if (next) scrollToStop(next);
   });
 </script>
 

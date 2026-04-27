@@ -1,6 +1,14 @@
+---
+interface Props {
+  showModel?: boolean;
+}
+const { showModel = true } = Astro.props;
+---
+
 <canvas
   id="three-bg"
   class="fixed inset-0 w-full h-full pointer-events-none"
+  data-show-model={showModel ? "true" : "false"}
   style="z-index: 0;"></canvas>
 
 <script>
@@ -44,9 +52,9 @@
   let dissolveStartTime: number | null = null;
 
   // ディゾルブパラメータ
-  const DISSOLVE_DURATION = 800; // アニメーション時間 (ms)
-  const NOISE_SCALE = 8; // ノイズの粗さ (大きいほど粗く)
-  const NOISE_TEX_SIZE = 32; // テクスチャ解像度 (小さいほどブロック状)
+  const DISSOLVE_DURATION = 800;
+  const NOISE_SCALE = 8;
+  const NOISE_TEX_SIZE = 32;
 
   // ディゾルブ用スムーズノイズテクスチャ
   function createNoiseTexture() {
@@ -85,6 +93,8 @@
   }
   const noiseTex = createNoiseTexture();
 
+  const showModel = canvas.dataset.showModel === "true";
+
   // FBX読み込み
   const manager = new THREE.LoadingManager();
   manager.setURLModifier((url) => {
@@ -94,47 +104,48 @@
   });
 
   const fbxLoader = new FBXLoader(manager);
-  fbxLoader.load(
-    "/model/SM_Elekibear.fbx",
-    (model) => {
-      elekibearRoot = new THREE.Group();
-      elekibearRoot.add(model);
-      elekibearRoot.visible = false;
-      elekibearRoot.position.set(0, -1.2, 0);
-      elekibearRoot.scale.set(1.5, 1.5, 1.5);
-      scene.add(elekibearRoot);
+  if (showModel)
+    fbxLoader.load(
+      "/model/SM_Elekibear.fbx",
+      (model) => {
+        elekibearRoot = new THREE.Group();
+        elekibearRoot.add(model);
+        elekibearRoot.visible = false;
+        elekibearRoot.position.set(0, -1.2, 0);
+        elekibearRoot.scale.set(1.5, 1.5, 1.5);
+        scene.add(elekibearRoot);
 
-      new THREE.TextureLoader()
-        .loadAsync("/model/T_Elekibear.png")
-        .then((tex) => {
-          tex.colorSpace = THREE.SRGBColorSpace;
+        new THREE.TextureLoader()
+          .loadAsync("/model/T_Elekibear.png")
+          .then((tex) => {
+            tex.colorSpace = THREE.SRGBColorSpace;
 
-          const mat = new THREE.MeshToonMaterial({
-            map: tex,
-            alphaMap: noiseTex,
-            alphaTest: 0.999,
+            const mat = new THREE.MeshToonMaterial({
+              map: tex,
+              alphaMap: noiseTex,
+              alphaTest: 0.999,
+            });
+            dissolveMat = mat;
+
+            model.traverse((child) => {
+              if ((child as THREE.Mesh).isMesh)
+                (child as THREE.Mesh).material = mat;
+            });
+
+            if (elekibearRoot) elekibearRoot.visible = true;
+            dissolveStartTime = performance.now();
           });
-          dissolveMat = mat;
 
-          model.traverse((child) => {
-            if ((child as THREE.Mesh).isMesh)
-              (child as THREE.Mesh).material = mat;
-          });
-
-          if (elekibearRoot) elekibearRoot.visible = true;
-          dissolveStartTime = performance.now();
-        });
-
-      animMixer = new THREE.AnimationMixer(model);
-      if (model.animations.length > 0) {
-        const action = animMixer.clipAction(model.animations[0]);
-        action.setLoop(THREE.LoopPingPong, Infinity);
-        action.play();
-      }
-    },
-    undefined,
-    (error) => console.error("load error:", error),
-  );
+        animMixer = new THREE.AnimationMixer(model);
+        if (model.animations.length > 0) {
+          const action = animMixer.clipAction(model.animations[0]);
+          action.setLoop(THREE.LoopPingPong, Infinity);
+          action.play();
+        }
+      },
+      undefined,
+      (error) => console.error("load error:", error),
+    );
 
   // パーティクル
   const particleCount = 400;

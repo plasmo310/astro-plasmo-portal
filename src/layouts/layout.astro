@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 import ThreeBackground from "../components/common/three-background.astro";
+
+const isHome = Astro.url.pathname === "/";
 ---
 
 <!doctype html>
@@ -14,7 +16,7 @@ import ThreeBackground from "../components/common/three-background.astro";
     <title>Plasmo Portal</title>
   </head>
   <body class="bg-background">
-    <ThreeBackground />
+    <ThreeBackground showModel={isHome} />
     <main class="relative">
       <slot />
     </main>

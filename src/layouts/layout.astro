@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ThreeBackground from "../components/common/three-background.astro";
 ---
 
 <!doctype html>
@@ -13,7 +14,8 @@ import "../styles/global.css";
     <title>Plasmo Portal</title>
   </head>
   <body class="bg-background">
-    <main>
+    <ThreeBackground />
+    <main class="relative" style="z-index: 1;">
       <slot />
     </main>
   </body>

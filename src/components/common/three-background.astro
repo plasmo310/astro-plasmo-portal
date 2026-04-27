@@ -1,0 +1,149 @@
+<canvas
+  id="three-bg"
+  class="fixed inset-0 w-full h-full pointer-events-none"
+  style="z-index: 0;"></canvas>
+
+<script>
+  import * as THREE from "three";
+  import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
+
+  const canvas = document.getElementById("three-bg") as HTMLCanvasElement;
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true,
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000,
+  );
+  camera.position.set(0, 0, 5);
+  camera.lookAt(0, 0, 0);
+
+  // ライト（GLB版と同じ構成）
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
+
+  const pointLight = new THREE.PointLight(0xffd400, 3, 12);
+  pointLight.position.set(3, 3, 3);
+  scene.add(pointLight);
+
+  const pointLight2 = new THREE.PointLight(0xffffff, 1.5, 12);
+  pointLight2.position.set(-3, -2, 2);
+  scene.add(pointLight2);
+
+  let animMixer: THREE.AnimationMixer | null = null;
+  let elekibearRoot: THREE.Group | null = null;
+
+  // FBX読み込み
+  const manager = new THREE.LoadingManager();
+  manager.setURLModifier((url) => {
+    if (/\.(png|jpe?g|tga|bmp|gif)$/i.test(url))
+      return "/model/T_Elekibear.png";
+    return url;
+  });
+
+  const fbxLoader = new FBXLoader(manager);
+  fbxLoader.load(
+    "/model/SM_Elekibear.fbx",
+    (model) => {
+      new THREE.TextureLoader()
+        .loadAsync("/model/T_Elekibear.png")
+        .then((tex) => {
+          tex.colorSpace = THREE.SRGBColorSpace;
+          const mat = new THREE.MeshStandardMaterial({
+            map: tex,
+            metalness: 0,
+            roughness: 0.8,
+          });
+          model.traverse((child) => {
+            if ((child as THREE.Mesh).isMesh)
+              (child as THREE.Mesh).material = mat;
+          });
+        });
+
+      animMixer = new THREE.AnimationMixer(model);
+      if (model.animations.length > 0) {
+        const action = animMixer.clipAction(model.animations[0]);
+        action.setLoop(THREE.LoopPingPong, Infinity);
+        action.play();
+      }
+
+      elekibearRoot = new THREE.Group();
+      elekibearRoot.add(model);
+      elekibearRoot.position.set(0, -1.2, 0);
+      elekibearRoot.scale.set(1.5, 1.5, 1.5);
+      scene.add(elekibearRoot);
+    },
+    undefined,
+    (error) => console.error("load error:", error),
+  );
+
+  // パーティクル
+  const particleCount = 400;
+  const positions = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 16;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 16;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+  }
+  const particleGeo = new THREE.BufferGeometry();
+  particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  const particleMat = new THREE.PointsMaterial({
+    color: 0xffd400,
+    size: 0.03,
+    transparent: true,
+    opacity: 0.5,
+  });
+  const particles = new THREE.Points(particleGeo, particleMat);
+  scene.add(particles);
+
+  // マウス視差
+  let mouseX = 0;
+  document.addEventListener("mousemove", (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+  });
+
+  // リサイズ
+  window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // アニメーションループ
+  let rotY = 0;
+  let prevTime = performance.now();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const now = performance.now();
+    const delta = (now - prevTime) / 1000;
+    const t = now / 1000;
+    prevTime = now;
+
+    animMixer?.update(delta);
+
+    if (elekibearRoot) {
+      rotY += delta * 0.5;
+      elekibearRoot.rotation.y = rotY + mouseX * 0.2;
+    }
+
+    particles.rotation.y = t * 0.04;
+    particles.rotation.x = t * 0.02;
+
+    pointLight.position.x = Math.sin(t * 0.7) * 4;
+    pointLight.position.y = Math.cos(t * 0.5) * 4;
+    pointLight2.position.x = Math.cos(t * 0.5) * 4;
+    pointLight2.position.y = Math.sin(t * 0.7) * -4;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+</script>

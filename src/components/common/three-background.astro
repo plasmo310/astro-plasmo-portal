@@ -26,17 +26,17 @@
   camera.position.set(0, 0, 5);
   camera.lookAt(0, 0, 0);
 
-  // ライト（GLB版と同じ構成）
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-  scene.add(ambientLight);
-
-  const pointLight = new THREE.PointLight(0xffd400, 3, 12);
+  // ライト
+  scene.add(new THREE.AmbientLight(0xffffff, 1));
+  const dirLightTarget = new THREE.Object3D();
+  scene.add(dirLightTarget);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+  dirLight.target = dirLightTarget;
+  dirLight.position.set(10, 10, 8.5);
+  scene.add(dirLight);
+  const pointLight = new THREE.PointLight(0xffd400, 2, 12);
   pointLight.position.set(3, 3, 3);
   scene.add(pointLight);
-
-  const pointLight2 = new THREE.PointLight(0xffffff, 1.5, 12);
-  pointLight2.position.set(-3, -2, 2);
-  scene.add(pointLight2);
 
   let animMixer: THREE.AnimationMixer | null = null;
   let elekibearRoot: THREE.Group | null = null;
@@ -57,11 +57,7 @@
         .loadAsync("/model/T_Elekibear.png")
         .then((tex) => {
           tex.colorSpace = THREE.SRGBColorSpace;
-          const mat = new THREE.MeshStandardMaterial({
-            map: tex,
-            metalness: 0,
-            roughness: 0.8,
-          });
+          const mat = new THREE.MeshToonMaterial({ map: tex });
           model.traverse((child) => {
             if ((child as THREE.Mesh).isMesh)
               (child as THREE.Mesh).material = mat;
@@ -97,9 +93,9 @@
   particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
   const particleMat = new THREE.PointsMaterial({
     color: 0xffd400,
-    size: 0.03,
+    size: 0.05,
     transparent: true,
-    opacity: 0.5,
+    opacity: 0.6,
   });
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
@@ -110,7 +106,6 @@
     mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
   });
 
-  // リサイズ
   window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -137,11 +132,8 @@
 
     particles.rotation.y = t * 0.04;
     particles.rotation.x = t * 0.02;
-
     pointLight.position.x = Math.sin(t * 0.7) * 4;
     pointLight.position.y = Math.cos(t * 0.5) * 4;
-    pointLight2.position.x = Math.cos(t * 0.5) * 4;
-    pointLight2.position.y = Math.sin(t * 0.7) * -4;
 
     renderer.render(scene, camera);
   }

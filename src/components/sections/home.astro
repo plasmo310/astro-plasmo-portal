@@ -6,7 +6,7 @@ import localData from "../../data/home.json";
   <div class="h-[50vh] flex items-end justify-center px-4 sm:px-8">
     <div class="w-full max-w-4xl pb-6 sm:pb-10">
       <h1
-        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold grid grid-cols-[1fr_auto_1fr] items-center w-full"
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold grid grid-cols-[1fr_auto_1fr] items-center w-full home-title"
       >
         <span class="text-right">Plasmo</span>
         <span class="lightning-icon mx-2 sm:mx-4 md:mx-6"></span>
@@ -20,7 +20,7 @@ import localData from "../../data/home.json";
   >
     <div class="w-full max-w-4xl">
       <div
-        class="mb-8 text-white text-[11px] sm:text-xs md:text-sm leading-relaxed"
+        class="mb-8 text-white text-[11px] sm:text-xs md:text-sm leading-relaxed font-semibold home-intro"
         set:html={localData.introHtml}
       />
       <a
@@ -47,6 +47,15 @@ import localData from "../../data/home.json";
 </section>
 
 <style>
+  .home-title {
+    color: white;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .home-intro {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  }
+
   .scroll-down-btn {
     animation: bounce-down 1.5s ease-in-out infinite;
   }

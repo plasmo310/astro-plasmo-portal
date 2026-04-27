@@ -306,10 +306,6 @@ const navItems: NavItem[] = [
     setMenuOpen(isOpen);
   });
 
-  mobileMenu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => setMenuOpen(false));
-  });
-
   // 項目クリック時: 対象セクションへ移動する
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
@@ -317,13 +313,27 @@ const navItems: NavItem[] = [
       const target = e.currentTarget as HTMLAnchorElement;
       const targetId = target.getAttribute("href")?.substring(1) || "";
       const targetElement = document.getElementById(targetId);
+
+      const isMenuOpen = mobileMenu?.classList.contains("open") ?? false;
+      if (isMenuOpen) {
+        setMenuOpen(false);
+      }
+
       if (targetElement) {
-        const headerHeight = nav?.offsetHeight ?? 0;
-        const top =
-          targetElement.getBoundingClientRect().top +
-          window.scrollY -
-          headerHeight;
-        window.scrollTo({ top, behavior: "smooth" });
+        const doScroll = () => {
+          const headerHeight = nav?.offsetHeight ?? 0;
+          const top =
+            targetElement.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight;
+          window.scrollTo({ top, behavior: "smooth" });
+        };
+        // モバイルメニューが開いていた場合、閉じるトランジション(300ms)を待つ
+        if (isMenuOpen) {
+          setTimeout(doScroll, 300);
+        } else {
+          doScroll();
+        }
       }
     });
   });

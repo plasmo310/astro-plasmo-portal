@@ -40,6 +40,50 @@
 
   let animMixer: THREE.AnimationMixer | null = null;
   let elekibearRoot: THREE.Group | null = null;
+  let dissolveMat: THREE.MeshToonMaterial | null = null;
+  let dissolveStartTime: number | null = null;
+
+  // ディゾルブパラメータ
+  const DISSOLVE_DURATION = 800; // アニメーション時間 (ms)
+  const NOISE_SCALE = 8; // ノイズの粗さ (大きいほど粗く)
+  const NOISE_TEX_SIZE = 32; // テクスチャ解像度 (小さいほどブロック状)
+
+  // ディゾルブ用スムーズノイズテクスチャ
+  function createNoiseTexture() {
+    const size = NOISE_TEX_SIZE;
+    const cv = document.createElement("canvas");
+    cv.width = cv.height = size;
+    const ctx = cv.getContext("2d")!;
+    const img = ctx.createImageData(size, size);
+    const h = (a: number, b: number) =>
+      Math.abs(Math.sin(a * 127.1 + b * 311.7) * 43758.5453) % 1;
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const gx = (x / size) * NOISE_SCALE,
+          gy = (y / size) * NOISE_SCALE;
+        const ix = Math.floor(gx),
+          iy = Math.floor(gy);
+        const fx = gx - ix,
+          fy = gy - iy;
+        const sfx = fx * fx * (3 - 2 * fx),
+          sfy = fy * fy * (3 - 2 * fy);
+        const v =
+          h(ix, iy) * (1 - sfx) * (1 - sfy) +
+          h(ix + 1, iy) * sfx * (1 - sfy) +
+          h(ix, iy + 1) * (1 - sfx) * sfy +
+          h(ix + 1, iy + 1) * sfx * sfy;
+        const i = (y * size + x) * 4;
+        const c = Math.floor(v * 255);
+        img.data[i] = img.data[i + 1] = img.data[i + 2] = c;
+        img.data[i + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+    const tex = new THREE.CanvasTexture(cv);
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    return tex;
+  }
+  const noiseTex = createNoiseTexture();
 
   // FBX読み込み
   const manager = new THREE.LoadingManager();
@@ -53,15 +97,32 @@
   fbxLoader.load(
     "/model/SM_Elekibear.fbx",
     (model) => {
+      elekibearRoot = new THREE.Group();
+      elekibearRoot.add(model);
+      elekibearRoot.visible = false;
+      elekibearRoot.position.set(0, -1.2, 0);
+      elekibearRoot.scale.set(1.5, 1.5, 1.5);
+      scene.add(elekibearRoot);
+
       new THREE.TextureLoader()
         .loadAsync("/model/T_Elekibear.png")
         .then((tex) => {
           tex.colorSpace = THREE.SRGBColorSpace;
-          const mat = new THREE.MeshToonMaterial({ map: tex });
+
+          const mat = new THREE.MeshToonMaterial({
+            map: tex,
+            alphaMap: noiseTex,
+            alphaTest: 0.999,
+          });
+          dissolveMat = mat;
+
           model.traverse((child) => {
             if ((child as THREE.Mesh).isMesh)
               (child as THREE.Mesh).material = mat;
           });
+
+          if (elekibearRoot) elekibearRoot.visible = true;
+          dissolveStartTime = performance.now();
         });
 
       animMixer = new THREE.AnimationMixer(model);
@@ -70,12 +131,6 @@
         action.setLoop(THREE.LoopPingPong, Infinity);
         action.play();
       }
-
-      elekibearRoot = new THREE.Group();
-      elekibearRoot.add(model);
-      elekibearRoot.position.set(0, -1.2, 0);
-      elekibearRoot.scale.set(1.5, 1.5, 1.5);
-      scene.add(elekibearRoot);
     },
     undefined,
     (error) => console.error("load error:", error),
@@ -100,12 +155,6 @@
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
-  // マウス視差
-  let mouseX = 0;
-  document.addEventListener("mousemove", (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-  });
-
   window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -125,9 +174,25 @@
 
     animMixer?.update(delta);
 
+    if (dissolveMat !== null && dissolveStartTime !== null) {
+      const progress = Math.min(
+        (now - dissolveStartTime) / DISSOLVE_DURATION,
+        1.0,
+      );
+      const eased = progress * progress * (3.0 - 2.0 * progress);
+      dissolveMat.alphaTest = Math.max(1.0 - eased, 0.001);
+      if (progress >= 1.0) {
+        dissolveMat.alphaMap = null;
+        dissolveMat.alphaTest = 0;
+        dissolveMat.needsUpdate = true;
+        dissolveMat = null;
+        dissolveStartTime = null;
+      }
+    }
+
     if (elekibearRoot) {
       rotY += delta * 0.5;
-      elekibearRoot.rotation.y = rotY + mouseX * 0.2;
+      elekibearRoot.rotation.y = rotY;
     }
 
     particles.rotation.y = t * 0.04;

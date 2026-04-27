@@ -318,7 +318,12 @@ const navItems: NavItem[] = [
       const targetId = target.getAttribute("href")?.substring(1) || "";
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
+        const headerHeight = nav?.offsetHeight ?? 0;
+        const top =
+          targetElement.getBoundingClientRect().top +
+          window.scrollY -
+          headerHeight;
+        window.scrollTo({ top, behavior: "smooth" });
       }
     });
   });

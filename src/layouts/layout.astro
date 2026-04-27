@@ -15,11 +15,137 @@ import ThreeBackground from "../components/common/three-background.astro";
   </head>
   <body class="bg-background">
     <ThreeBackground />
-    <main class="relative" style="z-index: 1;">
+    <main class="relative">
       <slot />
     </main>
+
+    <!-- Page Top -->
+    <button
+      id="page-top-btn"
+      aria-label="ページトップへ戻る"
+      class="nav-btn fixed bottom-8 right-8 flex flex-col items-center gap-1"
+      style="z-index: 100;"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="nav-icon"
+      >
+        <polyline points="18 12 12 6 6 12"></polyline>
+        <polyline points="18 18 12 12 6 18"></polyline>
+      </svg>
+      <span class="nav-label">TOP</span>
+    </button>
+
+    <!-- Section Nav -->
+    <div
+      class="fixed bottom-8 left-8 flex flex-row gap-6"
+      style="z-index: 100;"
+    >
+      <button
+        id="section-prev-btn"
+        aria-label="前のセクションへ"
+        class="nav-btn flex flex-col items-center gap-1"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="nav-icon"
+        >
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+        <span class="nav-label">PREV</span>
+      </button>
+      <button
+        id="section-next-btn"
+        aria-label="次のセクションへ"
+        class="nav-btn flex flex-col items-center gap-1"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="nav-icon"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+        <span class="nav-label">NEXT</span>
+      </button>
+    </div>
   </body>
 </html>
+
+<script>
+  const SECTION_IDS = ["home", "about", "works", "skills", "contact", "footer"];
+
+  function pageTop(el: HTMLElement): number {
+    return el.getBoundingClientRect().top + window.scrollY;
+  }
+
+  function getStops(): HTMLElement[] {
+    const sections = SECTION_IDS.map((id) =>
+      document.getElementById(id),
+    ).filter((el): el is HTMLElement => el !== null);
+    const subHeadings = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-nav-stop]"),
+    );
+    return [...sections, ...subHeadings].sort(
+      (a, b) => pageTop(a) - pageTop(b),
+    );
+  }
+
+  const pageTopBtn = document.getElementById("page-top-btn");
+  const sectionNav = document.querySelector<HTMLElement>(
+    ".fixed.bottom-8.left-8",
+  );
+  function updateNavVisibility() {
+    const scrolledEnough = window.scrollY > window.innerHeight * 0.9;
+    const atBottom =
+      window.scrollY + window.innerHeight >=
+      document.documentElement.scrollHeight - 40;
+    const visible = scrolledEnough && !atBottom;
+    [pageTopBtn, sectionNav].forEach((el) => {
+      if (!el) return;
+      el.style.opacity = visible ? "1" : "0";
+      el.style.pointerEvents = visible ? "auto" : "none";
+    });
+  }
+
+  updateNavVisibility();
+  window.addEventListener("scroll", updateNavVisibility, { passive: true });
+
+  pageTopBtn?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  document.getElementById("section-prev-btn")?.addEventListener("click", () => {
+    const stops = getStops();
+    const prev = [...stops]
+      .reverse()
+      .find((el) => pageTop(el) < window.scrollY - 10);
+    prev?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  document.getElementById("section-next-btn")?.addEventListener("click", () => {
+    const stops = getStops();
+    const next = stops.find((el) => pageTop(el) > window.scrollY + 10);
+    next?.scrollIntoView({ behavior: "smooth" });
+  });
+</script>
 
 <style>
   html,
@@ -27,5 +153,60 @@ import ThreeBackground from "../components/common/three-background.astro";
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  #page-top-btn,
+  .fixed.bottom-8.left-8 {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.95;
+    transition: opacity 0.2s;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.8));
+  }
+
+  .nav-btn:hover {
+    opacity: 1;
+  }
+
+  .nav-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-label {
+    color: white;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    font-family: var(--font-body, sans-serif);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  @media (min-width: 768px) {
+    .nav-icon {
+      width: 32px;
+      height: 32px;
+    }
+    .nav-label {
+      font-size: 11px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .nav-icon {
+      width: 40px;
+      height: 40px;
+    }
+    .nav-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+    }
   }
 </style>

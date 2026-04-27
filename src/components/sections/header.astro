@@ -32,7 +32,7 @@ const navItems: NavItem[] = [
 <div class="flex justify-center w-full">
   <nav
     id="header"
-    class="fixed top-0 left-0 z-20 w-full border-b border-transparent bg-background transition-all duration-500 ease-in-out"
+    class="fixed top-0 left-0 z-20 w-full border-b border-transparent transition-all duration-500 ease-in-out"
   >
     <div
       class="container mx-auto flex justify-start md:justify-center items-center py-4 px-6 reveal-content"
@@ -200,6 +200,11 @@ const navItems: NavItem[] = [
   nav {
     border-color: transparent;
     backdrop-filter: blur(0px);
+    background-color: transparent;
+  }
+
+  nav.menu-open {
+    background-color: var(--color-background);
   }
 
   nav a {
@@ -293,6 +298,7 @@ const navItems: NavItem[] = [
     mobileMenu?.classList.toggle("open", open);
     hamburger?.classList.toggle("open", open);
     hamburger?.setAttribute("aria-expanded", String(open));
+    nav?.classList.toggle("menu-open", open);
   }
 
   hamburger?.addEventListener("click", () => {

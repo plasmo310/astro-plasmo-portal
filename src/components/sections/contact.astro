@@ -4,30 +4,34 @@ import SectionHeading from "../common/section-heading.astro";
 import localData from "../../data/contact.json";
 ---
 
-<section id="contact" class="px-6 py-16 bg-black/20">
-  <div class="container mx-auto">
-    <SectionHeading title="Contact" />
-    <p
-      class="text-gray-400 font-body text-xs sm:text-sm md:text-base mb-12 -mt-4 leading-relaxed"
-      set:html={localData.descHtml}
-    />
+<section id="contact">
+  <div
+    class="px-6 pt-6 sm:pt-8 pb-16 bg-background-sub/50 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 w-[97.5%] max-w-[1280px] mx-auto my-16 rounded-2xl"
+  >
+    <div class="container mx-auto">
+      <SectionHeading title="Contact" />
+      <p
+        class="text-gray-300 font-body text-xs sm:text-sm md:text-base mb-12 -mt-4 leading-relaxed"
+        set:html={localData.descHtml}
+      />
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-8">
-      {
-        localData.socials.map((social) => (
-          <a
-            href={social.url}
-            target="_blank"
-            class="flex flex-col items-center gap-2 p-6 border border-white/10 rounded-xl hover:border-accent/40 transition-colors bg-white/5"
-          >
-            <Icon name={social.icon} class="w-8 h-8 text-white" />
-            <span class="text-sm font-bold">{social.name}</span>
-            <span class="text-xs text-gray-400">
-              {social.url.replace("https://", "").replace("mailto:", "")}
-            </span>
-          </a>
-        ))
-      }
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-8">
+        {
+          localData.socials.map((social) => (
+            <a
+              href={social.url}
+              target="_blank"
+              class="flex flex-col items-center gap-2 p-6 border border-white/10 rounded-xl hover:border-accent/40 transition-colors bg-white/5"
+            >
+              <Icon name={social.icon} class="w-8 h-8 text-white" />
+              <span class="text-sm font-bold">{social.name}</span>
+              <span class="text-xs text-gray-400">
+                {social.url.replace("https://", "").replace("mailto:", "")}
+              </span>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>

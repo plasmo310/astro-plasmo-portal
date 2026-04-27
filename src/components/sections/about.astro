@@ -32,190 +32,193 @@ const profileData: ProfileData = data;
 const careerData: CareerItem[] = skillsData.career;
 ---
 
-<section
-  id="about"
-  class="flex items-start justify-center text-center px-4 sm:px-6 py-12 sm:py-16 bg-background-sub/70/25"
->
-  <div class="container mx-auto max-w-4xl">
-    <SectionHeading title="About Me" />
+<section id="about">
+  <div
+    class="px-4 sm:px-6 pt-6 sm:pt-8 pb-12 sm:pb-16 bg-background-sub/50 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 w-[97.5%] max-w-[1280px] mx-auto my-16 rounded-2xl"
+  >
+    <div class="container mx-auto">
+      <SectionHeading title="About Me" />
 
-    <div class="flex-col items-center justify-center py-8 sm:py-12">
       <div
-        class="rounded-full overflow-hidden w-40 sm:w-56 md:w-72 lg:w-80 mx-auto"
+        class="flex-col items-center justify-center py-8 sm:py-12 text-center"
       >
-        <img
-          src={profileData.photoUrl}
-          alt={profileData.name}
-          onerror="this.onerror=null;this.src='/placeholder.jpeg';"
-        />
-      </div>
-
-      <div>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl my-4">
-          {profileData.name}
-        </h1>
-        <div class="m-4 text-gray-400 text-sm sm:text-base md:text-xl my-4">
-          {profileData.job}
-        </div>
         <div
-          class="mx-4 mt-2 mb-4 text-gray-400 text-[11px] md:text-sm leading-relaxed"
-          set:html={profileData.introHtml}
-        />
-      </div>
-
-      <div class="flex justify-center gap-6 my-8 reveal-content">
-        {
-          profileData.socials.map((social) => (
-            <a
-              href={social.url}
-              target="_blank"
-              class="group relative flex flex-col items-center justify-center transition-all hover:scale-105"
-            >
-              <Icon
-                name={social.icon}
-                class="w-8 h-8 sm:w-12 sm:h-12 text-white group-hover:text-accent transition-colors duration-300"
-              />
-              <span class="absolute -bottom-6 scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 text-xs text-accent font-body">
-                {social.name}
-              </span>
-            </a>
-          ))
-        }
-      </div>
-
-      <div
-        class="flex justify-center mt-8 mb-2 reveal-content"
-        style="animation-delay: 0.2s"
-      >
-        <a
-          href={profileData.blogUrl}
-          target="_blank"
-          class="group flex items-center gap-2 sm:gap-3 transition-all duration-300 hover:scale-105"
+          class="rounded-full overflow-hidden w-40 sm:w-56 md:w-72 lg:w-80 mx-auto"
         >
           <img
-            src="/img/icon/elekibear-white.png"
-            alt="TECH BLOG"
-            class="w-9 h-9 sm:w-12 sm:h-12"
+            src={profileData.photoUrl}
+            alt={profileData.name}
+            onerror="this.onerror=null;this.src='/placeholder.jpeg';"
           />
-          <span
-            class="text-gray-200 group-hover:text-accent transition-colors duration-300 font-body text-xl sm:text-2xl"
-          >
-            TECH BLOG
-          </span>
-        </a>
-      </div>
-    </div>
+        </div>
 
-    {/* Career */}
-    <h3
-      class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left mt-16"
-    >
-      Career
-    </h3>
+        <div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl my-4">
+            {profileData.name}
+          </h1>
+          <div class="m-4 text-gray-300 text-sm sm:text-base md:text-xl my-4">
+            {profileData.job}
+          </div>
+          <div
+            class="mx-4 mt-2 mb-4 text-gray-300 text-[11px] md:text-sm leading-relaxed"
+            set:html={profileData.introHtml}
+          />
+        </div>
 
-    <div class="relative max-w-4xl mx-auto">
-      <div
-        class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-6 bottom-0 w-0.5 bg-gradient-to-b from-accent via-white/10 to-transparent"
-      >
-      </div>
-
-      {/* Mobile Layout */}
-      <div class="md:hidden space-y-8">
-        {
-          careerData.map((item, index) => (
-            <div class="relative pl-10 text-left">
-              <div class="scroll-stat absolute left-2 top-1 z-10">
-                <div
-                  class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+        <div class="flex justify-center gap-6 my-8 reveal-content">
+          {
+            profileData.socials.map((social) => (
+              <a
+                href={social.url}
+                target="_blank"
+                class="group relative flex flex-col items-center justify-center transition-all hover:scale-105"
+              >
+                <Icon
+                  name={social.icon}
+                  class="w-8 h-8 sm:w-12 sm:h-12 text-white group-hover:text-accent transition-colors duration-300"
                 />
-              </div>
-              <div class="scroll-stat bg-background-sub/70 border border-white/10 p-4 rounded-2xl hover:border-accent/30 transition-all">
-                <span class="text-accent font-mono text-xs tracking-widest uppercase">
-                  {item.period}
+                <span class="absolute -bottom-6 scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 text-xs text-accent font-body">
+                  {social.name}
                 </span>
-                <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
-                  {item.role}
-                </h4>
-                <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                <p class="text-gray-500 text-[11px] sm:text-sm leading-relaxed mb-3">
-                  {item.description}
-                </p>
-                <div class="flex flex-wrap gap-2">
-                  {item.skills.map((skill) => (
-                    <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300">
-                      {skill}
-                    </span>
-                  ))}
+              </a>
+            ))
+          }
+        </div>
+
+        <div
+          class="flex justify-center mt-8 mb-2 reveal-content"
+          style="animation-delay: 0.2s"
+        >
+          <a
+            href={profileData.blogUrl}
+            target="_blank"
+            class="group flex items-center gap-2 sm:gap-3 transition-all duration-300 hover:scale-105"
+          >
+            <img
+              src="/img/icon/elekibear-white.png"
+              alt="TECH BLOG"
+              class="w-9 h-9 sm:w-12 sm:h-12"
+            />
+            <span
+              class="text-gray-200 group-hover:text-accent transition-colors duration-300 font-body text-xl sm:text-2xl"
+            >
+              TECH BLOG
+            </span>
+          </a>
+        </div>
+      </div>
+
+      {/* Career */}
+      <h3
+        class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3 text-left mt-16"
+      >
+        Career
+      </h3>
+
+      <div class="relative max-w-4xl mx-auto">
+        <div
+          class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-6 bottom-0 w-0.5 bg-gradient-to-b from-accent via-white/10 to-transparent"
+        >
+        </div>
+
+        {/* Mobile Layout */}
+        <div class="md:hidden space-y-8">
+          {
+            careerData.map((item, index) => (
+              <div class="relative pl-10 text-left">
+                <div class="scroll-stat absolute left-2 top-1 z-10">
+                  <div
+                    class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+                  />
+                </div>
+                <div class="scroll-stat bg-background-sub/70 border border-white/10 p-4 rounded-2xl hover:border-accent/30 transition-all">
+                  <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                    {item.period}
+                  </span>
+                  <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
+                    {item.role}
+                  </h4>
+                  <p class="text-gray-300 text-sm mb-3">{item.company}</p>
+                  <p class="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-3">
+                    {item.description}
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    {item.skills.map((skill) => (
+                      <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        }
-      </div>
+            ))
+          }
+        </div>
 
-      {/* Desktop Layout (alternating) */}
-      <div class="hidden md:block space-y-6">
-        {
-          careerData.map((item, index) => (
-            <div class="relative grid grid-cols-2 gap-0">
-              <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-2 z-10">
-                <div
-                  class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
-                />
-              </div>
-              <div class="pr-10">
-                {index % 2 === 0 ? (
-                  <div class="scroll-stat bg-background-sub/70 border border-white/10 p-5 rounded-2xl text-right hover:border-accent/30 transition-all group">
-                    <span class="text-accent font-mono text-xs tracking-widest uppercase">
-                      {item.period}
-                    </span>
-                    <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
-                      {item.role}
-                    </h4>
-                    <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                    <p class="text-gray-500 text-[11px] sm:text-sm leading-relaxed mb-3">
-                      {item.description}
-                    </p>
-                    <div class="flex flex-wrap gap-2 justify-end">
-                      {item.skills.map((skill) => (
-                        <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
-                          {skill}
-                        </span>
-                      ))}
+        {/* Desktop Layout (alternating) */}
+        <div class="hidden md:block space-y-6">
+          {
+            careerData.map((item, index) => (
+              <div class="relative grid grid-cols-2 gap-0">
+                <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-2 z-10">
+                  <div
+                    class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+                  />
+                </div>
+                <div class="pr-10">
+                  {index % 2 === 0 ? (
+                    <div class="scroll-stat bg-background-sub/70 border border-white/10 p-5 rounded-2xl text-right hover:border-accent/30 transition-all group">
+                      <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                        {item.period}
+                      </span>
+                      <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
+                        {item.role}
+                      </h4>
+                      <p class="text-gray-300 text-sm mb-3">{item.company}</p>
+                      <p class="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-3">
+                        {item.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2 justify-end">
+                        {item.skills.map((skill) => (
+                          <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <div class="h-full" />
-                )}
-              </div>
-              <div class="pl-10">
-                {index % 2 !== 0 ? (
-                  <div class="scroll-stat bg-background-sub/70 border border-white/10 p-5 rounded-2xl text-left hover:border-accent/30 transition-all group">
-                    <span class="text-accent font-mono text-xs tracking-widest uppercase">
-                      {item.period}
-                    </span>
-                    <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
-                      {item.role}
-                    </h4>
-                    <p class="text-gray-400 text-sm mb-3">{item.company}</p>
-                    <p class="text-gray-500 text-[11px] sm:text-sm leading-relaxed mb-3">
-                      {item.description}
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      {item.skills.map((skill) => (
-                        <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
-                          {skill}
-                        </span>
-                      ))}
+                  ) : (
+                    <div class="h-full" />
+                  )}
+                </div>
+                <div class="pl-10">
+                  {index % 2 !== 0 ? (
+                    <div class="scroll-stat bg-background-sub/70 border border-white/10 p-5 rounded-2xl text-left hover:border-accent/30 transition-all group">
+                      <span class="text-accent font-mono text-xs tracking-widest uppercase">
+                        {item.period}
+                      </span>
+                      <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
+                        {item.role}
+                      </h4>
+                      <p class="text-gray-300 text-sm mb-3">{item.company}</p>
+                      <p class="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-3">
+                        {item.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        {item.skills.map((skill) => (
+                          <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <div class="h-full" />
-                )}
+                  ) : (
+                    <div class="h-full" />
+                  )}
+                </div>
               </div>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>

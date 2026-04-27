@@ -22,10 +22,8 @@ interface SkillSection {
 const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
 ---
 
-<section
-  id="skills"
-  class="flex items-start justify-center text-center px-6 py-16 bg-background-sub/70/25"
->
+<section id="skills">
+<div class="flex items-start justify-center text-center px-6 pt-6 sm:pt-8 pb-16 bg-background-sub/50 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 w-[97.5%] max-w-[1280px] mx-auto my-16 rounded-2xl">
   <div class="container mx-auto">
     <SectionHeading title="Skills" />
 
@@ -71,6 +69,7 @@ const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
       }
     </div>
   </div>
+</div>
 </section>
 
 <style>

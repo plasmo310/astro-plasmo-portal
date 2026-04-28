@@ -23,6 +23,7 @@ const navItems: NavItem[] = [
     href: `${anchorPrefix}#works`,
     children: [{ label: "All Works", href: "/works" }],
   },
+  { label: "Career", href: `${anchorPrefix}#career` },
   { label: "Skills", href: `${anchorPrefix}#skills` },
   { label: "Blog", href: "https://elekibear.com", newTab: true },
   { label: "Contact", href: `${anchorPrefix}#contact` },
@@ -150,7 +151,12 @@ const navItems: NavItem[] = [
           navItems.map((item) =>
             item.children ? (
               <li class="flex flex-col items-center gap-4">
-                <a href={item.href} class="mobile-nav-link text-gray-400 transition-colors">{item.label}</a>
+                <a
+                  href={item.href}
+                  class="mobile-nav-link text-gray-400 transition-colors"
+                >
+                  {item.label}
+                </a>
                 <ul class="flex flex-col items-center gap-2">
                   {item.children.map((child) => (
                     <li>

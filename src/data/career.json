@@ -1,0 +1,23 @@
+[
+  {
+    "company": "ゲーム会社",
+    "role": "テクニカルアーティスト",
+    "period": "2024/6 - 現在",
+    "description": "家庭用ゲームのツール開発・パイプライン構築等を担当。",
+    "skills": ["Houdini", "Maya", "Python", "C++", "Unreal Engine"]
+  },
+  {
+    "company": "ゲーム会社",
+    "role": "クライアントエンジニア",
+    "period": "2021/5 - 2024/5",
+    "description": "モバイル/家庭用ゲームの機能開発全般を担当。",
+    "skills": ["Unity", "C#", "TypeScript", "Ruby on Rails", "Jenkins"]
+  },
+  {
+    "company": "ITサービス会社",
+    "role": "システムエンジニア",
+    "period": "2016/4 - 2021/3",
+    "description": "エンタープライズ向けの業務システム開発全般を担当。",
+    "skills": ["Java", "Python", "SQL", "JavaScript", "HTML/CSS"]
+  }
+]

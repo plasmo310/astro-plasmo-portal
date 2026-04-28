@@ -106,50 +106,6 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
       </ul>
 
 
-      <!-- Hamburger button (mobile only) -->
-      <button
-        id="hamburger"
-        class="md:hidden text-white fixed top-4 left-4 w-6 h-6"
-        style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8)); opacity: 0.95;"
-        aria-label="メニューを開く"
-        aria-expanded="false"
-      >
-        <!-- 閉じた状態: ☰ -->
-        <svg
-          id="icon-open"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="absolute inset-0"
-        >
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-        <!-- 開いた状態: × -->
-        <svg
-          id="icon-close"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="absolute inset-0"
-        >
-          <line x1="4" y1="4" x2="20" y2="20"></line>
-          <line x1="20" y1="4" x2="4" y2="20"></line>
-        </svg>
-      </button>
     </div>
 
     <!-- Mobile menu -->
@@ -200,6 +156,52 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
       </ul>
     </div>
   </nav>
+</div>
+
+<!-- Hamburger button: fixed top-left (mobile only) -->
+<div class="md:hidden fixed top-4 left-4 z-30" style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));">
+  <button
+    id="hamburger"
+    class="text-white w-6 h-6 relative"
+    aria-label="メニューを開く"
+    aria-expanded="false"
+  >
+    <!-- 閉じた状態: ☰ -->
+    <svg
+      id="icon-open"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="absolute inset-0"
+    >
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <!-- 開いた状態: × -->
+    <svg
+      id="icon-close"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="absolute inset-0"
+    >
+      <line x1="4" y1="4" x2="20" y2="20"></line>
+      <line x1="20" y1="4" x2="4" y2="20"></line>
+    </svg>
+  </button>
 </div>
 
 <!-- Language switcher: fixed top-right -->

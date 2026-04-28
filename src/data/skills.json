@@ -51,7 +51,7 @@
           "skills": [
             {
               "name": "Shell / bat",
-              "level": 3,
+              "level": 2,
               "icon": "skill-icons:bash-dark"
             },
             {
@@ -148,14 +148,14 @@
               "icon": "skill-icons:rails"
             },
             {
-              "name": "Wordpress",
-              "level": 2,
-              "icon": "skill-icons:wordpress"
-            },
-            {
               "name": "Laravel",
               "level": 1,
               "icon": "skill-icons:laravel-dark"
+            },
+            {
+              "name": "Wordpress",
+              "level": 1,
+              "icon": "skill-icons:wordpress"
             }
           ]
         }

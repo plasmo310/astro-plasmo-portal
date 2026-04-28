@@ -110,7 +110,7 @@ const { showModel = true } = Astro.props;
 
         new THREE.TextureLoader()
           .loadAsync("/model/T_Elekibear.png")
-          .then((tex) => {
+          .then(async (tex) => {
             tex.colorSpace = THREE.SRGBColorSpace;
             tex.flipY = false;
 
@@ -127,6 +127,7 @@ const { showModel = true } = Astro.props;
             });
 
             if (elekibearRoot) elekibearRoot.visible = true;
+            await renderer.compileAsync(scene, camera);
             dissolveStartTime = performance.now();
           });
 

@@ -2,7 +2,8 @@
 import "../styles/global.css";
 import ThreeBackground from "../components/common/three-background.astro";
 
-const isHome = Astro.url.pathname === "/";
+const homePaths = ["/", "/en", "/en/"];
+const isHome = homePaths.includes(Astro.url.pathname);
 ---
 
 <!doctype html>

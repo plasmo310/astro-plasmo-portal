@@ -120,7 +120,7 @@ const sections = pickupOnly
                           class={`w-full h-full relative ${isSlider ? "image-slider" : ""}`}
                         >
                           {work.images.map((img, index) => {
-                            const src = img.startsWith("http")
+                            const src = img.startsWith("http") || img.startsWith("/")
                               ? img
                               : `/${img}`;
                             const isGif = src.toLowerCase().endsWith(".gif");

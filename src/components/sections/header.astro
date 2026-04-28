@@ -104,16 +104,12 @@ const navItems: NavItem[] = [
       </ul>
 
       <!-- Language switcher (top right, always visible) -->
-      <div class="absolute right-4 flex items-center gap-1 text-[11px] font-body tracking-widest" style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));">
+      <div class="absolute right-4 flex items-center" style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));">
         <a
-          href={jaUrl}
-          class={`transition-colors ${locale === 'ja' ? 'text-white font-bold' : 'text-gray-500 hover:text-gray-300'}`}
-        >JA</a>
-        <span class="text-gray-600">/</span>
-        <a
-          href={enUrl}
-          class={`transition-colors ${locale === 'en' ? 'text-white font-bold' : 'text-gray-500 hover:text-gray-300'}`}
-        >EN</a>
+          href={locale === 'ja' ? enUrl : jaUrl}
+          class="text-white hover:text-accent transition-colors text-sm font-bold tracking-widest"
+          aria-label={locale === 'ja' ? 'Switch to English' : '日本語に切り替え'}
+        >{locale === 'ja' ? 'EN' : 'JA'}</a>
       </div>
 
       <!-- Hamburger button (mobile only) -->

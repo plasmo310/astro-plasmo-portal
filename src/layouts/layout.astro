@@ -25,7 +25,7 @@ const isHome = Astro.url.pathname === "/";
     <button
       id="page-top-btn"
       aria-label="ページトップへ戻る"
-      class="nav-btn fixed bottom-8 left-8 flex flex-col items-center gap-1"
+      class="nav-btn fixed bottom-8 right-8 flex flex-col items-center gap-1"
       style="z-index: 100;"
     >
       <svg
@@ -46,7 +46,7 @@ const isHome = Astro.url.pathname === "/";
 
     <!-- Section Nav -->
     <div
-      class="fixed bottom-8 right-8 flex flex-row gap-6"
+      class="fixed bottom-8 left-8 flex flex-row gap-6"
       style="z-index: 100;"
     >
       <button
@@ -125,10 +125,10 @@ const isHome = Astro.url.pathname === "/";
 
   const pageTopBtn = document.getElementById("page-top-btn");
   const sectionNav = document.querySelector<HTMLElement>(
-    ".fixed.bottom-8.right-8",
+    ".fixed.bottom-8.left-8",
   );
   function updateNavVisibility() {
-    const scrolledEnough = window.scrollY > window.innerHeight * 1.5;
+    const scrolledEnough = window.scrollY > window.innerHeight * 0.9;
     const atBottom =
       window.scrollY + window.innerHeight >=
       document.documentElement.scrollHeight - 40;
@@ -174,7 +174,7 @@ const isHome = Astro.url.pathname === "/";
   }
 
   #page-top-btn,
-  .fixed.bottom-8.right-8 {
+  .fixed.bottom-8.left-8 {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;

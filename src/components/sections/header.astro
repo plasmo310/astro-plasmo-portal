@@ -26,16 +26,18 @@ const enUrl = isEnglish ? pathname : ('/en' + (pathname === '/' ? '/' : pathname
 const navItems: NavItem[] = [
   { label: 'Home', href: `${anchorBase}#home` },
   { label: 'About', href: `${anchorBase}#about` },
+  { label: 'Career', href: `${anchorBase}#career` },
   {
     label: 'Works',
     href: `${anchorBase}#works`,
     children: [{ label: 'All Works', href: worksAllHref }],
   },
-  { label: 'Career', href: `${anchorBase}#career` },
   { label: 'Skills', href: `${anchorBase}#skills` },
   { label: 'Blog', href: 'https://elekibear.com', newTab: true },
   { label: 'Contact', href: `${anchorBase}#contact` },
 ];
+
+const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
 ---
 
 <div class="flex justify-center w-full">
@@ -49,7 +51,7 @@ const navItems: NavItem[] = [
       <!-- Desktop nav -->
       <ul class="hidden md:flex space-x-6 justify-center gap-12">
         {
-          navItems.map((item) =>
+          desktopNavItems.map((item) =>
             item.children ? (
               <li class="relative group/nav">
                 <a
@@ -103,19 +105,11 @@ const navItems: NavItem[] = [
         }
       </ul>
 
-      <!-- Language switcher (top right, always visible) -->
-      <div class="absolute right-4 flex items-center" style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));">
-        <a
-          href={locale === 'ja' ? enUrl : jaUrl}
-          class="text-white hover:text-accent transition-colors text-sm font-bold tracking-widest"
-          aria-label={locale === 'ja' ? 'Switch to English' : '日本語に切り替え'}
-        >{locale === 'ja' ? 'EN' : 'JA'}</a>
-      </div>
 
       <!-- Hamburger button (mobile only) -->
       <button
         id="hamburger"
-        class="md:hidden text-white absolute left-4 w-6 h-6"
+        class="md:hidden text-white fixed top-4 left-4 w-6 h-6"
         style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8)); opacity: 0.95;"
         aria-label="メニューを開く"
         aria-expanded="false"
@@ -206,6 +200,15 @@ const navItems: NavItem[] = [
       </ul>
     </div>
   </nav>
+</div>
+
+<!-- Language switcher: fixed top-right -->
+<div class="fixed top-4 right-4 z-30" style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));">
+  <a
+    href={locale === 'ja' ? enUrl : jaUrl}
+    class="text-white hover:text-accent transition-colors text-sm font-bold tracking-widest"
+    aria-label={locale === 'ja' ? 'Switch to English' : '日本語に切り替え'}
+  >{locale === 'ja' ? 'EN' : 'JA'}</a>
 </div>
 
 <style>

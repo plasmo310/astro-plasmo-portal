@@ -1,7 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
 import SectionHeading from "../common/section-heading.astro";
-import localData from "../../data/contact.json";
+
+interface Social {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+interface ContactData {
+  descHtml: string;
+  socials: Social[];
+}
+
+interface Props {
+  data: ContactData;
+}
+
+const { data: localData } = Astro.props;
 ---
 
 <section id="contact">

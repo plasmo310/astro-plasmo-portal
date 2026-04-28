@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import SectionHeading from "../common/section-heading.astro";
-import data from "../../data/skills.json";
 
 interface SkillItem {
   name: string;
@@ -19,6 +18,11 @@ interface SkillSection {
   categories: SkillCategory[];
 }
 
+interface Props {
+  data: { skill: unknown[] };
+}
+
+const { data } = Astro.props;
 const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
 ---
 

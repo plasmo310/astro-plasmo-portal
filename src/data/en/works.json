@@ -1,0 +1,742 @@
+{
+  "pickupDescHtml": "These are personal works created outside of work.</br>A few are highlighted per category.",
+  "allDescHtml": "These are personal works created outside of work.</br>I create across a wide range of areas including games, 3DCG, tools, web, and sound.",
+  "sections": [
+    {
+      "section": "Game",
+      "works": [
+        {
+          "pickup": true,
+          "category": "Mobile App",
+          "title": "Chocolate Thief",
+          "period": "2023/02",
+          "overview": "A 3D action game created for Valentine's Day. Released within about 2 weeks with a focus on development efficiency.",
+          "descHtml": "A 3D action game created for Valentine's Day.</br>Since I needed to complete the actual work in about a week (including workdays), I had a friend handle pixel art and sound production, and released within about 2 weeks.",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2023/02/title_20230214_2.png",
+            "https://content.elekibear.com/wp-content/uploads/2023/02/ScreenShot-2023-02-12-10.14.29.png",
+            "img/works/Game/chocolate_thief_comic_line.gif"
+          ],
+          "tech": ["Unity", "VContainer", "UniTask", "Shader"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20230214_01"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/masarito617/unity-chocolate-thief-scripts"
+            },
+            {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.chocolate"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E6%80%AA%E7%9B%97%E3%83%81%E3%83%A7%E3%82%B3%E3%83%AC%E3%83%BC%E3%83%88-3d%E3%83%81%E3%83%A7%E3%82%B3%E9%9B%86%E3%82%81%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3/id1669439500"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Mobile App",
+          "title": "Casual Reversi",
+          "period": "2022/10",
+          "overview": "A 3D Reversi game to enjoy with laid-back characters. Developed while systematically learning the basics of game AI.",
+          "descHtml": "A 3D Reversi game to enjoy with laid-back characters.</br>Developed while systematically learning the basics of game AI.</br>Implemented an AI combining MiniMax, Monte Carlo, and reinforcement learning with ML-Agents.",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2022/10/61bc9abe9483d4691d3009ccb2666f5b.png",
+            "https://user-images.githubusercontent.com/77447256/194733487-3d9bd8d7-4c14-4932-88d6-9aca4230c905.png",
+            "img/works/Game/reversi_title_anim.gif"
+          ],
+          "tech": ["Unity", "VContainer", "UniTask", "ML-Agents"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20221014_01"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-reversi-game-scripts"
+            },
+            {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.reversi"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E3%82%86%E3%82%8B%E3%81%84%E3%82%AA%E3%82%BB%E3%83%AD/id6443742920"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Mobile App",
+          "title": "Eleki Shooting 3D",
+          "period": "2022/04",
+          "overview": "A 3D shooting game where you defeat crabs. Implemented with minimal external libraries to learn Unity's core features.",
+          "descHtml": "A 3D shooting game where you defeat crabs.</br>After creating a game in C++ for learning purposes, I ported it to Unity.</br>Implemented with minimal external libraries to learn the core features. (※Except DOTween)",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2022/04/3b6e44bb000625f7fa06667d9fb6ba25.png",
+            "https://content.elekibear.com/wp-content/uploads/2022/04/screenshot-2022-04-10-17.39.12.png",
+            "img/works/Game/eleki_shooting_game.gif"
+          ],
+          "tech": ["Unity"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20220410_01"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-shooting-game-3d-sample"
+            },
+            {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.shooting3d"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E3%82%A8%E3%83%AC%E3%82%AD%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B03d-%E3%82%AB%E3%83%8B%E3%82%92%E7%84%A1%E9%99%90%E3%81%AB%E5%80%92%E3%81%99%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/id1617101732?uo=4"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Mobile App",
+          "title": "AR Whack-a-Mole",
+          "period": "2020/10",
+          "overview": "A whack-a-mole game you can play in AR. Moles (and occasionally hedgehogs) appear within the detected floor area.",
+          "descHtml": "A whack-a-mole game you can play in AR.</br>Moles (and occasionally hedgehogs) appear within the detected floor area.",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2020/10/77d0d6a051d6497df8380beb1c9e20b3.png",
+            "https://is3-ssl.mzstatic.com/image/thumb/Purple114/v4/37/cf/f7/37cff7d2-772a-ff86-4498-b2475e15ea42/source/512x512bb.jpg",
+            "https://content.elekibear.com/wp-content/uploads/2020/10/iphone5inchi_store3_ja.png"
+          ],
+          "tech": ["Unity", "ARFoundataion"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20201004_01"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%25E3%2582%2582%25E3%2581%2590%25E3%2582%2589%25E5%258F%25A9%25E3%2581%258Dar/id1533282982?uo=4"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Mobile App",
+          "title": "MagneTower",
+          "period": "2020/08",
+          "overview": "A mini-game where you stack magnets endlessly. Features localization and Google Play Games integration.",
+          "descHtml": "A mini-game where you stack magnets endlessly.</br>Implemented while observing actual magnet behavior.</br>Features localization and ranking management via Google Play Games.",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/molegoro/store/app-icon-magne-tower.png",
+            "https://content.elekibear.com/wp-content/uploads/2020/08/iphone5inchi_store3_ja-1.png",
+            "img/works/Game/magtower_game.gif"
+          ],
+          "tech": ["Unity"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20200808_01"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%E3%83%9E%E3%82%B0%E3%83%8D%E3%82%BF%E3%83%AF%E3%83%BC-3d%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%82%BF%E3%83%AF%E3%83%BC%E3%82%B2%E3%83%BC%E3%83%A0/id1527374740"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Mobile App",
+          "title": "Go Go Goloyan",
+          "period": "2020/07",
+          "overview": "A 2D action game starring a character named Goloyan. Features a story with ending, 5 full episodes.",
+          "descHtml": "A 2D action game starring a character named Goloyan.</br>This was the first app I ever released personally.</br>Features a story with ending, 5 full episodes, and a time attack mode.",
+          "images": [
+            "https://is5-ssl.mzstatic.com/image/thumb/Purple114/v4/9c/b2/bc/9cb2bc60-f316-487e-1286-5a15bd69ddc6/source/512x512bb.jpg",
+            "https://content.elekibear.com/wp-content/uploads/2020/01/534eba34a2a6e517cc161b917f2615b7.png",
+            "img/works/Game/goloyan_boss_anim.gif"
+          ],
+          "tech": ["Unity", "Fungus", "NCMB"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20200712_01"
+            },
+            {
+              "icon": "mdi:google-play",
+              "tooltip": "GooglePlay",
+              "href": "https://play.google.com/store/apps/details?id=com.molegoro.GoGoGoloyan"
+            },
+            {
+              "icon": "fa-brands:app-store",
+              "tooltip": "AppStore",
+              "href": "https://apps.apple.com/jp/app/%25E3%2582%25B4%25E3%2583%25BC%25E3%2582%25B4%25E3%2583%25BC%25E3%2582%25B4%25E3%2583%25AD%25E3%2583%25A4%25E3%2583%25B3/id1523138918?uo=4"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Desktop Game",
+          "title": "CatRunner",
+          "period": "2024/05",
+          "overview": "A mini-game created mainly in C++ for learning Unreal Engine. Contains the minimum elements necessary for game development.",
+          "descHtml": "A mini-game created mainly in C++ for learning Unreal Engine.</br>It covers the minimum elements needed for game development, making it useful for engineers familiar with other game engines who are trying Unreal Engine for the first time.",
+          "images": [
+            "https://content.elekibear.com/content/20240519_01_ue5_cpp_run_game_title.png",
+            "https://raw.githubusercontent.com/plasmo310/ue5-cat-runner/main/ReadMeContents/01_game_ready.png",
+            "https://raw.githubusercontent.com/plasmo310/ue5-cat-runner/main/ReadMeContents/02_game_levelup.png"
+          ],
+          "tech": ["UnrealEngine", "C++"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20240519_01_ue5_cpp_basic"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/ue5-cat-runner"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "3DCG",
+      "works": [
+        {
+          "pickup": true,
+          "category": "Houdini",
+          "title": "Manga-Style Render HDA",
+          "period": "2026/04",
+          "overview": "An HDA that creates manga-style rendering and speech bubbles from scene information in Copernicus.",
+          "descHtml": "Created an HDA that performs manga-style rendering from scene information in Copernicus.</br>After toon-shading using color and normal information, tones are assigned based on threshold values.</br>Additionally created an HDA for creating speech bubbles.",
+          "images": [
+            "https://content.elekibear.com/content/20260413_01_title.png",
+            "https://content.elekibear.com/content/20260413_01_06.png",
+            "https://content.elekibear.com/content/20260413_01_29.png"
+          ],
+          "tech": ["COP"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260413_01_houdini_comic_render"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/houdini-comic-render"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Houdini",
+          "title": "Mardini2026 Works",
+          "period": "2026/03",
+          "overview": "Works created for \"Mardini2026\", a contest hosted by SideFX. Posted at a pace of 2-3 days per week.",
+          "descHtml": "Works created for \"Mardini2026\", a contest hosted by SideFX.</br>Posted at a pace of 2-3 days per week, challenging myself while trying new things.",
+          "images": [
+            "https://content.elekibear.com/content/20260403_01_title.png",
+            "https://content.elekibear.com/content/mardini2026/09_Gooey.png",
+            "https://content.elekibear.com/content/mardini2026/27_Talk.png"
+          ],
+          "tech": ["SOP", "DOP", "KineFX", "DOP", "LOP"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260403_01_houdini_mardini_2026"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Houdini",
+          "title": "Mardini2025 Works",
+          "period": "2025/03",
+          "overview": "Works created for \"Mardini2025\", a contest hosted by SideFX. Posted all 31 days.",
+          "descHtml": "Works created for \"Mardini2025\", a contest hosted by SideFX.</br>Since I was still new to Houdini, I completed all 31 days of posts while learning each feature.</br>On DAY23, I was selected as the daily 2nd place.",
+          "images": [
+            "https://content.elekibear.com/content/20251124_01_title.png",
+            "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png",
+            "https://content.elekibear.com/content/mardini2025/22_dop_explode.png"
+          ],
+          "tech": ["SOP", "DOP", "KineFX", "DOP", "LOP"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Houdini",
+          "title": "Ferris Wheel Generation HDA",
+          "period": "2025/01",
+          "overview": "An HDA that generates a Ferris wheel model. The shape and color can be changed procedurally.",
+          "descHtml": "An HDA that generates a Ferris wheel model.</br>Using VEX to generate the model from edges.</br>The shape and color can be changed procedurally.",
+          "images": [
+            "https://content.elekibear.com/content/20240103_02_title.png",
+            "https://content.elekibear.com/content/20240103_02_04.png",
+            "https://content.elekibear.com/content/20240103_02_03.png"
+          ],
+          "tech": ["SOP"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20250103_02_houdini_sop"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/houdini-ferris-wheel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Tool",
+      "works": [
+        {
+          "pickup": true,
+          "category": "IDE Tool",
+          "title": "Image Resize & Save Tool (Improved)",
+          "period": "2025/11",
+          "overview": "A tool for resizing and saving images, created for blog writing. Works as a VS Code extension.",
+          "descHtml": "A tool for resizing and saving images, created for blog writing.</br>Developed as a VS Code extension so it works by directly dragging and dropping into Markdown files.",
+          "images": [
+            "https://content.elekibear.com/content/20251122_01_01_title.png",
+            "img/works/Tool/image_resize_tool_vscode.gif"
+          ],
+          "tech": ["TypeScript", "VSCode Extension"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20251122_01_vscode_image_resizer"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/vscode-image-resizer"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Desktop Tool",
+          "title": "CSV Editor Tool",
+          "period": "2023/12",
+          "overview": "A tool for editing CSV data, created for blog writing. Works as a desktop application.",
+          "descHtml": "A tool for editing CSV data, created for blog writing.</br>Features a display format specialized for data used in the blog.",
+          "images": [
+            "https://content.elekibear.com/content/20231231_category_browser_title.png",
+            "img/works/Tool/csv_edit_tool_electron.gif"
+          ],
+          "tech": ["Electron", "Vue.js", "TypeScript"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20231231_02_category_browser"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/masarito617/electron-category-browser"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Desktop Tool",
+          "title": "Image Resize & Save Tool",
+          "period": "2023/12",
+          "overview": "A tool for resizing and saving images, created for blog writing. Works as a desktop application.",
+          "descHtml": "A tool for resizing and saving images, created for blog writing.</br>Designed with a simple UI that's immediately understandable at a glance.</br>Developed using Electron and Vue.js, which I had not used before.",
+          "images": [
+            "https://content.elekibear.com/content/20231231_image_resize_title.png",
+            "img/works/Tool/image_resize_tool_electron.gif"
+          ],
+          "tech": ["Electron", "Vue.js", "TypeScript"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20231231_02_image_resizer"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/electron-image-resizer"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Unity Tool",
+          "title": "Slideshow Creator Tool",
+          "period": "2024/10",
+          "overview": "A slideshow creation tool utilizing Unity's Timeline.",
+          "descHtml": "A slideshow creation tool utilizing Unity's Timeline.</br>Developed to handle nearly 500 images needed for a proposal video.</br>By basing it on Excel data for efficiency, I was able to complete it in about 2 weeks.",
+          "images": [
+            "https://content.elekibear.com/content/20241031_01_unity_movie_maker_title.png",
+            "img/works/Tool/unity_movie_maker.gif"
+          ],
+          "tech": ["Unity", "Timeline"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20241031_01_unity_movie_maker"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-photo-movie-maker"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Mobile App",
+          "title": "English Vocabulary Study App",
+          "period": "2022/12",
+          "overview": "An app that generates 4-choice English vocabulary quizzes from settings data.",
+          "descHtml": "An app that generates 4-choice English vocabulary quizzes from settings data.</br>Data can be configured via Google Spreadsheets, so no rebuild is needed.",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2022/12/title_20221210_01.png",
+            "https://content.elekibear.com/wp-content/uploads/2022/12/ScreenShot-2022-12-10-23.03.59-1.png"
+          ],
+          "tech": ["Flutter", "Dart"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20221210_01"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/flutter-english-study-app-sample"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Web Tool",
+          "title": "Floor Plan Dimension Calculator",
+          "period": "2020/09",
+          "overview": "A tool that calculates approximate dimensions from floor plan images.",
+          "descHtml": "A tool that calculates approximate dimensions from floor plan images.</br>Created from my own experience of forgetting to measure dimensions, but it seems to have decent demand.",
+          "images": [
+            "https://content.elekibear.com/wp-content/uploads/2020/09/77d0d6a051d6497df8380beb1c9e20b3-6.png",
+            "https://content.elekibear.com/wp-content/uploads/2020/09/screenshot-2020-09-26-12.03.07.png"
+          ],
+          "tech": ["JavaScript"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20200926_01"
+            },
+            {
+              "icon": "mdi:web",
+              "tooltip": "Tool",
+              "href": "https://elekibear.com/tool/madoriconvtool"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "section": "Web",
+      "works": [
+        {
+          "pickup": true,
+          "category": "Blog",
+          "title": "Elekibear in the City",
+          "period": "2020/01 - Present",
+          "overview": "A technical blog sharing information about 3DCG and game development.",
+          "descHtml": "A technical blog sharing information about 3DCG and game development.</br>I strive to lower the technical barrier by explaining things in a relaxed atmosphere.</br>As of April 2026, there are about 300 articles with approximately 10,000 monthly page views.",
+          "images": ["img/works/web_blog_elekibear.png"],
+          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Website",
+              "href": "https://elekibear.com"
+            },
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Dev Article",
+              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Portfolio",
+          "title": "Plasmo Portal",
+          "period": "2026/04 - Present",
+          "overview": "The site (this page) created to consolidate personal activities.",
+          "descHtml": "The site (this page) created to consolidate personal activities.</br>Created with a simple structure using Astro and Three.js.",
+          "images": ["img/works/web_portfolio_plasmo.png"],
+          "tech": ["Astro", "Three.js", "Tailwind CSS"],
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Website",
+              "href": "https://plasmoportal.com"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Server",
+          "title": "Go Ranking API",
+          "period": "2024/04",
+          "overview": "A general-purpose ranking API implemented in Go.",
+          "descHtml": "A general-purpose ranking API implemented in Go. Deployed on a VPS server and used by various self-made apps.",
+          "images": [
+            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
+          ],
+          "tech": ["Go", "Docker", "VPS"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Graphics",
+      "works": [
+        {
+          "pickup": true,
+          "category": "Three.js",
+          "title": "Toon Shader",
+          "period": "2026/02",
+          "overview": "A toon shader implemented in Three.js. The outline is rendered using the back-face method.",
+          "descHtml": "A toon shader implemented in Three.js.</br>The outline is rendered using the back-face method.</br>Also supports hard-edge models.",
+          "images": [
+            "https://content.elekibear.com/content/20260215_02_title.png",
+            "https://content.elekibear.com/content/20260215_02_04.png"
+          ],
+          "tech": ["Three.js", "GLSL"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260215_02_three_toon_outline"
+            },
+            {
+              "icon": "mdi:web",
+              "tooltip": "CodePen",
+              "href": "https://codepen.io/masarito617/pen/jErRdLe"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/three-toon-outline-material"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Python",
+          "title": "Wave Function Collapse Algorithm",
+          "period": "2025/06",
+          "overview": "An implementation sample of the Wave Function Collapse algorithm. Can automatically extract patterns from input images and generate new content.",
+          "descHtml": "An implementation sample of the Wave Function Collapse algorithm.</br>Can automatically extract patterns from input images and generate new content.",
+          "images": [
+            "https://content.elekibear.com/content/20250623_01_title.png"
+          ],
+          "tech": ["Python", "Wave Function Collapse"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20250622_01_wave_function_collapse"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/python-wfc-generater"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Shadertoy",
+          "title": "Pink Panther Cell Division",
+          "period": "2024/06",
+          "overview": "An art piece using the Julia set. Created on Shadertoy.",
+          "descHtml": "An art piece using the Julia set.</br>Creates unique shapes by animating parameters.</br>Created on Shadertoy.",
+          "images": [
+            "https://content.elekibear.com/content/20251102_01_10.png",
+            "https://content.elekibear.com/content/20251102_01_11.png"
+          ],
+          "tech": ["GLSL", "Fractal"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20251102_01_math_complex"
+            },
+            {
+              "icon": "mdi:web",
+              "tooltip": "Shadertoy",
+              "href": "https://www.shadertoy.com/view/43V3RG"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Unity",
+          "title": "Boids Simulation",
+          "period": "2024/05",
+          "overview": "A fish school simulation sample using Boids. Calculations are performed with ComputeShader.",
+          "descHtml": "A fish school simulation sample using Boids.</br>Both 2D and 3D samples are provided.</br>Calculations are performed with ComputeShader.",
+          "images": [
+            "https://content.elekibear.com/content/20240528_01_unity_boids_title.png",
+            "https://content.elekibear.com/content/20240528_01_unity_boids_02.png",
+            "https://content.elekibear.com/content/20240528_01_unity_boids_06.png"
+          ],
+          "tech": ["ComputeShader"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20240528_01_unity_boids"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-boids-simulation/"
+            }
+          ]
+        },
+        {
+          "pickup": false,
+          "category": "Unity",
+          "title": "3D Fluid Simulation (SPH)",
+          "period": "2023/05",
+          "overview": "A fluid simulation sample using SPH with ComputeShader. Rendering uses ray marching.",
+          "descHtml": "A fluid simulation sample using SPH with ComputeShader.</br>Both 2D and 3D simulations are provided.</br>Rendering uses ray marching.",
+          "images": [
+            "https://user-images.githubusercontent.com/84005269/228707947-a96af208-db26-4aef-bb4d-4d995de936c8.png",
+            "https://user-images.githubusercontent.com/84005269/228707486-1885eabb-cac2-4e13-88e4-06065d80b6ce.png"
+          ],
+          "tech": ["HLSL", "ComputeShader", "RayMarching"],
+          "links": [
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-fluid-sample"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Sound",
+      "works": [
+        {
+          "pickup": true,
+          "category": "DTM Plugins",
+          "title": "Watanabe Distortion",
+          "period": "2024/03",
+          "overview": "A distortion VST/AU plugin for use with various DAW software.",
+          "descHtml": "A distortion VST/AU plugin for use with various DAW software.</br>Manipulates waveforms to produce 2 types of distortion.</br>Created using JUCE.",
+          "images": [
+            "https://content.elekibear.com/content/20240322_01_juce_distortion_title.png",
+            "https://content.elekibear.com/content/20240322_01_juce_distortion_01.png"
+          ],
+          "tech": ["JUCE", "C++"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20240322_01_juce_distortion"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/juce-plugin-distortion"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Architecture",
+          "title": "Sound Middleware Integration",
+          "period": "2024/03",
+          "overview": "Implemented a design that doesn't depend on sound middleware (CRI/Wwise) in Unity, along with samples.",
+          "descHtml": "Implemented a design that doesn't depend on sound middleware (CRI/Wwise) in Unity.</br>Additional samples include object manipulation in sync with beats and interactive music.",
+          "images": [
+            "https://content.elekibear.com/content/20240327_01_unity-multi_audio_title.png",
+            "https://content.elekibear.com/content/20240327_01_unity-multi_audio_03.png",
+            "https://content.elekibear.com/content/20240327_01_unity-multi_audio_05.png"
+          ],
+          "tech": ["Unity", "CRI ADX", "Wwise"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20240327_01_unity_multi_audio"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-multi-audio-sample"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

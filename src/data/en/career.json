@@ -1,0 +1,23 @@
+[
+  {
+    "company": "Game Company",
+    "role": "Technical Artist",
+    "period": "2024/6 - Present",
+    "description": "Responsible for tool development and pipeline construction for console games.",
+    "skills": ["Houdini", "Maya", "Python", "C++", "Unreal Engine"]
+  },
+  {
+    "company": "Game Company",
+    "role": "Client Engineer",
+    "period": "2021/5 - 2024/5",
+    "description": "Responsible for general feature development of mobile/console games.",
+    "skills": ["Unity", "C#", "TypeScript", "Ruby on Rails", "Jenkins"]
+  },
+  {
+    "company": "IT Services Company",
+    "role": "Systems Engineer",
+    "period": "2016/4 - 2021/3",
+    "description": "Responsible for general development of enterprise business systems.",
+    "skills": ["Java", "Python", "SQL", "JavaScript", "HTML/CSS"]
+  }
+]

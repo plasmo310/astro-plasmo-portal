@@ -1,6 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-import data from "../../data/about.json";
 import SectionHeading from "../common/section-heading.astro";
 
 interface Social {
@@ -18,7 +17,11 @@ interface ProfileData {
   socials: Social[];
 }
 
-const profileData: ProfileData = data;
+interface Props {
+  data: ProfileData;
+}
+
+const { data: profileData } = Astro.props;
 ---
 
 <section id="about">

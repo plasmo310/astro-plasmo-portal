@@ -1,5 +1,4 @@
 ---
-import careerData from "../../data/career.json";
 import SectionHeading from "../common/section-heading.astro";
 
 interface CareerItem {
@@ -10,7 +9,11 @@ interface CareerItem {
   skills: string[];
 }
 
-const typedCareerData: CareerItem[] = careerData;
+interface Props {
+  data: CareerItem[];
+}
+
+const { data: typedCareerData } = Astro.props;
 ---
 
 <section id="career">

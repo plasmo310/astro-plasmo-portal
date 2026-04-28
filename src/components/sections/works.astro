@@ -3,10 +3,16 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import SectionHeading from "../common/section-heading.astro";
 import WorksModal from "./works-modal.astro";
-import worksData from "../../data/works.json";
+import type { Locale } from "../../lib/dataLoader";
 
 interface Props {
   pickupOnly?: boolean;
+  locale?: Locale;
+  data: {
+    pickupDescHtml: string;
+    allDescHtml: string;
+    sections: WorkSection[];
+  };
 }
 
 interface WorkLink {
@@ -38,12 +44,13 @@ interface WorksData {
   sections: WorkSection[];
 }
 
-const { pickupOnly = true } = Astro.props;
+const { pickupOnly = true, locale = 'ja', data: worksData } = Astro.props;
 const {
   pickupDescHtml,
   allDescHtml,
   sections: rawSections,
 } = worksData as unknown as WorksData;
+const worksAllHref = locale === 'en' ? '/en/works' : '/works';
 const title = pickupOnly ? "Pickup Works" : "All Works";
 const currentDescHtml = pickupOnly ? pickupDescHtml : allDescHtml;
 const sections = pickupOnly
@@ -68,7 +75,7 @@ const sections = pickupOnly
         pickupOnly && (
           <div class="mt-16 flex justify-end">
             <a
-              href="/works"
+              href={worksAllHref}
               class="group inline-flex items-center gap-3 text-xl text-white hover:text-accent transition-colors duration-300 font-body tracking-wider font-semibold"
             >
               All Works
@@ -200,7 +207,7 @@ const sections = pickupOnly
         pickupOnly && (
           <div class="mt-16 flex justify-end">
             <a
-              href="/works"
+              href={worksAllHref}
               class="group inline-flex items-center gap-3 text-xl text-white hover:text-accent transition-colors duration-300 font-body tracking-wider font-semibold"
             >
               All Works

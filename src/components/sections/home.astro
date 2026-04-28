@@ -1,5 +1,8 @@
 ---
-import localData from "../../data/home.json";
+interface Props {
+  data: { introHtml: string };
+}
+const { data } = Astro.props;
 ---
 
 <section id="home" class="relative min-h-screen text-center">
@@ -21,7 +24,7 @@ import localData from "../../data/home.json";
     <div class="w-full max-w-4xl">
       <div
         class="mb-8 text-white text-[11px] sm:text-xs md:text-sm leading-relaxed font-semibold home-intro"
-        set:html={localData.introHtml}
+        set:html={data.introHtml}
       />
       <a
         href="#about"

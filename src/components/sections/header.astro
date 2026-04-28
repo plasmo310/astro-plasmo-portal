@@ -12,21 +12,29 @@ interface NavItem {
   children?: NavChild[];
 }
 
-const isHome = Astro.url.pathname === "/";
-const anchorPrefix = isHome ? "" : "/";
+const pathname = Astro.url.pathname;
+const isEnglish = pathname.startsWith('/en');
+const locale = isEnglish ? 'en' : 'ja';
+
+const isIndexPage = pathname === '/' || pathname === '/en/' || pathname === '/en';
+const anchorBase = isIndexPage ? '' : (isEnglish ? '/en/' : '/');
+
+const worksAllHref = isEnglish ? '/en/works' : '/works';
+const jaUrl = isEnglish ? (pathname.replace(/^\/en/, '') || '/') : pathname;
+const enUrl = isEnglish ? pathname : ('/en' + (pathname === '/' ? '/' : pathname));
 
 const navItems: NavItem[] = [
-  { label: "Home", href: `${anchorPrefix}#home` },
-  { label: "About", href: `${anchorPrefix}#about` },
+  { label: 'Home', href: `${anchorBase}#home` },
+  { label: 'About', href: `${anchorBase}#about` },
   {
-    label: "Works",
-    href: `${anchorPrefix}#works`,
-    children: [{ label: "All Works", href: "/works" }],
+    label: 'Works',
+    href: `${anchorBase}#works`,
+    children: [{ label: 'All Works', href: worksAllHref }],
   },
-  { label: "Career", href: `${anchorPrefix}#career` },
-  { label: "Skills", href: `${anchorPrefix}#skills` },
-  { label: "Blog", href: "https://elekibear.com", newTab: true },
-  { label: "Contact", href: `${anchorPrefix}#contact` },
+  { label: 'Career', href: `${anchorBase}#career` },
+  { label: 'Skills', href: `${anchorBase}#skills` },
+  { label: 'Blog', href: 'https://elekibear.com', newTab: true },
+  { label: 'Contact', href: `${anchorBase}#contact` },
 ];
 ---
 
@@ -36,7 +44,7 @@ const navItems: NavItem[] = [
     class="fixed top-0 left-0 z-20 w-full border-b border-transparent transition-all duration-500 ease-in-out"
   >
     <div
-      class="container mx-auto flex justify-start md:justify-center items-center py-4 px-6 reveal-content"
+      class="container mx-auto relative flex justify-center items-center py-4 px-6 reveal-content"
     >
       <!-- Desktop nav -->
       <ul class="hidden md:flex space-x-6 justify-center gap-12">
@@ -95,10 +103,23 @@ const navItems: NavItem[] = [
         }
       </ul>
 
+      <!-- Language switcher (top right, always visible) -->
+      <div class="absolute right-4 flex items-center gap-1 text-[11px] font-body tracking-widest" style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));">
+        <a
+          href={jaUrl}
+          class={`transition-colors ${locale === 'ja' ? 'text-white font-bold' : 'text-gray-500 hover:text-gray-300'}`}
+        >JA</a>
+        <span class="text-gray-600">/</span>
+        <a
+          href={enUrl}
+          class={`transition-colors ${locale === 'en' ? 'text-white font-bold' : 'text-gray-500 hover:text-gray-300'}`}
+        >EN</a>
+      </div>
+
       <!-- Hamburger button (mobile only) -->
       <button
         id="hamburger"
-        class="md:hidden text-white relative w-6 h-6"
+        class="md:hidden text-white absolute left-4 w-6 h-6"
         style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8)); opacity: 0.95;"
         aria-label="メニューを開く"
         aria-expanded="false"

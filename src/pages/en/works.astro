@@ -1,0 +1,15 @@
+---
+import { DataLoader } from "../../lib/dataLoader";
+import Layout from "../../layouts/layout.astro";
+import Header from "../../components/sections/header.astro";
+import Works from "../../components/sections/works.astro";
+import Footer from "../../components/sections/footer.astro";
+
+const loader = new DataLoader('en');
+---
+
+<Layout>
+  <Header />
+  <Works data={loader.works()} locale="en" pickupOnly={false} />
+  <Footer />
+</Layout>

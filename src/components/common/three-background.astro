@@ -13,7 +13,7 @@ const { showModel = true } = Astro.props;
 
 <script>
   import * as THREE from "three";
-  import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
+  import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
   const canvas = document.getElementById("three-bg") as HTMLCanvasElement;
   const renderer = new THREE.WebGLRenderer({
@@ -95,19 +95,12 @@ const { showModel = true } = Astro.props;
 
   const showModel = canvas.dataset.showModel === "true";
 
-  // FBX読み込み
-  const manager = new THREE.LoadingManager();
-  manager.setURLModifier((url) => {
-    if (/\.(png|jpe?g|tga|bmp|gif)$/i.test(url))
-      return "/model/T_Elekibear.png";
-    return url;
-  });
-
-  const fbxLoader = new FBXLoader(manager);
+  const gltfLoader = new GLTFLoader();
   if (showModel)
-    fbxLoader.load(
-      "/model/SM_Elekibear.fbx",
-      (model) => {
+    gltfLoader.load(
+      "/model/SM_Elekibear.glb",
+      (gltf) => {
+        const model = gltf.scene;
         elekibearRoot = new THREE.Group();
         elekibearRoot.add(model);
         elekibearRoot.visible = false;
@@ -119,6 +112,7 @@ const { showModel = true } = Astro.props;
           .loadAsync("/model/T_Elekibear.png")
           .then((tex) => {
             tex.colorSpace = THREE.SRGBColorSpace;
+            tex.flipY = false;
 
             const mat = new THREE.MeshToonMaterial({
               map: tex,
@@ -136,9 +130,9 @@ const { showModel = true } = Astro.props;
             dissolveStartTime = performance.now();
           });
 
-        animMixer = new THREE.AnimationMixer(model);
-        if (model.animations.length > 0) {
-          const action = animMixer.clipAction(model.animations[0]);
+        animMixer = new THREE.AnimationMixer(gltf.scene);
+        if (gltf.animations.length > 0) {
+          const action = animMixer.clipAction(gltf.animations[0], gltf.scene);
           action.setLoop(THREE.LoopPingPong, Infinity);
           action.play();
         }

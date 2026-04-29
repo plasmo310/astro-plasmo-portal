@@ -3,7 +3,82 @@
   "allDescHtml": "仕事以外で作った個人制作物になります。</br>ゲーム・3DCG・ツール・Web・サウンドと幅広く創作を行っています。",
   "sections": [
     {
+      "section": "Web",
+      "descHtml": "Webサイトの開発・運営を行なっている他、簡易的なAPIも自前で構築して運用しています。</br>都会のエレキベアという技術ブログでは、300ほどの記事を投稿しています。",
+      "works": [
+        {
+          "pickup": true,
+          "category": "Blog",
+          "title": "都会のエレキベア",
+          "period": "2020/01 - 現在",
+          "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
+          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
+          "images": ["img/works/web_blog_elekibear.png"],
+          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Webサイト",
+              "href": "https://elekibear.com"
+            },
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "開発記事",
+              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Portfolio",
+          "title": "Plasmo Portal",
+          "period": "2026/04 - 現在",
+          "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
+          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。</br>Astro、Three.jsを使用してシンプルな構成で制作しました。",
+          "images": ["img/works/web_plasmo_portal.png"],
+          "tech": ["Astro", "Three.js", "Tailwind CSS"],
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Webサイト",
+              "href": "https://plasmoportal.com"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Server",
+          "title": "GoランキングAPI",
+          "period": "2024/04",
+          "overview": "Goで実装した汎用ランキングAPIです。",
+          "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
+          "images": [
+            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
+          ],
+          "tech": ["Go", "Docker", "VPS"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "section": "Game",
+      "descHtml": "iOS/Android向けのアプリを6本リリースまで行いました。</br>コンソールゲームの開発も計画中です。",
       "works": [
         {
           "pickup": true,
@@ -226,6 +301,7 @@
     },
     {
       "section": "3DCG",
+      "descHtml": "CG制作及び関連ツール開発の学習を行っています。</br>Houdiniを活用した表現力向上に力を入れています。",
       "works": [
         {
           "pickup": true,
@@ -275,7 +351,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Houdini",
           "title": "Mardini2025制作物",
           "period": "2025/03",
@@ -296,7 +372,7 @@
           ]
         },
         {
-          "pickup": false,
+          "pickup": true,
           "category": "Houdini",
           "title": "観覧車生成HDA",
           "period": "2025/01",
@@ -325,6 +401,7 @@
     },
     {
       "section": "Tool",
+      "descHtml": "デスクトップ・ゲームエンジン・Web用と、幅広くツールを作っています。</br>基本的には自身の日々の作業の課題を解決するために作成したものになっています。",
       "works": [
         {
           "pickup": true,
@@ -478,87 +555,14 @@
         }
       ]
     },
-
-    {
-      "section": "Web",
-      "works": [
-        {
-          "pickup": true,
-          "category": "Blog",
-          "title": "都会のエレキベア",
-          "period": "2020/01 - 現在",
-          "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
-          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
-          "images": ["img/works/web_blog_elekibear.png"],
-          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
-          "links": [
-            {
-              "icon": "mdi:web",
-              "tooltip": "Webサイト",
-              "href": "https://elekibear.com"
-            },
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "開発記事",
-              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
-            }
-          ]
-        },
-        {
-          "pickup": true,
-          "category": "Portfolio",
-          "title": "Plasmo Portal",
-          "period": "2026/04 - 現在",
-          "overview": "個人活動を集約するために制作したサイト(当ページ)です。",
-          "descHtml": "個人活動を集約するために制作したサイト(当ページ)です。</br>Astro、Three.jsを使用してシンプルな構成で制作しました。",
-          "images": ["img/works/web_portfolio_plasmo.png"],
-          "tech": ["Astro", "Three.js", "Tailwind CSS"],
-          "links": [
-            {
-              "icon": "mdi:web",
-              "tooltip": "Webサイト",
-              "href": "https://plasmoportal.com"
-            }
-          ]
-        },
-        {
-          "pickup": true,
-          "category": "Server",
-          "title": "GoランキングAPI",
-          "period": "2024/04",
-          "overview": "Goで実装した汎用ランキングAPIです。",
-          "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
-          "images": [
-            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
-          ],
-          "tech": ["Go", "Docker", "VPS"],
-          "links": [
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "ブログ記事",
-              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
-            }
-          ]
-        }
-      ]
-    },
     {
       "section": "Graphics",
+      "descHtml": "シェーダー実装や各種シミュレーション、描画周りの学習を行っています。</br>コードベースでの表現拡張が好きで、フラクタルにも興味があります。",
       "works": [
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Three.js",
-          "title": "トゥーンシェーダー",
+          "title": "背面法トゥーンシェーダー",
           "period": "2026/02",
           "overview": "Three.jsで実装したトゥーンシェーダーです。アウトラインは背面法で描画しています。",
           "descHtml": "Three.jsで実装したトゥーンシェーダーです。</br>アウトラインは背面法で描画しています。</br>ハードエッジモデルにも対応。",
@@ -661,7 +665,7 @@
           ]
         },
         {
-          "pickup": false,
+          "pickup": true,
           "category": "Unity",
           "title": "3D流体シミュレーション(SPH)",
           "period": "2023/05",
@@ -672,18 +676,13 @@
             "https://user-images.githubusercontent.com/84005269/228707486-1885eabb-cac2-4e13-88e4-06065d80b6ce.png"
           ],
           "tech": ["HLSL", "ComputeShader", "RayMarching"],
-          "links": [
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/unity-fluid-sample"
-            }
-          ]
+          "links": []
         }
       ]
     },
     {
       "section": "Sound",
+      "descHtml": "バンドを行っていた経験から、自身で作曲など行なっています。</br>その他、波形操作やミドルウェア実装などにも挑戦しました。",
       "works": [
         {
           "pickup": true,

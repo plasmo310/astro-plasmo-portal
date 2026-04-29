@@ -3,7 +3,82 @@
   "allDescHtml": "These are personal works created outside of work.</br>I create across a wide range of areas including games, 3DCG, tools, web, and sound.",
   "sections": [
     {
+      "section": "Web",
+      "descHtml": "In addition to developing and running websites, I also build and operate simple APIs myself.</br>On my technical blog \"Elekibear in the City\", I have posted about 300 articles.",
+      "works": [
+        {
+          "pickup": true,
+          "category": "Blog",
+          "title": "Elekibear in the City",
+          "period": "2020/01 - Present",
+          "overview": "A technical blog sharing information about 3DCG and game development.",
+          "descHtml": "A technical blog sharing information about 3DCG and game development.</br>I strive to lower the technical barrier by explaining things in a relaxed atmosphere.</br>As of April 2026, there are about 300 articles with approximately 10,000 monthly page views.",
+          "images": ["img/works/web_blog_elekibear.png"],
+          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Website",
+              "href": "https://elekibear.com"
+            },
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Dev Article",
+              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Portfolio",
+          "title": "Plasmo Portal",
+          "period": "2026/04 - Present",
+          "overview": "The site (this page) created to consolidate personal activities.",
+          "descHtml": "The site (this page) created to consolidate personal activities.</br>Created with a simple structure using Astro and Three.js.",
+          "images": ["img/works/web_plasmo_portal.png"],
+          "tech": ["Astro", "Three.js", "Tailwind CSS"],
+          "links": [
+            {
+              "icon": "mdi:web",
+              "tooltip": "Website",
+              "href": "https://plasmoportal.com"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Server",
+          "title": "Go Ranking API",
+          "period": "2024/04",
+          "overview": "A general-purpose ranking API implemented in Go.",
+          "descHtml": "A general-purpose ranking API implemented in Go. Deployed on a VPS server and used by various self-made apps.",
+          "images": [
+            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
+          ],
+          "tech": ["Go", "Docker", "VPS"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "section": "Game",
+      "descHtml": "I have released 6 apps for iOS/Android.</br>I'm also planning to develop a console game.",
       "works": [
         {
           "pickup": true,
@@ -226,6 +301,7 @@
     },
     {
       "section": "3DCG",
+      "descHtml": "I am studying CG production and related tool development.</br>I focus on improving my expressive capabilities using Houdini.",
       "works": [
         {
           "pickup": true,
@@ -275,7 +351,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Houdini",
           "title": "Mardini2025 Works",
           "period": "2025/03",
@@ -296,7 +372,7 @@
           ]
         },
         {
-          "pickup": false,
+          "pickup": true,
           "category": "Houdini",
           "title": "Ferris Wheel Generation HDA",
           "period": "2025/01",
@@ -325,6 +401,7 @@
     },
     {
       "section": "Tool",
+      "descHtml": "I create tools across a wide range — desktop, game engine, and web.</br>Most of them were made to solve challenges in my own daily work.",
       "works": [
         {
           "pickup": true,
@@ -478,85 +555,12 @@
         }
       ]
     },
-
-    {
-      "section": "Web",
-      "works": [
-        {
-          "pickup": true,
-          "category": "Blog",
-          "title": "Elekibear in the City",
-          "period": "2020/01 - Present",
-          "overview": "A technical blog sharing information about 3DCG and game development.",
-          "descHtml": "A technical blog sharing information about 3DCG and game development.</br>I strive to lower the technical barrier by explaining things in a relaxed atmosphere.</br>As of April 2026, there are about 300 articles with approximately 10,000 monthly page views.",
-          "images": ["img/works/web_blog_elekibear.png"],
-          "tech": ["Next.js", "React", "TypeScript", "Emotion"],
-          "links": [
-            {
-              "icon": "mdi:web",
-              "tooltip": "Website",
-              "href": "https://elekibear.com"
-            },
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "Dev Article",
-              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/nextjs-elekibear-blog-scripts"
-            }
-          ]
-        },
-        {
-          "pickup": true,
-          "category": "Portfolio",
-          "title": "Plasmo Portal",
-          "period": "2026/04 - Present",
-          "overview": "The site (this page) created to consolidate personal activities.",
-          "descHtml": "The site (this page) created to consolidate personal activities.</br>Created with a simple structure using Astro and Three.js.",
-          "images": ["img/works/web_portfolio_plasmo.png"],
-          "tech": ["Astro", "Three.js", "Tailwind CSS"],
-          "links": [
-            {
-              "icon": "mdi:web",
-              "tooltip": "Website",
-              "href": "https://plasmoportal.com"
-            }
-          ]
-        },
-        {
-          "pickup": true,
-          "category": "Server",
-          "title": "Go Ranking API",
-          "period": "2024/04",
-          "overview": "A general-purpose ranking API implemented in Go.",
-          "descHtml": "A general-purpose ranking API implemented in Go. Deployed on a VPS server and used by various self-made apps.",
-          "images": [
-            "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
-          ],
-          "tech": ["Go", "Docker", "VPS"],
-          "links": [
-            {
-              "icon": "mdi:note-outline",
-              "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
-            },
-            {
-              "icon": "mdi:github",
-              "tooltip": "GitHub",
-              "href": "https://github.com/plasmo310/unity-go-ranking-sample"
-            }
-          ]
-        }
-      ]
-    },
     {
       "section": "Graphics",
+      "descHtml": "I study shader implementation, various simulations, and rendering topics.</br>I enjoy expanding expression through code and am also interested in fractals.",
       "works": [
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Three.js",
           "title": "Toon Shader",
           "period": "2026/02",
@@ -661,7 +665,7 @@
           ]
         },
         {
-          "pickup": false,
+          "pickup": true,
           "category": "Unity",
           "title": "3D Fluid Simulation (SPH)",
           "period": "2023/05",
@@ -684,6 +688,7 @@
     },
     {
       "section": "Sound",
+      "descHtml": "Drawing on my experience playing in a band, I compose music myself.</br>I have also taken on challenges in waveform manipulation and middleware implementation.",
       "works": [
         {
           "pickup": true,

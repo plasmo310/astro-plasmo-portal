@@ -35,6 +35,7 @@ interface Work {
 
 interface WorkSection {
   section: string;
+  descHtml?: string;
   works: Work[];
 }
 
@@ -96,10 +97,16 @@ const sections = pickupOnly
               <h3
                 id={`works-${workSection.section.toLowerCase().replace(/[\s/]+/g, "-")}`}
                 data-nav-stop
-                class="text-lg font-heading font-semibold text-accent mb-8 tracking-widest uppercase border-b border-white/10 pb-3"
+                class="text-lg font-heading font-semibold text-accent mb-3 tracking-widest uppercase border-b border-white/10 pb-3"
               >
                 {workSection.section}
               </h3>
+              {workSection.descHtml && (
+                <p
+                  class="text-gray-400 text-xs sm:text-sm font-body mb-8 leading-relaxed"
+                  set:html={workSection.descHtml}
+                />
+              )}
               <div
                 class={`grid gap-8 ${pickupOnly ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"}`}
               >

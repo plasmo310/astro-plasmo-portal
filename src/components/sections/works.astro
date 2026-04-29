@@ -286,7 +286,17 @@ const sections = pickupOnly
 
     function revealBatch(batch: HTMLElement[]) {
       batch.forEach((card, i) => {
-        setTimeout(() => card.classList.add("reveal"), i * 150);
+        setTimeout(() => {
+          card.style.willChange = "transform, opacity";
+          card.classList.add("reveal");
+          card.addEventListener(
+            "transitionend",
+            () => {
+              card.style.willChange = "";
+            },
+            { once: true },
+          );
+        }, i * 150);
       });
     }
 
@@ -366,7 +376,6 @@ const sections = pickupOnly
       transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
       visibility 0.8s,
       border-color 0.5s;
-    will-change: transform, opacity;
   }
 
   .work-card.reveal {

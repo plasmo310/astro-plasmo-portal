@@ -53,8 +53,10 @@ const { showModel = true } = Astro.props;
 
   // ディゾルブパラメータ
   const DISSOLVE_DURATION = 800;
-  const NOISE_SCALE = 8;
+  const NOISE_SCALE = 20;
   const NOISE_TEX_SIZE = 32;
+  const NOISE_OFFSET_X = 0.8;
+  const NOISE_OFFSET_Y = 0.5;
 
   // ディゾルブ用スムーズノイズテクスチャ
   function createNoiseTexture() {
@@ -89,6 +91,7 @@ const { showModel = true } = Astro.props;
     ctx.putImageData(img, 0, 0);
     const tex = new THREE.CanvasTexture(cv);
     tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.offset.set(NOISE_OFFSET_X, NOISE_OFFSET_Y);
     return tex;
   }
   const noiseTex = createNoiseTexture();
@@ -122,8 +125,10 @@ const { showModel = true } = Astro.props;
             dissolveMat = mat;
 
             model.traverse((child) => {
-              if ((child as THREE.Mesh).isMesh)
+              if ((child as THREE.Mesh).isMesh) {
+                console.log("mesh:", child.name);
                 (child as THREE.Mesh).material = mat;
+              }
             });
 
             if (elekibearRoot) elekibearRoot.visible = true;

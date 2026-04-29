@@ -9,14 +9,14 @@
             { "name": "Houdini", "level": 3, "icon": "simple-icons:houdini" },
             { "name": "Maya", "level": 2, "icon": "simple-icons:autodeskmaya" },
             {
+              "name": "Blender",
+              "level": 2,
+              "icon": "skill-icons:blender-dark"
+            },
+            {
               "name": "Photoshop",
               "level": 1,
               "icon": "skill-icons:photoshop"
-            },
-            {
-              "name": "Blender",
-              "level": 1,
-              "icon": "skill-icons:blender-dark"
             }
           ]
         },
@@ -24,9 +24,13 @@
           "category": "Tech Art",
           "skills": [
             { "name": "Procedural", "level": 3, "icon": "mdi:vector-polygon" },
-            { "name": "Scripting", "level": 3, "icon": "mdi:keyboard" },
+            { "name": "ToolDev", "level": 3, "icon": "mdi:keyboard" },
             { "name": "Pipeline", "level": 2, "icon": "mdi:pipe" },
-            { "name": "Shader", "level": 2, "icon": "mdi:palette-outline" }
+            {
+              "name": "LookDev",
+              "level": 1,
+              "icon": "mdi:palette-outline"
+            }
           ]
         }
       ]
@@ -35,7 +39,7 @@
       "section": "Tool / Pipeline",
       "categories": [
         {
-          "category": "Desktop Tool",
+          "category": "Desktop Tool / CI",
           "skills": [
             {
               "name": "PySide / Qt",
@@ -43,12 +47,6 @@
               "icon": "skill-icons:qt-dark"
             },
             { "name": "Electron", "level": 2, "icon": "skill-icons:electron" },
-            { "name": "WPF", "level": 1, "icon": "skill-icons:dotnet" }
-          ]
-        },
-        {
-          "category": "CI / Script",
-          "skills": [
             {
               "name": "Shell / bat",
               "level": 2,
@@ -58,37 +56,11 @@
               "name": "Jenkins",
               "level": 2,
               "icon": "skill-icons:jenkins-dark"
-            },
-            {
-              "name": "Azure",
-              "level": 2,
-              "icon": "skill-icons:azure-dark"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "section": "Game Dev",
-      "categories": [
-        {
-          "category": "Engine",
-          "skills": [
-            { "name": "Unity", "level": 3, "icon": "skill-icons:unity-dark" },
-            {
-              "name": "Unreal Engine",
-              "level": 2,
-              "icon": "skill-icons:unrealengine"
-            },
-            {
-              "name": "C++ (DirectX / OpenGL)",
-              "level": 2,
-              "icon": "skill-icons:cpp"
             }
           ]
         },
         {
-          "category": "Game Tool",
+          "category": "Engine Tool",
           "skills": [
             {
               "name": "Houdini Engine / HDA",
@@ -115,6 +87,47 @@
       ]
     },
     {
+      "section": "Game Dev",
+      "categories": [
+        {
+          "category": "Engine",
+          "skills": [
+            { "name": "Unity", "level": 3, "icon": "skill-icons:unity-dark" },
+            {
+              "name": "Unreal Engine",
+              "level": 2,
+              "icon": "skill-icons:unrealengine"
+            },
+            {
+              "name": "C++ (DirectX / OpenGL)",
+              "level": 1,
+              "icon": "skill-icons:cpp"
+            }
+          ]
+        },
+        {
+          "category": "Category",
+          "skills": [
+            {
+              "name": "Program",
+              "level": 3,
+              "icon": "mdi:keyboard"
+            },
+            {
+              "name": "Graphics",
+              "level": 2,
+              "icon": "mdi:palette-outline"
+            },
+            {
+              "name": "Game Design",
+              "level": 1,
+              "icon": "mdi:note-edit"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "section": "Web",
       "categories": [
         {
@@ -127,14 +140,14 @@
             },
             { "name": "Astro", "level": 2, "icon": "skill-icons:astro" },
             {
+              "name": "Three.js",
+              "level": 2,
+              "icon": "skill-icons:threejs-dark"
+            },
+            {
               "name": "p5.js",
               "level": 2,
               "icon": "skill-icons:p5js"
-            },
-            {
-              "name": "Three.js",
-              "level": 1,
-              "icon": "skill-icons:threejs-dark"
             }
           ]
         },

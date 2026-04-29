@@ -119,6 +119,11 @@
               "icon": "mdi:palette-outline"
             },
             {
+              "name": "Sound",
+              "level": 2,
+              "icon": "mdi:music"
+            },
+            {
               "name": "Game Design",
               "level": 1,
               "icon": "mdi:note-edit"

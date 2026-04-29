@@ -294,15 +294,13 @@ const sections = pickupOnly
     function revealBatch(batch: HTMLElement[]) {
       batch.forEach((card, i) => {
         setTimeout(() => {
-          card.style.willChange = "transform, opacity";
           card.classList.add("reveal");
           card.addEventListener(
-            "transitionend",
-            () => {
-              card.style.willChange = "";
-            },
+            "animationend",
+            () => card.classList.remove("reveal-animating"),
             { once: true },
           );
+          card.classList.add("reveal-animating");
         }, i * 150);
       });
     }
@@ -377,18 +375,27 @@ const sections = pickupOnly
   .work-card {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(40px);
-    transition:
-      opacity 0.8s ease-out,
-      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      visibility 0.8s,
-      border-color 0.5s;
+    transition: border-color 0.5s;
   }
 
   .work-card.reveal {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @keyframes card-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .work-card.reveal-animating {
+    animation: card-slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .work-card-img {

@@ -199,7 +199,7 @@
         {
           "pickup": true,
           "category": "Desktop Game",
-          "title": "CatRunner",
+          "title": "Cat Runner",
           "period": "2024/05",
           "overview": "UnrealEngineの学習目的で、C++メインで制作したミニゲームです。ゲーム制作に必要な最低限の要素を盛り込んでいます。",
           "descHtml": "UnrealEngineの学習目的で、C++メインで制作したミニゲームです。</br>ゲーム制作に必要な最低限の要素を盛り込んでいるため、別のゲームエンジンを使用していたエンジニアが初めてUnrealEngineを触る際に役立つ内容となっています。",

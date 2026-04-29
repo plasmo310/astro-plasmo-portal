@@ -199,7 +199,7 @@
         {
           "pickup": true,
           "category": "Desktop Game",
-          "title": "CatRunner",
+          "title": "Cat Runner",
           "period": "2024/05",
           "overview": "A mini-game created mainly in C++ for learning Unreal Engine. Contains the minimum elements necessary for game development.",
           "descHtml": "A mini-game created mainly in C++ for learning Unreal Engine.</br>It covers the minimum elements needed for game development, making it useful for engineers familiar with other game engines who are trying Unreal Engine for the first time.",

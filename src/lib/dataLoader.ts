@@ -16,7 +16,9 @@ export type Locale = "ja" | "en";
 function absolutify<T>(data: T): T {
   if (typeof data === "string")
     return (
-      !data.startsWith("http") && !data.startsWith("/") && data.match(/\.(png|jpe?g|gif|webp|svg|glb)$/)
+      !data.startsWith("http") &&
+      !data.startsWith("/") &&
+      data.match(/\.(png|jpe?g|gif|webp|svg|glb)$/)
         ? "/" + data
         : data
     ) as T;

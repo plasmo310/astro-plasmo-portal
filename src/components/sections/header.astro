@@ -13,31 +13,34 @@ interface NavItem {
 }
 
 const pathname = Astro.url.pathname;
-const isEnglish = pathname.startsWith('/en');
-const locale = isEnglish ? 'en' : 'ja';
+const isEnglish = pathname.startsWith("/en");
+const locale = isEnglish ? "en" : "ja";
 
-const isIndexPage = pathname === '/' || pathname === '/en/' || pathname === '/en';
-const anchorBase = isIndexPage ? '' : (isEnglish ? '/en/' : '/');
+const isIndexPage =
+  pathname === "/" || pathname === "/en/" || pathname === "/en";
+const anchorBase = isIndexPage ? "" : isEnglish ? "/en/" : "/";
 
-const worksAllHref = isEnglish ? '/en/works' : '/works';
-const jaUrl = isEnglish ? (pathname.replace(/^\/en/, '') || '/') : pathname;
-const enUrl = isEnglish ? pathname : ('/en' + (pathname === '/' ? '/' : pathname));
+const worksAllHref = isEnglish ? "/en/works" : "/works";
+const jaUrl = isEnglish ? pathname.replace(/^\/en/, "") || "/" : pathname;
+const enUrl = isEnglish
+  ? pathname
+  : "/en" + (pathname === "/" ? "/" : pathname);
 
 const navItems: NavItem[] = [
-  { label: 'Home', href: `${anchorBase}#home` },
-  { label: 'About', href: `${anchorBase}#about` },
-  { label: 'Career', href: `${anchorBase}#career` },
+  { label: "Home", href: `${anchorBase}#home` },
+  { label: "About", href: `${anchorBase}#about` },
+  { label: "Career", href: `${anchorBase}#career` },
   {
-    label: 'Works',
+    label: "Works",
     href: `${anchorBase}#works`,
-    children: [{ label: 'All Works', href: worksAllHref }],
+    children: [{ label: "All Works", href: worksAllHref }],
   },
-  { label: 'Skills', href: `${anchorBase}#skills` },
-  { label: 'Blog', href: 'https://elekibear.com', newTab: true },
-  { label: 'Contact', href: `${anchorBase}#contact` },
+  { label: "Skills", href: `${anchorBase}#skills` },
+  { label: "Blog", href: "https://elekibear.com", newTab: true },
+  { label: "Contact", href: `${anchorBase}#contact` },
 ];
 
-const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
+const desktopNavItems = navItems.filter((item) => item.label !== "Career");
 ---
 
 <div class="flex justify-center w-full">
@@ -104,8 +107,6 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
           )
         }
       </ul>
-
-
     </div>
 
     <!-- Mobile menu -->
@@ -159,7 +160,10 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
 </div>
 
 <!-- Hamburger button: fixed top-left (mobile only) -->
-<div class="md:hidden fixed top-4 left-4 z-30" style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));">
+<div
+  class="md:hidden fixed top-4 left-4 z-30"
+  style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));"
+>
   <button
     id="hamburger"
     class="text-white w-6 h-6 relative"
@@ -205,15 +209,52 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
 </div>
 
 <!-- Language switcher: fixed top-right -->
-<div class="fixed top-4 right-4 z-30" style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));">
+<div
+  class="fixed top-4 right-4 z-30"
+  style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));"
+>
   <a
-    href={locale === 'ja' ? enUrl : jaUrl}
-    class="text-white hover:text-accent transition-colors text-sm font-bold tracking-widest"
-    aria-label={locale === 'ja' ? 'Switch to English' : '日本語に切り替え'}
-  >{locale === 'ja' ? 'EN' : 'JA'}</a>
+    id="lang-switcher-link"
+    href={locale === "ja" ? enUrl : jaUrl}
+    class="lang-switcher text-sm font-bold tracking-widest"
+    aria-label={locale === "ja" ? "Switch to English" : "日本語に切り替え"}
+    data-ja-url={jaUrl}
+    data-en-url={enUrl}
+  >
+    <span id="lang-jp" class={locale === "ja" ? "lang-active" : "lang-inactive"}
+      >JP</span
+    >
+    <span class="lang-sep">|</span>
+    <span id="lang-en" class={locale === "en" ? "lang-active" : "lang-inactive"}
+      >EN</span
+    >
+  </a>
 </div>
 
 <style>
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.2s ease;
+  }
+
+  .lang-switcher:hover {
+    opacity: 0.8;
+  }
+
+  .lang-active {
+    color: white;
+  }
+
+  .lang-inactive {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .lang-sep {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
   .reveal-content {
     opacity: 0;
     transform: translateY(20px);
@@ -269,7 +310,7 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
   }
 
   #mobile-menu.open {
-    max-height: 300px;
+    max-height: 500px;
   }
 
   #icon-open,
@@ -299,12 +340,10 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
 </style>
 
 <script>
-  const nav = document.getElementById("header");
-  const hamburger = document.getElementById("hamburger");
-  const mobileMenu = document.getElementById("mobile-menu");
   let rafId: number | null = null;
 
   function updateNav() {
+    const nav = document.getElementById("header");
     if (window.scrollY > 0) {
       nav?.classList.add("scrolling");
     } else {
@@ -313,65 +352,73 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
     rafId = null;
   }
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!rafId) {
-        rafId = requestAnimationFrame(updateNav);
-      }
-    },
-    { passive: true },
-  );
-
   function setMenuOpen(open: boolean) {
+    const nav = document.getElementById("header");
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
     mobileMenu?.classList.toggle("open", open);
     hamburger?.classList.toggle("open", open);
     hamburger?.setAttribute("aria-expanded", String(open));
     nav?.classList.toggle("menu-open", open);
   }
 
-  hamburger?.addEventListener("click", () => {
-    const isOpen = !mobileMenu?.classList.contains("open");
-    setMenuOpen(isOpen);
-  });
+  function updateLangSwitcher() {
+    const isEn = window.location.pathname.startsWith("/en");
+    const link = document.getElementById(
+      "lang-switcher-link",
+    ) as HTMLAnchorElement | null;
+    const jpSpan = document.getElementById("lang-jp");
+    const enSpan = document.getElementById("lang-en");
+    if (!link || !jpSpan || !enSpan) return;
+    const jaUrl = link.dataset.jaUrl ?? "/";
+    const enUrl = link.dataset.enUrl ?? "/en/";
+    link.href = isEn ? jaUrl : enUrl;
+    jpSpan.className = isEn ? "lang-inactive" : "lang-active";
+    enSpan.className = isEn ? "lang-active" : "lang-inactive";
+  }
 
-  // 項目クリック時: 対象セクションへ移動する
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = e.currentTarget as HTMLAnchorElement;
-      const targetId = target.getAttribute("href")?.substring(1) || "";
-      const targetElement = document.getElementById(targetId);
+  function setupPage() {
+    const nav = document.getElementById("header");
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-      const isMenuOpen = mobileMenu?.classList.contains("open") ?? false;
-      if (isMenuOpen) {
-        setMenuOpen(false);
-      }
-
-      if (targetElement) {
-        const doScroll = () => {
-          const headerHeight = nav?.offsetHeight ?? 0;
-          const top =
-            targetElement.getBoundingClientRect().top +
-            window.scrollY -
-            headerHeight;
-          window.scrollTo({ top, behavior: "smooth" });
-        };
-        // モバイルメニューが開いていた場合、閉じるトランジション(300ms)を待つ
-        if (isMenuOpen) {
-          setTimeout(doScroll, 300);
-        } else {
-          doScroll();
-        }
-      }
+    hamburger?.addEventListener("click", () => {
+      const isOpen = !mobileMenu?.classList.contains("open");
+      setMenuOpen(isOpen);
     });
-  });
 
-  // 各セクションの表示状態監視: 対応するナビリンクをアクティブにする
-  document.addEventListener("DOMContentLoaded", () => {
+    // 項目クリック時: 対象セクションへ移動する
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = e.currentTarget as HTMLAnchorElement;
+        const targetId = target.getAttribute("href")?.substring(1) || "";
+        const targetElement = document.getElementById(targetId);
+
+        const isMenuOpen = mobileMenu?.classList.contains("open") ?? false;
+        if (isMenuOpen) setMenuOpen(false);
+
+        if (targetElement) {
+          const doScroll = () => {
+            const headerHeight = nav?.offsetHeight ?? 0;
+            const top =
+              targetElement.getBoundingClientRect().top +
+              window.scrollY -
+              headerHeight;
+            window.scrollTo({ top, behavior: "smooth" });
+          };
+          if (isMenuOpen) {
+            setTimeout(doScroll, 300);
+          } else {
+            doScroll();
+          }
+        }
+      });
+    });
+
+    // 各セクションの表示状態監視
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll("nav a[href^='#']");
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -386,7 +433,18 @@ const desktopNavItems = navItems.filter((item) => item.label !== 'Career');
       },
       { threshold: 0, rootMargin: "0px 0px -80% 0px" },
     );
-
     sections.forEach((section) => observer.observe(section));
-  });
+
+    updateLangSwitcher();
+  }
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!rafId) rafId = requestAnimationFrame(updateNav);
+    },
+    { passive: true },
+  );
+
+  document.addEventListener("astro:page-load", setupPage);
 </script>

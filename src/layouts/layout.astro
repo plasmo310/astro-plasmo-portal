@@ -96,7 +96,15 @@ const isHome = homePaths.includes(Astro.url.pathname);
 </html>
 
 <script>
-  const SECTION_IDS = ["home", "about", "works", "career", "skills", "contact", "footer"];
+  const SECTION_IDS = [
+    "home",
+    "about",
+    "works",
+    "career",
+    "skills",
+    "contact",
+    "footer",
+  ];
 
   function pageTop(el: HTMLElement): number {
     return el.getBoundingClientRect().top + window.scrollY;
@@ -127,11 +135,11 @@ const isHome = homePaths.includes(Astro.url.pathname);
     );
   }
 
-  const pageTopBtn = document.getElementById("page-top-btn");
-  const sectionNav = document.querySelector<HTMLElement>(
-    ".fixed.bottom-8.left-8",
-  );
   function updateNavVisibility() {
+    const pageTopBtn = document.getElementById("page-top-btn");
+    const sectionNav = document.querySelector<HTMLElement>(
+      ".fixed.bottom-8.left-8",
+    );
     const scrolledEnough = window.scrollY > window.innerHeight * 0.9;
     const atBottom =
       window.scrollY + window.innerHeight >=
@@ -144,28 +152,36 @@ const isHome = homePaths.includes(Astro.url.pathname);
     });
   }
 
-  updateNavVisibility();
+  function setupPage() {
+    updateNavVisibility();
+
+    document.getElementById("page-top-btn")?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document
+      .getElementById("section-prev-btn")
+      ?.addEventListener("click", () => {
+        const stops = getStops();
+        const currentTop = currentStopTop();
+        const prev = [...stops]
+          .reverse()
+          .find((el) => pageTop(el) < currentTop - 10);
+        if (prev) scrollToStop(prev);
+      });
+
+    document
+      .getElementById("section-next-btn")
+      ?.addEventListener("click", () => {
+        const stops = getStops();
+        const currentTop = currentStopTop();
+        const next = stops.find((el) => pageTop(el) > currentTop + 10);
+        if (next) scrollToStop(next);
+      });
+  }
+
   window.addEventListener("scroll", updateNavVisibility, { passive: true });
-
-  pageTopBtn?.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  document.getElementById("section-prev-btn")?.addEventListener("click", () => {
-    const stops = getStops();
-    const currentTop = currentStopTop();
-    const prev = [...stops]
-      .reverse()
-      .find((el) => pageTop(el) < currentTop - 10);
-    if (prev) scrollToStop(prev);
-  });
-
-  document.getElementById("section-next-btn")?.addEventListener("click", () => {
-    const stops = getStops();
-    const currentTop = currentStopTop();
-    const next = stops.find((el) => pageTop(el) > currentTop + 10);
-    if (next) scrollToStop(next);
-  });
+  document.addEventListener("astro:page-load", setupPage);
 </script>
 
 <style>

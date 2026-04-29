@@ -42,7 +42,10 @@
 </style>
 
 <script>
-  document.getElementById("scroll-top")?.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  function setupFooter() {
+    document.getElementById("scroll-top")?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+  document.addEventListener("astro:page-load", setupFooter);
 </script>

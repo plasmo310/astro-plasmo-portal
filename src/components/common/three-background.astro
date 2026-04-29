@@ -49,7 +49,6 @@ const { showModel = true } = Astro.props;
   let animMixer: THREE.AnimationMixer | null = null;
   let elekibearRoot: THREE.Group | null = null;
   let dissolveMat: THREE.MeshToonMaterial | null = null;
-  let finalMat: THREE.MeshToonMaterial | null = null;
   let dissolveStartTime: number | null = null;
 
   // ディゾルブパラメータ
@@ -122,25 +121,14 @@ const { showModel = true } = Astro.props;
             });
             dissolveMat = mat;
 
-            // ディゾルブ完了後に切り替えるクリーンなマテリアル
-            finalMat = new THREE.MeshToonMaterial({ map: tex });
-
             model.traverse((child) => {
               if ((child as THREE.Mesh).isMesh)
                 (child as THREE.Mesh).material = mat;
             });
 
-            // finalMat のシェーダーバリアントを事前コンパイルするためのダミーメッシュ
-            const tempMesh = new THREE.Mesh(
-              new THREE.BoxGeometry(0.001, 0.001, 0.001),
-              finalMat,
-            );
-            scene.add(tempMesh);
-
             if (elekibearRoot) elekibearRoot.visible = true;
             await renderer.compileAsync(scene, camera);
 
-            scene.remove(tempMesh);
             dissolveStartTime = performance.now();
           });
 
@@ -214,18 +202,7 @@ const { showModel = true } = Astro.props;
       const eased = progress * progress * (3.0 - 2.0 * progress);
       dissolveMat.alphaTest = Math.max(1.0 - eased, 0.001);
       if (progress >= 1.0) {
-        // コンパイル済みの finalMat に切り替え（シェーダー再コンパイルなし）
-        if (finalMat && elekibearRoot) {
-          const swapMat = finalMat;
-          elekibearRoot.traverse((child) => {
-            if ((child as THREE.Mesh).isMesh)
-              (child as THREE.Mesh).material = swapMat;
-          });
-        }
-        dissolveMat.alphaMap = null;
-        dissolveMat.dispose();
         dissolveMat = null;
-        finalMat = null;
         dissolveStartTime = null;
       }
     }

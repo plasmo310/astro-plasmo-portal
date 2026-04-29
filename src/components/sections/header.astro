@@ -52,7 +52,7 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
       class="container mx-auto relative flex justify-center items-center py-4 px-6 reveal-content"
     >
       <!-- Desktop nav -->
-      <ul class="hidden md:flex space-x-6 justify-center gap-12">
+      <ul class="hidden lg:flex space-x-6 justify-center gap-12">
         {
           desktopNavItems.map((item) =>
             item.children ? (
@@ -128,7 +128,7 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
     <!-- Mobile menu -->
     <div
       id="mobile-menu"
-      class="md:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out border-t border-transparent"
+      class="lg:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out border-t border-transparent"
     >
       <ul class="flex flex-col items-center py-4 gap-5">
         {
@@ -193,7 +193,7 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
 
 <!-- Hamburger button: fixed top-left (mobile only) -->
 <div
-  class="md:hidden fixed top-4 left-4 z-30"
+  class="lg:hidden fixed top-4 left-4 z-30"
   style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));"
 >
   <button

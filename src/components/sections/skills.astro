@@ -42,17 +42,15 @@ const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
 
       <div class="flex justify-end mb-6 max-w-6xl mx-auto">
         <div
-          class="flex flex-wrap gap-4 p-3 rounded-xl bg-white/5 border border-white/10"
+          class="flex flex-col sm:flex-row gap-2 sm:gap-4 p-3 rounded-xl bg-white/5 border border-white/10"
         >
           {
             [
               { label: "Expert", level: 3 },
               { label: "Intermediate", level: 2 },
               { label: "Beginner", level: 1 },
-            ].map((item, index) => (
-              <div
-                class={`flex items-center gap-2 ${index > 0 ? "border-l border-white/10 pl-4" : ""}`}
-              >
+            ].map((item) => (
+              <div class="flex items-center gap-2">
                 <div class="flex gap-0.5">
                   {[1, 2, 3].map((star) => (
                     <Icon

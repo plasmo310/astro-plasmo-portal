@@ -1,5 +1,5 @@
 {
-  "descHtml": "カテゴリごとのスキル一覧です。</br>習熟度を簡易的な三段階表示で表しています。",
+  "descHtml": "A list of skills by category.</br>Proficiency is shown in a simple three-level display.",
   "skill": [
     {
       "section": "DCC / Tech Art",

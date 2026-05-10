@@ -1,10 +1,10 @@
 {
-  "pickupDescHtml": "仕事以外で作った個人制作物になります。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
-  "allDescHtml": "仕事以外で作った個人制作物になります。</br>ゲーム・3DCG・ツール・Web・サウンドと幅広く創作を行っています。",
+  "pickupDescHtml": "個人で作った制作物の一覧になります。</br>各カテゴリ毎にいくつかピックアップして記載しています。",
+  "allDescHtml": "個人で作った制作物の一覧になります。</br>ゲーム・3DCG・ツール・Web・サウンドと幅広く創作を行っています。",
   "sections": [
     {
       "section": "Web",
-      "descHtml": "Webサイトの開発・運営を行なっている他、簡易的なAPIも自前で構築して運用しています。</br>都会のエレキベアという技術ブログでは、300ほどの記事を投稿しています。",
+      "descHtml": "Webサイトの開発・運営を行なっているほか、簡易的なAPIも自前で構築して運用しています。</br>都会のエレキベアという技術ブログでは、300本近くの記事を投稿しています。",
       "works": [
         {
           "pickup": true,
@@ -12,7 +12,7 @@
           "title": "都会のエレキベア",
           "period": "2020/01 - 現在",
           "overview": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。",
-          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるい雰囲気で解説することで、技術的ハードルを下げれるよう努めています。</br>2026/4現在の記事数は300記事ほどで、1万PV/月ほどのアクセス数です。",
+          "descHtml": "3DCG・ゲーム開発に関する情報を発信している技術ブログです。</br>ゆるいキャラクターと共に解説することで、技術的ハードルを下げれるよう努めています。",
           "images": ["img/works/web_blog_elekibear.png"],
           "tech": ["Next.js", "React", "TypeScript", "Emotion"],
           "links": [
@@ -53,10 +53,10 @@
         {
           "pickup": true,
           "category": "Server",
-          "title": "GoランキングAPI",
+          "title": "汎用ランキングAPI",
           "period": "2024/04",
           "overview": "Goで実装した汎用ランキングAPIです。",
-          "descHtml": "Goで実装した汎用ランキングAPIです。VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
+          "descHtml": "Goで実装した汎用ランキングAPIです。</br>VPSサーバにデプロイし、自主制作した各種アプリから使用しています。",
           "images": [
             "https://content.elekibear.com/content/20240415_01_unity_ranking_api_title.png"
           ],
@@ -78,7 +78,7 @@
     },
     {
       "section": "Game",
-      "descHtml": "iOS/Android向けのアプリを6本リリースまで行いました。</br>コンソールゲームの開発も計画中です。",
+      "descHtml": "モバイルアプリを6本開発し、iOS/Android向けにリリースまで行いました。</br>今後はコンソールゲームの開発も計画中です。",
       "works": [
         {
           "pickup": true,
@@ -86,7 +86,7 @@
           "title": "怪盗チョコレート",
           "period": "2023/02",
           "overview": "バレンタイン向けに制作した3Dアクションゲームです。開発効率を意識して2週間ほどリリースまで行いました。",
-          "descHtml": "バレンタイン向けに制作した3Dアクションゲームです。</br>実作業1週間程度(出勤込み)で開発する必要があったため、友人にドット絵・サウンド制作を担当してもらいつつ、2週間程度でリリースまで行いました。",
+          "descHtml": "バレンタイン向けに制作した3Dアクションゲームです。</br>スピード重視で開発する必要があったため、友人にドット絵・サウンド制作を担当してもらいつつ、2週間程度でリリースまで行いました。",
           "images": [
             "https://content.elekibear.com/wp-content/uploads/2023/02/title_20230214_2.png",
             "https://content.elekibear.com/wp-content/uploads/2023/02/ScreenShot-2023-02-12-10.14.29.png",
@@ -401,10 +401,30 @@
     },
     {
       "section": "Tool",
-      "descHtml": "デスクトップ・ゲームエンジン・Web用と、幅広くツールを作っています。</br>基本的には自身の日々の作業の課題を解決するために作成したものになっています。",
+      "descHtml": "デスクトップ・ゲームエンジン・Web用と、幅広くツールを制作しています。</br>基本的には、自身の日々の課題を解決するために作成したものになっています。",
       "works": [
         {
           "pickup": true,
+          "category": "Desktop Tool",
+          "title": "Command Launcher",
+          "period": "2026/05",
+          "overview": "スクリプトを登録して実行できる汎用ランチャーツールです。DCCツールの複数環境切り替えなどに活用できます。",
+          "descHtml": "バッチファイル・シェルスクリプトなどを登録して実行できる汎用ランチャーツールです。</br>カテゴリ分けと引数設定が行えるため、DCCツールの複数環境の切り替えなどに活用できます。",
+          "images": [
+            "img/works/Tool/command_launcher.png",
+            "img/works/Tool/command_launcher.gif"
+          ],
+          "tech": ["PySide / Qt", "Python"],
+          "links": [
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/pyside-command-launcher"
+            }
+          ]
+        },
+        {
+          "pickup": false,
           "category": "IDE Tool",
           "title": "画像リサイズ・保存ツール (改)",
           "period": "2025/11",
@@ -534,7 +554,7 @@
           "title": "間取り図寸法算出くん",
           "period": "2020/09",
           "overview": "間取り図の画像から大まかな寸法を算出するツールです。",
-          "descHtml": "間取り図の画像から大まかな寸法を算出するツールです。</br>自身が寸法を測り忘れた経験から作成しましたが、それなりの需要はあるようです。",
+          "descHtml": "間取り図の画像から大まかな寸法を算出するツールです。</br>自身が寸法を測り忘れた経験から作成しました。",
           "images": [
             "https://content.elekibear.com/wp-content/uploads/2020/09/77d0d6a051d6497df8380beb1c9e20b3-6.png",
             "https://content.elekibear.com/wp-content/uploads/2020/09/screenshot-2020-09-26-12.03.07.png"
@@ -682,7 +702,7 @@
     },
     {
       "section": "Sound",
-      "descHtml": "バンドを行っていた経験から、自身で作曲など行なっています。</br>その他、波形操作やミドルウェア実装などにも挑戦しました。",
+      "descHtml": "バンド活動していた経験から、自身で作曲など行なっています。</br>サウンドプログラミングにも興味があり、波形操作やミドルウェア実装などにも挑戦しました。",
       "works": [
         {
           "pickup": true,

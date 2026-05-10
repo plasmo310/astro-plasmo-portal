@@ -22,3 +22,14 @@ This is an Astro 6 portfolio site using strict TypeScript. No UI framework integ
 **Styling:** Tailwind utility classes are used inline in `.astro` templates. Global/animation styles are written in `<style is:global>` blocks within the component that owns them.
 
 **Adding a section:** Create `src/data/<section>.json`, create `src/components/<section>.astro` that imports from it, then add the component to `src/pages/index.astro`.
+
+## Localize Table
+
+| Japanese         | English          |
+| ---------------- | ---------------- |
+| 都会のエレキベア | Elekibear Blog   |
+| ゆるいオセロ     | Loose Reversi    |
+| 漫画風描画HDA    | Comic Render HDA |
+| もぐら叩きAR     | Whac-A-Mole AR   |
+| マグネタワー     | Mag Tower        |
+| ゴーゴーゴロヤン | Go Go Goloyan    |

@@ -1,5 +1,5 @@
 {
-  "descHtml": "A list of skills by category. </br>The number of stars indicates proficiency level on a three-point scale.",
+  "descHtml": "カテゴリごとのスキル一覧です。</br>習熟度を簡易的な三段階表示で表しています。",
   "skill": [
     {
       "section": "DCC / Tech Art",
@@ -7,17 +7,22 @@
         {
           "category": "DCC",
           "skills": [
-            { "name": "Houdini", "level": 3, "icon": "simple-icons:houdini" },
-            { "name": "Maya", "level": 2, "icon": "simple-icons:autodeskmaya" },
+            { "name": "Houdini", "level": 3, "icon": "mdi:vector-polygon" },
+            { "name": "Maya", "level": 2, "icon": "mdi:cube" },
             {
               "name": "Blender",
               "level": 2,
-              "icon": "skill-icons:blender-dark"
+              "icon": "mdi:cube-outline"
+            },
+            {
+              "name": "Substance",
+              "level": 1,
+              "icon": "mdi:resistor-nodes"
             },
             {
               "name": "Photoshop",
               "level": 1,
-              "icon": "skill-icons:photoshop"
+              "icon": "mdi:paintbrush"
             }
           ]
         },
@@ -25,8 +30,13 @@
           "category": "Tech Art",
           "skills": [
             { "name": "Procedural", "level": 3, "icon": "mdi:vector-polygon" },
+            { "name": "Pipeline", "level": 3, "icon": "mdi:pipe" },
             { "name": "ToolDev", "level": 3, "icon": "mdi:keyboard" },
-            { "name": "Pipeline", "level": 2, "icon": "mdi:pipe" },
+            {
+              "name": "Shader",
+              "level": 2,
+              "icon": "mdi:progress-star-four-points"
+            },
             {
               "name": "LookDev",
               "level": 1,
@@ -45,7 +55,7 @@
             {
               "name": "PySide / Qt",
               "level": 3,
-              "icon": "skill-icons:qt-dark"
+              "icon": "mdi:tools"
             },
             { "name": "Electron", "level": 2, "icon": "skill-icons:electron" },
             {
@@ -66,22 +76,22 @@
             {
               "name": "Houdini Engine / HDA",
               "level": 3,
-              "icon": "simple-icons:houdini"
+              "icon": "mdi:vector-polygon"
             },
             {
               "name": "Unreal Python",
-              "level": 3,
-              "icon": "skill-icons:unrealengine"
+              "level": 2,
+              "icon": "mdi:google-gamepad"
             },
             {
               "name": "Unreal Plugin (C++)",
               "level": 2,
-              "icon": "skill-icons:unrealengine"
+              "icon": "mdi:google-gamepad"
             },
             {
               "name": "Unity Editor",
               "level": 2,
-              "icon": "skill-icons:unity-dark"
+              "icon": "mdi:gamepad-classic"
             }
           ]
         }
@@ -93,11 +103,11 @@
         {
           "category": "Engine",
           "skills": [
-            { "name": "Unity", "level": 3, "icon": "skill-icons:unity-dark" },
+            { "name": "Unity", "level": 3, "icon": "mdi:gamepad-classic" },
             {
               "name": "Unreal Engine",
               "level": 2,
-              "icon": "skill-icons:unrealengine"
+              "icon": "mdi:google-gamepad"
             },
             {
               "name": "C++ (DirectX / OpenGL)",

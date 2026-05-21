@@ -26,16 +26,16 @@ const { data: profileData } = Astro.props;
 
 <section id="about">
   <div
-    class="px-4 sm:px-6 pt-6 sm:pt-8 pb-8 sm:pb-10 bg-background-sub/50 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 w-[97.5%] max-w-[1280px] mx-auto my-16 rounded-2xl"
+    class="bg-background-sub/50 mx-auto my-16 w-[97.5%] max-w-7xl rounded-2xl border border-white/10 px-4 pt-6 pb-8 backdrop-blur-2xl backdrop-saturate-200 sm:px-6 sm:pt-8 sm:pb-10"
   >
     <div class="container mx-auto">
       <SectionHeading title="About Me" />
 
       <div
-        class="flex-col items-center justify-center py-8 sm:py-12 text-center"
+        class="flex-col items-center justify-center py-8 text-center sm:py-12"
       >
         <div
-          class="rounded-full overflow-hidden w-40 sm:w-56 md:w-72 lg:w-80 mx-auto"
+          class="mx-auto w-40 overflow-hidden rounded-full sm:w-56 md:w-72 lg:w-80"
         >
           <img
             src={profileData.photoUrl}
@@ -45,19 +45,19 @@ const { data: profileData } = Astro.props;
         </div>
 
         <div>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl my-4">
+          <h1 class="my-4 text-3xl sm:text-4xl md:text-5xl">
             {profileData.name}
           </h1>
-          <div class="m-4 text-gray-300 text-sm sm:text-base md:text-xl my-4">
+          <div class="m-4 my-4 text-sm text-gray-300 sm:text-base md:text-xl">
             {profileData.job}
           </div>
           <div
-            class="mx-4 mt-2 mb-4 text-gray-300 text-[11px] md:text-sm leading-relaxed"
+            class="mx-4 mt-2 mb-4 text-[11px] leading-relaxed text-gray-300 md:text-sm"
             set:html={profileData.introHtml}
           />
         </div>
 
-        <div class="flex justify-center gap-6 my-8 reveal-content">
+        <div class="reveal-content my-8 flex justify-center gap-6">
           {
             profileData.socials.map((social) => (
               <a
@@ -67,9 +67,9 @@ const { data: profileData } = Astro.props;
               >
                 <Icon
                   name={social.icon}
-                  class="w-8 h-8 sm:w-12 sm:h-12 text-white group-hover:text-accent transition-colors duration-300"
+                  class="group-hover:text-accent h-8 w-8 text-white transition-colors duration-300 sm:h-12 sm:w-12"
                 />
-                <span class="absolute -bottom-6 scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 text-xs text-accent font-body">
+                <span class="text-accent font-body absolute -bottom-6 scale-0 text-xs opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
                   {social.name}
                 </span>
               </a>
@@ -78,21 +78,21 @@ const { data: profileData } = Astro.props;
         </div>
 
         <div
-          class="flex justify-center mt-8 mb-2 reveal-content"
+          class="reveal-content mt-8 mb-2 flex justify-center"
           style="animation-delay: 0.2s"
         >
           <a
             href={profileData.blogUrl}
             target="_blank"
-            class="group flex items-center gap-2 sm:gap-3 transition-all duration-300 hover:scale-105"
+            class="group flex items-center gap-2 transition-all duration-300 hover:scale-105 sm:gap-3"
           >
             <img
               src="/img/icon/elekibear-white.png"
               alt="TECH BLOG"
-              class="w-9 h-9 sm:w-12 sm:h-12"
+              class="h-9 w-9 sm:h-12 sm:w-12"
             />
             <span
-              class="text-gray-200 group-hover:text-accent transition-colors duration-300 font-body text-xl sm:text-2xl"
+              class="group-hover:text-accent font-body text-xl text-gray-200 transition-colors duration-300 sm:text-2xl"
             >
               TECH BLOG
             </span>

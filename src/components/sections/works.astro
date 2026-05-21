@@ -63,13 +63,13 @@ const sections = pickupOnly
 
 <section id="works">
   <div
-    class="px-6 pt-6 sm:pt-8 pb-24 bg-background-sub/50 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 w-[97.5%] max-w-[1280px] mx-auto my-16 rounded-2xl"
+    class="bg-background-sub/50 mx-auto my-16 w-[97.5%] max-w-7xl rounded-2xl border border-white/10 px-6 pt-6 pb-24 backdrop-blur-2xl backdrop-saturate-200 sm:pt-8"
     style="-webkit-backdrop-filter: blur(40px) saturate(2); backdrop-filter: blur(40px) saturate(2);"
   >
     <div class="container mx-auto">
       <SectionHeading title={title} />
       <p
-        class="text-gray-300 font-body text-xs sm:text-sm md:text-base mb-12 -mt-4 leading-relaxed"
+        class="font-body -mt-4 mb-12 text-xs leading-relaxed text-gray-300 sm:text-sm md:text-base"
         set:html={currentDescHtml}
       />
 
@@ -78,12 +78,12 @@ const sections = pickupOnly
           <div class="mt-16 flex justify-end">
             <a
               href={worksAllHref}
-              class="group inline-flex items-center gap-3 text-xl text-white hover:text-accent transition-colors duration-300 font-body tracking-wider font-semibold"
+              class="group hover:text-accent font-body inline-flex items-center gap-3 text-xl font-semibold tracking-wider text-white transition-colors duration-300"
             >
               All Works
               <Icon
                 name="mdi:arrow-right"
-                class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               />
             </a>
           </div>
@@ -97,13 +97,13 @@ const sections = pickupOnly
               <h3
                 id={`works-${workSection.section.toLowerCase().replace(/[\s/]+/g, "-")}`}
                 data-nav-stop
-                class="text-lg font-heading font-semibold text-accent mb-3 tracking-widest uppercase border-b border-white/10 pb-3"
+                class="font-heading text-accent mb-3 border-b border-white/10 pb-3 text-lg font-semibold tracking-widest uppercase"
               >
                 {workSection.section}
               </h3>
               {workSection.descHtml && (
                 <p
-                  class="text-gray-400 text-xs sm:text-sm font-body mb-8 leading-relaxed"
+                  class="font-body mb-8 text-xs leading-relaxed text-gray-400 sm:text-sm"
                   set:html={workSection.descHtml}
                 />
               )}
@@ -115,17 +115,17 @@ const sections = pickupOnly
                   const modalId = `work-modal-${si}-${wi}`;
                   return (
                     <div
-                      class="work-card cursor-pointer bg-background-sub/70 border border-white/10 rounded-2xl overflow-hidden hover:border-accent/40 transition-[border-color] duration-500 flex flex-col select-none"
+                      class="work-card bg-background-sub/70 hover:border-accent/40 flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500 select-none"
                       data-modal-id={modalId}
                     >
-                      <div class="aspect-video overflow-hidden relative bg-[#1a1a1a] shrink-0">
-                        <div class="work-card-overlay absolute inset-0 transition-all duration-300 z-10 pointer-events-none flex items-center justify-center">
-                          <span class="work-card-detail-label opacity-0 text-white text-sm font-body tracking-widest uppercase transition-opacity duration-300">
+                      <div class="bg-background relative aspect-video shrink-0 overflow-hidden">
+                        <div class="work-card-overlay pointer-events-none absolute inset-0 z-10 flex items-center justify-center transition-all duration-300">
+                          <span class="work-card-detail-label font-body text-sm tracking-widest text-white uppercase opacity-0 transition-opacity duration-300">
                             Show Detail
                           </span>
                         </div>
                         <div
-                          class={`w-full h-full relative ${isSlider ? "image-slider" : ""}`}
+                          class={`relative h-full w-full ${isSlider ? "image-slider" : ""}`}
                         >
                           {work.images.map((img, index) => {
                             const src =
@@ -159,20 +159,20 @@ const sections = pickupOnly
                         </div>
                       </div>
 
-                      <div class="p-5 sm:p-6 flex flex-col flex-1 relative">
+                      <div class="relative flex flex-1 flex-col p-5 sm:p-6">
                         {work.links.length > 0 && (
-                          <div class="absolute top-5 right-5 flex gap-2 z-20">
+                          <div class="absolute top-5 right-5 z-20 flex gap-2">
                             {work.links.map((link) => (
-                              <div class="relative group/tip">
+                              <div class="group/tip relative">
                                 <a
                                   href={link.href}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  class="text-white/65 hover:text-accent transition-colors block"
+                                  class="hover:text-accent block text-white/65 transition-colors"
                                 >
-                                  <Icon name={link.icon} class="w-6 h-6" />
+                                  <Icon name={link.icon} class="h-6 w-6" />
                                 </a>
-                                <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-black/80 text-white text-[10px] whitespace-nowrap opacity-0 group-hover/tip:opacity-100 transition-opacity duration-200">
+                                <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-black/80 px-2 py-1 text-[10px] whitespace-nowrap text-white opacity-0 transition-opacity duration-200 group-hover/tip:opacity-100">
                                   {link.tooltip}
                                 </span>
                               </div>
@@ -180,24 +180,24 @@ const sections = pickupOnly
                           </div>
                         )}
                         <div class="mb-2">
-                          <span class="text-accent text-[10px] uppercase tracking-widest font-bold">
+                          <span class="text-accent text-[10px] font-bold tracking-widest uppercase">
                             {work.category}
                           </span>
-                          <h4 class="text-base sm:text-lg md:text-xl font-heading font-bold text-white mt-1">
+                          <h4 class="font-heading mt-1 text-base font-bold text-white sm:text-lg md:text-xl">
                             {work.title}
                           </h4>
-                          <p class="text-white/40 text-xs font-body mt-1 tracking-wide">
+                          <p class="font-body mt-1 text-xs tracking-wide text-white/40">
                             {work.period}
                           </p>
                         </div>
 
-                        <p class="text-gray-400 text-xs sm:text-sm font-body line-clamp-3 flex-1">
+                        <p class="font-body line-clamp-3 flex-1 text-xs text-gray-400 sm:text-sm">
                           {work.overview}
                         </p>
 
-                        <div class="flex flex-wrap gap-2 pt-4 sm:pt-6 mt-auto">
+                        <div class="mt-auto flex flex-wrap gap-2 pt-4 sm:pt-6">
                           {work.tech.map((t) => (
-                            <span class="px-2 py-1 bg-background-sub/70 rounded-md text-[10px] text-white/60 border border-white/5">
+                            <span class="bg-background-sub/70 rounded-md border border-white/5 px-2 py-1 text-[10px] text-white/60">
                               {t}
                             </span>
                           ))}
@@ -217,12 +217,12 @@ const sections = pickupOnly
           <div class="mt-16 flex justify-end">
             <a
               href={worksAllHref}
-              class="group inline-flex items-center gap-3 text-xl text-white hover:text-accent transition-colors duration-300 font-body tracking-wider font-semibold"
+              class="group hover:text-accent font-body inline-flex items-center gap-3 text-xl font-semibold tracking-wider text-white transition-colors duration-300"
             >
               All Works
               <Icon
                 name="mdi:arrow-right"
-                class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               />
             </a>
           </div>

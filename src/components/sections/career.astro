@@ -18,41 +18,41 @@ const { data: typedCareerData } = Astro.props;
 
 <section id="career">
   <div
-    class="px-4 sm:px-6 pt-6 sm:pt-8 pb-12 sm:pb-16 bg-background-sub/50 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 w-[97.5%] max-w-[1280px] mx-auto my-16 rounded-2xl"
+    class="bg-background-sub/50 mx-auto my-16 w-[97.5%] max-w-7xl rounded-2xl border border-white/10 px-4 pt-6 pb-12 backdrop-blur-2xl backdrop-saturate-200 sm:px-6 sm:pt-8 sm:pb-16"
   >
     <div class="container mx-auto">
       <SectionHeading title="Career" />
 
-      <div class="relative max-w-4xl mx-auto mt-8">
+      <div class="relative mx-auto mt-8 max-w-4xl">
         <div
-          class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-6 bottom-0 w-0.5 bg-gradient-to-b from-accent via-white/10 to-transparent"
+          class="from-accent absolute top-6 bottom-0 left-4 w-0.5 bg-linear-to-b via-white/10 to-transparent md:left-1/2 md:-translate-x-1/2"
         >
         </div>
 
         {/* Mobile Layout */}
-        <div class="md:hidden space-y-8">
+        <div class="space-y-8 md:hidden">
           {
             typedCareerData.map((item, index) => (
               <div class="relative pl-10 text-left">
-                <div class="scroll-stat absolute left-2 top-1 z-10">
+                <div class="scroll-stat absolute top-1 left-2 z-10">
                   <div
-                    class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+                    class={`border-background-sub h-4 w-4 rounded-full border-4 ${index === 0 ? "bg-accent animate-pulse shadow-[0_0_12px_var(--color-accent)]" : "bg-gray-600"}`}
                   />
                 </div>
-                <div class="scroll-stat bg-background-sub/70 border border-white/10 p-4 rounded-2xl hover:border-accent/30 transition-all">
+                <div class="scroll-stat bg-background-sub/70 hover:border-accent/30 rounded-2xl border border-white/10 p-4 transition-all">
                   <span class="text-accent font-mono text-xs tracking-widest uppercase">
                     {item.period}
                   </span>
-                  <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
+                  <h4 class="font-heading mt-1 text-base font-bold text-white sm:text-lg">
                     {item.role}
                   </h4>
-                  <p class="text-gray-300 text-sm mb-3">{item.company}</p>
-                  <p class="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-3">
+                  <p class="mb-3 text-sm text-gray-300">{item.company}</p>
+                  <p class="mb-3 text-[11px] leading-relaxed text-gray-400 sm:text-sm">
                     {item.description}
                   </p>
                   <div class="flex flex-wrap gap-2">
                     {item.skills.map((skill) => (
-                      <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300">
+                      <span class="bg-background-sub/70 rounded-full border border-white/10 px-2 py-1 text-[10px] text-gray-300">
                         {skill}
                       </span>
                     ))}
@@ -64,31 +64,31 @@ const { data: typedCareerData } = Astro.props;
         </div>
 
         {/* Desktop Layout (alternating) */}
-        <div class="hidden md:block space-y-6">
+        <div class="hidden space-y-6 md:block">
           {
             typedCareerData.map((item, index) => (
               <div class="relative grid grid-cols-2 gap-0">
-                <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-2 z-10">
+                <div class="scroll-stat absolute top-2 left-1/2 z-10 -translate-x-1/2">
                   <div
-                    class={`w-4 h-4 rounded-full border-4 border-background-sub ${index === 0 ? "bg-accent shadow-[0_0_12px_theme(colors.accent)] animate-pulse" : "bg-gray-600"}`}
+                    class={`border-background-sub h-4 w-4 rounded-full border-4 ${index === 0 ? "bg-accent animate-pulse shadow-[0_0_12px_var(--color-accent)]" : "bg-gray-600"}`}
                   />
                 </div>
                 <div class="pr-10">
                   {index % 2 === 0 ? (
-                    <div class="scroll-stat bg-background-sub/70 border border-white/10 p-5 rounded-2xl text-right hover:border-accent/30 transition-all group">
+                    <div class="scroll-stat bg-background-sub/70 hover:border-accent/30 group rounded-2xl border border-white/10 p-5 text-right transition-all">
                       <span class="text-accent font-mono text-xs tracking-widest uppercase">
                         {item.period}
                       </span>
-                      <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
+                      <h4 class="font-heading mt-1 text-base font-bold text-white sm:text-lg">
                         {item.role}
                       </h4>
-                      <p class="text-gray-300 text-sm mb-3">{item.company}</p>
-                      <p class="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-3">
+                      <p class="mb-3 text-sm text-gray-300">{item.company}</p>
+                      <p class="mb-3 text-[11px] leading-relaxed text-gray-400 sm:text-sm">
                         {item.description}
                       </p>
-                      <div class="flex flex-wrap gap-2 justify-end">
+                      <div class="flex flex-wrap justify-end gap-2">
                         {item.skills.map((skill) => (
-                          <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
+                          <span class="bg-background-sub/70 group-hover:border-accent/20 rounded-full border border-white/10 px-2 py-1 text-[10px] text-gray-300">
                             {skill}
                           </span>
                         ))}
@@ -100,20 +100,20 @@ const { data: typedCareerData } = Astro.props;
                 </div>
                 <div class="pl-10">
                   {index % 2 !== 0 ? (
-                    <div class="scroll-stat bg-background-sub/70 border border-white/10 p-5 rounded-2xl text-left hover:border-accent/30 transition-all group">
+                    <div class="scroll-stat bg-background-sub/70 hover:border-accent/30 group rounded-2xl border border-white/10 p-5 text-left transition-all">
                       <span class="text-accent font-mono text-xs tracking-widest uppercase">
                         {item.period}
                       </span>
-                      <h4 class="text-base sm:text-lg font-heading font-bold text-white mt-1">
+                      <h4 class="font-heading mt-1 text-base font-bold text-white sm:text-lg">
                         {item.role}
                       </h4>
-                      <p class="text-gray-300 text-sm mb-3">{item.company}</p>
-                      <p class="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-3">
+                      <p class="mb-3 text-sm text-gray-300">{item.company}</p>
+                      <p class="mb-3 text-[11px] leading-relaxed text-gray-400 sm:text-sm">
                         {item.description}
                       </p>
                       <div class="flex flex-wrap gap-2">
                         {item.skills.map((skill) => (
-                          <span class="px-2 py-1 bg-background-sub/70 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">
+                          <span class="bg-background-sub/70 group-hover:border-accent/20 rounded-full border border-white/10 px-2 py-1 text-[10px] text-gray-300">
                             {skill}
                           </span>
                         ))}

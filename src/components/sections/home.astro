@@ -6,10 +6,10 @@ const { data } = Astro.props;
 ---
 
 <section id="home" class="relative min-h-screen text-center">
-  <div class="h-[50vh] flex items-end justify-center px-4 sm:px-8">
+  <div class="flex h-[50vh] items-end justify-center px-4 sm:px-8">
     <div class="w-full max-w-4xl pb-6 sm:pb-10">
       <h1
-        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold grid grid-cols-[1fr_auto_1fr] items-center w-full home-title"
+        class="home-title grid w-full grid-cols-[1fr_auto_1fr] items-center text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl"
       >
         <span class="text-right">Plasmo</span>
         <span class="lightning-icon mx-2 sm:mx-4 md:mx-6"></span>
@@ -19,21 +19,21 @@ const { data } = Astro.props;
   </div>
 
   <div
-    class="h-[50vh] flex flex-col items-center justify-start px-4 sm:px-8 pt-6 sm:pt-10"
+    class="flex h-[50vh] flex-col items-center justify-start px-4 pt-6 sm:px-8 sm:pt-10"
   >
     <div class="w-full max-w-4xl">
       <div
-        class="mb-8 text-white text-[11px] sm:text-xs md:text-sm leading-relaxed font-semibold home-intro"
+        class="home-intro mb-8 text-[11px] leading-relaxed font-semibold text-white sm:text-xs md:text-sm"
         set:html={data.introHtml}
       />
       <a
         href="#about"
-        class="inline-flex items-center justify-center mt-4 text-white hover:text-white transition-colors duration-300 scroll-down-btn"
+        class="scroll-down-btn mt-4 inline-flex items-center justify-center text-white transition-colors duration-300 hover:text-white"
         aria-label="Scroll down"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="w-12 h-12"
+          class="h-12 w-12"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

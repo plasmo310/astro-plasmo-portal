@@ -25,19 +25,19 @@ const isSlider = images.length > 1;
 
 <div
   id={modalId}
-  class="work-modal-overlay fixed inset-0 z-[200] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+  class="work-modal-overlay fixed inset-0 z-200 hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
 >
   <div
-    class="relative w-full max-w-2xl bg-[#0f0f0f] border border-white/10 rounded-2xl overflow-hidden max-h-[90vh] flex flex-col shadow-2xl"
+    class="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0f0f0f] shadow-2xl"
   >
     <button
-      class="work-modal-close absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/60 hover:text-white transition-colors"
+      class="work-modal-close absolute top-4 right-4 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white/60 transition-colors hover:bg-white/20 hover:text-white"
       aria-label="Close"
     >
-      <Icon name="mdi:close" class="w-5 h-5" />
+      <Icon name="mdi:close" class="h-5 w-5" />
     </button>
 
-    <div class="aspect-video bg-[#1a1a1a] relative shrink-0 overflow-hidden">
+    <div class="bg-background relative aspect-video shrink-0 overflow-hidden">
       <div
         class={`w-full h-full relative ${isSlider ? "modal-image-slider" : ""}`}
       >
@@ -50,7 +50,7 @@ const isSlider = images.length > 1;
                 src={src}
                 alt={`${title} screenshot ${index + 1}`}
                 draggable="false"
-                class={`absolute inset-0 w-full h-full object-cover modal-img ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`}
+                class={`modal-img absolute inset-0 h-full w-full object-cover ${index === 0 ? "z-0 opacity-100" : "z-[-1] opacity-0"}`}
               />
             );
           })
@@ -58,17 +58,17 @@ const isSlider = images.length > 1;
       </div>
     </div>
 
-    <div class="p-6 overflow-y-auto flex flex-col gap-5">
+    <div class="flex flex-col gap-5 overflow-y-auto p-6">
       <div>
         <span
-          class="text-accent text-[10px] uppercase tracking-widest font-bold"
+          class="text-accent text-[10px] font-bold tracking-widest uppercase"
         >
           {category}
         </span>
-        <h3 class="text-2xl font-heading font-bold text-white mt-1">
+        <h3 class="font-heading mt-1 text-2xl font-bold text-white">
           {title}
         </h3>
-        <p class="text-white/40 text-xs font-body mt-1 tracking-wide">
+        <p class="font-body mt-1 text-xs tracking-wide text-white/40">
           {period}
         </p>
       </div>
@@ -81,9 +81,9 @@ const isSlider = images.length > 1;
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-accent/40 hover:text-accent text-white/60 text-sm transition-colors"
+                class="hover:border-accent/40 hover:text-accent flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/60 transition-colors"
               >
-                <Icon name={link.icon} class="w-4 h-4 shrink-0" />
+                <Icon name={link.icon} class="h-4 w-4 shrink-0" />
                 <span>{link.tooltip}</span>
               </a>
             ))}
@@ -92,14 +92,14 @@ const isSlider = images.length > 1;
       }
 
       <p
-        class="text-gray-400 text-xs sm:text-sm font-body leading-relaxed"
+        class="font-body text-xs leading-relaxed text-gray-400 sm:text-sm"
         set:html={descHtml}
       />
 
       <div class="flex flex-wrap gap-2 pb-1">
         {
           tech.map((t) => (
-            <span class="px-2 py-1 bg-white/5 rounded-md text-[10px] text-white/60 border border-white/5">
+            <span class="rounded-md border border-white/5 bg-white/5 px-2 py-1 text-[10px] text-white/60">
               {t}
             </span>
           ))

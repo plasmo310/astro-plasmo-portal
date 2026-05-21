@@ -105,11 +105,6 @@
               "href": "https://github.com/masarito617/unity-chocolate-thief-scripts"
             },
             {
-              "icon": "mdi:google-play",
-              "tooltip": "GooglePlay",
-              "href": "https://play.google.com/store/apps/details?id=com.molegoro.chocolate"
-            },
-            {
               "icon": "fa-brands:app-store",
               "tooltip": "AppStore",
               "href": "https://apps.apple.com/jp/app/%E6%80%AA%E7%9B%97%E3%83%81%E3%83%A7%E3%82%B3%E3%83%AC%E3%83%BC%E3%83%88-3d%E3%83%81%E3%83%A7%E3%82%B3%E9%9B%86%E3%82%81%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3/id1669439500"
@@ -141,11 +136,6 @@
               "href": "https://github.com/plasmo310/unity-reversi-game-scripts"
             },
             {
-              "icon": "mdi:google-play",
-              "tooltip": "GooglePlay",
-              "href": "https://play.google.com/store/apps/details?id=com.molegoro.reversi"
-            },
-            {
               "icon": "fa-brands:app-store",
               "tooltip": "AppStore",
               "href": "https://apps.apple.com/jp/app/%E3%82%86%E3%82%8B%E3%81%84%E3%82%AA%E3%82%BB%E3%83%AD/id6443742920"
@@ -175,11 +165,6 @@
               "icon": "mdi:github",
               "tooltip": "GitHub",
               "href": "https://github.com/plasmo310/unity-shooting-game-3d-sample"
-            },
-            {
-              "icon": "mdi:google-play",
-              "tooltip": "GooglePlay",
-              "href": "https://play.google.com/store/apps/details?id=com.molegoro.shooting3d"
             },
             {
               "icon": "fa-brands:app-store",
@@ -258,11 +243,6 @@
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
               "href": "https://elekibear.com/post/20200712_01"
-            },
-            {
-              "icon": "mdi:google-play",
-              "tooltip": "GooglePlay",
-              "href": "https://play.google.com/store/apps/details?id=com.molegoro.GoGoGoloyan"
             },
             {
               "icon": "fa-brands:app-store",

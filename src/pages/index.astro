@@ -1,25 +1,5 @@
 ---
-import { DataLoader } from "../lib/dataLoader";
-import Header from "../components/sections/header.astro";
-import Home from "../components/sections/home.astro";
-import About from "../components/sections/about.astro";
-import Works from "../components/sections/works.astro";
-import Career from "../components/sections/career.astro";
-import Skills from "../components/sections/skills.astro";
-import Contact from "../components/sections/contact.astro";
-import Footer from "../components/sections/footer.astro";
-import Layout from "../layouts/layout.astro";
-
-const loader = new DataLoader("ja");
+import IndexPage from "../components/pages/index-page.astro";
 ---
 
-<Layout>
-  <Header />
-  <Home data={loader.home()} />
-  <About data={loader.about()} />
-  <Career data={loader.career()} />
-  <Works data={loader.works()} locale="ja" />
-  <Skills data={loader.skills()} />
-  <Contact data={loader.contact()} />
-  <Footer />
-</Layout>
+<IndexPage locale="ja" />

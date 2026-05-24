@@ -1,0 +1,21 @@
+---
+import type { Locale } from "../../lib/dataLoader";
+import { DataLoader } from "../../lib/dataLoader";
+import Layout from "../../layouts/layout.astro";
+import Header from "../sections/header.astro";
+import Works from "../sections/works.astro";
+import Footer from "../sections/footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const loader = new DataLoader(locale);
+---
+
+<Layout>
+  <Header />
+  <Works data={loader.works()} locale={locale} pickupOnly={false} />
+  <Footer />
+</Layout>

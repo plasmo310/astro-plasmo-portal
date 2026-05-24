@@ -192,10 +192,7 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
 </div>
 
 <!-- Hamburger button: fixed top-left (mobile only) -->
-<div
-  class="fixed top-4 left-4 z-30 lg:hidden"
-  style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));"
->
+<div class="drop-shadow-nav fixed top-4 left-4 z-30 lg:hidden">
   <button
     id="hamburger"
     class="relative h-6 w-6 text-white"
@@ -241,10 +238,7 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
 </div>
 
 <!-- Language switcher: fixed top-right -->
-<div
-  class="fixed top-4 right-4 z-30"
-  style="filter: drop-shadow(0 1px 4px rgba(0,0,0,0.8));"
->
+<div class="drop-shadow-nav fixed top-4 right-4 z-30">
   <a
     id="lang-switcher-link"
     href={locale === "ja" ? enUrl : jaUrl}
@@ -285,18 +279,6 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
 
   .lang-sep {
     color: rgba(255, 255, 255, 0.3);
-  }
-
-  .reveal-content {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  }
-  @keyframes revealIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   nav {

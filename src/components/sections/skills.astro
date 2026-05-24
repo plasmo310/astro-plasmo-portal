@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import SectionCard from "../common/section-card.astro";
 import SectionHeading from "../common/section-heading.astro";
 
 interface SkillItem {
@@ -29,93 +30,90 @@ const { data } = Astro.props;
 const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
 ---
 
-<section id="skills">
-  <div
-    class="bg-background-sub/50 mx-auto my-16 flex w-[97.5%] max-w-7xl items-start justify-center rounded-2xl border border-white/10 px-6 pt-6 pb-16 text-center backdrop-blur-2xl backdrop-saturate-200 sm:pt-8"
-  >
-    <div class="container mx-auto">
-      <SectionHeading title="Skills" />
-      <p
-        class="font-body -mt-4 mb-12 text-left text-xs leading-relaxed text-gray-300 sm:text-sm md:text-base"
-        set:html={data.descHtml}
-      />
+<SectionCard
+  id="skills"
+  class="flex items-start justify-center px-6 pb-16 text-center"
+>
+  <SectionHeading title="Skills" />
+  <p
+    class="font-body -mt-4 mb-12 text-left text-xs leading-relaxed text-gray-300 sm:text-sm md:text-base"
+    set:html={data.descHtml}
+  />
 
-      <div class="mx-auto mb-6 flex max-w-6xl justify-end">
-        <div
-          class="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-3 sm:flex-row sm:gap-4"
-        >
-          {
-            [
-              { label: "Expert", level: 3 },
-              { label: "Intermediate", level: 2 },
-              { label: "Beginner", level: 1 },
-            ].map((item) => (
-              <div class="flex items-center gap-2">
-                <div class="flex gap-0.5">
-                  {[1, 2, 3].map((star) => (
-                    <Icon
-                      name="mdi:star"
-                      class={`h-3 w-3 ${star <= item.level ? "text-accent" : "text-gray-600"}`}
-                    />
-                  ))}
-                </div>
-                <span class="text-[10px] tracking-wider text-white/60 uppercase">
-                  {item.label}
-                </span>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-
-      <div class="mx-auto max-w-6xl space-y-12 text-left">
-        {
-          skillSections.map((section) => (
-            <div>
-              <h3
-                id={`skills-${section.section.toLowerCase().replace(/[\s/]+/g, "-")}`}
-                data-nav-stop
-                class="font-heading text-accent mb-8 border-b border-white/10 pb-3 text-lg font-semibold tracking-widest uppercase"
-              >
-                {section.section}
-              </h3>
-              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                {section.categories.map((cat) => (
-                  <div class="skill-card bg-background-sub/70 hover:border-accent/20 rounded-2xl border border-white/10 p-6 transition-all duration-300">
-                    <h4 class="mb-4 text-[11px] tracking-[0.4em] text-gray-400 uppercase">
-                      {cat.category}
-                    </h4>
-                    <div class="flex flex-col gap-3">
-                      {cat.skills.map((skill) => (
-                        <div class="group flex items-center gap-3">
-                          <Icon
-                            name={skill.icon}
-                            class="h-7 w-7 shrink-0 transition-transform duration-300 group-hover:scale-110"
-                          />
-                          <span class="font-body flex-1 text-sm font-medium text-white/90">
-                            {skill.name}
-                          </span>
-                          <div class="flex shrink-0 gap-0.5">
-                            {[1, 2, 3].map((star) => (
-                              <Icon
-                                name="mdi:star"
-                                class={`h-3 w-3 ${star <= skill.level ? "text-accent" : "text-gray-600"}`}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+  <div class="mx-auto mb-6 flex max-w-6xl justify-end">
+    <div
+      class="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-3 sm:flex-row sm:gap-4"
+    >
+      {
+        [
+          { label: "Expert", level: 3 },
+          { label: "Intermediate", level: 2 },
+          { label: "Beginner", level: 1 },
+        ].map((item) => (
+          <div class="flex items-center gap-2">
+            <div class="flex gap-0.5">
+              {[1, 2, 3].map((star) => (
+                <Icon
+                  name="mdi:star"
+                  class={`h-3 w-3 ${star <= item.level ? "text-accent" : "text-gray-600"}`}
+                />
+              ))}
             </div>
-          ))
-        }
-      </div>
+            <span class="text-[10px] tracking-wider text-white/60 uppercase">
+              {item.label}
+            </span>
+          </div>
+        ))
+      }
     </div>
   </div>
-</section>
+
+  <div class="mx-auto max-w-6xl space-y-12 text-left">
+    {
+      skillSections.map((section) => (
+        <div>
+          <h3
+            id={`skills-${section.section.toLowerCase().replace(/[\s/]+/g, "-")}`}
+            data-nav-stop
+            class="font-heading text-accent mb-8 border-b border-white/10 pb-3 text-lg font-semibold tracking-widest uppercase"
+          >
+            {section.section}
+          </h3>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {section.categories.map((cat) => (
+              <div class="skill-card bg-background-sub/70 hover:border-accent/20 rounded-2xl border border-white/10 p-6 transition-all duration-300">
+                <h4 class="mb-4 text-[11px] tracking-[0.4em] text-gray-400 uppercase">
+                  {cat.category}
+                </h4>
+                <div class="flex flex-col gap-3">
+                  {cat.skills.map((skill) => (
+                    <div class="group flex items-center gap-3">
+                      <Icon
+                        name={skill.icon}
+                        class="h-7 w-7 shrink-0 transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <span class="font-body flex-1 text-sm font-medium text-white/90">
+                        {skill.name}
+                      </span>
+                      <div class="flex shrink-0 gap-0.5">
+                        {[1, 2, 3].map((star) => (
+                          <Icon
+                            name="mdi:star"
+                            class={`h-3 w-3 ${star <= skill.level ? "text-accent" : "text-gray-600"}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</SectionCard>
 
 <style>
   .scroll-stat {

@@ -1,0 +1,40 @@
+---
+interface Props {
+  id: string;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
+---
+
+<section {id}>
+  <div class:list={["card", className]}>
+    <div class="container mx-auto">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .card {
+    background-color: color-mix(
+      in srgb,
+      var(--color-background-sub) 50%,
+      transparent
+    );
+    margin-inline: auto;
+    margin-block: 4rem;
+    width: 97.5%;
+    max-width: 80rem;
+    border-radius: 1rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    padding-top: 1.5rem;
+    backdrop-filter: blur(40px) saturate(2);
+  }
+
+  @media (min-width: 640px) {
+    .card {
+      padding-top: 2rem;
+    }
+  }
+</style>

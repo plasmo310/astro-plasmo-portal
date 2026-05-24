@@ -29,8 +29,7 @@ const isHome = homePaths.includes(Astro.url.pathname);
     <button
       id="page-top-btn"
       aria-label="ページトップへ戻る"
-      class="nav-btn fixed right-8 bottom-8 flex flex-col items-center gap-1"
-      style="z-index: 100;"
+      class="nav-btn fixed right-8 bottom-8 z-[100] flex flex-col items-center gap-1"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +49,8 @@ const isHome = homePaths.includes(Astro.url.pathname);
 
     <!-- Section Nav -->
     <div
-      class="fixed bottom-8 left-8 flex flex-row gap-6"
-      style="z-index: 100;"
+      id="section-nav"
+      class="fixed bottom-8 left-8 z-[100] flex flex-row gap-6"
     >
       <button
         id="section-prev-btn"
@@ -137,9 +136,7 @@ const isHome = homePaths.includes(Astro.url.pathname);
 
   function updateNavVisibility() {
     const pageTopBtn = document.getElementById("page-top-btn");
-    const sectionNav = document.querySelector<HTMLElement>(
-      ".fixed.bottom-8.left-8",
-    );
+    const sectionNav = document.getElementById("section-nav");
     const scrolledEnough = window.scrollY > window.innerHeight * 0.9;
     const atBottom =
       window.scrollY + window.innerHeight >=

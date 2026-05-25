@@ -105,16 +105,16 @@ const isHome = homePaths.includes(Astro.url.pathname);
     "footer",
   ];
 
-  function pageTop(el: HTMLElement): number {
-    return el.getBoundingClientRect().top + window.scrollY;
+  function pageTop(element: HTMLElement): number {
+    return element.getBoundingClientRect().top + window.scrollY;
   }
 
   function getHeaderHeight(): number {
     return document.getElementById("header")?.offsetHeight ?? 0;
   }
 
-  function scrollToStop(el: HTMLElement) {
-    const top = Math.max(0, pageTop(el) - getHeaderHeight());
+  function scrollToStop(element: HTMLElement) {
+    const top = Math.max(0, pageTop(element) - getHeaderHeight());
     window.scrollTo({ top, behavior: "smooth" });
   }
 
@@ -125,27 +125,29 @@ const isHome = homePaths.includes(Astro.url.pathname);
   function getStops(): HTMLElement[] {
     const sections = SECTION_IDS.map((id) =>
       document.getElementById(id),
-    ).filter((el): el is HTMLElement => el !== null);
+    ).filter((element): element is HTMLElement => element !== null);
     const subHeadings = Array.from(
       document.querySelectorAll<HTMLElement>("[data-nav-stop]"),
     );
     return [...sections, ...subHeadings].sort(
-      (a, b) => pageTop(a) - pageTop(b),
+      (elementA, elementB) => pageTop(elementA) - pageTop(elementB),
     );
   }
 
   function updateNavVisibility() {
-    const pageTopBtn = document.getElementById("page-top-btn");
+    const pageTopButton = document.getElementById("page-top-btn");
     const sectionNav = document.getElementById("section-nav");
     const scrolledEnough = window.scrollY > window.innerHeight * 0.9;
     const atBottom =
       window.scrollY + window.innerHeight >=
       document.documentElement.scrollHeight - 40;
     const visible = scrolledEnough && !atBottom;
-    [pageTopBtn, sectionNav].forEach((el) => {
-      if (!el) return;
-      el.style.opacity = visible ? "1" : "0";
-      el.style.pointerEvents = visible ? "auto" : "none";
+    [pageTopButton, sectionNav].forEach((element) => {
+      if (!element) {
+        return;
+      }
+      element.style.opacity = visible ? "1" : "0";
+      element.style.pointerEvents = visible ? "auto" : "none";
     });
   }
 
@@ -161,10 +163,12 @@ const isHome = homePaths.includes(Astro.url.pathname);
       ?.addEventListener("click", () => {
         const stops = getStops();
         const currentTop = currentStopTop();
-        const prev = [...stops]
+        const previous = [...stops]
           .reverse()
-          .find((el) => pageTop(el) < currentTop - 10);
-        if (prev) scrollToStop(prev);
+          .find((element) => pageTop(element) < currentTop - 10);
+        if (previous) {
+          scrollToStop(previous);
+        }
       });
 
     document
@@ -172,8 +176,12 @@ const isHome = homePaths.includes(Astro.url.pathname);
       ?.addEventListener("click", () => {
         const stops = getStops();
         const currentTop = currentStopTop();
-        const next = stops.find((el) => pageTop(el) > currentTop + 10);
-        if (next) scrollToStop(next);
+        const next = stops.find(
+          (element) => pageTop(element) > currentTop + 10,
+        );
+        if (next) {
+          scrollToStop(next);
+        }
       });
   }
 

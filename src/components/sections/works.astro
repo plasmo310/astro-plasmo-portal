@@ -90,32 +90,35 @@ const sections = pickupOnly
                     <div
                       class={`relative h-full w-full ${isSlider ? "image-slider" : ""}`}
                     >
-                      {work.images.map((img, index) => {
-                        const src =
-                          img.startsWith("http") || img.startsWith("/")
-                            ? img
-                            : `/${img}`;
-                        const isGif = src.toLowerCase().endsWith(".gif");
-                        const cls = `work-card-img absolute inset-0 w-full h-full object-cover ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`;
+                      {work.images.map((image, index) => {
+                        let imageSrc = image;
+                        if (
+                          !image.startsWith("http") &&
+                          !image.startsWith("/")
+                        ) {
+                          imageSrc = `/${image}`;
+                        }
+                        const isGif = imageSrc.toLowerCase().endsWith(".gif");
+                        const className = `work-card-img absolute inset-0 w-full h-full object-cover ${index === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1]"}`;
                         return isGif ? (
                           <img
-                            src={src}
+                            src={imageSrc}
                             alt={`${work.title} screenshot ${index + 1}`}
                             loading="lazy"
                             decoding="async"
                             draggable="false"
-                            class={cls}
+                            class={className}
                           />
                         ) : (
                           <Image
-                            src={src}
+                            src={imageSrc}
                             alt={`${work.title} screenshot ${index + 1}`}
                             width={640}
                             height={360}
                             loading="lazy"
                             decoding="async"
                             draggable="false"
-                            class={cls}
+                            class={className}
                           />
                         );
                       })}
@@ -207,7 +210,9 @@ const sections = pickupOnly
     const sliders = document.querySelectorAll(".image-slider");
     sliders.forEach((slider) => {
       const images = slider.querySelectorAll("img");
-      if (images.length <= 1) return;
+      if (images.length <= 1) {
+        return;
+      }
 
       let currentIndex = 0;
       setInterval(() => {
@@ -237,9 +242,9 @@ const sections = pickupOnly
     // ビューポート手前で画像の先読みだけ行う（表示はしない）
     function preloadBatch(batch: HTMLElement[]) {
       batch.forEach((card) => {
-        card.querySelectorAll("img").forEach((img) => {
+        card.querySelectorAll("img").forEach((image) => {
           const preloader = new Image();
-          preloader.src = img.src;
+          preloader.src = image.src;
         });
       });
     }
@@ -299,12 +304,19 @@ const sections = pickupOnly
   function initCardClick() {
     const cards = document.querySelectorAll(".work-card");
     cards.forEach((card) => {
-      card.addEventListener("click", (e) => {
-        if ((e.target as HTMLElement).closest("a")) return;
+      card.addEventListener("click", (event) => {
+        if ((event.target as HTMLElement).closest("a")) {
+          return;
+        }
         const modalId = (card as HTMLElement).dataset.modalId;
-        if (!modalId) return;
+        if (!modalId) {
+          return;
+        }
         const modal = document.getElementById(modalId);
-        if (!modal) return;
+        if (!modal) {
+          return;
+        }
+
         modal.classList.remove("hidden");
         modal.classList.add("flex");
         document.body.style.overflow = "hidden";

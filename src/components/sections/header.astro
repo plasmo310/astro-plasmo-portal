@@ -346,23 +346,23 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
   let rafId: number | null = null;
 
   function updateNav() {
-    const nav = document.getElementById("header");
+    const navElement = document.getElementById("header");
     if (window.scrollY > 0) {
-      nav?.classList.add("scrolling");
+      navElement?.classList.add("scrolling");
     } else {
-      nav?.classList.remove("scrolling");
+      navElement?.classList.remove("scrolling");
     }
     rafId = null;
   }
 
   function setMenuOpen(open: boolean) {
-    const nav = document.getElementById("header");
+    const navElement = document.getElementById("header");
     const hamburger = document.getElementById("hamburger");
     const mobileMenu = document.getElementById("mobile-menu");
     mobileMenu?.classList.toggle("open", open);
     hamburger?.classList.toggle("open", open);
     hamburger?.setAttribute("aria-expanded", String(open));
-    nav?.classList.toggle("menu-open", open);
+    navElement?.classList.toggle("menu-open", open);
   }
 
   function updateLangSwitcher() {
@@ -372,7 +372,9 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
     ) as HTMLAnchorElement | null;
     const jpSpan = document.getElementById("lang-jp");
     const enSpan = document.getElementById("lang-en");
-    if (!link || !jpSpan || !enSpan) return;
+    if (!link || !jpSpan || !enSpan) {
+      return;
+    }
     const jaUrl = link.dataset.jaUrl ?? "/";
     const enUrl = link.dataset.enUrl ?? "/en/";
     link.href = isEn ? jaUrl : enUrl;
@@ -381,7 +383,7 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
   }
 
   function setupPage() {
-    const nav = document.getElementById("header");
+    const navElement = document.getElementById("header");
     const hamburger = document.getElementById("hamburger");
     const mobileMenu = document.getElementById("mobile-menu");
 
@@ -392,18 +394,20 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
 
     // 項目クリック時: 対象セクションへ移動する
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = e.currentTarget as HTMLAnchorElement;
+      anchor.addEventListener("click", function (event) {
+        event.preventDefault();
+        const target = event.currentTarget as HTMLAnchorElement;
         const targetId = target.getAttribute("href")?.substring(1) || "";
         const targetElement = document.getElementById(targetId);
 
         const isMenuOpen = mobileMenu?.classList.contains("open") ?? false;
-        if (isMenuOpen) setMenuOpen(false);
+        if (isMenuOpen) {
+          setMenuOpen(false);
+        }
 
         if (targetElement) {
           const doScroll = () => {
-            const headerHeight = nav?.offsetHeight ?? 0;
+            const headerHeight = navElement?.offsetHeight ?? 0;
             const top =
               targetElement.getBoundingClientRect().top +
               window.scrollY -
@@ -444,7 +448,9 @@ const desktopNavItems = navItems.filter((item) => item.label !== "Career");
   window.addEventListener(
     "scroll",
     () => {
-      if (!rafId) rafId = requestAnimationFrame(updateNav);
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateNav);
+      }
     },
     { passive: true },
   );

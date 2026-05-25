@@ -155,7 +155,7 @@ const { data: typedCareerData } = Astro.props;
       },
       { threshold: 0.15, rootMargin: "0px 0px -10px 0px" },
     );
-    items.forEach((el) => observer.observe(el));
+    items.forEach((element) => observer.observe(element));
   }
 
   revealCareer();

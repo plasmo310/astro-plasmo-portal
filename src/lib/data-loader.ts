@@ -22,7 +22,11 @@ function absolutify<T>(data: T): T {
         ? "/" + data
         : data
     ) as T;
-  if (Array.isArray(data)) return data.map(absolutify) as T;
+
+  if (Array.isArray(data)) {
+    return data.map(absolutify) as T;
+  }
+
   if (data && typeof data === "object")
     return Object.fromEntries(
       Object.entries(data as Record<string, unknown>).map(([k, v]) => [
@@ -30,6 +34,7 @@ function absolutify<T>(data: T): T {
         absolutify(v),
       ]),
     ) as T;
+
   return data;
 }
 

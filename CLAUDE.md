@@ -23,6 +23,11 @@ This is an Astro 6 portfolio site using strict TypeScript. No UI framework integ
 
 **Adding a section:** Create `src/data/<section>.json`, create `src/components/<section>.astro` that imports from it, then add the component to `src/pages/index.astro`.
 
+## Coding Rules
+
+- Always wrap `if` statement bodies in `{}`. One-liner if statements are not allowed.
+- Use full words for variable/function names. Abbreviations are not allowed (e.g. `button` not `btn`, `element` not `el`, `event` not `e`, `image` not `img`, `previous` not `prev`).
+
 ## Localize Table
 
 | Japanese         | English          |

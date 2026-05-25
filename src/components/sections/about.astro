@@ -59,17 +59,17 @@ const { data: profileData } = Astro.props;
     </div>
 
     <div
-      class="reveal-content mt-8 mb-2 flex justify-center [animation-delay:0.2s]"
+      class="reveal-content mt-10 mb-2 flex justify-center [animation-delay:0.2s]"
     >
       <a
         href={profileData.blogUrl}
         target="_blank"
-        class="group flex items-center gap-2 transition-all duration-300 hover:scale-105 sm:gap-3"
+        class="group hover:border-accent/60 flex items-center gap-2 rounded-lg border-2 border-white/50 px-4 py-2 transition-all duration-300 hover:scale-105 sm:gap-3"
       >
         <img
           src="/img/icon/elekibear-white.png"
           alt="TECH BLOG"
-          class="h-9 w-9 sm:h-12 sm:w-12"
+          class="h-8 w-8 sm:h-12 sm:w-12"
         />
         <span
           class="group-hover:text-accent font-body text-xl text-gray-200 transition-colors duration-300 sm:text-2xl"

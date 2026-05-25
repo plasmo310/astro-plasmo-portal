@@ -4,46 +4,13 @@ import { Icon } from "astro-icon/components";
 import SectionCard from "../common/section-card.astro";
 import SectionHeading from "../common/section-heading.astro";
 import WorksModal from "./works-modal.astro";
-import type { Locale } from "../../lib/dataLoader";
+import type { Locale } from "../../lib/data-loader";
+import type { WorksData } from "../../types/data/works";
 
 interface Props {
   pickupOnly?: boolean;
   locale?: Locale;
-  data: {
-    pickupDescHtml: string;
-    allDescHtml: string;
-    sections: WorkSection[];
-  };
-}
-
-interface WorkLink {
-  icon: string;
-  tooltip: string;
-  href: string;
-}
-
-interface Work {
-  pickup?: boolean;
-  category: string;
-  title: string;
-  period: string;
-  overview: string;
-  descHtml: string;
-  images: string[];
-  tech: string[];
-  links: WorkLink[];
-}
-
-interface WorkSection {
-  section: string;
-  descHtml?: string;
-  works: Work[];
-}
-
-interface WorksData {
-  pickupDescHtml: string;
-  allDescHtml: string;
-  sections: WorkSection[];
+  data: WorksData;
 }
 
 const { pickupOnly = true, locale = "ja", data: worksData } = Astro.props;
@@ -229,16 +196,7 @@ const sections = pickupOnly
 {
   sections.map((workSection, si) =>
     workSection.works.map((work, wi) => (
-      <WorksModal
-        modalId={`work-modal-${si}-${wi}`}
-        category={work.category}
-        title={work.title}
-        period={work.period}
-        descHtml={work.descHtml}
-        images={work.images}
-        tech={work.tech}
-        links={work.links}
-      />
+      <WorksModal modalId={`work-modal-${si}-${wi}`} work={work} />
     )),
   )
 }

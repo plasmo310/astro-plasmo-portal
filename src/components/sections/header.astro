@@ -1,16 +1,5 @@
 ---
-interface NavChild {
-  label: string;
-  href: string;
-  newTab?: boolean;
-}
-
-interface NavItem {
-  label: string;
-  href: string;
-  newTab?: boolean;
-  children?: NavChild[];
-}
+import type { NavData } from "../../types/ui/nav";
 
 const pathname = Astro.url.pathname;
 const isEnglish = pathname.startsWith("/en");
@@ -26,7 +15,7 @@ const enUrl = isEnglish
   ? pathname
   : "/en" + (pathname === "/" ? "/" : pathname);
 
-const navItems: NavItem[] = [
+const navItems: NavData.Item[] = [
   { label: "Home", href: `${anchorBase}#home` },
   { label: "About", href: `${anchorBase}#about` },
   { label: "Career", href: `${anchorBase}#career` },

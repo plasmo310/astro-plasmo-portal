@@ -2,32 +2,14 @@
 import { Icon } from "astro-icon/components";
 import SectionCard from "../common/section-card.astro";
 import SectionHeading from "../common/section-heading.astro";
-
-interface SkillItem {
-  name: string;
-  level: number;
-  icon: string;
-}
-
-interface SkillCategory {
-  category: string;
-  skills: SkillItem[];
-}
-
-interface SkillSection {
-  section: string;
-  categories: SkillCategory[];
-}
+import type { SkillsData } from "../../types/data/skills";
 
 interface Props {
-  data: {
-    descHtml: string;
-    skill: unknown[];
-  };
+  data: SkillsData;
 }
 
 const { data } = Astro.props;
-const skillSections: SkillSection[] = data.skill as unknown as SkillSection[];
+const skillSections = data.skill;
 ---
 
 <SectionCard

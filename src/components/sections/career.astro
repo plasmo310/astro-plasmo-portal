@@ -1,17 +1,10 @@
 ---
 import SectionCard from "../common/section-card.astro";
 import SectionHeading from "../common/section-heading.astro";
-
-interface CareerItem {
-  company: string;
-  role: string;
-  period: string;
-  description: string;
-  skills: string[];
-}
+import type { CareerData } from "../../types/data/career";
 
 interface Props {
-  data: CareerItem[];
+  data: CareerData.Item[];
 }
 
 const { data: typedCareerData } = Astro.props;

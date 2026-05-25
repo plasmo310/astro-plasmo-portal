@@ -2,17 +2,7 @@
 import { Icon } from "astro-icon/components";
 import SectionCard from "../common/section-card.astro";
 import SectionHeading from "../common/section-heading.astro";
-
-interface Social {
-  name: string;
-  url: string;
-  icon: string;
-}
-
-interface ContactData {
-  descHtml: string;
-  socials: Social[];
-}
+import type { ContactData } from "../../types/data/contact";
 
 interface Props {
   data: ContactData;

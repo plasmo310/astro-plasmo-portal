@@ -1,6 +1,8 @@
 ---
+import type { HomeData } from "../../types/data/home";
+
 interface Props {
-  data: { introHtml: string };
+  data: HomeData;
 }
 const { data } = Astro.props;
 ---

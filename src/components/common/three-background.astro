@@ -47,8 +47,12 @@ const { showModel = true } = Astro.props;
   pointLight.position.set(3, 3, 3);
   scene.add(pointLight);
 
+  // 読み込むモデル情報
+  const LOAD_MODEL_GLB_PATH = "/model/SM_Elekibear.glb";
+  const LOAD_MODEL_TEXTURE_PATH = "/model/T_Elekibear.png";
+
+  let loadModelRoot: THREE.Group | null = null;
   let animMixer: THREE.AnimationMixer | null = null;
-  let elekibearRoot: THREE.Group | null = null;
   let dissolveMat: THREE.MeshToonMaterial | null = null;
   let dissolveStartTime: number | null = null;
 
@@ -99,21 +103,22 @@ const { showModel = true } = Astro.props;
 
   const showModel = canvas.dataset.showModel === "true";
 
+  // モデル
   const gltfLoader = new GLTFLoader();
   if (showModel)
     gltfLoader.load(
-      "/model/SM_Elekibear.glb",
+      LOAD_MODEL_GLB_PATH,
       (gltf) => {
         const model = gltf.scene;
-        elekibearRoot = new THREE.Group();
-        elekibearRoot.add(model);
-        elekibearRoot.visible = false;
-        elekibearRoot.position.set(0, -1.2, 0);
-        elekibearRoot.scale.set(1.5, 1.5, 1.5);
-        scene.add(elekibearRoot);
+        loadModelRoot = new THREE.Group();
+        loadModelRoot.add(model);
+        loadModelRoot.visible = false;
+        loadModelRoot.position.set(0, -1.2, 0);
+        loadModelRoot.scale.set(1.5, 1.5, 1.5);
+        scene.add(loadModelRoot);
 
         new THREE.TextureLoader()
-          .loadAsync("/model/T_Elekibear.png")
+          .loadAsync(LOAD_MODEL_TEXTURE_PATH)
           .then(async (tex) => {
             tex.colorSpace = THREE.SRGBColorSpace;
             tex.flipY = false;
@@ -132,8 +137,8 @@ const { showModel = true } = Astro.props;
               }
             });
 
-            if (elekibearRoot) {
-              elekibearRoot.visible = true;
+            if (loadModelRoot) {
+              loadModelRoot.visible = true;
             }
             await renderer.compileAsync(scene, camera);
 
@@ -217,9 +222,9 @@ const { showModel = true } = Astro.props;
       }
     }
 
-    if (elekibearRoot) {
+    if (loadModelRoot) {
       rotY += delta * 0.5;
-      elekibearRoot.rotation.y = rotY;
+      loadModelRoot.rotation.y = rotY;
     }
 
     particles.rotation.y = t * 0.04;

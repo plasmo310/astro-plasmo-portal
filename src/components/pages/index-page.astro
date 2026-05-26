@@ -5,7 +5,6 @@ import Layout from "../../layouts/layout.astro";
 import Header from "../sections/header.astro";
 import Home from "../sections/home.astro";
 import About from "../sections/about.astro";
-import Career from "../sections/career.astro";
 import Works from "../sections/works.astro";
 import Skills from "../sections/skills.astro";
 import Contact from "../sections/contact.astro";
@@ -23,7 +22,6 @@ const loader = new DataLoader(locale);
   <Header />
   <Home data={loader.home()} />
   <About data={loader.about()} />
-  <Career data={loader.career()} />
   <Works data={loader.works()} locale={locale} />
   <Skills data={loader.skills()} />
   <Contact data={loader.contact()} />

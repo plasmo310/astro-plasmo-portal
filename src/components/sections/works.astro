@@ -20,7 +20,7 @@ const {
   sections: rawSections,
 } = worksData as unknown as WorksData;
 const worksAllHref = locale === "en" ? "/en/works" : "/works";
-const title = pickupOnly ? "Pickup Works" : "All Works";
+const title = pickupOnly ? "Private Works" : "All Private Works";
 const currentDescHtml = pickupOnly ? pickupDescHtml : allDescHtml;
 const sections = pickupOnly
   ? rawSections

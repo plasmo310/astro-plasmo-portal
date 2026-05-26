@@ -47,6 +47,11 @@
               "icon": "mdi:web",
               "tooltip": "Webサイト",
               "href": "https://plasmoportal.com"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/astro-plasmo-portal"
             }
           ]
         },

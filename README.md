@@ -4,7 +4,7 @@
 
 Source code for Plasmo's personal portal site.</br>
 Built with Astro as a static site.</br>
-Public URL: [Plasmo Portal](https://plasmoportal.com)
+Public URL: <a href="https://plasmoportal.com" target="_blank">Plasmo Portal</a>
 
 <img src="doc/ReadMeContents/01_plasmo_portal.png" width="600">
 

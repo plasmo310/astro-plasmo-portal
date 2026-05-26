@@ -2,7 +2,7 @@
 
 Plasmoのポータルサイトのコードになります。</br>
 Astroで構築しており、静的サイトとして動作します。</br>
-公開URL: [Plasmo Portal](https://plasmoportal.com)
+公開URL: <a href="https://plasmoportal.com" target="_blank">Plasmo Portal</a>
 
 <img src="doc/ReadMeContents/01_plasmo_portal.png" width="600">
 

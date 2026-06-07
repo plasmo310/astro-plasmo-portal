@@ -402,6 +402,11 @@
           "tech": ["PySide / Qt", "Python"],
           "links": [
             {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260607_01_command_launcher"
+            },
+            {
               "icon": "mdi:github",
               "tooltip": "GitHub",
               "href": "https://github.com/plasmo310/pyside-command-launcher"

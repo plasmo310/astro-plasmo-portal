@@ -10,6 +10,9 @@ const isIndexPage =
 const anchorBase = isIndexPage ? "" : isEnglish ? "/en/" : "/";
 
 const worksAllHref = isEnglish ? "/en/works" : "/works";
+const galleryHref = isEnglish ? "/en/gallery" : "/gallery";
+const galleryMusicHref = `${galleryHref}#music`;
+const galleryIllustHref = `${galleryHref}#illustration`;
 const jaUrl = isEnglish ? pathname.replace(/^\/en/, "") || "/" : pathname;
 const enUrl = isEnglish
   ? pathname
@@ -23,6 +26,14 @@ const navItems: NavData.Item[] = [
     label: "Works",
     href: `${anchorBase}#works`,
     children: [{ label: "All Works", href: worksAllHref }],
+  },
+  {
+    label: "Gallery",
+    href: `${anchorBase}#gallery`,
+    children: [
+      { label: "Music", href: galleryMusicHref },
+      { label: "Illust", href: galleryIllustHref },
+    ],
   },
   { label: "Skills", href: `${anchorBase}#skills` },
   { label: "Blog", href: "https://elekibear.com", newTab: true },

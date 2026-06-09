@@ -10,6 +10,8 @@ import skillsJa from "../data/ja/skills.json";
 import skillsEn from "../data/en/skills.json";
 import worksJa from "../data/ja/works.json";
 import worksEn from "../data/en/works.json";
+import galleryJa from "../data/ja/gallery.json";
+import galleryEn from "../data/en/gallery.json";
 
 export type Locale = "ja" | "en";
 
@@ -63,5 +65,9 @@ export class DataLoader {
 
   works() {
     return absolutify(this.locale === "en" ? worksEn : worksJa);
+  }
+
+  gallery() {
+    return absolutify(this.locale === "en" ? galleryEn : galleryJa);
   }
 }

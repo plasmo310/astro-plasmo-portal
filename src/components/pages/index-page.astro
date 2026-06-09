@@ -6,6 +6,7 @@ import Header from "../sections/header.astro";
 import Home from "../sections/home.astro";
 import About from "../sections/about.astro";
 import Works from "../sections/works.astro";
+import Gallery from "../sections/gallery.astro";
 import Skills from "../sections/skills.astro";
 import Contact from "../sections/contact.astro";
 import Footer from "../sections/footer.astro";
@@ -23,6 +24,7 @@ const loader = new DataLoader(locale);
   <Home data={loader.home()} />
   <About data={loader.about()} />
   <Works data={loader.works()} locale={locale} />
+  <Gallery data={loader.gallery()} locale={locale} />
   <Skills data={loader.skills()} />
   <Contact data={loader.contact()} />
   <Footer />

@@ -1,0 +1,8 @@
+---
+import GalleryPage from "../../components/pages/gallery-page.astro";
+import { DataLoader } from "../../lib/data-loader";
+
+const loader = new DataLoader("en");
+---
+
+<GalleryPage locale="en" data={loader.gallery()} />

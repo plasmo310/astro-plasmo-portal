@@ -12,7 +12,8 @@ export namespace GalleryData {
     description?: string;
     image?: string;
     embedUrl?: string;
-    embedType?: "video";
+    embedType?: "video" | "apple-music-player";
+    maxWidth?: string;
     links?: Link[];
   }
 

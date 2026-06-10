@@ -78,8 +78,8 @@ function getMusicThumbnail(item: GalleryData.Item): string {
                   {category.type === "music" ? (
                     <div class="space-y-6">
                       {section.items.map((item) => (
-                        <div class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500">
-                          {item.embedUrl ? (
+                        <div class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500" style={item.maxWidth ? { maxWidth: item.maxWidth } : {}}>
+                          {item.embedType === "video" ? (
                             <div class="relative aspect-video w-full">
                               <iframe
                                 src={item.embedUrl}
@@ -88,6 +88,18 @@ function getMusicThumbnail(item: GalleryData.Item): string {
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen
+                              />
+                            </div>
+                          ) : item.embedType === "apple-music-player" ? (
+                            <div class="w-full overflow-hidden">
+                              <iframe
+                                src={item.embedUrl}
+                                title={item.title}
+                                class="w-full"
+                                style={{ height: "450px" }}
+                                frameborder="0"
+                                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
                               />
                             </div>
                           ) : (
@@ -142,7 +154,7 @@ function getMusicThumbnail(item: GalleryData.Item): string {
                           item.image ??
                           "https://placehold.co/400x500/1a1a2e/a0a0c0?text=Illustration";
                         return (
-                          <div class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500">
+                          <div class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500" style={item.maxWidth ? { maxWidth: item.maxWidth } : {}}>
                             <div class="bg-background overflow-hidden">
                               <img
                                 src={image}

@@ -17,41 +17,29 @@
               "description": "バンドサウンドをイメージして制作した楽曲です。",
               "year": "2026",
               "embedUrl": "https://www.youtube.com/embed/OFG43c-A4XA",
-              "embedType": "video"
+              "embedType": "video",
+              "maxWidth": "800px"
             },
             {
               "title": "ペンギンパニック",
               "description": "バンドサウンドをイメージして制作した楽曲です。",
               "year": "2026",
               "embedUrl": "https://www.youtube.com/embed/HUlLNB7XwkE?si=PxFgFmo2MN_8eRoW",
-              "embedType": "video"
+              "embedType": "video",
+              "maxWidth": "800px"
             }
           ]
         },
         {
-          "section": "Band",
-          "descHtml": "バンドで制作したアルバムです。",
+          "section": "バンド: サカナカシマイケル",
+          "descHtml": "学生時代にバンドで制作したアルバムです。各種音楽サブスクリプションで配信しています。",
           "items": [
             {
-              "pickup": true,
-              "title": "海にいたのは魚か中島か",
-              "year": "2025",
-              "links": [
-                {
-                  "icon": "fa-brands:apple",
-                  "tooltip": "Apple Music",
-                  "href": "https://music.apple.com/jp/album/%E6%B5%B7%E3%81%AB%E3%81%84%E3%81%9F%E3%81%AE%E3%81%AF%E9%AD%9A%E3%81%8B%E4%B8%AD%E5%B3%B6%E3%81%8B/1861393285"
-                },
-                {
-                  "icon": "fa-brands:spotify",
-                  "tooltip": "Spotify",
-                  "href": "https://open.spotify.com/intl-ja/album/170FOEpTZT6AABa6CUQfz7"
-                }
-              ]
-            },
-            {
-              "title": "いつまでもサカナカシマシ",
-              "year": "2025",
+              "title": "いつまでもサカナカシマシ | サカナカシマイケル",
+              "year": "2016",
+              "embedUrl": "https://embed.music.apple.com/jp/album/%E3%81%84%E3%81%A4%E3%81%BE%E3%81%A7%E3%82%82%E3%82%B5%E3%82%AB%E3%83%8A%E3%82%AB%E3%82%B7%E3%83%9E%E3%82%B7/1860510512",
+              "embedType": "apple-music-player",
+              "maxWidth": "800px",
               "links": [
                 {
                   "icon": "fa-brands:apple",
@@ -62,6 +50,26 @@
                   "icon": "fa-brands:spotify",
                   "tooltip": "Spotify",
                   "href": "https://open.spotify.com/intl-ja/album/6srQQDLEYkRMhxOpzPHIOV"
+                }
+              ]
+            },
+            {
+              "pickup": true,
+              "title": "海にいたのは魚か中島か | サカナカシマイケル",
+              "year": "2014",
+              "embedUrl": "https://embed.music.apple.com/jp/album/%E6%B5%B7%E3%81%AB%E3%81%84%E3%81%9F%E3%81%AE%E3%81%AF%E9%AD%9A%E3%81%8B%E4%B8%AD%E5%B3%B6%E3%81%8B/1861393285",
+              "embedType": "apple-music-player",
+              "maxWidth": "800px",
+              "links": [
+                {
+                  "icon": "fa-brands:apple",
+                  "tooltip": "Apple Music",
+                  "href": "https://music.apple.com/jp/album/%E6%B5%B7%E3%81%AB%E3%81%84%E3%81%9F%E3%81%AE%E3%81%AF%E9%AD%9A%E3%81%8B%E4%B8%AD%E5%B3%B6%E3%81%8B/1861393285"
+                },
+                {
+                  "icon": "fa-brands:spotify",
+                  "tooltip": "Spotify",
+                  "href": "https://open.spotify.com/intl-ja/album/170FOEpTZT6AABa6CUQfz7"
                 }
               ]
             }

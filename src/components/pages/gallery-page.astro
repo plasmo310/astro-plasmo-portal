@@ -27,6 +27,22 @@ function getMusicThumbnail(item: GalleryData.Item): string {
   }
   return "https://placehold.co/400x400/1a1a2e/a0a0c0?text=Music";
 }
+
+// 動画項目は embedUrl から YouTube 視聴リンクを自動生成し、他サービスのリンクと並べる。
+function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
+  const links = item.links ? [...item.links] : [];
+  if (item.embedType === "video" && item.embedUrl) {
+    const match = item.embedUrl.match(/embed\/([^?&]+)/);
+    if (match) {
+      links.push({
+        icon: "fa-brands:youtube",
+        tooltip: "YouTube",
+        href: `https://www.youtube.com/watch?v=${match[1]}`,
+      });
+    }
+  }
+  return links;
+}
 ---
 
 <Layout>
@@ -78,17 +94,32 @@ function getMusicThumbnail(item: GalleryData.Item): string {
                   {category.type === "music" ? (
                     <div class="space-y-6">
                       {section.items.map((item) => (
-                        <div class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500" style={item.maxWidth ? { maxWidth: item.maxWidth } : {}}>
+                        <div
+                          class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500"
+                          style={
+                            item.maxWidth ? { maxWidth: item.maxWidth } : {}
+                          }
+                        >
                           {item.embedType === "video" ? (
                             <div class="relative aspect-video w-full">
-                              <iframe
-                                src={item.embedUrl}
-                                title={item.title}
-                                class="h-full w-full"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen
-                              />
+                              <button
+                                class="video-facade group/video absolute inset-0 h-full w-full cursor-pointer"
+                                data-embed-url={item.embedUrl}
+                                aria-label={`Play ${item.title}`}
+                              >
+                                <img
+                                  src={getMusicThumbnail(item)}
+                                  alt={item.title}
+                                  loading="lazy"
+                                  class="absolute inset-0 h-full w-full object-cover"
+                                />
+                                <span class="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors duration-200 group-hover/video:bg-black/30">
+                                  <Icon
+                                    name="mdi:play-circle"
+                                    class="h-16 w-16 text-white/90 drop-shadow-lg transition-transform duration-200 group-hover/video:scale-110"
+                                  />
+                                </span>
+                              </button>
                             </div>
                           ) : item.embedType === "apple-music-player" ? (
                             <div class="w-full overflow-hidden">
@@ -124,9 +155,9 @@ function getMusicThumbnail(item: GalleryData.Item): string {
                                 {item.description}
                               </p>
                             )}
-                            {item.links && item.links.length > 0 && (
+                            {getItemLinks(item).length > 0 && (
                               <div class="mt-4 flex gap-3">
-                                {item.links.map((link) => (
+                                {getItemLinks(item).map((link) => (
                                   <div class="group/tip relative">
                                     <a
                                       href={link.href}
@@ -154,7 +185,12 @@ function getMusicThumbnail(item: GalleryData.Item): string {
                           item.image ??
                           "https://placehold.co/400x500/1a1a2e/a0a0c0?text=Illustration";
                         return (
-                          <div class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500" style={item.maxWidth ? { maxWidth: item.maxWidth } : {}}>
+                          <div
+                            class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500"
+                            style={
+                              item.maxWidth ? { maxWidth: item.maxWidth } : {}
+                            }
+                          >
                             <div class="bg-background overflow-hidden">
                               <img
                                 src={image}
@@ -239,6 +275,43 @@ function getMusicThumbnail(item: GalleryData.Item): string {
     }
   }
 
+  // 生の YouTube iframe は初期フレームが真っ黒に描画される環境があるため、
+  // 初期はサムネイル画像を表示し、クリックで埋め込み URL のプレイヤーを読み込む。
+  function initVideoFacades() {
+    const facades = document.querySelectorAll(
+      ".video-facade",
+    ) as NodeListOf<HTMLElement>;
+
+    facades.forEach((facade) => {
+      facade.addEventListener(
+        "click",
+        () => {
+          const embedUrl = facade.dataset.embedUrl;
+          if (!embedUrl) {
+            return;
+          }
+          const separator = embedUrl.includes("?") ? "&" : "?";
+          const iframe = document.createElement("iframe");
+          iframe.src = `${embedUrl}${separator}autoplay=1`;
+          iframe.title = facade.getAttribute("aria-label") ?? "";
+          iframe.className = "absolute inset-0 h-full w-full";
+          iframe.setAttribute("frameborder", "0");
+          iframe.setAttribute(
+            "allow",
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+          );
+          iframe.setAttribute(
+            "referrerpolicy",
+            "strict-origin-when-cross-origin",
+          );
+          iframe.setAttribute("allowfullscreen", "");
+          facade.replaceWith(iframe);
+        },
+        { once: true },
+      );
+    });
+  }
+
   function initReveal() {
     const cards = Array.from(
       document.querySelectorAll(".gallery-card"),
@@ -269,9 +342,11 @@ function getMusicThumbnail(item: GalleryData.Item): string {
   document.addEventListener("DOMContentLoaded", () => {
     initTabs();
     initReveal();
+    initVideoFacades();
   });
   document.addEventListener("astro:after-swap", () => {
     initTabs();
     initReveal();
+    initVideoFacades();
   });
 </script>

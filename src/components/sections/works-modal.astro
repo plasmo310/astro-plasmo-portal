@@ -157,8 +157,11 @@ const isSlider = images.length > 1;
     document.body.style.overflow = "";
   }
 
-  window.addEventListener("load", initModals);
-  document.addEventListener("astro:after-swap", initModals);
+  // astro:page-load は初回ロードと ClientRouter による遷移の両方で、
+  // 新しいページのスクリプト読み込み後に発火する。
+  // (load + astro:after-swap の組み合わせだと、クライアント遷移で
+  //  初めてこのスクリプトが読み込まれた場合にどちらも発火済みで初期化されない)
+  document.addEventListener("astro:page-load", initModals);
 </script>
 
 <style is:global>

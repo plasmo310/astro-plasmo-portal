@@ -10,6 +10,11 @@
         {
           "section": "空想どうぶつビート",
           "descHtml": "SunoAIを活用したどうぶつ系楽曲プロジェクトです。",
+          "link": {
+            "icon": "fa-brands:youtube",
+            "label": "YouTubeチャンネル",
+            "href": "https://www.youtube.com/@fantasyanimalbeat"
+          },
           "items": [
             {
               "pickup": true,
@@ -33,6 +38,11 @@
         {
           "section": "バンド: サカナカシマイケル",
           "descHtml": "学生時代にバンドで制作したアルバムです。各種音楽サブスクリプションで配信しています。",
+          "link": {
+            "icon": "fa-brands:apple",
+            "label": "アーティストページ",
+            "href": "https://music.apple.com/jp/artist/%E3%82%B5%E3%82%AB%E3%83%8A%E3%82%AB%E3%82%B7%E3%83%9E%E3%82%A4%E3%82%B1%E3%83%AB/1860062912"
+          },
           "items": [
             {
               "title": "いつまでもサカナカシマシ | サカナカシマイケル",

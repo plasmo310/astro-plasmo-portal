@@ -121,6 +121,70 @@
   animation: lightning-pulse 1.4s infinite ease-in-out;
 }
 
+/* ギャラリーカードの出現アニメーション。
+   トップページのセクションと /gallery ページの両方で使うため global に置く。 */
+.gallery-card {
+  opacity: 0;
+  visibility: hidden;
+  transition: border-color 0.5s;
+}
+
+.gallery-card.reveal {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes gallery-card-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-card.reveal-animating {
+  animation: gallery-card-slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* 再生中の YouTube プレイヤーに重ねるオーバーレイ。
+   クリックで一時停止/再開でき、pointer カーソルでそれを示す。
+   下部はコントロールバーを操作できるよう空けておく。 */
+.video-toggle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 56px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.video-paused-indicator {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.video-toggle-overlay.paused .video-paused-indicator {
+  display: flex;
+}
+
+.video-paused-indicator svg {
+  width: 4rem;
+  height: 4rem;
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
 @layer base {
   *::selection {
     @apply bg-accent text-background;

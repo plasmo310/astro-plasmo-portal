@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import SectionCard from "../common/section-card.astro";
 import SectionHeading from "../common/section-heading.astro";
@@ -73,7 +72,7 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
       All Gallery
       <Icon
         name="mdi:arrow-right"
-        class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+        class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
       />
     </a>
   </div>
@@ -81,11 +80,36 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
   <div class="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2">
     <!-- Music Column -->
     <div>
-      <h3
-        class="font-heading text-accent mb-6 border-b border-white/10 pb-3 text-lg font-semibold tracking-widest uppercase"
+      <div
+        class:list={[
+          "flex items-center justify-between border-b border-white/10 pb-3",
+          musicCategory?.descHtml ? "mb-3" : "mb-6",
+        ]}
       >
-        {musicCategory?.label ?? "Music"}
-      </h3>
+        <h3
+          class="font-heading text-accent text-lg font-semibold tracking-widest uppercase"
+        >
+          {musicCategory?.label ?? "Music"}
+        </h3>
+        <a
+          href={`${galleryAllHref}#${musicCategory?.type ?? "music"}`}
+          class="group hover:text-accent flex items-center self-center text-white transition-colors duration-300"
+          aria-label={`View all ${musicCategory?.label ?? "Music"} works`}
+        >
+          <Icon
+            name="mdi:arrow-right"
+            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </a>
+      </div>
+      {
+        musicCategory?.descHtml && (
+          <p
+            class="font-body mb-6 text-xs leading-relaxed text-gray-400 sm:text-sm"
+            set:html={musicCategory.descHtml}
+          />
+        )
+      }
       <div class="space-y-4">
         {
           pickupMusicItems.map((item) => {
@@ -109,8 +133,11 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
                         class="absolute inset-0 h-full w-full object-cover"
                       />
                       <span class="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors duration-200 group-hover/video:bg-black/30">
+                        {/* is:inline: 共有 <symbol> 参照だと最初の動画カードが
+                            iframe に置換された際に他の再生アイコンも消えるため */}
                         <Icon
                           name="mdi:play-circle"
+                          is:inline
                           class="h-16 w-16 text-white/90 drop-shadow-lg transition-transform duration-200 group-hover/video:scale-110"
                         />
                       </span>
@@ -174,11 +201,36 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
 
     <!-- Illust Column -->
     <div>
-      <h3
-        class="font-heading text-accent mb-6 border-b border-white/10 pb-3 text-lg font-semibold tracking-widest uppercase"
+      <div
+        class:list={[
+          "flex items-center justify-between border-b border-white/10 pb-3",
+          illustCategory?.descHtml ? "mb-3" : "mb-6",
+        ]}
       >
-        {illustCategory?.label ?? "Illust"}
-      </h3>
+        <h3
+          class="font-heading text-accent text-lg font-semibold tracking-widest uppercase"
+        >
+          {illustCategory?.label ?? "Illust"}
+        </h3>
+        <a
+          href={`${galleryAllHref}#${illustCategory?.type ?? "illustration"}`}
+          class="group hover:text-accent flex items-center self-center text-white transition-colors duration-300"
+          aria-label={`View all ${illustCategory?.label ?? "Illust"} works`}
+        >
+          <Icon
+            name="mdi:arrow-right"
+            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </a>
+      </div>
+      {
+        illustCategory?.descHtml && (
+          <p
+            class="font-body mb-6 text-xs leading-relaxed text-gray-400 sm:text-sm"
+            set:html={illustCategory.descHtml}
+          />
+        )
+      }
       <div class="space-y-4">
         {
           pickupIllustItems.map((item) => {
@@ -222,111 +274,24 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
       All Gallery
       <Icon
         name="mdi:arrow-right"
-        class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+        class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
       />
     </a>
   </div>
 </SectionCard>
 
-<style is:global>
-  .gallery-card {
-    opacity: 0;
-    visibility: hidden;
-    transition: border-color 0.5s;
-  }
-
-  .gallery-card.reveal {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  @keyframes gallery-card-slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .gallery-card.reveal-animating {
-    animation: gallery-card-slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-</style>
-
 <script>
-  // 生の YouTube iframe は初期フレームが真っ黒に描画される環境があるため、
-  // 初期はサムネイル画像を表示し、クリックで埋め込み URL のプレイヤーを読み込む。
-  function initVideoFacades() {
-    const facades = document.querySelectorAll(
-      "#gallery .video-facade",
-    ) as NodeListOf<HTMLElement>;
+  import {
+    initializeGalleryReveal,
+    initializeVideoFacades,
+  } from "../../lib/gallery-media";
 
-    facades.forEach((facade) => {
-      facade.addEventListener(
-        "click",
-        () => {
-          const embedUrl = facade.dataset.embedUrl;
-          if (!embedUrl) {
-            return;
-          }
-          const separator = embedUrl.includes("?") ? "&" : "?";
-          const iframe = document.createElement("iframe");
-          iframe.src = `${embedUrl}${separator}autoplay=1`;
-          iframe.title = facade.getAttribute("aria-label") ?? "";
-          iframe.className = "absolute inset-0 h-full w-full";
-          iframe.setAttribute("frameborder", "0");
-          iframe.setAttribute(
-            "allow",
-            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-          );
-          iframe.setAttribute(
-            "referrerpolicy",
-            "strict-origin-when-cross-origin",
-          );
-          iframe.setAttribute("allowfullscreen", "");
-          facade.replaceWith(iframe);
-        },
-        { once: true },
-      );
-    });
-  }
-
-  function initReveal() {
-    const cards = Array.from(
-      document.querySelectorAll("#gallery .gallery-card"),
-    ) as HTMLElement[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const card = entry.target as HTMLElement;
-            observer.unobserve(card);
-            card.classList.add("reveal");
-            card.addEventListener(
-              "animationend",
-              () => card.classList.remove("reveal-animating"),
-              { once: true },
-            );
-            card.classList.add("reveal-animating");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    cards.forEach((card) => observer.observe(card));
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    initReveal();
-    initVideoFacades();
-  });
-  document.addEventListener("astro:after-swap", () => {
-    initReveal();
-    initVideoFacades();
+  // astro:page-load は初回ロードと ClientRouter による遷移の両方で、
+  // 新しいページのスクリプト読み込み後に発火する。
+  // (DOMContentLoaded + astro:after-swap の組み合わせだと、クライアント遷移で
+  //  初めてこのスクリプトが読み込まれた場合にどちらも発火済みで初期化されない)
+  document.addEventListener("astro:page-load", () => {
+    initializeGalleryReveal();
+    initializeVideoFacades();
   });
 </script>

@@ -1,60 +1,26 @@
----
-interface Props {
-  showModel?: boolean;
-}
-const { showModel = true } = Astro.props;
----
-
 <canvas
   id="three-bg"
-  transition:persist
+  transition:persist="three-background"
   class="pointer-events-none fixed inset-0 h-full w-full"
-  data-show-model={showModel ? "true" : "false"}
   style="z-index: 0;"></canvas>
 
 <script>
   import * as THREE from "three";
   import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-  const canvas = document.getElementById("three-bg") as HTMLCanvasElement;
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: true,
-    alpha: true,
-  });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  // モデル(エレキベア)はトップページでのみ表示する。
+  // canvas は transition:persist でページ間を持ち越されるため、
+  // 表示可否はレンダリング時の属性ではなく現在のパスから毎回判定する。
+  const HOME_PATHS = ["/", "/en", "/en/"];
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    45,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000,
-  );
-  camera.position.set(0, 0, 5);
-  camera.lookAt(0, 0, 0);
-
-  // ライト
-  scene.add(new THREE.AmbientLight(0xffffff, 1));
-  const dirLightTarget = new THREE.Object3D();
-  scene.add(dirLightTarget);
-  const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-  dirLight.target = dirLightTarget;
-  dirLight.position.set(10, 10, 8.5);
-  scene.add(dirLight);
-  const pointLight = new THREE.PointLight(0xffd400, 2, 12);
-  pointLight.position.set(3, 3, 3);
-  scene.add(pointLight);
+  // WebGL コンテキストの生成は環境により一時的に失敗することがあるため、
+  // 失敗時は少し待ってからリトライする(初期表示で背景が出ない事象への対策)。
+  const RENDERER_RETRY_LIMIT = 3;
+  const RENDERER_RETRY_DELAY_MS = 500;
 
   // 読み込むモデル情報
   const LOAD_MODEL_GLB_PATH = "/model/SM_Elekibear.glb";
   const LOAD_MODEL_TEXTURE_PATH = "/model/T_Elekibear.png";
-
-  let loadModelRoot: THREE.Group | null = null;
-  let animMixer: THREE.AnimationMixer | null = null;
-  let dissolveMat: THREE.MeshToonMaterial | null = null;
-  let dissolveStartTime: number | null = null;
 
   // ディゾルブパラメータ
   const DISSOLVE_DURATION = 800;
@@ -63,176 +29,280 @@ const { showModel = true } = Astro.props;
   const NOISE_OFFSET_X = 0.8;
   const NOISE_OFFSET_Y = 0.5;
 
+  function isHomePage(): boolean {
+    return HOME_PATHS.includes(window.location.pathname);
+  }
+
   // ディゾルブ用スムーズノイズテクスチャ
   function createNoiseTexture() {
     const size = NOISE_TEX_SIZE;
-    const cv = document.createElement("canvas");
-    cv.width = cv.height = size;
-    const ctx = cv.getContext("2d")!;
-    const imageData = ctx.createImageData(size, size);
-    const h = (a: number, b: number) =>
+    const noiseCanvas = document.createElement("canvas");
+    noiseCanvas.width = noiseCanvas.height = size;
+    const context = noiseCanvas.getContext("2d")!;
+    const imageData = context.createImageData(size, size);
+    const hash = (a: number, b: number) =>
       Math.abs(Math.sin(a * 127.1 + b * 311.7) * 43758.5453) % 1;
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {
-        const gx = (x / size) * NOISE_SCALE,
-          gy = (y / size) * NOISE_SCALE;
-        const ix = Math.floor(gx),
-          iy = Math.floor(gy);
-        const fx = gx - ix,
-          fy = gy - iy;
-        const sfx = fx * fx * (3 - 2 * fx),
-          sfy = fy * fy * (3 - 2 * fy);
-        const v =
-          h(ix, iy) * (1 - sfx) * (1 - sfy) +
-          h(ix + 1, iy) * sfx * (1 - sfy) +
-          h(ix, iy + 1) * (1 - sfx) * sfy +
-          h(ix + 1, iy + 1) * sfx * sfy;
-        const i = (y * size + x) * 4;
-        const c = Math.floor(v * 255);
-        imageData.data[i] = imageData.data[i + 1] = imageData.data[i + 2] = c;
-        imageData.data[i + 3] = 255;
+        const gridX = (x / size) * NOISE_SCALE,
+          gridY = (y / size) * NOISE_SCALE;
+        const integerX = Math.floor(gridX),
+          integerY = Math.floor(gridY);
+        const fractionX = gridX - integerX,
+          fractionY = gridY - integerY;
+        const smoothX = fractionX * fractionX * (3 - 2 * fractionX),
+          smoothY = fractionY * fractionY * (3 - 2 * fractionY);
+        const value =
+          hash(integerX, integerY) * (1 - smoothX) * (1 - smoothY) +
+          hash(integerX + 1, integerY) * smoothX * (1 - smoothY) +
+          hash(integerX, integerY + 1) * (1 - smoothX) * smoothY +
+          hash(integerX + 1, integerY + 1) * smoothX * smoothY;
+        const index = (y * size + x) * 4;
+        const color = Math.floor(value * 255);
+        imageData.data[index] =
+          imageData.data[index + 1] =
+          imageData.data[index + 2] =
+            color;
+        imageData.data[index + 3] = 255;
       }
     }
-    ctx.putImageData(imageData, 0, 0);
-    const tex = new THREE.CanvasTexture(cv);
-    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-    tex.offset.set(NOISE_OFFSET_X, NOISE_OFFSET_Y);
-    return tex;
+    context.putImageData(imageData, 0, 0);
+    const texture = new THREE.CanvasTexture(noiseCanvas);
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    texture.offset.set(NOISE_OFFSET_X, NOISE_OFFSET_Y);
+    return texture;
   }
-  const noiseTex = createNoiseTexture();
 
-  const showModel = canvas.dataset.showModel === "true";
-
-  // モデル
-  const gltfLoader = new GLTFLoader();
-  if (showModel)
-    gltfLoader.load(
-      LOAD_MODEL_GLB_PATH,
-      (gltf) => {
-        const model = gltf.scene;
-        loadModelRoot = new THREE.Group();
-        loadModelRoot.add(model);
-        loadModelRoot.visible = false;
-        loadModelRoot.position.set(0, -1.2, 0);
-        loadModelRoot.scale.set(1.5, 1.5, 1.5);
-        scene.add(loadModelRoot);
-
-        new THREE.TextureLoader()
-          .loadAsync(LOAD_MODEL_TEXTURE_PATH)
-          .then(async (tex) => {
-            tex.colorSpace = THREE.SRGBColorSpace;
-            tex.flipY = false;
-
-            const mat = new THREE.MeshToonMaterial({
-              map: tex,
-              alphaMap: noiseTex,
-              alphaTest: 0.999,
-            });
-            dissolveMat = mat;
-
-            model.traverse((child) => {
-              if ((child as THREE.Mesh).isMesh) {
-                console.log("mesh:", child.name);
-                (child as THREE.Mesh).material = mat;
-              }
-            });
-
-            if (loadModelRoot) {
-              loadModelRoot.visible = true;
-            }
-            await renderer.compileAsync(scene, camera);
-
-            dissolveStartTime = performance.now();
-          });
-
-        animMixer = new THREE.AnimationMixer(gltf.scene);
-        if (gltf.animations.length > 0) {
-          const action = animMixer.clipAction(gltf.animations[0], gltf.scene);
-          action.setLoop(THREE.LoopPingPong, Infinity);
-          action.play();
-        }
-      },
-      undefined,
-      (error) => console.error("load error:", error),
-    );
-
-  // パーティクル
-  const particleCount = 400;
-  const positions = new Float32Array(particleCount * 3);
-  for (let i = 0; i < particleCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 16;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 16;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
-  }
-  const particleGeo = new THREE.BufferGeometry();
-  particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  const particleMat = new THREE.PointsMaterial({
-    color: 0xffd400,
-    size: 0.05,
-    transparent: true,
-    opacity: 0.6,
-  });
-  const particles = new THREE.Points(particleGeo, particleMat);
-  scene.add(particles);
-
-  let prevWidth = window.innerWidth;
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth === prevWidth) {
+  function startBackground(
+    canvasElement: HTMLCanvasElement,
+    attempt: number,
+  ): void {
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvasElement,
+        antialias: true,
+        alpha: true,
+      });
+    } catch (error) {
+      if (attempt < RENDERER_RETRY_LIMIT) {
+        setTimeout(
+          () => startBackground(canvasElement, attempt + 1),
+          RENDERER_RETRY_DELAY_MS,
+        );
+      } else {
+        console.error("three-background: WebGLレンダラーの作成に失敗", error);
+      }
       return;
     }
-    prevWidth = window.innerWidth;
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
-  });
 
-  window.addEventListener("orientationchange", () => {
-    setTimeout(() => {
-      prevWidth = window.innerWidth;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
+    camera.position.set(0, 0, 5);
+    camera.lookAt(0, 0, 0);
+
+    // ライト
+    scene.add(new THREE.AmbientLight(0xffffff, 1));
+    const directionalLightTarget = new THREE.Object3D();
+    scene.add(directionalLightTarget);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.target = directionalLightTarget;
+    directionalLight.position.set(10, 10, 8.5);
+    scene.add(directionalLight);
+    const pointLight = new THREE.PointLight(0xffd400, 2, 12);
+    pointLight.position.set(3, 3, 3);
+    scene.add(pointLight);
+
+    const noiseTexture = createNoiseTexture();
+
+    let loadModelRoot: THREE.Group | null = null;
+    let animationMixer: THREE.AnimationMixer | null = null;
+    let dissolveMaterial: THREE.MeshToonMaterial | null = null;
+    let dissolveStartTime: number | null = null;
+    let modelRequested = false;
+    let modelReady = false;
+
+    function startDissolve(): void {
+      if (dissolveMaterial) {
+        dissolveMaterial.alphaTest = 0.999;
+        dissolveStartTime = performance.now();
+      }
+    }
+
+    function loadModel(): void {
+      const gltfLoader = new GLTFLoader();
+      gltfLoader.load(
+        LOAD_MODEL_GLB_PATH,
+        (gltf) => {
+          const model = gltf.scene;
+          loadModelRoot = new THREE.Group();
+          loadModelRoot.add(model);
+          loadModelRoot.visible = false;
+          loadModelRoot.position.set(0, -1.2, 0);
+          loadModelRoot.scale.set(1.5, 1.5, 1.5);
+          scene.add(loadModelRoot);
+
+          new THREE.TextureLoader()
+            .loadAsync(LOAD_MODEL_TEXTURE_PATH)
+            .then(async (texture) => {
+              texture.colorSpace = THREE.SRGBColorSpace;
+              texture.flipY = false;
+
+              const material = new THREE.MeshToonMaterial({
+                map: texture,
+                alphaMap: noiseTexture,
+                alphaTest: 0.999,
+              });
+              dissolveMaterial = material;
+
+              model.traverse((child) => {
+                if ((child as THREE.Mesh).isMesh) {
+                  (child as THREE.Mesh).material = material;
+                }
+              });
+
+              modelReady = true;
+              await renderer.compileAsync(scene, camera);
+
+              if (loadModelRoot && isHomePage()) {
+                loadModelRoot.visible = true;
+                startDissolve();
+              }
+            })
+            .catch((error) =>
+              console.error(
+                "three-background: モデルテクスチャの読み込みに失敗",
+                error,
+              ),
+            );
+
+          animationMixer = new THREE.AnimationMixer(gltf.scene);
+          if (gltf.animations.length > 0) {
+            const action = animationMixer.clipAction(
+              gltf.animations[0],
+              gltf.scene,
+            );
+            action.setLoop(THREE.LoopPingPong, Infinity);
+            action.play();
+          }
+        },
+        undefined,
+        (error) => console.error("load error:", error),
+      );
+    }
+
+    // ページ遷移のたびに現在のパスからモデルの表示可否を更新する
+    function updateModelForPage(): void {
+      if (isHomePage()) {
+        if (!modelRequested) {
+          modelRequested = true;
+          loadModel();
+        } else if (loadModelRoot && modelReady && !loadModelRoot.visible) {
+          loadModelRoot.visible = true;
+          startDissolve();
+        }
+      } else if (loadModelRoot) {
+        loadModelRoot.visible = false;
+      }
+    }
+
+    document.addEventListener("astro:page-load", updateModelForPage);
+    updateModelForPage();
+
+    // パーティクル
+    const particleCount = 400;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 16;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 16;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+    }
+    const particleGeometry = new THREE.BufferGeometry();
+    particleGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3),
+    );
+    const particleMaterial = new THREE.PointsMaterial({
+      color: 0xffd400,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.6,
+    });
+    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    scene.add(particles);
+
+    let previousWidth = window.innerWidth;
+
+    function resizeRenderer(): void {
+      previousWidth = window.innerWidth;
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-    }, 200);
-  });
+    }
 
-  // アニメーションループ
-  let rotY = 0;
-  let prevTime = performance.now();
-
-  function animate() {
-    requestAnimationFrame(animate);
-    const now = performance.now();
-    const delta = (now - prevTime) / 1000;
-    const t = now / 1000;
-    prevTime = now;
-
-    animMixer?.update(delta);
-
-    if (dissolveMat !== null && dissolveStartTime !== null) {
-      const progress = Math.min(
-        (now - dissolveStartTime) / DISSOLVE_DURATION,
-        1.0,
-      );
-      const eased = progress * progress * (3.0 - 2.0 * progress);
-      dissolveMat.alphaTest = Math.max(1.0 - eased, 0.001);
-      if (progress >= 1.0) {
-        dissolveMat = null;
-        dissolveStartTime = null;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth === previousWidth) {
+        return;
       }
+      resizeRenderer();
+    });
+
+    window.addEventListener("orientationchange", () => {
+      setTimeout(resizeRenderer, 200);
+    });
+
+    // アニメーションループ
+    let rotationY = 0;
+    let previousTime = performance.now();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const now = performance.now();
+      const delta = (now - previousTime) / 1000;
+      const elapsedSeconds = now / 1000;
+      previousTime = now;
+
+      animationMixer?.update(delta);
+
+      if (dissolveMaterial !== null && dissolveStartTime !== null) {
+        const progress = Math.min(
+          (now - dissolveStartTime) / DISSOLVE_DURATION,
+          1.0,
+        );
+        const eased = progress * progress * (3.0 - 2.0 * progress);
+        dissolveMaterial.alphaTest = Math.max(1.0 - eased, 0.001);
+        if (progress >= 1.0) {
+          // マテリアルは再表示時のディゾルブ再生に使うため保持する
+          dissolveStartTime = null;
+        }
+      }
+
+      if (loadModelRoot) {
+        rotationY += delta * 0.5;
+        loadModelRoot.rotation.y = rotationY;
+      }
+
+      particles.rotation.y = elapsedSeconds * 0.04;
+      particles.rotation.x = elapsedSeconds * 0.02;
+      pointLight.position.x = Math.sin(elapsedSeconds * 0.7) * 4;
+      pointLight.position.y = Math.cos(elapsedSeconds * 0.5) * 4;
+
+      renderer.render(scene, camera);
     }
-
-    if (loadModelRoot) {
-      rotY += delta * 0.5;
-      loadModelRoot.rotation.y = rotY;
-    }
-
-    particles.rotation.y = t * 0.04;
-    particles.rotation.x = t * 0.02;
-    pointLight.position.x = Math.sin(t * 0.7) * 4;
-    pointLight.position.y = Math.cos(t * 0.5) * 4;
-
-    renderer.render(scene, camera);
+    animate();
   }
-  animate();
+
+  const canvas = document.getElementById(
+    "three-bg",
+  ) as HTMLCanvasElement | null;
+  if (canvas) {
+    startBackground(canvas, 0);
+  }
 </script>

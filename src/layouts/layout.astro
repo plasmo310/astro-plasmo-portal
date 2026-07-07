@@ -3,9 +3,6 @@ import "../styles/global.css";
 import ThreeBackground from "../components/common/three-background.astro";
 import PageNavigation from "../components/common/page-navigation.astro";
 import { ClientRouter } from "astro:transitions";
-
-const homePaths = ["/", "/en", "/en/"];
-const isHome = homePaths.includes(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -21,7 +18,7 @@ const isHome = homePaths.includes(Astro.url.pathname);
     <ClientRouter />
   </head>
   <body class="bg-background">
-    <ThreeBackground showModel={isHome} />
+    <ThreeBackground />
     <main class="relative">
       <slot />
     </main>

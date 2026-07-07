@@ -17,9 +17,16 @@ export namespace GalleryData {
     links?: Link[];
   }
 
+  export interface SectionLink {
+    icon: string;
+    label: string;
+    href: string;
+  }
+
   export interface Section {
     section: string;
     descHtml?: string;
+    link?: SectionLink;
     items: Item[];
   }
 

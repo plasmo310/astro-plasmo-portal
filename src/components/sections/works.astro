@@ -46,7 +46,7 @@ const sections = pickupOnly
           All Works
           <Icon
             name="mdi:arrow-right"
-            class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
           />
         </a>
       </div>
@@ -188,7 +188,7 @@ const sections = pickupOnly
           All Works
           <Icon
             name="mdi:arrow-right"
-            class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
           />
         </a>
       </div>
@@ -324,12 +324,11 @@ const sections = pickupOnly
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initSliders();
-    initReveal();
-    initCardClick();
-  });
-  document.addEventListener("astro:after-swap", () => {
+  // astro:page-load は初回ロードと ClientRouter による遷移の両方で、
+  // 新しいページのスクリプト読み込み後に発火する。
+  // (DOMContentLoaded + astro:after-swap の組み合わせだと、クライアント遷移で
+  //  初めてこのスクリプトが読み込まれた場合にどちらも発火済みで初期化されない)
+  document.addEventListener("astro:page-load", () => {
     initSliders();
     initReveal();
     initCardClick();

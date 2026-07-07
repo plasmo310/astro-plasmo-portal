@@ -86,9 +86,25 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
                   </h3>
                   {section.descHtml && (
                     <p
-                      class="font-body mb-8 text-xs leading-relaxed text-gray-400 sm:text-sm"
+                      class:list={[
+                        "font-body text-xs leading-relaxed text-gray-400 sm:text-sm",
+                        section.link ? "mb-4" : "mb-8",
+                      ]}
                       set:html={section.descHtml}
                     />
+                  )}
+                  {section.link && (
+                    <div class="mb-6">
+                      <a
+                        href={section.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:border-accent/60 hover:text-accent font-body inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-5 py-2.5 text-xs font-semibold tracking-wider text-white/80 transition-colors duration-300"
+                      >
+                        <Icon name={section.link.icon} class="h-4 w-4" />
+                        {section.link.label}
+                      </a>
+                    </div>
                   )}
 
                   {category.type === "music" ? (
@@ -114,8 +130,11 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
                                   class="absolute inset-0 h-full w-full object-cover"
                                 />
                                 <span class="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors duration-200 group-hover/video:bg-black/30">
+                                  {/* is:inline: 共有 <symbol> 参照だと最初の動画カードが
+                                      iframe に置換された際に他の再生アイコンも消えるため */}
                                   <Icon
                                     name="mdi:play-circle"
+                                    is:inline
                                     class="h-16 w-16 text-white/90 drop-shadow-lg transition-transform duration-200 group-hover/video:scale-110"
                                   />
                                 </span>
@@ -242,111 +261,95 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
 </style>
 
 <script>
-  function initTabs() {
+  import {
+    initializeGalleryReveal,
+    initializeVideoFacades,
+  } from "../../lib/gallery-media";
+
+  function activateTab(tabType: string) {
     const tabs = document.querySelectorAll(
       ".gallery-tab",
     ) as NodeListOf<HTMLElement>;
     const contents = document.querySelectorAll(
       ".gallery-tab-content",
     ) as NodeListOf<HTMLElement>;
-
-    function activateTab(tabType: string) {
-      tabs.forEach((tab) => {
-        tab.dataset.active = tab.dataset.tab === tabType ? "true" : "false";
-      });
-      contents.forEach((content) => {
-        content.style.display = content.dataset.tab === tabType ? "" : "none";
-      });
-      history.replaceState(null, "", `#${tabType}`);
-    }
-
     tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        if (tab.dataset.tab) {
-          activateTab(tab.dataset.tab);
-        }
-      });
+      tab.dataset.active = tab.dataset.tab === tabType ? "true" : "false";
     });
+    contents.forEach((content) => {
+      content.style.display = content.dataset.tab === tabType ? "" : "none";
+    });
+  }
 
+  function applyTabFromHash() {
     const hash = window.location.hash.slice(1);
+    const tabs = document.querySelectorAll(
+      ".gallery-tab",
+    ) as NodeListOf<HTMLElement>;
     const validTabs = Array.from(tabs).map((tab) => tab.dataset.tab);
     if (hash && validTabs.includes(hash)) {
       activateTab(hash);
     }
   }
 
-  // 生の YouTube iframe は初期フレームが真っ黒に描画される環境があるため、
-  // 初期はサムネイル画像を表示し、クリックで埋め込み URL のプレイヤーを読み込む。
-  function initVideoFacades() {
-    const facades = document.querySelectorAll(
-      ".video-facade",
+  function initTabs() {
+    const tabs = document.querySelectorAll(
+      ".gallery-tab",
     ) as NodeListOf<HTMLElement>;
-
-    facades.forEach((facade) => {
-      facade.addEventListener(
-        "click",
-        () => {
-          const embedUrl = facade.dataset.embedUrl;
-          if (!embedUrl) {
-            return;
-          }
-          const separator = embedUrl.includes("?") ? "&" : "?";
-          const iframe = document.createElement("iframe");
-          iframe.src = `${embedUrl}${separator}autoplay=1`;
-          iframe.title = facade.getAttribute("aria-label") ?? "";
-          iframe.className = "absolute inset-0 h-full w-full";
-          iframe.setAttribute("frameborder", "0");
-          iframe.setAttribute(
-            "allow",
-            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-          );
-          iframe.setAttribute(
-            "referrerpolicy",
-            "strict-origin-when-cross-origin",
-          );
-          iframe.setAttribute("allowfullscreen", "");
-          facade.replaceWith(iframe);
-        },
-        { once: true },
-      );
+    tabs.forEach((tab) => {
+      if (tab.dataset.clickBound === "true") {
+        return;
+      }
+      tab.dataset.clickBound = "true";
+      tab.addEventListener("click", () => {
+        if (tab.dataset.tab) {
+          activateTab(tab.dataset.tab);
+          history.replaceState(null, "", `#${tab.dataset.tab}`);
+        }
+      });
     });
+    applyTabFromHash();
   }
 
-  function initReveal() {
-    const cards = Array.from(
-      document.querySelectorAll(".gallery-card"),
-    ) as HTMLElement[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const card = entry.target as HTMLElement;
-            observer.unobserve(card);
-            card.classList.add("reveal");
-            card.addEventListener(
-              "animationend",
-              () => card.classList.remove("reveal-animating"),
-              { once: true },
-            );
-            card.classList.add("reveal-animating");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    cards.forEach((card) => observer.observe(card));
+  // 同一ページ内でヘッダーの Music / Illust リンク(/gallery#illustration 等)を
+  // クリックした場合、ClientRouter が pushState でハッシュのみ更新するため
+  // hashchange イベントが発火しない。クリックを直接拾ってタブを切り替える。
+  function normalizePathname(pathname: string): string {
+    return pathname.replace(/\/+$/, "") || "/";
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initTabs();
-    initReveal();
-    initVideoFacades();
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement | null;
+    const anchor = target?.closest("a");
+    if (!anchor || !anchor.hash) {
+      return;
+    }
+    if (
+      normalizePathname(anchor.pathname) !==
+      normalizePathname(window.location.pathname)
+    ) {
+      return;
+    }
+    const tabType = anchor.hash.slice(1);
+    const tabs = document.querySelectorAll(
+      ".gallery-tab",
+    ) as NodeListOf<HTMLElement>;
+    const validTabs = Array.from(tabs).map((tab) => tab.dataset.tab);
+    if (validTabs.includes(tabType)) {
+      activateTab(tabType);
+    }
   });
-  document.addEventListener("astro:after-swap", () => {
+
+  // ブラウザバック等でハッシュだけ変わった場合にもタブを追従させる
+  window.addEventListener("hashchange", applyTabFromHash);
+
+  // astro:page-load は初回ロードと ClientRouter による遷移の両方で、
+  // 新しいページのスクリプト読み込み後に発火する。
+  // (DOMContentLoaded + astro:after-swap の組み合わせだと、クライアント遷移で
+  //  初めてこのスクリプトが読み込まれた場合にどちらも発火済みで初期化されない)
+  document.addEventListener("astro:page-load", () => {
     initTabs();
-    initReveal();
-    initVideoFacades();
+    initializeGalleryReveal();
+    initializeVideoFacades();
   });
 </script>

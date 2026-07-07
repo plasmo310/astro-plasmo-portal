@@ -27,6 +27,8 @@ This is an Astro 6 portfolio site using strict TypeScript. No UI framework integ
 
 - Always wrap `if` statement bodies in `{}`. One-liner if statements are not allowed.
 - Use full words for variable/function names. Abbreviations are not allowed (e.g. `button` not `btn`, `element` not `el`, `event` not `e`, `image` not `img`, `previous` not `prev`).
+- Fix all lint/diagnostic issues (TypeScript errors, deprecation warnings, unused declarations) in code you touch. Do not leave new diagnostics behind.
+- Format code according to the project's Prettier configuration. Run `npx prettier --write <changed files>` before finishing any change.
 
 ## Localize Table
 

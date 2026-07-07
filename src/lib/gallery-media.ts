@@ -77,7 +77,7 @@ function activateVideo(facade: HTMLElement): void {
   iframe.src = `${embedUrl}${separator}autoplay=1&enablejsapi=1`;
   iframe.title = facade.getAttribute("aria-label") ?? "";
   iframe.className = "absolute inset-0 h-full w-full";
-  iframe.setAttribute("frameborder", "0");
+  iframe.style.border = "0";
   iframe.setAttribute(
     "allow",
     "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",

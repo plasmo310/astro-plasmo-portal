@@ -12,6 +12,7 @@ import worksJa from "../data/ja/works.json";
 import worksEn from "../data/en/works.json";
 import galleryJa from "../data/ja/gallery.json";
 import galleryEn from "../data/en/gallery.json";
+import type { GalleryData } from "../types/data/gallery";
 
 export type Locale = "ja" | "en";
 
@@ -67,7 +68,10 @@ export class DataLoader {
     return absolutify(this.locale === "en" ? worksEn : worksJa);
   }
 
-  gallery() {
-    return absolutify(this.locale === "en" ? galleryEn : galleryJa);
+  gallery(): GalleryData {
+    // JSON import は文字列リテラルが string に広がるため、型に合わせてキャストする
+    return absolutify(
+      this.locale === "en" ? galleryEn : galleryJa,
+    ) as GalleryData;
   }
 }

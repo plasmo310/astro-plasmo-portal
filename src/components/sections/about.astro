@@ -21,7 +21,7 @@ const { data: profileData } = Astro.props;
       <img
         src={profileData.photoUrl}
         alt={profileData.name}
-        onerror="this.onerror=null;this.src='/placeholder.jpeg';"
+        onerror="this.removeAttribute('onerror');this.setAttribute('src','/placeholder.jpeg');"
       />
     </div>
 

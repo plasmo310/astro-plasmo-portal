@@ -7,20 +7,21 @@
 <script>
   import * as THREE from "three";
   import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+  import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
+  import {
+    isHomePath,
+    MODEL_GLB_PATH,
+    MODEL_TEXTURE_PATH,
+  } from "../../lib/three-background-assets";
 
   // モデル(エレキベア)はトップページでのみ表示する。
   // canvas は transition:persist でページ間を持ち越されるため、
   // 表示可否はレンダリング時の属性ではなく現在のパスから毎回判定する。
-  const HOME_PATHS = ["/", "/en", "/en/"];
 
   // WebGL コンテキストの生成は環境により一時的に失敗することがあるため、
   // 失敗時は少し待ってからリトライする(初期表示で背景が出ない事象への対策)。
   const RENDERER_RETRY_LIMIT = 3;
   const RENDERER_RETRY_DELAY_MS = 500;
-
-  // 読み込むモデル情報
-  const LOAD_MODEL_GLB_PATH = "/model/SM_Elekibear.glb";
-  const LOAD_MODEL_TEXTURE_PATH = "/model/T_Elekibear.png";
 
   // ディゾルブパラメータ
   const DISSOLVE_DURATION = 800;
@@ -30,7 +31,7 @@
   const NOISE_OFFSET_Y = 0.5;
 
   function isHomePage(): boolean {
-    return HOME_PATHS.includes(window.location.pathname);
+    return isHomePath(window.location.pathname);
   }
 
   // ディゾルブ用スムーズノイズテクスチャ
@@ -129,6 +130,9 @@
     let modelRequested = false;
     let modelReady = false;
 
+    // 描画を止めている間も、状態が変わった直後の 1 フレームだけは描画する
+    let idleRenderPending = true;
+
     function startDissolve(): void {
       if (dissolveMaterial) {
         dissolveMaterial.alphaTest = 0.999;
@@ -136,70 +140,67 @@
       }
     }
 
-    function loadModel(): void {
-      const gltfLoader = new GLTFLoader();
-      gltfLoader.load(
-        LOAD_MODEL_GLB_PATH,
-        (gltf) => {
-          const model = gltf.scene;
-          loadModelRoot = new THREE.Group();
-          loadModelRoot.add(model);
-          loadModelRoot.visible = false;
-          loadModelRoot.position.set(0, -1.2, 0);
-          loadModelRoot.scale.set(1.5, 1.5, 1.5);
-          scene.add(loadModelRoot);
+    async function loadModel(): Promise<void> {
+      // GLB とテクスチャは互いに依存しないため並列に取得する。
+      // 直列にすると GLB の読み込みが終わるまでテクスチャの通信が始まらない。
+      // GLB は EXT_meshopt_compression / KHR_mesh_quantization で圧縮されている
+      const gltfLoader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+      const loaded = await Promise.all([
+        gltfLoader.loadAsync(MODEL_GLB_PATH),
+        new THREE.TextureLoader().loadAsync(MODEL_TEXTURE_PATH),
+      ]).catch((error) => {
+        console.error("three-background: モデルの読み込みに失敗", error);
+        return null;
+      });
+      if (loaded === null) {
+        return;
+      }
+      const [gltf, texture] = loaded;
 
-          new THREE.TextureLoader()
-            .loadAsync(LOAD_MODEL_TEXTURE_PATH)
-            .then(async (texture) => {
-              texture.colorSpace = THREE.SRGBColorSpace;
-              texture.flipY = false;
+      const model = gltf.scene;
+      loadModelRoot = new THREE.Group();
+      loadModelRoot.add(model);
+      loadModelRoot.visible = false;
+      loadModelRoot.position.set(0, -1.2, 0);
+      loadModelRoot.scale.set(1.5, 1.5, 1.5);
+      scene.add(loadModelRoot);
 
-              const material = new THREE.MeshToonMaterial({
-                map: texture,
-                alphaMap: noiseTexture,
-                alphaTest: 0.999,
-              });
-              dissolveMaterial = material;
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.flipY = false;
 
-              model.traverse((child) => {
-                if ((child as THREE.Mesh).isMesh) {
-                  (child as THREE.Mesh).material = material;
-                }
-              });
+      const material = new THREE.MeshToonMaterial({
+        map: texture,
+        alphaMap: noiseTexture,
+        alphaTest: 0.999,
+      });
+      dissolveMaterial = material;
 
-              modelReady = true;
-              await renderer.compileAsync(scene, camera);
+      model.traverse((child) => {
+        if ((child as THREE.Mesh).isMesh) {
+          (child as THREE.Mesh).material = material;
+        }
+      });
 
-              if (loadModelRoot && isHomePage()) {
-                loadModelRoot.visible = true;
-                startDissolve();
-              }
-            })
-            .catch((error) =>
-              console.error(
-                "three-background: モデルテクスチャの読み込みに失敗",
-                error,
-              ),
-            );
+      animationMixer = new THREE.AnimationMixer(model);
+      if (gltf.animations.length > 0) {
+        const action = animationMixer.clipAction(gltf.animations[0], model);
+        action.setLoop(THREE.LoopPingPong, Infinity);
+        action.play();
+      }
 
-          animationMixer = new THREE.AnimationMixer(gltf.scene);
-          if (gltf.animations.length > 0) {
-            const action = animationMixer.clipAction(
-              gltf.animations[0],
-              gltf.scene,
-            );
-            action.setLoop(THREE.LoopPingPong, Infinity);
-            action.play();
-          }
-        },
-        undefined,
-        (error) => console.error("load error:", error),
-      );
+      modelReady = true;
+      await renderer.compileAsync(scene, camera);
+
+      if (isHomePage()) {
+        loadModelRoot.visible = true;
+        startDissolve();
+      }
     }
 
     // ページ遷移のたびに現在のパスからモデルの表示可否を更新する
     function updateModelForPage(): void {
+      // 表示状態が変わりうるため、描画を止めていても 1 フレームは描き直す
+      idleRenderPending = true;
       if (isHomePage()) {
         if (!modelRequested) {
           modelRequested = true;
@@ -245,6 +246,8 @@
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      // リサイズで描画内容が破棄されるため、止めていても描き直す
+      idleRenderPending = true;
     }
 
     window.addEventListener("resize", () => {
@@ -265,6 +268,20 @@
     function animate() {
       requestAnimationFrame(animate);
       const now = performance.now();
+
+      // タブが非表示のとき、およびモデルを出さないページでは毎フレームの
+      // 描画を行わない。復帰時に delta が跳ねてアニメーションが飛ばないよう、
+      // 時刻だけは進めておく。
+      if (document.hidden || !isHomePage()) {
+        previousTime = now;
+        if (idleRenderPending) {
+          idleRenderPending = false;
+          renderer.render(scene, camera);
+        }
+        return;
+      }
+      idleRenderPending = true;
+
       const delta = (now - previousTime) / 1000;
       const elapsedSeconds = now / 1000;
       previousTime = now;

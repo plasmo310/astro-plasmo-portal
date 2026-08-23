@@ -1,0 +1,35 @@
+---
+import {
+  isHomePath,
+  MODEL_GLB_PATH,
+  MODEL_TEXTURE_PATH,
+} from "./three-asset-paths";
+
+// three-background が読み込むモデルアセットの先読み指定。
+// three.js のチャンク取得とパースを待たずにダウンロードを始めるため、
+// head 内に配置する必要がある。
+// モデルを表示するページ以外では出力しない。
+const shouldPreloadModel = isHomePath(Astro.url.pathname);
+---
+
+{
+  shouldPreloadModel && (
+    <>
+      <link
+        rel="preload"
+        href={MODEL_GLB_PATH}
+        as="fetch"
+        type="model/gltf-binary"
+        crossorigin="anonymous"
+      />
+      {/* three.js の TextureLoader は crossOrigin="anonymous" で取得するため、
+          preload 側も揃えないと二重ダウンロードになる */}
+      <link
+        rel="preload"
+        href={MODEL_TEXTURE_PATH}
+        as="image"
+        crossorigin="anonymous"
+      />
+    </>
+  )
+}

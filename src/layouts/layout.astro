@@ -1,17 +1,9 @@
 ---
 import "../styles/global.css";
-import ThreeBackground from "../components/common/three-background.astro";
+import ThreeBackground from "../components/model/three-background.astro";
+import ThreeBackgroundPreLoader from "../components/model/three-background-pre-loader.astro";
 import PageNavigation from "../components/common/page-navigation.astro";
 import { ClientRouter } from "astro:transitions";
-import {
-  isHomePath,
-  MODEL_GLB_PATH,
-  MODEL_TEXTURE_PATH,
-} from "../lib/three-background-assets";
-
-// モデルを表示するページでのみ先読みする。three.js のチャンク取得と
-// パースを待たずにモデルのダウンロードを始めるための指定。
-const shouldPreloadModel = isHomePath(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -23,27 +15,7 @@ const shouldPreloadModel = isHomePath(Astro.url.pathname);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    {
-      shouldPreloadModel && (
-        <>
-          <link
-            rel="preload"
-            href={MODEL_GLB_PATH}
-            as="fetch"
-            type="model/gltf-binary"
-            crossorigin="anonymous"
-          />
-          {/* three.js の TextureLoader は crossOrigin="anonymous" で取得するため、
-              preload 側も揃えないと二重ダウンロードになる */}
-          <link
-            rel="preload"
-            href={MODEL_TEXTURE_PATH}
-            as="image"
-            crossorigin="anonymous"
-          />
-        </>
-      )
-    }
+    <ThreeBackgroundPreLoader />
     <title>Plasmo Portal</title>
     <ClientRouter />
   </head>

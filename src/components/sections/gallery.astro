@@ -145,8 +145,11 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
                   </div>
                 ) : item.embedType === "apple-music-player" ? (
                   <div class="w-full overflow-hidden">
+                    {/* src を持った iframe は、読み込み完了まで親ドキュメントの
+                        load イベントを待たせる。src は画面に近づいてから JS で
+                        設定する (initializeDeferredEmbeds) */}
                     <iframe
-                      src={item.embedUrl}
+                      data-embed-src={item.embedUrl}
                       title={item.title}
                       class="w-full border-0"
                       style={{ height: "450px" }}
@@ -281,6 +284,7 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
 
 <script>
   import {
+    initializeDeferredEmbeds,
     initializeGalleryReveal,
     initializeVideoFacades,
   } from "../../lib/gallery-media";
@@ -292,5 +296,6 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
   document.addEventListener("astro:page-load", () => {
     initializeGalleryReveal();
     initializeVideoFacades();
+    initializeDeferredEmbeds();
   });
 </script>

@@ -44,6 +44,44 @@ export function initializeGalleryReveal(): void {
   });
 }
 
+// src を持った iframe は、その中身の読み込みが終わるまで親ドキュメントの
+// load イベントを待たせる。初回ロード時の astro:page-load は window の load
+// イベントで発火するため、外部プレイヤー(Apple Music)の読み込みが遅いと
+// カードの表示処理まで巻き込まれて遅延する。
+// そのため src は HTML に出さず、画面に近づいた時点で JS から設定する。
+export function initializeDeferredEmbeds(): void {
+  const frames = Array.from(
+    document.querySelectorAll("iframe[data-embed-src]"),
+  ) as HTMLIFrameElement[];
+  const unboundFrames = frames.filter(
+    (frame) => frame.dataset.embedBound !== "true",
+  );
+  if (unboundFrames.length === 0) {
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const frame = entry.target as HTMLIFrameElement;
+          observer.unobserve(frame);
+          const embedSource = frame.dataset.embedSrc;
+          if (embedSource) {
+            frame.src = embedSource;
+          }
+        }
+      });
+    },
+    { rootMargin: "600px 0px" },
+  );
+
+  unboundFrames.forEach((frame) => {
+    frame.dataset.embedBound = "true";
+    observer.observe(frame);
+  });
+}
+
 // 生の YouTube iframe は初期フレームが真っ黒に描画される環境があるため、
 // 初期はサムネイル画像を表示し、クリックで埋め込みプレイヤーを読み込む。
 export function initializeVideoFacades(): void {

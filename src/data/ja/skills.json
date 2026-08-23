@@ -15,12 +15,7 @@
               "icon": "mdi:cube-outline"
             },
             {
-              "name": "Substance",
-              "level": 1,
-              "icon": "mdi:resistor-nodes"
-            },
-            {
-              "name": "Photoshop",
+              "name": "Adobe",
               "level": 1,
               "icon": "mdi:paintbrush"
             }
@@ -29,7 +24,6 @@
         {
           "category": "Tech Art",
           "skills": [
-            { "name": "Procedural", "level": 3, "icon": "mdi:vector-polygon" },
             { "name": "Pipeline", "level": 3, "icon": "mdi:pipe" },
             { "name": "ToolDev", "level": 3, "icon": "mdi:keyboard" },
             {

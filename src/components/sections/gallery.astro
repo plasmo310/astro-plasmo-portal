@@ -13,21 +13,23 @@ interface Props {
 const { locale = "ja", data } = Astro.props;
 const galleryAllHref = locale === "en" ? "/en/gallery" : "/gallery";
 
-const musicCategory = data.categories.find(
-  (category) => category.type === "music",
-);
-const illustCategory = data.categories.find(
-  (category) => category.type === "illustration",
-);
+// 大カテゴリ → 小カテゴリの順に見出しを出し、各小カテゴリの pickup 項目を並べる。
+const pickupCategories = data.categories
+  .map((category) => ({
+    category,
+    sections: category.sections
+      .map((section) => ({
+        section,
+        items: section.items.filter((item) => item.pickup),
+      }))
+      .filter((pickupSection) => pickupSection.items.length > 0),
+  }))
+  .filter((pickupCategory) => pickupCategory.sections.length > 0);
 
-const pickupMusicItems = (musicCategory?.sections ?? []).flatMap((section) =>
-  section.items.filter((item) => item.pickup),
-);
-const pickupIllustItems = (illustCategory?.sections ?? []).flatMap((section) =>
-  section.items.filter((item) => item.pickup),
-);
-
-function getMusicThumbnail(item: GalleryData.Item): string {
+function getThumbnail(
+  categoryType: GalleryData.Category["type"],
+  item: GalleryData.Item,
+): string {
   if (item.image) {
     return item.image;
   }
@@ -36,6 +38,9 @@ function getMusicThumbnail(item: GalleryData.Item): string {
     if (match) {
       return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
     }
+  }
+  if (categoryType === "illustration") {
+    return "https://placehold.co/400x500/1a1a2e/a0a0c0?text=Illustration";
   }
   return "https://placehold.co/400x400/1a1a2e/a0a0c0?text=Music";
 }
@@ -77,195 +82,140 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
     </a>
   </div>
 
-  <div class="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2">
-    <!-- Music Column -->
-    <div>
-      <div
-        class:list={[
-          "flex items-center justify-between border-b border-white/10 pb-3",
-          musicCategory?.descHtml ? "mb-3" : "mb-6",
-        ]}
-      >
-        <h3
-          class="font-heading text-accent text-lg font-semibold tracking-widest uppercase"
-        >
-          {musicCategory?.label ?? "Music"}
-        </h3>
-        <a
-          href={`${galleryAllHref}#${musicCategory?.type ?? "music"}`}
-          class="group hover:text-accent flex items-center self-center text-white transition-colors duration-300"
-          aria-label={`View all ${musicCategory?.label ?? "Music"} works`}
-        >
-          <Icon
-            name="mdi:arrow-right"
-            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </a>
-      </div>
-      {
-        musicCategory?.descHtml && (
-          <p
-            class="font-body mb-6 text-xs leading-relaxed text-gray-400 sm:text-sm"
-            set:html={musicCategory.descHtml}
-          />
-        )
-      }
-      <div class="space-y-4">
-        {
-          pickupMusicItems.map((item) => {
-            const thumbnail = getMusicThumbnail(item);
-            return (
-              <div
-                class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500"
-                style={item.maxWidth ? { maxWidth: item.maxWidth } : {}}
-              >
-                {item.embedType === "video" ? (
-                  <div class="relative aspect-video w-full">
-                    <button
-                      class="video-facade group/video absolute inset-0 h-full w-full cursor-pointer"
-                      data-embed-url={item.embedUrl}
-                      aria-label={`Play ${item.title}`}
-                    >
-                      <img
-                        src={thumbnail}
-                        alt={item.title}
-                        loading="lazy"
-                        class="absolute inset-0 h-full w-full object-cover"
-                      />
-                      <span class="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors duration-200 group-hover/video:bg-black/30">
-                        {/* is:inline: 共有 <symbol> 参照だと最初の動画カードが
-                            iframe に置換された際に他の再生アイコンも消えるため */}
-                        <Icon
-                          name="mdi:play-circle"
-                          is:inline
-                          class="h-16 w-16 text-white/90 drop-shadow-lg transition-transform duration-200 group-hover/video:scale-110"
-                        />
-                      </span>
-                    </button>
-                  </div>
-                ) : item.embedType === "apple-music-player" ? (
-                  <div class="w-full overflow-hidden">
-                    {/* src を持った iframe は、読み込み完了まで親ドキュメントの
-                        load イベントを待たせる。src は画面に近づいてから JS で
-                        設定する (initializeDeferredEmbeds) */}
-                    <iframe
-                      data-embed-src={item.embedUrl}
-                      title={item.title}
-                      class="w-full border-0"
-                      style={{ height: "450px" }}
-                      allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                      sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                    />
-                  </div>
-                ) : (
-                  <div class="bg-background overflow-hidden">
-                    <img
-                      src={thumbnail}
-                      alt={item.title}
-                      loading="lazy"
-                      class="h-auto w-full"
-                    />
-                  </div>
-                )}
-                <div class="p-4">
-                  <p class="font-body text-xs tracking-wide text-white/40">
-                    {item.year}
-                  </p>
-                  <h4 class="font-heading mt-1 text-sm font-bold text-white sm:text-base">
-                    {item.title}
-                  </h4>
-                  {getItemLinks(item).length > 0 && (
-                    <div class="mt-3 flex gap-3">
-                      {getItemLinks(item).map((link) => (
-                        <div class="group/tip relative">
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="hover:text-accent block text-white/65 transition-colors"
-                          >
-                            <Icon name={link.icon} class="h-5 w-5" />
-                          </a>
-                          <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-black/80 px-2 py-1 text-[10px] whitespace-nowrap text-white opacity-0 transition-opacity duration-200 group-hover/tip:opacity-100">
-                            {link.tooltip}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })
-        }
-      </div>
-    </div>
+  <div class="mt-8 space-y-16">
+    {
+      pickupCategories.map(({ category, sections }) => (
+        <div>
+          <div
+            class:list={[
+              "flex items-center justify-between border-b border-white/10 pb-3",
+              category.descHtml ? "mb-3" : "mb-8",
+            ]}
+          >
+            <h3 class="font-heading text-accent text-lg font-semibold tracking-widest uppercase">
+              {category.label}
+            </h3>
+            <a
+              href={`${galleryAllHref}#${category.type}`}
+              class="group hover:text-accent flex items-center self-center text-white transition-colors duration-300"
+              aria-label={`View all ${category.label} works`}
+            >
+              <Icon
+                name="mdi:arrow-right"
+                class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </a>
+          </div>
+          {category.descHtml && (
+            <p
+              class="font-body mb-8 text-xs leading-relaxed text-gray-400 sm:text-sm"
+              set:html={category.descHtml}
+            />
+          )}
 
-    <!-- Illust Column -->
-    <div>
-      <div
-        class:list={[
-          "flex items-center justify-between border-b border-white/10 pb-3",
-          illustCategory?.descHtml ? "mb-3" : "mb-6",
-        ]}
-      >
-        <h3
-          class="font-heading text-accent text-lg font-semibold tracking-widest uppercase"
-        >
-          {illustCategory?.label ?? "Illust"}
-        </h3>
-        <a
-          href={`${galleryAllHref}#${illustCategory?.type ?? "illustration"}`}
-          class="group hover:text-accent flex items-center self-center text-white transition-colors duration-300"
-          aria-label={`View all ${illustCategory?.label ?? "Illust"} works`}
-        >
-          <Icon
-            name="mdi:arrow-right"
-            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </a>
-      </div>
-      {
-        illustCategory?.descHtml && (
-          <p
-            class="font-body mb-6 text-xs leading-relaxed text-gray-400 sm:text-sm"
-            set:html={illustCategory.descHtml}
-          />
-        )
-      }
-      <div class="space-y-4">
-        {
-          pickupIllustItems.map((item) => {
-            const image =
-              item.image ??
-              "https://placehold.co/400x500/1a1a2e/a0a0c0?text=Illustration";
-            return (
-              <div
-                class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500"
-                style={item.maxWidth ? { maxWidth: item.maxWidth } : {}}
-              >
-                <div class="bg-background overflow-hidden">
-                  <img
-                    src={image}
-                    alt={item.title}
-                    loading="lazy"
-                    class="h-auto w-full"
+          <div class="space-y-10">
+            {sections.map(({ section, items }) => (
+              <div>
+                <h4 class="font-heading text-sm font-semibold tracking-wider text-white sm:text-base">
+                  {section.section}
+                </h4>
+                {section.descHtml && (
+                  <p
+                    class="font-body mt-1 text-xs leading-relaxed text-gray-400"
+                    set:html={section.descHtml}
                   />
-                </div>
-                <div class="p-3">
-                  <p class="font-body text-[10px] tracking-wide text-white/40">
-                    {item.year}
-                  </p>
-                  <h4 class="font-heading mt-0.5 text-sm font-bold text-white">
-                    {item.title}
-                  </h4>
+                )}
+                <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  {items.map((item) => {
+                    const thumbnail = getThumbnail(category.type, item);
+                    return (
+                      <div class="gallery-card bg-background-sub/70 hover:border-accent/40 overflow-hidden rounded-2xl border border-white/10 transition-[border-color] duration-500">
+                        {item.embedType === "video" ? (
+                          <div class="relative aspect-video w-full">
+                            <button
+                              class="video-facade group/video absolute inset-0 h-full w-full cursor-pointer"
+                              data-embed-url={item.embedUrl}
+                              aria-label={`Play ${item.title}`}
+                            >
+                              <img
+                                src={thumbnail}
+                                alt={item.title}
+                                loading="lazy"
+                                class="absolute inset-0 h-full w-full object-cover"
+                              />
+                              <span class="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors duration-200 group-hover/video:bg-black/30">
+                                {/* is:inline: 共有 <symbol> 参照だと最初の動画カードが
+                                    iframe に置換された際に他の再生アイコンも消えるため */}
+                                <Icon
+                                  name="mdi:play-circle"
+                                  is:inline
+                                  class="h-14 w-14 text-white/90 drop-shadow-lg transition-transform duration-200 group-hover/video:scale-110"
+                                />
+                              </span>
+                            </button>
+                          </div>
+                        ) : item.embedType === "apple-music-player" ? (
+                          <div class="w-full overflow-hidden">
+                            {/* src を持った iframe は、読み込み完了まで親ドキュメントの
+                                load イベントを待たせる。src は画面に近づいてから JS で
+                                設定する (initializeDeferredEmbeds) */}
+                            <iframe
+                              data-embed-src={item.embedUrl}
+                              title={item.title}
+                              class="w-full border-0"
+                              style={{ height: "175px" }}
+                              allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                              sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                            />
+                          </div>
+                        ) : (
+                          /* 一覧の高さを揃えるため、抜粋では縦長の画像も 16:9 で切り出す */
+                          <div class="bg-background aspect-video w-full overflow-hidden">
+                            <img
+                              src={thumbnail}
+                              alt={item.title}
+                              loading="lazy"
+                              class="h-full w-full object-cover"
+                            />
+                          </div>
+                        )}
+                        <div class="p-4">
+                          <p class="font-body text-xs tracking-wide text-white/40">
+                            {item.year}
+                          </p>
+                          <h5 class="font-heading mt-1 text-sm font-bold text-white sm:text-base">
+                            {item.title}
+                          </h5>
+                          {getItemLinks(item).length > 0 && (
+                            <div class="mt-3 flex gap-3">
+                              {getItemLinks(item).map((link) => (
+                                <div class="group/tip relative">
+                                  <a
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hover:text-accent block text-white/65 transition-colors"
+                                  >
+                                    <Icon name={link.icon} class="h-5 w-5" />
+                                  </a>
+                                  <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded bg-black/80 px-2 py-1 text-[10px] whitespace-nowrap text-white opacity-0 transition-opacity duration-200 group-hover/tip:opacity-100">
+                                    {link.tooltip}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            );
-          })
-        }
-      </div>
-    </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
   </div>
 
   <div class="mt-16 flex justify-end">

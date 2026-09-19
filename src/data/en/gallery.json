@@ -1,15 +1,97 @@
 {
-  "pickupDescHtml": "A gallery of music and illustration works.",
-  "allDescHtml": "A gallery of music and illustration works.",
+  "pickupDescHtml": "A showcase of works I have created on my own, including 3DCG and music.</br>A few pieces are picked from each category.",
+  "allDescHtml": "A showcase of works I have created on my own, including 3DCG and music.",
   "categories": [
+    {
+      "type": "3dcg",
+      "label": "3DCG",
+      "descHtml": "3DCG works created mainly with Houdini.",
+      "sections": [
+        {
+          "section": "Mardini2026",
+          "descHtml": "Works created for \"Mardini2026\", an event where participants post a piece made in Houdini every day for a month.",
+          "link": {
+            "icon": "mdi:note-outline",
+            "label": "Blog Post",
+            "href": "https://elekibear.com/post/20260403_01_houdini_mardini_2026"
+          },
+          "items": [
+            {
+              "pickup": true,
+              "title": "DAY1: PLANT",
+              "image": "https://content.elekibear.com/content/mardini2026/01_Plant.png",
+              "year": "2026",
+              "maxWidth": "800px",
+              "description": "A piece created using the plant generation tool \"Natsura\"."
+            },
+            {
+              "pickup": true,
+              "title": "DAY16: FRACTAL",
+              "image": "https://content.elekibear.com/content/mardini2026/16_Fractal.png",
+              "year": "2026",
+              "maxWidth": "800px",
+              "description": "A monster built by combining fractal shapes."
+            },
+            {
+              "title": "DAY20: STYLIZED",
+              "image": "https://content.elekibear.com/content/mardini2026/20_Stylized.png",
+              "year": "2026",
+              "maxWidth": "800px",
+              "description": "A piece made by applying comic-style rendering to a 3D scene."
+            },
+            {
+              "title": "DAY27: TALK",
+              "image": "https://content.elekibear.com/content/mardini2026/27_Talk.png",
+              "year": "2026",
+              "maxWidth": "800px",
+              "description": "A piece created with a live music venue in mind."
+            }
+          ]
+        },
+        {
+          "section": "Mardini2025",
+          "descHtml": "Works created for \"Mardini2025\", an event where participants keep posting a piece made in Houdini every day for a month.",
+          "link": {
+            "icon": "mdi:note-outline",
+            "label": "Blog Post",
+            "href": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
+          },
+          "items": [
+            {
+              "pickup": true,
+              "title": "DAY22: EXPLODE",
+              "image": "https://content.elekibear.com/content/mardini2025/22_dop_explode.png",
+              "year": "2025",
+              "maxWidth": "800px",
+              "description": "A surreal piece using an explosion simulation."
+            },
+            {
+              "pickup": true,
+              "title": "DAY23: COLLAPSE",
+              "image": "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png",
+              "year": "2025",
+              "maxWidth": "800px",
+              "description": "A piece where a character is dramatically brought down by a simulation."
+            },
+            {
+              "title": "DAY25: FLOOD",
+              "image": "https://content.elekibear.com/content/mardini2025/25_dop_flood.png",
+              "year": "2025",
+              "maxWidth": "800px",
+              "description": "A piece created using a fluid simulation."
+            }
+          ]
+        }
+      ]
+    },
     {
       "type": "music",
       "label": "Music",
-      "descHtml": "Original compositions and tracks.",
+      "descHtml": "I have been composing and making music since my student days.</br>Starting with band activities, I have moved on to DTM production and am now experimenting with AI.",
       "sections": [
         {
-          "section": "Fantasy Animal Beats",
-          "descHtml": "An animal-themed music project created with Suno AI.",
+          "section": "AI: Fantasy Animal Beats",
+          "descHtml": "An animal dance song project using AI generation.</br>Songs are made with Suno AI, and videos are edited from the generated assets using Premiere, Remotion, and a game engine.",
           "link": {
             "icon": "fa-brands:youtube",
             "label": "YouTube Channel",
@@ -18,26 +100,89 @@
           "items": [
             {
               "pickup": true,
-              "title": "ハンマーヘッドシャークのうた",
-              "description": "A track with a band sound.",
+              "title": "Hammerhead Shark Song",
+              "description": "An energetic dance song about a hammerhead shark. The video is made with Premiere.",
               "year": "2026",
               "embedUrl": "https://www.youtube.com/embed/OFG43c-A4XA",
               "embedType": "video",
               "maxWidth": "800px"
             },
             {
-              "title": "ペンギンパニック",
-              "description": "A track with a band sound.",
+              "pickup": true,
+              "title": "The Traveling Crab",
+              "description": "A piece created using Unreal Engine and Houdini. It cost me my summer vacation.",
               "year": "2026",
-              "embedUrl": "https://www.youtube.com/embed/HUlLNB7XwkE?si=PxFgFmo2MN_8eRoW",
+              "embedUrl": "https://www.youtube.com/embed/6FkB3NNr9B4?si=9tr7tj4Bl_e2PYh5",
+              "embedType": "video",
+              "maxWidth": "800px"
+            },
+            {
+              "title": "Crybaby Chameleon",
+              "description": "A slightly bittersweet song about a chameleon. The video is made with Remotion.",
+              "year": "2026",
+              "embedUrl": "https://www.youtube.com/embed/k4ZUavdvMVg?si=WEULCNb6GqAKLnCU",
               "embedType": "video",
               "maxWidth": "800px"
             }
           ]
         },
         {
-          "section": "Band",
-          "descHtml": "Albums created with a band.",
+          "section": "DTM: Game BGM",
+          "descHtml": "Created through programming and live performance, with a focus on the atmosphere of the game.",
+          "link": {
+            "icon": "fa-brands:youtube",
+            "label": "YouTube Playlist",
+            "href": "https://youtube.com/playlist?list=PLAPKZeUvBuF99AQ6y3-o9cYfmsLjjxxce&si=OMhKxtx8eONRNP-q"
+          },
+          "items": [
+            {
+              "title": "Go Go Goloyan Soundtrack",
+              "description": "The soundtrack of the BGM used in the smartphone game \"Go Go Goloyan\" (10 tracks in total).",
+              "year": "2020",
+              "embedUrl": "https://www.youtube.com/embed/WHpVfSADKEg?si=3jcnbRro_tgGNaVk",
+              "embedType": "video",
+              "maxWidth": "800px"
+            }
+          ]
+        },
+        {
+          "section": "DTM: Vocaloid",
+          "descHtml": "Drums and synthesizers are programmed, and everything else is played by myself.",
+          "link": {
+            "icon": "fa-brands:youtube",
+            "label": "YouTube Playlist",
+            "href": "https://youtube.com/playlist?list=PLAPKZeUvBuF8gdSCOuYpu_fmbf6XClDek&si=TgJjErg1CSX0FmEv"
+          },
+          "items": [
+            {
+              "title": "Elekibear",
+              "description": "The image song for my original character \"Elekibear\".",
+              "year": "2018",
+              "embedUrl": "https://www.youtube.com/embed/z8iQp5FgRqo?si=f0BP_KLcXF-g4xqi",
+              "embedType": "video",
+              "maxWidth": "800px"
+            },
+            {
+              "title": "Colorful City",
+              "description": "A song made with a focus on band sound and a sense of speed.",
+              "year": "2018",
+              "embedUrl": "https://www.youtube.com/embed/QZ8x7gaFva4?si=FDrpS_-BLG3_5vVQ",
+              "embedType": "video",
+              "maxWidth": "800px"
+            },
+            {
+              "title": "Little Little",
+              "description": "The first song I ever made with Vocaloid.",
+              "year": "2018",
+              "embedUrl": "https://www.youtube.com/embed/XD-NShLQWrg?si=ZLXJpTQZFDxP3OlA",
+              "embedType": "video",
+              "maxWidth": "800px"
+            }
+          ]
+        },
+        {
+          "section": "Band: Sacanakashi Michael",
+          "descHtml": "Memorable songs made with the band I played in during my school days.</br>Available on various music streaming services.",
           "link": {
             "icon": "fa-brands:apple",
             "label": "Artist Page",
@@ -45,28 +190,9 @@
           },
           "items": [
             {
-              "pickup": true,
-              "title": "海にいたのは魚か中島か",
-              "year": "2025",
-              "embedUrl": "https://embed.music.apple.com/jp/album/%E6%B5%B7%E3%81%AB%E3%81%84%E3%81%9F%E3%81%AE%E3%81%AF%E9%AD%9A%E3%81%8B%E4%B8%AD%E5%B3%B6%E3%81%8B/1861393285",
-              "embedType": "apple-music-player",
-              "maxWidth": "800px",
-              "links": [
-                {
-                  "icon": "fa-brands:apple",
-                  "tooltip": "Apple Music",
-                  "href": "https://music.apple.com/jp/album/%E6%B5%B7%E3%81%AB%E3%81%84%E3%81%9F%E3%81%AE%E3%81%AF%E9%AD%9A%E3%81%8B%E4%B8%AD%E5%B3%B6%E3%81%8B/1861393285"
-                },
-                {
-                  "icon": "fa-brands:spotify",
-                  "tooltip": "Spotify",
-                  "href": "https://open.spotify.com/intl-ja/album/170FOEpTZT6AABa6CUQfz7"
-                }
-              ]
-            },
-            {
-              "title": "いつまでもサカナカシマシ",
-              "year": "2025",
+              "title": "Itsumademo Sacanakashimashi | Sacanakashi Michael",
+              "description": "An album made with the help of a recording studio and friends.",
+              "year": "2016",
               "embedUrl": "https://embed.music.apple.com/jp/album/%E3%81%84%E3%81%A4%E3%81%BE%E3%81%A7%E3%82%82%E3%82%B5%E3%82%AB%E3%83%8A%E3%82%AB%E3%82%B7%E3%83%9E%E3%82%B7/1860510512",
               "embedType": "apple-music-player",
               "maxWidth": "800px",
@@ -82,46 +208,26 @@
                   "href": "https://open.spotify.com/intl-ja/album/6srQQDLEYkRMhxOpzPHIOV"
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "illustration",
-      "label": "Illust",
-      "descHtml": "Illustrations I have created.",
-      "sections": [
-        {
-          "section": "Character",
-          "descHtml": "Character illustrations.",
-          "items": [
-            {
-              "pickup": true,
-              "title": "Sample Illustration 1",
-              "image": "https://placehold.co/400x500/1a1a2e/a0a0c0?text=Illustration",
-              "year": "2024"
             },
             {
-              "title": "Sample Illustration 2",
-              "image": "https://placehold.co/400x400/1a2e1a/a0c0a0?text=Illustration",
-              "year": "2024"
-            }
-          ]
-        },
-        {
-          "section": "Landscape",
-          "descHtml": "Landscape illustrations.",
-          "items": [
-            {
-              "title": "Sample Illustration 3",
-              "image": "https://placehold.co/400x300/2e1a1a/c0a0a0?text=Illustration",
-              "year": "2023"
-            },
-            {
-              "title": "Sample Illustration 4",
-              "image": "https://placehold.co/400x600/1a1a2e/a0a0c0?text=Illustration",
-              "year": "2023"
+              "title": "Umi ni Ita no wa Sacana ka Nakajima ka | Sacanakashi Michael",
+              "year": "2014",
+              "description": "A handmade-feeling album where the members handled everything from recording to mixing themselves.",
+              "embedUrl": "https://embed.music.apple.com/jp/album/%E6%B5%B7%E3%81%AB%E3%81%84%E3%81%9F%E3%81%AE%E3%81%AF%E9%AD%9A%E3%81%8B%E4%B8%AD%E5%B3%B6%E3%81%8B/1861393285",
+              "embedType": "apple-music-player",
+              "maxWidth": "800px",
+              "links": [
+                {
+                  "icon": "fa-brands:apple",
+                  "tooltip": "Apple Music",
+                  "href": "https://music.apple.com/jp/album/%E6%B5%B7%E3%81%AB%E3%81%84%E3%81%9F%E3%81%AE%E3%81%AF%E9%AD%9A%E3%81%8B%E4%B8%AD%E5%B3%B6%E3%81%8B/1861393285"
+                },
+                {
+                  "icon": "fa-brands:spotify",
+                  "tooltip": "Spotify",
+                  "href": "https://open.spotify.com/intl-ja/album/170FOEpTZT6AABa6CUQfz7"
+                }
+              ]
             }
           ]
         }

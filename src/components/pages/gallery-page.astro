@@ -326,7 +326,7 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
     applyTabFromHash();
   }
 
-  // 同一ページ内でヘッダーの Music / Illust リンク(/gallery#illustration 等)を
+  // 同一ページ内でヘッダーの 3DCG / Music リンク(/gallery#music 等)を
   // クリックした場合、ClientRouter が pushState でハッシュのみ更新するため
   // hashchange イベントが発火しない。クリックを直接拾ってタブを切り替える。
   function normalizePathname(pathname: string): string {

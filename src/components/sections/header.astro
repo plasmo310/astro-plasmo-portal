@@ -11,8 +11,8 @@ const anchorBase = isIndexPage ? "" : isEnglish ? "/en/" : "/";
 
 const worksAllHref = isEnglish ? "/en/works" : "/works";
 const galleryHref = isEnglish ? "/en/gallery" : "/gallery";
+const gallery3dcgHref = `${galleryHref}#3dcg`;
 const galleryMusicHref = `${galleryHref}#music`;
-const galleryIllustHref = `${galleryHref}#illustration`;
 const jaUrl = isEnglish ? pathname.replace(/^\/en/, "") || "/" : pathname;
 const enUrl = isEnglish
   ? pathname
@@ -32,8 +32,8 @@ const navItems: NavData.Item[] = [
     href: `${anchorBase}#gallery`,
     children: [
       { label: "All Gallery", href: galleryHref },
+      { label: "3DCG", href: gallery3dcgHref },
       { label: "Music", href: galleryMusicHref },
-      { label: "Illust", href: galleryIllustHref },
     ],
   },
   { label: "Skills", href: `${anchorBase}#skills` },

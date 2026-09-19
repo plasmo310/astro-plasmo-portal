@@ -31,7 +31,7 @@ export namespace GalleryData {
   }
 
   export interface Category {
-    type: "music" | "illustration";
+    type: "3dcg" | "music" | "illustration";
     label: string;
     descHtml: string;
     sections: Section[];

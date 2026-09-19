@@ -14,7 +14,7 @@
     MODEL_TEXTURE_PATH,
   } from "./three-asset-paths";
 
-  // モデル(エレキベア)はトップページでのみ表示する。
+  // モデル(エレキベア)とパーティクルはトップページでのみ表示する。
   // canvas は transition:persist でページ間を持ち越されるため、
   // 表示可否はレンダリング時の属性ではなく現在のパスから毎回判定する。
 
@@ -123,6 +123,28 @@
 
     const noiseTexture = createNoiseTexture();
 
+    // パーティクル
+    const particleCount = 400;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 16;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 16;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+    }
+    const particleGeometry = new THREE.BufferGeometry();
+    particleGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3),
+    );
+    const particleMaterial = new THREE.PointsMaterial({
+      color: 0xffd400,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.6,
+    });
+    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    scene.add(particles);
+
     let loadModelRoot: THREE.Group | null = null;
     let animationMixer: THREE.AnimationMixer | null = null;
     let dissolveMaterial: THREE.MeshToonMaterial | null = null;
@@ -201,6 +223,9 @@
     function updateModelForPage(): void {
       // 表示状態が変わりうるため、描画を止めていても 1 フレームは描き直す
       idleRenderPending = true;
+      // パーティクルもモデルと同じくトップページでのみ表示する。
+      // 非表示のページでは描画を止めるため、隠さないと最後のフレームが残り続ける
+      particles.visible = isHomePage();
       if (isHomePage()) {
         if (!modelRequested) {
           modelRequested = true;
@@ -216,28 +241,6 @@
 
     document.addEventListener("astro:page-load", updateModelForPage);
     updateModelForPage();
-
-    // パーティクル
-    const particleCount = 400;
-    const positions = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 16;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 16;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
-    }
-    const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(positions, 3),
-    );
-    const particleMaterial = new THREE.PointsMaterial({
-      color: 0xffd400,
-      size: 0.05,
-      transparent: true,
-      opacity: 0.6,
-    });
-    const particles = new THREE.Points(particleGeometry, particleMaterial);
-    scene.add(particles);
 
     let previousWidth = window.innerWidth;
 

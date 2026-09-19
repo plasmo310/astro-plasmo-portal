@@ -78,6 +78,12 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
             data-tab={category.type}
             style={categoryIndex !== 0 ? "display:none" : ""}
           >
+            {category.descHtml && (
+              <p
+                class="font-body mb-12 text-xs leading-relaxed text-gray-400 sm:text-sm"
+                set:html={category.descHtml}
+              />
+            )}
             <div class="space-y-16">
               {category.sections.map((section) => (
                 <div>
@@ -228,6 +234,11 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
                               <h4 class="font-heading mt-0.5 text-sm font-bold text-white sm:text-base">
                                 {item.title}
                               </h4>
+                              {item.description && (
+                                <p class="font-body mt-2 text-xs text-gray-400 sm:text-sm">
+                                  {item.description}
+                                </p>
+                              )}
                             </div>
                           </div>
                         );

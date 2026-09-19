@@ -1,15 +1,97 @@
 {
-  "pickupDescHtml": "音楽やイラストなど、個人で制作した作品の展示になります。</br>各カテゴリよりいくつかピックアップして記載しています。",
-  "allDescHtml": "音楽やイラストなど、個人で制作した作品の展示になります。",
+  "pickupDescHtml": "3DCG作品や音楽など、個人で制作した作品の展示になります。</br>各カテゴリよりいくつかピックアップして記載しています。",
+  "allDescHtml": "3DCG作品や音楽など、個人で制作した作品の展示になります。",
   "categories": [
+    {
+      "type": "3dcg",
+      "label": "3DCG",
+      "descHtml": "主にHoudiniを使用して制作した3DCG作品になります。",
+      "sections": [
+        {
+          "section": "Mardini2026",
+          "descHtml": "1ヶ月の間、Houdiniで作った作品を毎日投稿するイベント「Mardini2026」で制作した作品です。",
+          "link": {
+            "icon": "mdi:note-outline",
+            "label": "ブログ記事",
+            "href": "https://elekibear.com/post/20260403_01_houdini_mardini_2026"
+          },
+          "items": [
+            {
+              "pickup": true,
+              "title": "DAY1: PLANT",
+              "image": "https://content.elekibear.com/content/mardini2026/01_Plant.png",
+              "year": "2026",
+              "maxWidth": "800px",
+              "description": "植物生成ツール「Natsura」を活用して制作した作品です。"
+            },
+            {
+              "pickup": true,
+              "title": "DAY16: FRACTAL",
+              "image": "https://content.elekibear.com/content/mardini2026/16_Fractal.png",
+              "year": "2026",
+              "maxWidth": "800px",
+              "description": "フラクタル図形を組み合わせて作ったモンスターです。"
+            },
+            {
+              "title": "DAY20: STYLIZED",
+              "image": "https://content.elekibear.com/content/mardini2026/20_Stylized.png",
+              "year": "2026",
+              "maxWidth": "800px",
+              "description": "3Dシーンから漫画風描画を行って作った作品です。"
+            },
+            {
+              "title": "DAY27: TALK",
+              "image": "https://content.elekibear.com/content/mardini2026/27_Talk.png",
+              "year": "2026",
+              "maxWidth": "800px",
+              "description": "ライブハウスを意識して制作した作品です。"
+            }
+          ]
+        },
+        {
+          "section": "Mardini2025",
+          "descHtml": "1ヶ月の間、Houdiniで作った作品を毎日投稿し続けるイベント「Mardini2025」で制作した作品です。",
+          "link": {
+            "icon": "mdi:note-outline",
+            "label": "ブログ記事",
+            "href": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
+          },
+          "items": [
+            {
+              "pickup": true,
+              "title": "DAY22: EXPLODE",
+              "image": "https://content.elekibear.com/content/mardini2025/22_dop_explode.png",
+              "year": "2025",
+              "maxWidth": "800px",
+              "description": "爆発シミュレーションを使用したシュールな作品です。"
+            },
+            {
+              "pickup": true,
+              "title": "DAY23: COLLAPSE",
+              "image": "https://content.elekibear.com/content/mardini2025/23_dop_collapse.png",
+              "year": "2025",
+              "maxWidth": "800px",
+              "description": "キャラクターをシミュレーションで豪快に崩壊させた作品です。"
+            },
+            {
+              "title": "DAY25: FLOOD",
+              "image": "https://content.elekibear.com/content/mardini2025/25_dop_flood.png",
+              "year": "2025",
+              "maxWidth": "800px",
+              "description": "流体シミュレーションを活用して制作した作品です。"
+            }
+          ]
+        }
+      ]
+    },
     {
       "type": "music",
       "label": "Music",
-      "descHtml": "自身で作曲した楽曲を掲載しています。",
+      "descHtml": "学生の頃から長らく作曲などの音楽活動を行っていました。</br>バンド活動から始まり、DTMによる制作やAI活用にもチャレンジしています。",
       "sections": [
         {
-          "section": "空想どうぶつビート",
-          "descHtml": "SunoAIを活用したどうぶつ系楽曲プロジェクトです。",
+          "section": "AI活用: 空想どうぶつビート",
+          "descHtml": "AI生成を活用したどうぶつダンスソングプロジェクトです。</br>楽曲はSunoAIを使用して制作し、動画は生成した素材を元に、PremiereやRemotion、ゲームエンジンで編集しています。",
           "link": {
             "icon": "fa-brands:youtube",
             "label": "YouTubeチャンネル",
@@ -19,17 +101,80 @@
             {
               "pickup": true,
               "title": "ハンマーヘッドシャークのうた",
-              "description": "バンドサウンドをイメージして制作した楽曲です。",
+              "description": "ハンマーヘッドシャークの元気なダンスソングです。Premiereで動画制作しています。",
               "year": "2026",
               "embedUrl": "https://www.youtube.com/embed/OFG43c-A4XA",
               "embedType": "video",
               "maxWidth": "800px"
             },
             {
-              "title": "ペンギンパニック",
-              "description": "バンドサウンドをイメージして制作した楽曲です。",
+              "pickup": true,
+              "title": "たびするカニ",
+              "description": "UnrealEngine、Houdiniを使用して制作した作品です。夏休みを失いました。",
               "year": "2026",
-              "embedUrl": "https://www.youtube.com/embed/HUlLNB7XwkE?si=PxFgFmo2MN_8eRoW",
+              "embedUrl": "https://www.youtube.com/embed/6FkB3NNr9B4?si=9tr7tj4Bl_e2PYh5",
+              "embedType": "video",
+              "maxWidth": "800px"
+            },
+            {
+              "title": "なきむしカメレオン",
+              "description": "ちょっと切なめのカメレオンの曲です。Remotionを使用して動画制作しています。",
+              "year": "2026",
+              "embedUrl": "https://www.youtube.com/embed/k4ZUavdvMVg?si=WEULCNb6GqAKLnCU",
+              "embedType": "video",
+              "maxWidth": "800px"
+            }
+          ]
+        },
+        {
+          "section": "DTM: ゲームBGM",
+          "descHtml": "ゲームの雰囲気を重視して、打ち込みや演奏で制作しています。",
+          "link": {
+            "icon": "fa-brands:youtube",
+            "label": "YouTube再生リスト",
+            "href": "https://youtube.com/playlist?list=PLAPKZeUvBuF99AQ6y3-o9cYfmsLjjxxce&si=OMhKxtx8eONRNP-q"
+          },
+          "items": [
+            {
+              "title": "ゴーゴーゴロヤン サウンドトラック",
+              "description": "スマホゲーム「ゴーゴーゴロヤン」で使用しているBGMのサウンドトラック(全10曲)です。",
+              "year": "2020",
+              "embedUrl": "https://www.youtube.com/embed/WHpVfSADKEg?si=3jcnbRro_tgGNaVk",
+              "embedType": "video",
+              "maxWidth": "800px"
+            }
+          ]
+        },
+        {
+          "section": "DTM: ボーカロイド",
+          "descHtml": "ドラム・シンセサイザーは打ち込みで、それ以外は自身で演奏しています。",
+          "link": {
+            "icon": "fa-brands:youtube",
+            "label": "YouTube再生リスト",
+            "href": "https://youtube.com/playlist?list=PLAPKZeUvBuF8gdSCOuYpu_fmbf6XClDek&si=TgJjErg1CSX0FmEv"
+          },
+          "items": [
+            {
+              "title": "エレキベア",
+              "description": "オリジナルキャラクター「エレキベア」のイメージソングです。",
+              "year": "2018",
+              "embedUrl": "https://www.youtube.com/embed/z8iQp5FgRqo?si=f0BP_KLcXF-g4xqi",
+              "embedType": "video",
+              "maxWidth": "800px"
+            },
+            {
+              "title": "カラフルシティ",
+              "description": "バンドサウンド重視で、疾走感を意識して制作した曲です。",
+              "year": "2018",
+              "embedUrl": "https://www.youtube.com/embed/QZ8x7gaFva4?si=FDrpS_-BLG3_5vVQ",
+              "embedType": "video",
+              "maxWidth": "800px"
+            },
+            {
+              "title": "リトルリトル",
+              "description": "ボーカロイドではじめて制作した楽曲です。",
+              "year": "2018",
+              "embedUrl": "https://www.youtube.com/embed/XD-NShLQWrg?si=ZLXJpTQZFDxP3OlA",
               "embedType": "video",
               "maxWidth": "800px"
             }
@@ -37,7 +182,7 @@
         },
         {
           "section": "バンド: サカナカシマイケル",
-          "descHtml": "学生時代にバンドで制作したアルバムです。各種音楽サブスクリプションで配信しています。",
+          "descHtml": "学生時代に活動していたバンドで制作した思い出の楽曲です。</br>各種音楽サブスクリプションで配信中です。",
           "link": {
             "icon": "fa-brands:apple",
             "label": "アーティストページ",
@@ -46,6 +191,7 @@
           "items": [
             {
               "title": "いつまでもサカナカシマシ | サカナカシマイケル",
+              "description": "レコーディングスタジオや友人に協力してもらい制作したアルバムです。",
               "year": "2016",
               "embedUrl": "https://embed.music.apple.com/jp/album/%E3%81%84%E3%81%A4%E3%81%BE%E3%81%A7%E3%82%82%E3%82%B5%E3%82%AB%E3%83%8A%E3%82%AB%E3%82%B7%E3%83%9E%E3%82%B7/1860510512",
               "embedType": "apple-music-player",
@@ -64,9 +210,9 @@
               ]
             },
             {
-              "pickup": true,
               "title": "海にいたのは魚か中島か | サカナカシマイケル",
               "year": "2014",
+              "description": "メンバー自身で録音からミキシングまで行った手作り感溢れるアルバムです。",
               "embedUrl": "https://embed.music.apple.com/jp/album/%E6%B5%B7%E3%81%AB%E3%81%84%E3%81%9F%E3%81%AE%E3%81%AF%E9%AD%9A%E3%81%8B%E4%B8%AD%E5%B3%B6%E3%81%8B/1861393285",
               "embedType": "apple-music-player",
               "maxWidth": "800px",
@@ -82,46 +228,6 @@
                   "href": "https://open.spotify.com/intl-ja/album/170FOEpTZT6AABa6CUQfz7"
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "illustration",
-      "label": "Illust",
-      "descHtml": "自身で描いたイラストを掲載しています。",
-      "sections": [
-        {
-          "section": "Character",
-          "descHtml": "キャラクターイラストです。",
-          "items": [
-            {
-              "pickup": true,
-              "title": "サンプルイラスト 1",
-              "image": "https://placehold.co/400x500/1a1a2e/a0a0c0?text=Illustration",
-              "year": "2024"
-            },
-            {
-              "title": "サンプルイラスト 2",
-              "image": "https://placehold.co/400x400/1a2e1a/a0c0a0?text=Illustration",
-              "year": "2024"
-            }
-          ]
-        },
-        {
-          "section": "Landscape",
-          "descHtml": "風景イラストです。",
-          "items": [
-            {
-              "title": "サンプルイラスト 3",
-              "image": "https://placehold.co/400x300/2e1a1a/c0a0a0?text=Illustration",
-              "year": "2023"
-            },
-            {
-              "title": "サンプルイラスト 4",
-              "image": "https://placehold.co/400x600/1a1a2e/a0a0c0?text=Illustration",
-              "year": "2023"
             }
           ]
         }

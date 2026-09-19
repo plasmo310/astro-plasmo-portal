@@ -155,15 +155,14 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
                             </button>
                           </div>
                         ) : item.embedType === "apple-music-player" ? (
-                          <div class="w-full overflow-hidden">
+                          <div class="aspect-video w-full overflow-hidden">
                             {/* src を持った iframe は、読み込み完了まで親ドキュメントの
                                 load イベントを待たせる。src は画面に近づいてから JS で
                                 設定する (initializeDeferredEmbeds) */}
                             <iframe
                               data-embed-src={item.embedUrl}
                               title={item.title}
-                              class="w-full border-0"
-                              style={{ height: "175px" }}
+                              class="h-full w-full border-0"
                               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
                               sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
                             />
@@ -186,6 +185,11 @@ function getItemLinks(item: GalleryData.Item): GalleryData.Link[] {
                           <h5 class="font-heading mt-1 text-sm font-bold text-white sm:text-base">
                             {item.title}
                           </h5>
+                          {item.description && (
+                            <p class="font-body mt-2 text-xs leading-relaxed text-gray-400">
+                              {item.description}
+                            </p>
+                          )}
                           {getItemLinks(item).length > 0 && (
                             <div class="mt-3 flex gap-3">
                               {getItemLinks(item).map((link) => (

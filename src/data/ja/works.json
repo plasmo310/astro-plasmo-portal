@@ -291,6 +291,32 @@
         {
           "pickup": true,
           "category": "Houdini",
+          "title": "Houdini×Unreal MV制作",
+          "period": "2026/08",
+          "overview": "AI生成、Houdini、UnrealEngineを活用して制作した3DMVです。",
+          "descHtml": "AI生成、Houdini、UnrealEngineを活用して3DMVを制作しました。。</br>AI生成したモデルをHoudiniで整形・配置し、USD経由でUnrealEngineへエクスポートしました。</br>カニにはControlRigを使用して、UnrealEngine上でアニメーションを付けています。",
+          "images": [
+            "https://content.elekibear.com/content/20260818_01_title.png",
+            "https://content.elekibear.com/content/20260818_01_44.png",
+            "https://content.elekibear.com/content/20260818_01_35.png"
+          ],
+          "tech": ["Houdini", "UnrealEngiine", "USD", "Hunyuan3D"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "ブログ記事",
+              "href": "https://elekibear.com/post/20260823_01_mv_crab_journey"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unreal-mv-crab-journey"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Houdini",
           "title": "漫画風描画HDA",
           "period": "2026/04",
           "overview": "Copernicusでシーン情報から漫画風描画・吹き出し作成を行うHDAです。",
@@ -357,7 +383,6 @@
           ]
         },
         {
-          "pickup": true,
           "category": "Houdini",
           "title": "観覧車生成HDA",
           "period": "2025/01",
@@ -388,6 +413,32 @@
       "section": "Tool",
       "descHtml": "デスクトップ・ゲームエンジン・Web用と、幅広くツールを制作しています。</br>基本的には、自身の日々の課題を解決するために作成したものになっています。",
       "works": [
+        {
+          "pickup": true,
+          "category": "Web Tool",
+          "title": "AI協業型 MV制作ツール",
+          "period": "2026/05",
+          "overview": "Reactで動画を作るフレームワーク「Remotion」を活用したMV制作環境です。",
+          "descHtml": "Reactで動画を作るフレームワーク「Remotion」を活用したMV制作環境です。</br>汎用的なエフェクトやトランジションなどを用意し、拡張しやすい設計としています。</br>コードベースのため、AIとも協業しやすい環境になっています。",
+          "images": [
+            "https://content.elekibear.com/content/20260912_01_title.png",
+            "https://content.elekibear.com/content/20260912_01_29.png",
+            "https://content.elekibear.com/content/20260912_01_04.gif"
+          ],
+          "tech": ["Remotion", "React"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260912_01_remotion_mv_studio"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/remotion-mv-studio"
+            }
+          ]
+        },
         {
           "pickup": true,
           "category": "Desktop Tool",
@@ -439,7 +490,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Desktop Tool",
           "title": "CSV編集ツール",
           "period": "2023/12",
@@ -600,7 +651,7 @@
           ]
         },
         {
-          "pickup": false,
+          "pickup": true,
           "category": "Python",
           "title": "波動関数崩壊アルゴリズム",
           "period": "2025/06",
@@ -675,7 +726,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Unity",
           "title": "3D流体シミュレーション(SPH)",
           "period": "2023/05",
@@ -694,6 +745,31 @@
       "section": "Sound",
       "descHtml": "バンド活動していた経験から、自身で作曲など行なっています。</br>サウンドプログラミングにも興味があり、波形操作やミドルウェア実装などにも挑戦しました。",
       "works": [
+        {
+          "pickup": true,
+          "category": "Desktop Tool",
+          "title": "Whisper Toolkit",
+          "period": "2026/09",
+          "overview": "音声認識モデルWhisperを、GUIから使えるようにしたツールです。文字起こし・単語単位の時間取得が行えます。",
+          "descHtml": "音声認識モデルWhisperを、GUIから使えるようにしたツールです。</br>faster-whisperを使用して高速化し、文字起こしと単語単位の時間取得の機能のほか、歌詞との付き合わせができるようにしています。",
+          "images": [
+            "https://content.elekibear.com/content/20260907_01_title.png",
+            "https://content.elekibear.com/content/20260907_01_02.png"
+          ],
+          "tech": ["PySide / Qt", "Python", "Whisper"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260907_01_whisper_toolkit"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/pyside-whisper-toolkit"
+            }
+          ]
+        },
         {
           "pickup": true,
           "category": "DTM Plugins",

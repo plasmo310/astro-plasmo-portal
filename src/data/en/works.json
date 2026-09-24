@@ -291,6 +291,32 @@
         {
           "pickup": true,
           "category": "Houdini",
+          "title": "Houdini×Unreal MV Production",
+          "period": "2026/08",
+          "overview": "A 3D music video created using AI generation, Houdini, and Unreal Engine.",
+          "descHtml": "Created a 3D music video using AI generation, Houdini, and Unreal Engine.</br>AI-generated models were refined and placed in Houdini, then exported to Unreal Engine via USD.</br>The crab is animated in Unreal Engine using Control Rig.",
+          "images": [
+            "https://content.elekibear.com/content/20260818_01_title.png",
+            "https://content.elekibear.com/content/20260818_01_44.png",
+            "https://content.elekibear.com/content/20260818_01_35.png"
+          ],
+          "tech": ["Houdini", "UnrealEngine", "USD", "Hunyuan3D"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260823_01_mv_crab_journey"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/unreal-mv-crab-journey"
+            }
+          ]
+        },
+        {
+          "pickup": true,
+          "category": "Houdini",
           "title": "Comic Render HDA",
           "period": "2026/04",
           "overview": "An HDA that creates comic-style rendering and speech bubbles from scene information in Copernicus.",
@@ -357,7 +383,6 @@
           ]
         },
         {
-          "pickup": true,
           "category": "Houdini",
           "title": "Ferris Wheel Generation HDA",
           "period": "2025/01",
@@ -388,6 +413,32 @@
       "section": "Tool",
       "descHtml": "I create tools across a wide range — desktop, game engine, and web.</br>Most of them were made to solve challenges in my own daily work.",
       "works": [
+        {
+          "pickup": true,
+          "category": "Web Tool",
+          "title": "AI-Collaborative MV Production Tool",
+          "period": "2026/05",
+          "overview": "An MV production environment built with \"Remotion\", a framework for creating videos with React.",
+          "descHtml": "An MV production environment built with \"Remotion\", a framework for creating videos with React.</br>Provides general-purpose effects and transitions, with a design that is easy to extend.</br>Being code-based, it is an environment that is easy to collaborate on with AI.",
+          "images": [
+            "https://content.elekibear.com/content/20260912_01_title.png",
+            "https://content.elekibear.com/content/20260912_01_29.png",
+            "https://content.elekibear.com/content/20260912_01_04.gif"
+          ],
+          "tech": ["Remotion", "React"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260912_01_remotion_mv_studio"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/remotion-mv-studio"
+            }
+          ]
+        },
         {
           "pickup": true,
           "category": "Desktop Tool",
@@ -439,7 +490,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Desktop Tool",
           "title": "CSV Editor Tool",
           "period": "2023/12",
@@ -600,7 +651,7 @@
           ]
         },
         {
-          "pickup": false,
+          "pickup": true,
           "category": "Python",
           "title": "Wave Function Collapse Algorithm",
           "period": "2025/06",
@@ -675,7 +726,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Unity",
           "title": "3D Fluid Simulation (SPH)",
           "period": "2023/05",
@@ -694,6 +745,31 @@
       "section": "Sound",
       "descHtml": "Drawing on my experience playing in a band, I compose music myself.</br>I have also taken on challenges in waveform manipulation and middleware implementation.",
       "works": [
+        {
+          "pickup": true,
+          "category": "Desktop Tool",
+          "title": "Whisper Toolkit",
+          "period": "2026/09",
+          "overview": "A tool that makes the Whisper speech recognition model usable from a GUI. Supports transcription and word-level timestamps.",
+          "descHtml": "A tool that makes the Whisper speech recognition model usable from a GUI.</br>Accelerated with faster-whisper, it offers transcription and word-level timestamps, and can also align the results with lyrics.",
+          "images": [
+            "https://content.elekibear.com/content/20260907_01_title.png",
+            "https://content.elekibear.com/content/20260907_01_02.png"
+          ],
+          "tech": ["PySide / Qt", "Python", "Whisper"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260907_01_whisper_toolkit"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/pyside-whisper-toolkit"
+            }
+          ]
+        },
         {
           "pickup": true,
           "category": "DTM Plugins",

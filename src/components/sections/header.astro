@@ -37,7 +37,11 @@ const navItems: NavData.Item[] = [
     ],
   },
   { label: "Skills", href: `${anchorBase}#skills` },
-  { label: "Blog", href: "https://elekibear.com", newTab: true },
+  {
+    label: "Blog",
+    href: isEnglish ? "https://elekibear.com/en" : "https://elekibear.com",
+    newTab: true,
+  },
   { label: "Contact", href: `${anchorBase}#contact` },
 ];
 

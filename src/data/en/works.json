@@ -24,7 +24,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Dev Article",
-              "href": "https://elekibear.com/post/20240101_01_next_elekibear"
+              "href": "https://elekibear.com/en/post/20240101_01_next_elekibear"
             },
             {
               "icon": "mdi:github",
@@ -70,7 +70,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20240415_01_unity_ranking_api"
+              "href": "https://elekibear.com/en/post/20240415_01_unity_ranking_api"
             },
             {
               "icon": "mdi:github",
@@ -83,7 +83,7 @@
     },
     {
       "section": "Game",
-      "descHtml": "I have released 6 apps for iOS/Android.</br>I'm also planning to develop a consumer game.",
+      "descHtml": "I have released 6 apps for iOS/Android.</br>I'm also planning to develop a PC game.",
       "works": [
         {
           "pickup": true,
@@ -273,7 +273,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20240519_01_ue5_cpp_basic"
+              "href": "https://elekibear.com/en/post/20240519_01_ue5_cpp_basic"
             },
             {
               "icon": "mdi:github",
@@ -305,7 +305,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20260823_01_mv_crab_journey"
+              "href": "https://elekibear.com/en/post/20260823_01_mv_crab_journey"
             },
             {
               "icon": "mdi:github",
@@ -331,7 +331,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20260413_01_houdini_comic_render"
+              "href": "https://elekibear.com/en/post/20260413_01_houdini_comic_render"
             },
             {
               "icon": "mdi:github",
@@ -357,7 +357,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20260403_01_houdini_mardini_2026"
+              "href": "https://elekibear.com/en/post/20260403_01_houdini_mardini_2026"
             }
           ]
         },
@@ -378,7 +378,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20251124_01_houdini_mardini_2025"
+              "href": "https://elekibear.com/en/post/20251124_01_houdini_mardini_2025"
             }
           ]
         },
@@ -398,7 +398,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20250103_02_houdini_sop"
+              "href": "https://elekibear.com/en/post/20250103_02_houdini_sop"
             },
             {
               "icon": "mdi:github",
@@ -413,6 +413,31 @@
       "section": "Tool",
       "descHtml": "I create tools across a wide range — desktop, game engine, and web.</br>Most of them were made to solve challenges in my own daily work.",
       "works": [
+        {
+          "pickup": true,
+          "category": "Desktop Tool",
+          "title": "TTS Toolkit",
+          "period": "2026/09",
+          "overview": "A tool that lets you use multiple speech synthesis models from a single interface.",
+          "descHtml": "A tool that lets you use multiple speech synthesis models from a single interface.</br>It also supports command-line execution for integration into pipelines.</br>Supports creating voices for original characters and batch generation from scripts.",
+          "images": [
+            "https://content.elekibear.com/content/20260923_01_title.png",
+            "https://content.elekibear.com/content/20260923_01_01.png"
+          ],
+          "tech": ["PySide / Qt", "Python"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/en/post/20260923_01_tts_toolkit"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/pyside-tts-toolkit"
+            }
+          ]
+        },
         {
           "pickup": true,
           "category": "Web Tool",
@@ -430,7 +455,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20260912_01_remotion_mv_studio"
+              "href": "https://elekibear.com/en/post/20260912_01_remotion_mv_studio"
             },
             {
               "icon": "mdi:github",
@@ -455,7 +480,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20260607_01_command_launcher"
+              "href": "https://elekibear.com/en/post/20260607_01_command_launcher"
             },
             {
               "icon": "mdi:github",
@@ -480,7 +505,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20251122_01_vscode_image_resizer"
+              "href": "https://elekibear.com/en/post/20251122_01_vscode_image_resizer"
             },
             {
               "icon": "mdi:github",
@@ -505,7 +530,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20231231_02_category_browser"
+              "href": "https://elekibear.com/en/post/20231231_02_category_browser"
             },
             {
               "icon": "mdi:github",
@@ -530,7 +555,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20231231_02_image_resizer"
+              "href": "https://elekibear.com/en/post/20231231_02_image_resizer"
             },
             {
               "icon": "mdi:github",
@@ -540,7 +565,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Unity Tool",
           "title": "Slideshow Creator Tool",
           "period": "2024/10",
@@ -555,7 +580,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20241031_01_unity_movie_maker"
+              "href": "https://elekibear.com/en/post/20241031_01_unity_movie_maker"
             },
             {
               "icon": "mdi:github",
@@ -636,7 +661,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20260215_02_three_toon_outline"
+              "href": "https://elekibear.com/en/post/20260215_02_three_toon_outline"
             },
             {
               "icon": "mdi:web",
@@ -665,7 +690,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20250622_01_wave_function_collapse"
+              "href": "https://elekibear.com/en/post/20250622_01_wave_function_collapse"
             },
             {
               "icon": "mdi:github",
@@ -690,7 +715,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20251102_01_math_complex"
+              "href": "https://elekibear.com/en/post/20251102_01_math_complex"
             },
             {
               "icon": "mdi:web",
@@ -716,7 +741,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20240528_01_unity_boids"
+              "href": "https://elekibear.com/en/post/20240528_01_unity_boids"
             },
             {
               "icon": "mdi:github",
@@ -761,7 +786,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20260907_01_whisper_toolkit"
+              "href": "https://elekibear.com/en/post/20260907_01_whisper_toolkit"
             },
             {
               "icon": "mdi:github",
@@ -786,7 +811,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20240322_01_juce_distortion"
+              "href": "https://elekibear.com/en/post/20240322_01_juce_distortion"
             },
             {
               "icon": "mdi:github",
@@ -812,7 +837,7 @@
             {
               "icon": "mdi:note-outline",
               "tooltip": "Blog Post",
-              "href": "https://elekibear.com/post/20240327_01_unity_multi_audio"
+              "href": "https://elekibear.com/en/post/20240327_01_unity_multi_audio"
             },
             {
               "icon": "mdi:github",

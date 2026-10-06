@@ -83,7 +83,7 @@
     },
     {
       "section": "Game",
-      "descHtml": "モバイルアプリを6本開発し、iOS/Android向けにリリースまで行いました。</br>今後はコンシューマゲームの開発も計画中です。",
+      "descHtml": "モバイルアプリを6本開発し、iOS/Android向けにリリースまで行いました。</br>今後はPC向けゲームの開発も計画中です。",
       "works": [
         {
           "pickup": true,
@@ -415,6 +415,31 @@
       "works": [
         {
           "pickup": true,
+          "category": "Desktop Tool",
+          "title": "TTS Toolkit",
+          "period": "2026/09",
+          "overview": "複数の音声合成モデルを、同じ画面から使えるようにしたツールです。",
+          "descHtml": "複数の音声合成モデルを、同じ画面から使えるようにしたツールです。</br>コマンド実行もできるため、パイプラインにも組み込めます。</br>オリジナルキャラクターの声の作成、台本からの一括生成にも対応しています。",
+          "images": [
+            "https://content.elekibear.com/content/20260923_01_title.png",
+            "https://content.elekibear.com/content/20260923_01_01.png"
+          ],
+          "tech": ["PySide / Qt", "Python"],
+          "links": [
+            {
+              "icon": "mdi:note-outline",
+              "tooltip": "Blog Post",
+              "href": "https://elekibear.com/post/20260923_01_tts_toolkit"
+            },
+            {
+              "icon": "mdi:github",
+              "tooltip": "GitHub",
+              "href": "https://github.com/plasmo310/pyside-tts-toolkit"
+            }
+          ]
+        },
+        {
+          "pickup": true,
           "category": "Web Tool",
           "title": "AI協業型 MV制作ツール",
           "period": "2026/05",
@@ -540,7 +565,7 @@
           ]
         },
         {
-          "pickup": true,
+          "pickup": false,
           "category": "Unity Tool",
           "title": "スライドショー制作ツール",
           "period": "2024/10",
